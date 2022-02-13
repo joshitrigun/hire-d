@@ -1,38 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import Profile from './components/profile';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!'
-    }
-  }
-
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+export default function App() {
+  const [state, setState] = useState({
+    user: {}
+  })
+  useEffect(() => {
+    axios.get(`/api/users`)
     .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
-
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
-      });
-    }) 
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
-      </div>
-    );
-  }
+      setState(prev => ({
+        ...prev, user: response.data[0]
+      }))
+    })
+    .catch(err => err)
+  }, [])
+  return (
+    <div className="App">
+      <Profile user={state.user} />
+    </div>
+  );
 }
-
-export default App;
