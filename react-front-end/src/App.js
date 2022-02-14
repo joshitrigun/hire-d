@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Jobs from "./pages/Jobs";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import Projects from "./pages/Projects";
 import Developers from "./pages/Developers";
