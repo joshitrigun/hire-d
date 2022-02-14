@@ -1,12 +1,14 @@
 const pg = require('pg');
 const client = require('./connection');
 
-const getAllUsers = () => {
-  return client.query('SELECT * FROM users;')
-    .then((results) => {
-      console.log(results.rows);
-      return results.rows;
-    })
-}
+
+const getAllUsers = (request, response) => {
+  client.query("SELECT * FROM users;", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
 
 module.exports = { getAllUsers }

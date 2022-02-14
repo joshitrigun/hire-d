@@ -14,12 +14,10 @@ App.use(Express.static('public'));
 
 
 // Sample GET route
-App.get('/api/data', (req, res) => res.json({
-  message: "Seems to work!",
-}));
 
 
-getAllUsers();
+App.get("/api/data", getAllUsers);
+
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
