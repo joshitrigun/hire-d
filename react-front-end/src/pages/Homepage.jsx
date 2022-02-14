@@ -3,27 +3,27 @@ import axios from "axios";
 import TopNavBar from "../components/Top_nav_bar";
 
 const Homepage = () => {
-  const [data, setData] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     axios
       .get("/api/users") // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
-        // console.log(response.data); // The entire response from the Rails API
+        console.log(response.data); // The entire response from the Rails API
 
-        setData(response.data);
+        setUsers(response.data);
       });
   }, []);
 
-  const mappedUsers = data.map((data) => {
+  const mappedUsers = users.map((user) => {
     return (
-      <div key={data.id} style={{ border: "5px solid red" }}>
-        <p>{data.first_name}</p>
-        <p>{data.last_name}</p>
-        <img src={data.avatar} alt="avatar" />
-        <p>{data.designation}</p>
-        <p>{data.email}</p>
+      <div key={user.id} style={{ border: "10px solid red" }}>
+        <p>{user.first_name}</p>
+        <p>{user.last_name}</p>
+        <img src={user.avatar} alt="avatar" />
+        <p>{user.designation}</p>
+        <p>{user.email}</p>
       </div>
     );
   });

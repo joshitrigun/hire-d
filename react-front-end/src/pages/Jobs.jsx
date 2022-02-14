@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import TopNavBar from "../components/Top_nav_bar";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -24,7 +25,7 @@ const Jobs = () => {
 
   return (
     <div>
-      <h2>Jobs</h2>
+      <TopNavBar />
       {mappedJobs}
     </div>
   );
