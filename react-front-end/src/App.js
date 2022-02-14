@@ -3,12 +3,18 @@ import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Jobs from "./pages/Jobs";
 import "./App.css";
+import Projects from "./pages/Projects";
+import Developers from "./pages/Developers";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
     <Routes>
       <Route exact path="/" element={<Homepage />} />
       <Route exact path="/jobs" element={<Jobs />} />
+      <Route exact path="/projects" element={<Projects />} />
+      <Route exact path="/developers" element={<Developers />} />
+      <Route exact path="/login" element={<Login />} />
     </Routes>
   );
 };
