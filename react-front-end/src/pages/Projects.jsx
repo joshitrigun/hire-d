@@ -3,6 +3,7 @@ import axios from "axios";
 import TopNavBar from "../components/Top_nav_bar";
 import "../components/ProjectListItem.css";
 import ProjectListItem from "../components/ProjectListItem";
+import ProjectPopup from "../helpers/modal";
 
 const Projects = () => {
 
@@ -25,18 +26,19 @@ const Projects = () => {
         title={project.title}
         screenshot={project.screenshot}
         likes={project.likes}
+        modal={ProjectPopup}
         />
       </div>
     );
   });
 
   return (
-    <body>
+    <div className="main">
       <TopNavBar />
       <div className="project-container">
         {mappedProjects}
       </div>
-    </body>
+    </div>
   )
 };
 

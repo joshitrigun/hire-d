@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Top_nav_bar.css";
+import { BsSearch } from "react-icons/bs";
 
 const TopNavBar = () => {
   return (
@@ -40,7 +41,7 @@ const TopNavBar = () => {
               aria-label="Search"
             />
             <button className="btn btn-outline-success" type="submit">
-              Search
+              <BsSearch />
             </button>
           </form>
         </div>
