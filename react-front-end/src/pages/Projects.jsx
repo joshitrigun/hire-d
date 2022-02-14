@@ -1,11 +1,17 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import TopNavBar from "../components/Top_nav_bar";
+import CreateProject from "../components/CreateProject";
+import AllProjects from "../components/AllProjects";
 
 const Projects = () => {
   return (
     <div>
       <TopNavBar />
-      <h3>THIS IS THE PROJECT PAGE</h3>
+      <Routes>
+        <Route path="/" element={<AllProjects />} />
+        <Route path="new" element={<CreateProject />} />
+      </Routes>
     </div>
   );
 };
