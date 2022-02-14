@@ -11,7 +11,7 @@ App.use(BodyParser.json());
 App.use(Express.static("public"));
 
 // Sample GET route
-App.get("/api/data", getAllUsers);
+App.get("/api/users", getAllUsers);
 App.get("/api/jobs", getAllJobs);
 
 App.listen(PORT, () => {
