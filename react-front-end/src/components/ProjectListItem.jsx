@@ -5,7 +5,7 @@ import "./ProjectListItem.css";
 
 const ProjectListItem = (props) => {
 
-  const {id, title, screenshot, likes, } = props;
+  const {id, title, screenshot, likes, modal } = props;
 
   const countLikes = () => {
     console.log("liked");
@@ -13,9 +13,11 @@ const ProjectListItem = (props) => {
 
   return (
     <div className="project-block">
-      <NavLink to={`/projects/${id}`}><img className="project-thumbnail" src={screenshot} alt={title} /></NavLink>
+      <div className="img-frame">
+      <img className="project-thumbnail" src={screenshot} alt={title} />
+      </div>
       <span className="project-block-footer">
-      <h5 className="project-title">{title}</h5>
+      <NavLink className="title-link" to={`/projects/${id}`}><h5 className="project-title">{title}</h5></NavLink>
       <p><BsHeart className="likes" onClick={countLikes} /> {likes}</p>
       </span>
     </div>
