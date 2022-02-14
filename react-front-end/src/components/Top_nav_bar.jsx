@@ -24,10 +24,10 @@ const TopNavBar = () => {
           <form class="d-flex">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/projects">Login</a>
+              <a class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/jobs">Signup</a>
+              <a class="nav-link" href="/users/new">Signup</a>
             </li>
           </ul>
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

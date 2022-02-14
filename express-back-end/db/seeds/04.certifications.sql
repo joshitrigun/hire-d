@@ -11,4 +11,4 @@ VALUES ('Diploma in Full Stack Development', '11-2021', '02-2022', 'Lighthouose 
 ('Diploma in Full Stack Development', '11-2021', '02-2022', 'Lighthouose Labs', 'Vancouver', 'BC', 7),
 ('Diploma in Full Stack Development', '11-2021', '02-2022', 'Lighthouose Labs', 'Vancouver', 'BC', 8),
 ('Diploma in Full Stack Development', '11-2021', '02-2022', 'Lighthouose Labs', 'Vancouver', 'BC', 9),
-('Diploma in Full Stack Development', '11-2021', '02-2022', 'Lighthouose Labs', 'Vancouver', 'BC', 10),
+('Diploma in Full Stack Development', '11-2021', '02-2022', 'Lighthouose Labs', 'Vancouver', 'BC', 10);
