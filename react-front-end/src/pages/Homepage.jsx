@@ -10,12 +10,13 @@ const Homepage = () => {
       .get("/api/users") // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
-        console.log(response.data); // The entire response from the Rails API
+        // console.log(response.data); // The entire response from the Rails API
 
         setUsers(response.data);
       });
-  }, []);
-
+    }, []);
+    
+    console.log('users::', users);
   const mappedUsers = users.map((user) => {
     return (
       <div key={user.id} style={{ border: "10px solid red" }}>
@@ -29,7 +30,7 @@ const Homepage = () => {
   });
 
   return (
-    <div>
+    <div className="main">
       <TopNavBar />
       {mappedUsers}
     </div>
