@@ -9,8 +9,8 @@
 }
 
 .project-block {
-  margin: .5em 2em;
-  width: 29em;
+  margin: 0.5em 2em;
+  width: 24vw;
   height: 29em;
 }
 
@@ -19,15 +19,14 @@
 }
 
 .img-frame {
-  box-shadow: inset 0 0 .5em .125em rgba(0, 0, 0, .25);
+  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
   border-radius: 1em;
-  width: 25vw !important;
+  width: 24vw !important;
   height: 18vw !important;
-  
 }
 
 .project-thumbnail {
-  width: 25vw !important;
+  width: 24vw !important;
   height: 18vw !important;
   object-fit: cover;
   border-radius: 1em;
@@ -47,7 +46,7 @@
 }
 
 .likes {
-  color: #3F51B5;
+  color: #3f51b5;
   cursor: pointer;
 }
 .likes:hover {

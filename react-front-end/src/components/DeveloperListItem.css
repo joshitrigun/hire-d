@@ -1,0 +1,46 @@
+.developer-container {
+  margin-top: 2em;
+  padding: 4em;
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.developer-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5em 2em;
+  width: 24em;
+  height: 18em;
+  background-color: rgb(187, 211, 231);
+  border-radius: 1em;
+  position: relative;
+  z-index: -3;
+}
+.img-frame {
+  margin-top: -5em;
+  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
+  width: 10em !important;
+  height: 10em !important;
+  border-radius: 50%;
+}
+
+.developer-thumbnail {
+  width: 10em !important;
+  height: 10em !important;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: -2;
+}
+.bs-icon {
+  color: #3f51b5;
+}
+.title-link {
+  text-decoration: none;
+  color: #212529;
+  cursor: pointer;
+}
