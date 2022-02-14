@@ -13,5 +13,7 @@ VALUES ('Trigun', 'Joshi', 'trigunjoshi@gmail.com', 'password', 'Full Stack Deve
 
 -- EMPLOYER USERS
 INSERT INTO users(first_name, last_name, email, password, designation, about_me, phone_number, avatar, city, province, skills, github_url, linkedin_url, employer)
-VALUES ('Tech Crunch', '', 'tech_crunch@gmail.com', 'password', null, 'Marketing Agency', 4160202000, null, 'Toronto', 'Ontario', null, null, null, true);
+VALUES ('Tech Crunch', '', 'tech_crunch@gmail.com', 'password', null, 'Marketing Agency', 4160202000, null, 'Toronto', 'ON', null, null, null, true),
+('FlightCentre', '', 'fcentre@gmail.com', 'password', null, 'Airline Company', 6044358253, null, 'Vancouver', 'BC', null, null, null, true),
+('Orange', '', 'orange@gmail.com', 'password', null, 'Telecommunications Company', 4035169354, null, 'Calgary', 'AB', null, null, null, true);
 
