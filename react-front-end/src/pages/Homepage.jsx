@@ -30,7 +30,7 @@ const Homepage = () => {
   });
 
   return (
-    <div>
+    <div className="main">
       <TopNavBar />
       {mappedUsers}
     </div>
