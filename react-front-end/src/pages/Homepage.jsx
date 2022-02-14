@@ -18,7 +18,7 @@ const Homepage = () => {
 
   const mappedUsers = data.map((data) => {
     return (
-      <div key={data.id} style={{ border: "10px solid red" }}>
+      <div key={data.id} style={{ border: "5px solid red" }}>
         <p>{data.first_name}</p>
         <p>{data.last_name}</p>
         <img src={data.avatar} alt="avatar" />
