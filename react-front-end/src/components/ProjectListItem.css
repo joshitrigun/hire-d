@@ -1,0 +1,34 @@
+.project-container {
+  margin-top: 2em;
+  padding: 4em;
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.project-block {
+  margin: .5em 2em;
+  width: 29em;
+  height: 29em;
+}
+
+.project-thumbnail {
+  width: 100%;
+  border-radius: 1em;
+}
+
+.project-block-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likes {
+  color: #3F51B5;
+  cursor: pointer;
+}
+.likes:hover {
+  color: blue;
+}
