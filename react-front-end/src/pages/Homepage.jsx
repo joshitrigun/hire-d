@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import TopNavBar from "../components/Top_nav_bar";
 
 const Homepage = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("/api/data") // You can simply make your requests to "/api/whatever you want"
+      .get("/api/users") // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
         // console.log(response.data); // The entire response from the Rails API
@@ -29,7 +30,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <h2>Homepage</h2>
+      <TopNavBar />
       {mappedUsers}
     </div>
   );
