@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Header from "../components/Header";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -24,6 +25,7 @@ const Jobs = () => {
 
   return (
     <div>
+      <Header />
       <h2>Jobs</h2>
       {mappedJobs}
     </div>
