@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../components/Header";
+import TopNavBar from "../components/Top_nav_bar";
 
 const Login = () => {
   return (
     <div>
-      <Header />
+      <TopNavBar />
       <h3>THIS IS LOGIN PAGE</h3>
     </div>
   );

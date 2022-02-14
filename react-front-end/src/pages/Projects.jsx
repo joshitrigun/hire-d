@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../components/Header";
+import TopNavBar from "../components/Top_nav_bar";
 
 const Projects = () => {
   return (
     <div>
-      <Header />
+      <TopNavBar />
       <h3>THIS IS THE PROJECT PAGE</h3>
     </div>
   );
