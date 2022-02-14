@@ -1,17 +1,24 @@
 import React from "react";
-import { BsHeart, BsHeartFill, BsEyeFill } from "react-icons/bs";
+import { BsHeart } from "react-icons/bs";
+import { Link, NavLink } from "react-router-dom";
+import "./ProjectListItem.css";
 
 const ProjectListItem = (props) => {
 
-  const {project} = props;
+  const {id, title, screenshot, likes, modal } = props;
+
+  const countLikes = () => {
+    console.log("liked");
+  }
 
   return (
     <div className="project-block">
-      <a href="/projects/{project.id}" ><img src={project.screenshot} alt={project.title} /></a>
+      <div className="img-frame">
+      <img className="project-thumbnail" src={screenshot} alt={title} />
+      </div>
       <span className="project-block-footer">
-      <h5 className="project-title">{project.title}</h5>
-      <BsHeart />
-      <BsEyeFill />
+      <NavLink className="title-link" to={`/projects/${id}`}><h5 className="project-title">{title}</h5></NavLink>
+      <p><BsHeart className="likes" onClick={countLikes} /> {likes}</p>
       </span>
     </div>
   )

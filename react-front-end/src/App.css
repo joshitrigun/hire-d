@@ -1,7 +1,19 @@
 body {
   font-family: 'Roboto Slab', serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
+.main {
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+}
 
 .App {
   text-align: center;
