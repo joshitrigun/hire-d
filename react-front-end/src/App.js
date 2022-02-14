@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import Jobs from "./pages/Jobs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+import "./components/ProjectListItem.css";
 import Projects from "./pages/Projects";
 import Developers from "./pages/Developers";
 import Login from "./pages/Login";
