@@ -8,6 +8,7 @@ import "./components/ProjectListItem.css";
 import Projects from "./pages/Projects";
 import Developers from "./pages/Developers";
 import Login from "./pages/Login";
+import Single_project from "./pages/Single_project";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route exact path="/" element={<Homepage />} />
       <Route exact path="/jobs" element={<Jobs />} />
       <Route exact path="/projects" element={<Projects />} />
+      <Route exact path="/projects/${id}" element={<Single_project />} />
       <Route exact path="/developers" element={<Developers />} />
       <Route exact path="/login" element={<Login />} />
     </Routes>
