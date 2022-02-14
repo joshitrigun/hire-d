@@ -1,17 +1,19 @@
+require("dotenv").config();
 const pg = require('pg');
 const Client = pg.Client;
 
+
 const config = {
-  user: 'hpocfjui',
-  host: 'abul.db.elephantsql.com',
-  database: 'hpocfjui',
-  password: '5uyplq7OH2Su-nLUeFmEJBDWqjIFOFrz',
-  port: 5432
-}
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  port: process.env.DB_PORT,
+};
 const client = new Client(config);
 
 client.connect(() => {
-  console.log('connected to the database');
+  console.log("connected to the database");
 });
 
 module.exports = client;
