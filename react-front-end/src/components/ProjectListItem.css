@@ -21,10 +21,15 @@
 .img-frame {
   box-shadow: inset 0 0 .5em .125em rgba(0, 0, 0, .25);
   border-radius: 1em;
+  width: 25vw !important;
+  height: 18vw !important;
+  
 }
 
 .project-thumbnail {
-  width: 100%;
+  width: 25vw !important;
+  height: 18vw !important;
+  object-fit: cover;
   border-radius: 1em;
   position: relative;
   z-index: -2;

@@ -7,3 +7,27 @@
 .logo {
   height: 50px;
 }
+
+li .nav-link {
+  font-size: 1.25em;
+  font-weight: 500;
+  margin: 0 1.5em;
+}
+
+.d-flex .btn-outline-success {
+  border-radius: 50%;
+  color: #3F51B5;
+  border-color: #3F51B5;
+}
+
+.d-flex .btn-outline-success:hover {
+  border-radius: 50%;
+  color: #ffffff;
+  border-color: #3F51B5;
+  background-color: #3F51B5;
+}
+
+.d-flex input {
+  border-color: #3F51B5;
+  border-radius: 5em;
+}
