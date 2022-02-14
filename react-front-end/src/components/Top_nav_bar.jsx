@@ -28,7 +28,7 @@ const TopNavBar = () => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to={"/login"}>
-                <h3>Login/Register</h3>
+                Login/Register
               </NavLink>
             </li>
           </ul>
