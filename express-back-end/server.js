@@ -13,16 +13,6 @@ const {
   getUsersProjectsCertifications,
 } = require("./database/queries");
 
-const {
-  getAllUsers,
-  getAllJobs,
-  getAllProjects,
-  getAllCertifications,
-  getProjectsWithUsers,
-  getUsersProjectsCertifications,
-} = require("./database/queries");
-// const { client } = require("./database/connection");
-
 const PORT = 8080;
 
 const corsOptions = {
