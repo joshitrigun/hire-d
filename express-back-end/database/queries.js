@@ -27,7 +27,7 @@ const getAllJobs = (request, response) => {
 
 const getAllProjects = (request, response) => {
 
-const queryString = "SELECT * FROM projects;"
+  const queryString = "SELECT * FROM projects;"
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -61,5 +61,16 @@ const getProjectsWithUsers = (request, response) => {
   });
 };
 
+const getUsersProjectsCertifications = (request, response) => {
 
-module.exports = { getAllUsers, getAllJobs, getAllProjects, getAllCertifications, getProjectsWithUsers };
+  const queryString = "SELECT DISTINCT users.*, certifications.*, certifications.city as c_city, certifications.province as c_province, projects.screenshot, projects.title as project_title, projects.likes, projects.owner_id FROM users LEFT JOIN projects ON users.id = projects.owner_id LEFT JOIN certifications ON users.id = certifications.jobseeker_id;"
+
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
+module.exports = { getAllUsers, getAllJobs, getAllProjects, getAllCertifications, getProjectsWithUsers, getUsersProjectsCertifications };
