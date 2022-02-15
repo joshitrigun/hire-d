@@ -28,30 +28,31 @@ CREATE TABLE projects (
   tech_stack VARCHAR,
   screenshot VARCHAR(255) NOT NULL,
   description VARCHAR,
-  date_completed DATE,
   project_url VARCHAR(255) NOT NULL,
   likes INTEGER,
-  featured BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP
 );
+-- date_completed DATE,
+-- featured BOOLEAN DEFAULT FALSE,
 
 CREATE TABLE jobs (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
   description VARCHAR,
-  company VARCHAR(255) NOT NULL,
   job_type VARCHAR(255),
   tech_stack VARCHAR,
-  min_salary INTEGER,
-  max_salary INTEGER,
-  hourly_wage INTEGER,
-  city VARCHAR(255),
-  province VARCHAR(255),
+  salary INTEGER,
   start_date DATE,
   end_date DATE NOT NULL,
   featured BOOLEAN DEFAULT FALSE,
   employer_id INTEGER REFERENCES users(id) ON DELETE CASCADE NOT NULL
 );
+  -- company VARCHAR(255) NOT NULL,
+  -- city VARCHAR(255),
+  -- province VARCHAR(255),
+  -- min_salary INTEGER,
+  -- max_salary INTEGER,
+  -- hourly_wage INTEGER,
 
 CREATE TABLE certifications (
   id SERIAL PRIMARY KEY NOT NULL,
