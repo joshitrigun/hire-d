@@ -12,7 +12,7 @@
 }
 
 .project-block {
-  margin: .5em 2em;
+  margin: 0.5em 2em;
   width: 24vw;
   height: 29em;
 }
@@ -21,7 +21,7 @@
   border: none;
 }
 
-.img-frame {
+.proejct-img-frame {
   box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
   border-radius: 1em;
   width: 24vw !important;
