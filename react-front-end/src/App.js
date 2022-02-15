@@ -13,20 +13,11 @@ import Login from "./pages/Login";
 const App = () => {
   return (
     <Routes>
-<<<<<<< HEAD
       <Route path="/" element={<Homepage />} />
       <Route path="/jobs" element={<Jobs />} />
       <Route path="projects/*" element={<Projects />} />
       <Route path="/developers" element={<Developers />} />
       <Route path="/login" element={<Login />} />
-=======
-      <Route exact path="/" element={<Homepage />} />
-      <Route exact path="/jobs" element={<Jobs />} />
-      <Route exact path="/projects" element={<Projects />} />
-
-      <Route exact path="/developers" element={<Developers />} />
-      <Route exact path="/login" element={<Login />} />
->>>>>>> b21a9752af64424166e103a4fb44dfd473cca0f7
     </Routes>
   );
 };
