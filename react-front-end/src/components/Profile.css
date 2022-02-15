@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
 }
 
 .profile-div {
@@ -9,7 +9,7 @@ body {
   background-color: rgb(245, 245, 245);
   border-radius: 2%;
   padding: 2%;
-  position:fixed;
+  /* //position:fixed; */
 }
 
 .profile-img {
@@ -17,7 +17,7 @@ body {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: #3F51B5 solid 4px;
+  border: #3f51b5 solid 4px;
 }
 
 .title {
@@ -29,7 +29,7 @@ body {
 }
 
 .bs-icon {
-  color:#3F51B5;
+  color: #3f51b5;
 }
 
 .section-title {

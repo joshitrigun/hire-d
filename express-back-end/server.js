@@ -9,7 +9,20 @@ const {
   getAllProjects,
   getAllCertifications,
   createProject,
+  getProjectsWithUsers,
+  getUsersProjectsCertifications,
 } = require("./database/queries");
+
+const {
+  getAllUsers,
+  getAllJobs,
+  getAllProjects,
+  getAllCertifications,
+  getProjectsWithUsers,
+  getUsersProjectsCertifications,
+} = require("./database/queries");
+// const { client } = require("./database/connection");
+
 const PORT = 8080;
 
 const corsOptions = {
@@ -36,6 +49,8 @@ App.get("/api/users", getAllUsers);
 App.get("/api/jobs", getAllJobs);
 App.get("/api/projects", getAllProjects);
 App.get("/api/certifications", getAllCertifications);
+App.get("/api/user_projects", getProjectsWithUsers);
+App.get("/api/users_projects_certifications", getUsersProjectsCertifications);
 
 App.post("/api/projects", createProject);
 

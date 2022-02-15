@@ -1,17 +1,18 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import CreateProject from "../components/CreateProject";
-import AllProjects from "../components/AllProjects";
 import TopNavBar from "../components/Top_nav_bar";
 import "../components/ProjectListItem.css";
-//import ProjectPopup from "../helpers/modal";
+import { Routes, Route } from "react-router-dom";
+import ProjectDetails from "../components/ProjectDetails";
+import ProjectList from "../components/ProjectList";
+import CreateProject from "../components/CreateProject";
 
 const Projects = () => {
   return (
     <div className="main">
       <TopNavBar />
       <Routes>
-        <Route path="/" element={<AllProjects />} />
+        <Route path="/" element={<ProjectList />} />
+        <Route path=":id" element={<ProjectDetails />} />
         <Route path="new" element={<CreateProject />} />
       </Routes>
     </div>
