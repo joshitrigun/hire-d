@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import TopNavBar from "../components/Top_nav_bar";
 import axios from "axios";
 import DeveloperListItem from "../components/DeveloperListItem";
 
 const Developers = () => {
   const [state, setState] = useState([]);
+
   useEffect(() => {
     axios.get("/api/users").then((response) => {
       setState(response.data);
@@ -28,6 +31,7 @@ const Developers = () => {
       </div>
     );
   });
+
   return (
     <div className="main">
       <TopNavBar />

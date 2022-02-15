@@ -1,10 +1,11 @@
 import React from "react";
 import { BsHeart } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./ProjectListItem.css";
 
 const ProjectListItem = (props) => {
-  const { id, title, screenshot, likes, modal } = props;
+
+  const {id, title, screenshot, likes } = props;
 
   const countLikes = () => {
     console.log("liked");
