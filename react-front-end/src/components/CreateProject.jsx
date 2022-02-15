@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { tech_stack } from "./TechStacks";
 
 const CreateProject = () => {
@@ -141,7 +142,9 @@ const CreateProject = () => {
           })}
         </div>
         <button onClick={validate}>Save</button>
-        <button>Cancel</button>
+        <Link to={"/"}>
+          <button>Cancel</button>
+        </Link>
       </form>
     </div>
   );
