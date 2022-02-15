@@ -14,19 +14,18 @@ const Developers = () => {
 
   const mappedDevelopers = state.map((developer) => {
     return (
-      <div className="developers-block">
-        <DeveloperListItem
-          key={developer.id}
-          avatar={developer.avatar}
-          first_name={developer.first_name}
-          last_name={developer.last_name}
-          designation={developer.designation}
-          city={developer.city}
-          email={developer.email}
-          province={developer.province}
-          phone_number={developer.phone_number}
-        />
-      </div>
+      <DeveloperListItem
+        id={developer.id}
+        key={developer.id}
+        avatar={developer.avatar}
+        first_name={developer.first_name}
+        last_name={developer.last_name}
+        designation={developer.designation}
+        city={developer.city}
+        email={developer.email}
+        province={developer.province}
+        phone_number={developer.phone_number}
+      />
     );
   });
   return (
