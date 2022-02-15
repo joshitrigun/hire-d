@@ -5,7 +5,6 @@ import ProjectList from "../components/ProjectList";
 
 const Homepage = () => {
   const [users, setUsers] = useState([]);
-
   return (
     <div className="main">
       <TopNavBar />
