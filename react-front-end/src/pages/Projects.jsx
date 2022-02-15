@@ -1,38 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import TopNavBar from "../components/Top_nav_bar";
 import "../components/ProjectListItem.css";
-import ProjectListItem from "../components/ProjectListItem";
-//import ProjectPopup from "../helpers/modal";
+
+import { Routes, Route } from "react-router-dom";
+import ProjectDetails from "../components/ProjectDetails";
+import ProjectList from "../components/ProjectList";
 
 const Projects = () => {
-  const [state, setState] = useState([]);
-
-  useEffect(() => {
-    axios.get("/api/projects").then((response) => {
-      setState(response.data);
-    });
-  }, []);
-
-  const mappedProjects = state.map((project) => {
-    return (
-      <div className="projects-block">
-        <ProjectListItem
-          key={project.id}
-          id={project.id}
-          title={project.title}
-          screenshot={project.screenshot}
-          likes={project.likes}
-          //modal={ProjectPopup}
-        />
-      </div>
-    );
-  });
-
   return (
     <div className="main">
       <TopNavBar />
-      <div className="project-container">{mappedProjects}</div>
+
+      <Routes>
+        <Route path="/" element={<ProjectList />} />
+        <Route path=":id" element={<ProjectDetails />} />
+        {/* <Route path="new" element={<CreateProject />} /> */}
+      </Routes>
     </div>
   );
 };
