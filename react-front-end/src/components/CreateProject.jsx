@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { tech_stack } from "./TechStacks";
 
@@ -5,23 +6,88 @@ const CreateProject = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [projectLink, setProjectLink] = useState("");
-  const [completedDate, setCompletedDate] = useState();
+  const [screenshot, setScreenshot] = useState("");
   const [checkedState, setCheckedState] = useState(
     new Array(tech_stack.length).fill(false)
   );
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleOnChange = (position) => {
+  const reset = () => {
+    setTitle("");
+    setDescription("");
+    setProjectLink("");
+    setScreenshot("");
+    setCheckedState(new Array(tech_stack.length).fill(false));
+    setTimeout(() => setSubmitted(false), 5000);
+  };
+
+  const validate = () => {
+    if (title === "") {
+      setError("title cannot be blank");
+      return;
+    }
+    if (description === "") {
+      setError("description cannot be blank");
+      return;
+    }
+    if (projectLink === "") {
+      setError("projectLink cannot be blank");
+      return;
+    }
+    if (screenshot === "") {
+      setError("screenshot cannot be blank");
+      return;
+    }
+    if (!checkedState.includes(true)) {
+      setError("Make sure you to fill in tech stack!");
+      return;
+    }
+    setError("");
+    onSubmitHandler();
+  };
+
+  const onChangeHandler = (position) => {
+    // loops through checkedState array and change
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
     );
-
     setCheckedState(updatedCheckedState);
+  };
+
+  const onSubmitHandler = () => {
+    const stack = [];
+    checkedState.forEach((item, index) => {
+      if (item) {
+        stack.push(tech_stack[index].name);
+      }
+    });
+    const data = {
+      title,
+      description,
+      owner_id: 1,
+      likes: 0,
+      projectLink,
+      screenshot,
+      stack: stack.toString(),
+    };
+    axios
+      .post("http://localhost:8080/api/projects", data)
+      .then((response) => {
+        setSubmitted(response.data);
+        reset();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   return (
     <div>
       <h3 className="text-center">Create Project</h3>
-      <form className="w-50 mx-auto" onSubmit={(e) => e.preventDefault()}>
+      {submitted ? <p>{submitted}</p> : ""}
+      {error ? <p>{error}</p> : ""}
+      <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <div className="d-flex flex-column">
           <input
             type="text"
@@ -46,36 +112,35 @@ const CreateProject = () => {
             value={projectLink}
             onChange={(event) => setProjectLink(event.target.value)}
           />
-          <input
-            type="date"
-            placeholder="Completion Date"
-            name="completion_date"
-            value={completedDate}
-            onChange={(event) => setCompletedDate(event.target.value)}
-          />
           {/* COME BACK TO THIS BELOW  */}
-          <input type="file" placeholder="Add Screenshot" name="screenshot" />
+          <input
+            type="text"
+            placeholder="Add Screenshot"
+            name="screenshot"
+            value={screenshot}
+            onChange={(event) => setScreenshot(event.target.value)}
+          />
         </div>
         <div className="d-flex flex-column">
           <h4>Tech Stack</h4>
 
           {tech_stack.map(({ name }, index) => {
             return (
-              <div>
+              <div key={index}>
                 <input
                   type="checkbox"
                   name={name}
                   value={name}
                   id={name}
                   checked={checkedState[index]}
-                  onChange={() => handleOnChange(index)}
+                  onChange={() => onChangeHandler(index)}
                 />
-                <label for={name}>{name}</label>
+                <label htmlFor={name}>{name}</label>
               </div>
             );
           })}
         </div>
-        <button>Save</button>
+        <button onClick={validate}>Save</button>
         <button>Cancel</button>
       </form>
     </div>
