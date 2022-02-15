@@ -1,18 +1,16 @@
 import React from "react";
 import { BsHeart } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./ProjectListItem.css";
 
 const ProjectListItem = (props) => {
-  const { id, title, screenshot, likes, modal } = props;
+  const { id, title, screenshot, likes } = props;
 
-  const countLikes = () => {
-    console.log("liked");
-  };
+  const countLikes = () => {};
 
   return (
     <div className="project-block">
-      <div className="img-frame">
+      <div className="project-img-frame">
         <img className="project-thumbnail" src={screenshot} alt={title} />
       </div>
       <span className="project-block-footer">

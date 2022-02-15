@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  BsEnvelopeFill,
-  BsFullscreen,
-  BsGeoFill,
-  BsGithub,
-  BsTelephoneFill,
-  BsLinkedin,
-} from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import "./DeveloperListItem.css";
 
 const DeveloperListItem = (props) => {
@@ -28,11 +21,9 @@ const DeveloperListItem = (props) => {
       <div className="img-frame">
         <img className="developer-thumbnail" src={avatar} alt={first_name} />
       </div>
-      <NavLink className="title-link" to={`/developers/${id}`}>
-        <h4>
-          {first_name} {last_name}
-        </h4>
-      </NavLink>
+      <Link to={`/developers/${id}`}>
+        {first_name} {last_name}
+      </Link>
       <h6>{designation}</h6>
       <p>
         <BsGeoFill className="bs-icon" /> {city}, {province}
