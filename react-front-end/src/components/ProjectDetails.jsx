@@ -5,24 +5,22 @@ import { useParams } from "react-router";
 import './ProjectDetails.css';
 import { BsPlusLg } from "react-icons/bs";
 
-
 const ProjectDetails = () => {
-
   const [singleProject, setSingleProject] = useState({});
   let url_id = useParams();
 
   const projectsDetails = (state, id) => {
+
     const singleProject = state.filter((project) => project.id === id)
       setSingleProject(singleProject[0]);
-    }
+    };
 
   useEffect(() => {
-    axios.get('/api/user_projects')
-    .then((response) => {
+    axios.get("/api/user_projects").then((response) => {
       projectsDetails(response.data, Number(url_id.id));
-    })
+    });
   }, []);
-  
+
   return (
     <div className="project-details-main">
       <span className="return-link">
