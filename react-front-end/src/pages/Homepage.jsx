@@ -14,14 +14,15 @@ const Homepage = () => {
 
         setUsers(response.data);
       });
-    }, []);
-    
-    console.log('users::', users);
+  }, []);
+
+  //console.log("users::", users);
   const mappedUsers = users.map((user) => {
     return (
       <div key={user.id} style={{ border: "10px solid red" }}>
-        <p>{user.first_name}</p>
-        <p>{user.last_name}</p>
+        <p>
+          {user.first_name} {user.last_name}
+        </p>
         <img src={user.avatar} alt="avatar" />
         <p>{user.designation}</p>
         <p>{user.email}</p>
