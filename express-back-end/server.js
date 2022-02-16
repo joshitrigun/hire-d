@@ -12,6 +12,7 @@ const {
   getUsersProjectsCertifications,
   createProject,
   createUser,
+  createCertification,
   getJobsWithUser
 } = require("./database/queries");
 
@@ -28,7 +29,7 @@ App.use(BodyParser.json());
 App.use(Express.static("public"));
 App.use(cors(corsOptions));
 
-// Sample GET route
+
 App.get("/api/users", getAllUsers);
 App.get("/api/jobs", getAllJobs);
 App.get("/api/projects", getAllProjects);
@@ -40,6 +41,8 @@ App.get("/api/users_projects_certifications", getUsersProjectsCertifications);
 
 App.post("/api/projects", createProject);
 App.post("/api/users", createUser);
+App.post("/api/certifications", createCertification);
+
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
