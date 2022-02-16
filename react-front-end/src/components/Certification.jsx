@@ -3,7 +3,7 @@ import { FaUserGraduate } from "react-icons/fa";
 const Certification = (props) => {
   const { title, institution, startDate, endDate, province, city } = props;
   return (
-    <div>
+    <div className="card text-dark bg-light mb-3">
       <div>
         <FaUserGraduate classname="bs-icon" />
       </div>

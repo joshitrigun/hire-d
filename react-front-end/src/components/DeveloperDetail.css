@@ -22,5 +22,10 @@
   margin-bottom: 1em;
 }
 .certification-section {
-  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border: 1px;
+  border-radius: 1rem;
 }
