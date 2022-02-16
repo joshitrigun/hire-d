@@ -1,12 +1,14 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import TopNavBar from "../components/Top_nav_bar";
+import TopNavBar from "../components/layout/Top_nav_bar";
 import Cookies from "js-cookie";
 
 const Login = () => {
   let navigate = useNavigate();
+
   const onClickHandler = () => {
     Cookies.set("user", "trigunjoshi@gmail.com");
+    Cookies.set("id", "1");
     navigate("/");
   };
 
