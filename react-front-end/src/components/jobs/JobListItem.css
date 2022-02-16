@@ -53,9 +53,16 @@
   border: #3F51B5 solid 1px;
   padding: .1em .5em .3em .5em;
   border-radius: 1em;
+  margin: 0 1em;
+  font-size: 1.25em;
+  transition: 0.3s;
 }
 .apply-link a {
   text-decoration: none;  
+}
+
+.apply-link a:hover {
+  color: white; 
 }
 
 .apply-link:hover {
