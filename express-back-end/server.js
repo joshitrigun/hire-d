@@ -30,7 +30,6 @@ App.use(BodyParser.json());
 App.use(Express.static("public"));
 App.use(cors(corsOptions));
 
-
 App.get("/api/users", getAllUsers);
 App.get("/api/jobs", getAllJobs);
 App.get("/api/projects", getAllProjects);
@@ -40,11 +39,9 @@ App.get("/api/jobs_users", getHotJobsWithUser);
 App.get("/api/users_projects_certifications", getUsersProjectsCertifications);
 App.get("/api/jobs_employers", getJobsWithEmployers);
 
-
 App.post("/api/projects", createProject);
 App.post("/api/users", createUser);
 App.post("/api/certifications", createCertification);
-
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
