@@ -31,7 +31,6 @@ const AllProjects = () => {
 
   return (
     <div className="main">
-        <h2 className="page-title">Projects</h2>
         <div className="project-container">
           {mappedProjects}
         </div>
