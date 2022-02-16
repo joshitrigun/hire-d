@@ -9,6 +9,7 @@ const {
   getAllProjects,
   getAllCertifications,
   createProject,
+  createUser,
   getProjectsWithUsers,
   getUsersProjectsCertifications,
 } = require("./database/queries");
@@ -35,6 +36,7 @@ App.get("/api/user_projects", getProjectsWithUsers);
 App.get("/api/users_projects_certifications", getUsersProjectsCertifications);
 
 App.post("/api/projects", createProject);
+App.post("/api/users", createUser);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

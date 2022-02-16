@@ -29,7 +29,12 @@ const TopNavBar = () => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to={"/login"}>
-                Login/Register
+                Login
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to={"/signup"}>
+                SignUp
               </NavLink>
             </li>
           </ul>
@@ -41,7 +46,7 @@ const TopNavBar = () => {
               aria-label="Search"
             />
             <button className="btn btn-outline-success" type="submit">
-              <BsSearch className="bs-icon"/>
+              <BsSearch className="bs-icon" />
             </button>
           </form>
         </div>
