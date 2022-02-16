@@ -130,6 +130,19 @@ const getProjectsWithUsers = (request, response) => {
   });
 };
 
+
+const getJobsWithUser = (request, response) => {
+
+  const queryString = "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs LEFT JOIN users ON users.id = jobs.employer_id WHERE jobs.featured = true ORDER BY jobs.salary DESC;"
+
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  })
+};
+
 const getUsersProjectsCertifications = (request, response) => {
   const queryString =
     "SELECT DISTINCT users.*, certifications.*, certifications.city as c_city, certifications.province as c_province, projects.screenshot, projects.title as project_title, projects.likes, projects.owner_id FROM users LEFT JOIN projects ON users.id = projects.owner_id LEFT JOIN certifications ON users.id = certifications.jobseeker_id;";
@@ -151,4 +164,5 @@ module.exports = {
   getUsersProjectsCertifications,
   createProject,
   createUser,
+  getJobsWithUser
 };
