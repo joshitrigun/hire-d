@@ -73,3 +73,7 @@ body {
 .hot-jobs-section {
   height: 75vh;
 }
+
+h4 {
+  font-size: 2em;
+}

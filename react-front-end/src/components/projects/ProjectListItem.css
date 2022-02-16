@@ -6,9 +6,10 @@
   /* padding: 2em 4em; */
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  margin-top: 2em;
 }
 
 .project-block {
@@ -38,9 +39,10 @@
 }
 
 .project-block-footer {
+  padding-top: .5em;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .title-link {

@@ -8,24 +8,22 @@
 }
 
 .return-link a {
-  color: #fff;
-  background-color: #3F51B5;
-  padding: .25em .5em;
+  color: #3F51B5;
+  padding: .1em .5em .3em 0.5em;
   margin: 2em 2em 0 0;
   font-size: 1.25em;
   text-decoration: none;
   border-radius: 1em;
   border: #3F51B5 solid 1px;
-  opacity: .75;
   transition: 0.3s;
 }
 
 .return-link a:hover {
-  opacity: 1;
-  color:#283372;
+  color:#fff;
+  background-color: #3F51B5;
 }
 
-.bs-icon-white {
+.bs-icon:hover {
   color: #fff;
 }
 

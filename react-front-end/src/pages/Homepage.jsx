@@ -1,7 +1,7 @@
 import React from "react";
-import TopNavBar from "../components/Top_nav_bar";
-import ProjectList from "../components/ProjectList";
-import HotJobList from "../components/HotJobsList";
+import TopNavBar from "../components/layout/Top_nav_bar";
+import ProjectList from "../components/projects/ProjectList";
+import HotJobList from "../components/jobs/HotJobsList";
 import '../App.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';

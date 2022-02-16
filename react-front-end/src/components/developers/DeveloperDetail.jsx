@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Profile from "../components/Profile";
-import ProjectListItem from "../components/ProjectListItem";
-import Certification from "./Certification";
+import Profile from "./Profile";
+import ProjectListItem from "../projects/ProjectListItem";
+import Certification from "../certifications/Certification";
 import "./DeveloperDetail.css";
+
 const DeveloperDetail = () => {
   const [state, setState] = useState({
     user: {},
@@ -32,11 +32,10 @@ const DeveloperDetail = () => {
   };
 
   const getCertificationsByUser = (certifications, id) => {
-    const temp = certifications.filter(
+    const certificates = certifications.filter(
       (certification) => certification.jobseeker_id === id
     );
-    console.log("temp", temp);
-    return temp;
+    return certificates;
   };
 
   useEffect(() => {
@@ -54,7 +53,6 @@ const DeveloperDetail = () => {
     });
   }, []);
 
-  console.log("state.projects", state.projects);
   const mappedProjects = state.projects.map((project) => {
     return (
       <div className="projects-block">
@@ -69,7 +67,6 @@ const DeveloperDetail = () => {
     );
   });
 
-  console.log("state.certifications", state.certifications);
   const mappedCertification = state.certifications.map((certification) => {
     return (
       <div className="certification-block">

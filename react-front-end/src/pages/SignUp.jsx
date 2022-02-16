@@ -1,9 +1,9 @@
 import React from "react";
-import TopNavBar from "../components/Top_nav_bar";
+import TopNavBar from "../components/layout/Top_nav_bar";
 import { Routes, Route } from "react-router-dom";
-import Signup from "../components/Signup";
-import CreateEmployerForm from "../components/CreateEmployerForm";
-import CreateSeekerForm from "../components/CreateSeekerForm";
+import Signup from "../components/forms/Signup";
+import CreateEmployerForm from "../components/forms/CreateEmployerForm";
+import CreateSeekerForm from "../components/forms/CreateSeekerForm";
 
 const SignUp = () => {
   return (

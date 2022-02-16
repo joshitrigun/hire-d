@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUserGraduate } from "react-icons/fa";
+
 const Certification = (props) => {
   const { title, institution, startDate, endDate, province, city } = props;
   return (

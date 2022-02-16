@@ -131,7 +131,7 @@ const getProjectsWithUsers = (request, response) => {
 };
 
 
-const getJobsWithUser = (request, response) => {
+const getHotJobsWithUser = (request, response) => {
 
   const queryString = "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs LEFT JOIN users ON users.id = jobs.employer_id WHERE jobs.featured = true ORDER BY jobs.salary DESC;"
 
@@ -155,6 +155,18 @@ const getUsersProjectsCertifications = (request, response) => {
   });
 };
 
+const getJobsWithEmployers = (request, response) => {
+
+  const queryString = "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs JOIN users ON users.id = jobs.employer_id;"
+
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+}
+
 module.exports = {
   getAllUsers,
   getAllJobs,
@@ -164,5 +176,6 @@ module.exports = {
   getUsersProjectsCertifications,
   createProject,
   createUser,
-  getJobsWithUser
+  getHotJobsWithUser,
+  getJobsWithEmployers
 };

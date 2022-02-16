@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TopNavBar from "../components/Top_nav_bar";
+import TopNavBar from "../components/layout/Top_nav_bar";
 
 const Login = () => {
   return (
