@@ -12,7 +12,7 @@ const {
   getUsersProjectsCertifications,
   createProject,
   createUser,
-  getJobsWithUser
+  getJobsWithUser,
 } = require("./database/queries");
 
 const PORT = 8080;
@@ -36,7 +36,6 @@ App.get("/api/certifications", getAllCertifications);
 App.get("/api/user_projects", getProjectsWithUsers);
 App.get("/api/jobs_users", getJobsWithUser);
 App.get("/api/users_projects_certifications", getUsersProjectsCertifications);
-
 
 App.post("/api/projects", createProject);
 App.post("/api/users", createUser);
