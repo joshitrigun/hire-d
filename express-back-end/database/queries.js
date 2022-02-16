@@ -1,3 +1,4 @@
+const { response } = require("express");
 const pg = require("pg");
 const client = require("./connection");
 
@@ -119,6 +120,39 @@ const createUser = (request, response) => {
   );
 };
 
+
+
+const createCertification = (req, res) => {
+  const {
+    title,
+    startDate,
+    endDate,
+    institution,
+    city,
+    province,
+    jobSeekerId
+  } = req.body;
+  const queryString = "INSERT INTO certifications (title, start_date, end_date, institution, city, province, jobseeker_id) VALUES ($1, $2, $3, $4, $5, $6, $7);";
+  client.query(
+    queryString,
+    [
+      title,
+      startDate,
+      endDate,
+      institution,
+      city,
+      province,
+      jobSeekerId,
+    ], (error, results) => {
+      if (error) {
+        throw error;
+      }
+      res.status(201).send('Certifications added')
+    }
+  )
+}
+
+
 const getProjectsWithUsers = (request, response) => {
   const queryString = `SELECT projects.*, users.first_name as first_name, users.last_name as last_name FROM projects JOIN users ON users.id = projects.owner_id;`;
 
@@ -177,5 +211,6 @@ module.exports = {
   createProject,
   createUser,
   getHotJobsWithUser,
-  getJobsWithEmployers
+  getJobsWithEmployers,
+  createCertification,
 };
