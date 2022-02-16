@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import HotJobListItem from "./HotJobListItem";
+import React, {useState, useEffect} from "react";
+import axios from 'axios';
+import "./JobListItem.css";
+import JobListItem from "./JobListItem";
 
-const Jobs = () => {
+const JobList = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/jobs_users").then((response) => {
+    axios.get("/api/jobs_employers").then((response) => {
       setJobs(response.data);
+      console.log(response.data);
     });
   }, []);
 
-  console.log("Jobs", jobs);
-
   const mappedJobs = jobs.map((job) => {
     return (
-      <HotJobListItem
+      <JobListItem
       key={job.id}
       id={job.id}
       title={job.title}
@@ -23,15 +23,16 @@ const Jobs = () => {
       city={job.city}
       province={job.province}
       salary={job.salary}
-       />
+      apply_link={job.apply_link}
+      />
     );
   });
 
   return (
-    <div>
+    <div className="job-container">
       {mappedJobs}
     </div>
   );
 };
 
-export default Jobs;
+export default JobList;

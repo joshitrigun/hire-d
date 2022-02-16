@@ -6,7 +6,7 @@ import Homepage from "./pages/Homepage";
 import Jobs from "./pages/Jobs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import "./components/ProjectListItem.css";
+import "./components/projects/ProjectListItem.css";
 import Projects from "./pages/Projects";
 import Developers from "./pages/Developers";
 import Login from "./pages/Login";
@@ -14,7 +14,6 @@ import Login from "./pages/Login";
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import "./components/ProjectListItem.css";
 import SignUp from "./pages/SignUp";
 
 const App = () => {

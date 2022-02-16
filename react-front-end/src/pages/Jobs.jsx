@@ -1,31 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import TopNavBar from "../components/Top_nav_bar";
+import React from "react";
+import TopNavBar from "../components/layout/Top_nav_bar";
+import JobList from "../components/jobs/JobList";
+import JobDetail from "../components/jobs/JobDetail";
+import { Routes, Route } from "react-router-dom";
 
 const Jobs = () => {
-  const [jobs, setJobs] = useState([]);
-
-  useEffect(() => {
-    axios.get("/api/jobs").then((response) => {
-      setJobs(response.data);
-    });
-  }, []);
-
-  const mappedJobs = jobs.map((data) => {
-    return (
-      <div key={data.id} style={{ border: "10px solid yellow" }}>
-        <h3>{data.title}</h3>
-        <p>{data.description}</p>
-        <p>{data.tech_stack}</p>
-        <p>{data.salary}</p>
-      </div>
-    );
-  });
-
   return (
-    <div>
+    <div className="main">
       <TopNavBar />
-      {mappedJobs}
+      <h2 className="page-title">Jobs</h2>
+      <Routes>
+        <Route path="/" element={<JobList />} />
+        <Route path=":id" element={<JobDetail />} />
+      </Routes>
     </div>
   );
 };

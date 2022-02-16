@@ -1,0 +1,67 @@
+.job-container {
+  width: 90%;
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.job-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5em 2em;
+  width: 24em;
+  height: 18em;
+  background-color: rgb(240,240,240);
+  border-radius: 1em;
+  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
+}
+
+.icon-frame {
+  width: 7em;
+  display: flex;
+  height: 7em;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
+  margin-right: 0.5em;
+  margin-top: -3.5em;
+  background-color: #3F51B5;
+}
+
+.hi-icon {
+  color: #fff;
+  font-size: 3em;
+}
+
+.title-link a:hover {
+  color:rgba(0, 0, 0, 0.25)
+}
+
+.job-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.apply-link {
+  border: #3F51B5 solid 1px;
+  padding: .1em .5em .3em .5em;
+  border-radius: 1em;
+}
+.apply-link a {
+  text-decoration: none;  
+}
+
+.apply-link:hover {
+  background-color: #3F51B5;
+  color: white;
+  padding: .1em .5em .3em .5em;
+  border-radius: 1em;
+}
+

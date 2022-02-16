@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import "./ProjectDetails.css";
 import { BsPlusLg } from "react-icons/bs";
+import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
   const [singleProject, setSingleProject] = useState({});
@@ -25,7 +25,7 @@ const ProjectDetails = () => {
       <span className="return-link">
         <Link to="/projects">All Projects</Link>
         <Link to="/projects/new">
-          Create New Project <BsPlusLg className="bs-icon-white" />{" "}
+          Create New Project <BsPlusLg className="bs-icon" />
         </Link>
       </span>
       <section className="project-details-block">
@@ -34,8 +34,8 @@ const ProjectDetails = () => {
       </div>
       <div className="project-details-info">
         <h2 className="project-page-title">{singleProject.title}</h2>
-        <h4 className="project-info">Project by: {singleProject.first_name} {singleProject.last_name}</h4>
-        <h4 className="project-info">Tech Stack: {singleProject.tech_stack}</h4>
+        <h5 className="project-info">Project by: {singleProject.first_name} {singleProject.last_name}</h5>
+        <h5 className="project-info">Tech Stack: {singleProject.tech_stack}</h5>
         <p>Project URL: <a href={singleProject.project_url}>{singleProject.project_url}</a></p>
         <p className="project-info"></p>
         <p className="project-description">{singleProject.description}</p>

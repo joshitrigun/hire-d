@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../components/ProjectListItem.css";
+import "./ProjectListItem.css";
 import ProjectListItem from "./ProjectListItem";
 
 const AllProjects = () => {
@@ -16,7 +16,7 @@ const AllProjects = () => {
     return (
       <div className="projects-block">
         <ProjectListItem
-          key={project.id}
+          key={project.id.toString}
           id={project.id}
           title={project.title}
           screenshot={project.screenshot}

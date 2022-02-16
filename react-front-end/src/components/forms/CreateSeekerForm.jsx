@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { tech_stack } from "./TechStacks";
+import tech_stack from "./TechStacks";
 import axios from "axios";
 
 const CreateStudentForm = () => {

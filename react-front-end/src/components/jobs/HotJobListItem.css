@@ -1,4 +1,4 @@
-.job-block {
+.hot-job-block {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -6,29 +6,37 @@
   height: 10em;
   border: #3F51B5 solid 1px;
   border-radius: 5em;
-  margin-bottom: 2em;
+  margin-top: 2em;
   padding: 1em 2em;
 }
 
-.icon-frame {
-  width: 2em;
-  font-size: 3em;
+.hot-icon-frame {
+  width: 7em;
   display: flex;
-  height: 2em;
+  height: 7em;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
   margin-right: 0.5em;
   background-color: #3F51B5;
-  color: #fff;
 }
 
-.job-title {
+.hot-hi-icon {
+  color: #fff;
+  font-size: 3em;
+}
+
+.hot-job-title {
   color: #3F51B5;
 }
 
-.text-highlight {
+.hot-text-highlight {
   margin-top: 1em;
   color: #3F51B5;
+}
+
+.hot-job-info a {
+  font-size: 1.5em;
+  text-decoration: none;
 }

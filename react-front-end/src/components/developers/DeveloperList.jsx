@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import DeveloperListItem from "../components/DeveloperListItem";
+import DeveloperListItem from "./DeveloperListItem";
 
 const Developers = () => {
   const [state, setState] = useState([]);

@@ -1,5 +1,5 @@
 import React from "react";
-import { BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
+import { BsCloudArrowDownFill, BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "./DeveloperListItem.css";
 
@@ -21,10 +21,10 @@ const DeveloperListItem = (props) => {
       <div className="img-frame">
         <img className="developer-thumbnail" src={avatar} alt={first_name} />
       </div>
-      <Link to={`${id}`}>
-        {first_name} {last_name}
+      <Link className="title-link" to={`${id}`}>
+        <h4>{first_name} {last_name}</h4>
       </Link>
-      <h6>{designation}</h6>
+      <h5>{designation}</h5>
       <p>
         <BsGeoFill className="bs-icon" /> {city}, {province}
       </p>
@@ -34,7 +34,8 @@ const DeveloperListItem = (props) => {
       <p>
         <BsTelephoneFill className="bs-icon" /> {phone_number}
       </p>
-      <h6>RESUME</h6>
+      <br/>
+      <h6>RESUME <BsCloudArrowDownFill className="bs-icon"/></h6>
     </div>
   );
 };
