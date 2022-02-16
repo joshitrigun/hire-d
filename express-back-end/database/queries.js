@@ -125,24 +125,24 @@ const createUser = (request, response) => {
 const createCertification = (req, res) => {
   const {
     title,
-    start_date,
-    end_date,
+    startDate,
+    endDate,
     institution,
     city,
     province,
-    jobseeker_id
+    jobSeekerId
   } = req.body;
   const queryString = "INSERT INTO certifications (title, start_date, end_date, institution, city, province, jobseeker_id) VALUES ($1, $2, $3, $4, $5, $6, $7);";
   client.query(
     queryString,
     [
       title,
-      start_date,
-      end_date,
+      startDate,
+      endDate,
       institution,
       city,
       province,
-      jobseeker_id,
+      jobSeekerId,
     ], (error, results) => {
       if (error) {
         throw error;
