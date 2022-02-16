@@ -23,7 +23,6 @@ const JobDetail = () => {
       });
     }, []);
 
-    const apply_link = job.apply_link;
   return ( 
     <div className="job-details-main">
       <span className="return-link">
@@ -44,9 +43,9 @@ const JobDetail = () => {
         <p className="project-description">{job.description}</p>
       </div>
       <span className="apply-link">
-        <Link to={apply_link}>
+        <a href={job.apply_link} target="_blank">
           Apply Here
-        </Link>
+        </a>
       </span>
       </section>
     </div>
