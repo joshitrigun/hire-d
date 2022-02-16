@@ -12,6 +12,7 @@ li .nav-link {
   font-size: 1.25em;
   font-weight: 500;
   margin: 0 1.5em;
+  font-family: 'Roboto Slab', serif;
 }
 
 .d-flex .btn-outline-success {

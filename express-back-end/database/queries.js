@@ -2,7 +2,7 @@ const pg = require("pg");
 const client = require("./connection");
 
 const getAllUsers = (request, response) => {
-  const queryString = "SELECT * FROM users;";
+  const queryString = "SELECT * FROM users WHERE employer='false';";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -69,6 +69,56 @@ const createProject = (request, response) => {
   );
 };
 
+const createUser = (request, response) => {
+  const {
+    first_name,
+    last_name,
+    email,
+    number,
+    password,
+    designation,
+    about,
+    city,
+    province,
+    github_url,
+    linkedin_url,
+    resume,
+    avatar,
+    skills,
+    employer,
+  } = request.body;
+
+  const queryString =
+    "INSERT INTO users (first_name, last_name, email, password, designation, about_me, phone_number, avatar, city, province, skills, github_url, linkedin_url ,employer, resume) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);";
+  client.query(
+    queryString,
+    [
+      first_name,
+      last_name,
+      email,
+      password,
+      designation,
+      about,
+      number,
+      avatar,
+      city,
+      province,
+      skills,
+      github_url,
+      linkedin_url,
+      employer,
+      resume,
+    ],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      console.log(results);
+      response.status(201).send(`User Added`);
+    }
+  );
+};
+
 const getProjectsWithUsers = (request, response) => {
   const queryString = `SELECT projects.*, users.first_name as first_name, users.last_name as last_name FROM projects JOIN users ON users.id = projects.owner_id;`;
 
@@ -78,6 +128,19 @@ const getProjectsWithUsers = (request, response) => {
     }
     response.status(200).json(results.rows);
   });
+};
+
+
+const getJobsWithUser = (request, response) => {
+
+  const queryString = "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs LEFT JOIN users ON users.id = jobs.employer_id WHERE jobs.featured = true ORDER BY jobs.salary DESC;"
+
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  })
 };
 
 const getUsersProjectsCertifications = (request, response) => {
@@ -100,4 +163,6 @@ module.exports = {
   getProjectsWithUsers,
   getUsersProjectsCertifications,
   createProject,
+  createUser,
+  getJobsWithUser
 };

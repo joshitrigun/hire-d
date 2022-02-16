@@ -1,0 +1,34 @@
+.job-block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 30em;
+  height: 10em;
+  border: #3F51B5 solid 1px;
+  border-radius: 5em;
+  margin-bottom: 2em;
+  padding: 1em 2em;
+}
+
+.icon-frame {
+  width: 2em;
+  font-size: 3em;
+  display: flex;
+  height: 2em;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
+  margin-right: 0.5em;
+  background-color: #3F51B5;
+  color: #fff;
+}
+
+.job-title {
+  color: #3F51B5;
+}
+
+.text-highlight {
+  margin-top: 1em;
+  color: #3F51B5;
+}

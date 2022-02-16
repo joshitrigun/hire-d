@@ -18,7 +18,8 @@ CREATE TABLE users (
   skills VARCHAR,
   github_url VARCHAR(255),
   linkedin_url VARCHAR(255),
-  employer BOOLEAN DEFAULT FALSE
+  employer BOOLEAN DEFAULT FALSE,
+  resume VARCHAR(255)
 );
 
 CREATE TABLE projects (
@@ -45,7 +46,8 @@ CREATE TABLE jobs (
   start_date DATE,
   end_date DATE NOT NULL,
   featured BOOLEAN DEFAULT FALSE,
-  employer_id INTEGER REFERENCES users(id) ON DELETE CASCADE NOT NULL
+  employer_id INTEGER REFERENCES users(id) ON DELETE CASCADE NOT NULL,
+  apply_link VARCHAR(1000) NOT NULL
 );
   -- company VARCHAR(255) NOT NULL,
   -- city VARCHAR(255),

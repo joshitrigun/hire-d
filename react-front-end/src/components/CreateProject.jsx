@@ -49,7 +49,6 @@ const CreateProject = () => {
   };
 
   const onChangeHandler = (position) => {
-    // loops through checkedState array and change
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
     );
@@ -101,11 +100,10 @@ const CreateProject = () => {
             name="description"
             rows="5"
             cols="33"
+            placeholder="Description"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
-          >
-            Description
-          </textarea>
+          />
           <input
             type="text"
             placeholder="Project Link"
