@@ -1,7 +1,7 @@
 .navbar {
   width: 100%;
   padding: 0.5em 2em;
-  background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity))!important;
+  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .logo {
@@ -12,23 +12,28 @@ li .nav-link {
   font-size: 1.25em;
   font-weight: 500;
   margin: 0 1.5em;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
 }
 
 .d-flex .btn-outline-success {
   border-radius: 50%;
-  color: #3F51B5;
-  border-color: #3F51B5;
+  color: #3f51b5;
+  border-color: #3f51b5;
 }
 
 .d-flex .btn-outline-success:hover {
   border-radius: 50%;
   color: #ffffff;
-  border-color: #3F51B5;
-  background-color: #3F51B5;
+  border-color: #3f51b5;
+  background-color: #3f51b5;
 }
 
 .d-flex input {
-  border-color: #3F51B5;
+  border-color: #3f51b5;
   border-radius: 5em;
+}
+
+.signout-btn,
+.username {
+  cursor: pointer;
 }
