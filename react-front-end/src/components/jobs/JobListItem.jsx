@@ -1,7 +1,7 @@
 import React from "react";
 import { BsGeoFill } from "react-icons/bs";
 import { HiBriefcase } from "react-icons/hi";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./JobListItem.css";
 
 const JobListItem = (props) => {
@@ -18,9 +18,9 @@ const JobListItem = (props) => {
         <h5 className="text-highlight">${salary}</h5>
       </span><br />
       <span className="apply-link">
-        <Link to={apply_link}>
+        <a href={apply_link} target="_blank">
           Apply Here
-        </Link>
+        </a>
       </span>
     </div>
   )
