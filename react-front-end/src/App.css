@@ -46,3 +46,30 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.main-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 4em;
+}
+.home-projects {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 66em;
+  height: 75vh;
+}
+.home-left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 60em;
+}
+
+.hot-jobs-section {
+  height: 75vh;
+}

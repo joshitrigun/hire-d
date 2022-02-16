@@ -21,7 +21,7 @@ const DeveloperListItem = (props) => {
       <div className="img-frame">
         <img className="developer-thumbnail" src={avatar} alt={first_name} />
       </div>
-      <Link to={`/developers/${id}`}>
+      <Link className="dev-name" to={`/developers/${id}`}>
         {first_name} {last_name}
       </Link>
       <h6>{designation}</h6>

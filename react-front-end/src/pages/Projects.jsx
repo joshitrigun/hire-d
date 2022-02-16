@@ -9,7 +9,7 @@ const Projects = () => {
   return (
     <div className="main">
       <TopNavBar />
-
+      <h2 className="page-title">Projects</h2>
       <Routes>
         <Route path="/" element={<ProjectList />} />
         <Route path=":id" element={<ProjectDetails />} />
