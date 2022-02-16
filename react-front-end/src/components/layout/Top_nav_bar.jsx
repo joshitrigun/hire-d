@@ -6,9 +6,16 @@ import Cookies from "js-cookie";
 
 const TopNavBar = () => {
   let navigate = useNavigate();
+
   const signoutHandler = () => {
     Cookies.remove("user");
     navigate("/");
+  };
+
+  const usernameHandler = () => {
+    const id = Cookies.get("id");
+    console.log(id);
+    navigate(`/developers/${id}`);
   };
 
   return (
@@ -36,7 +43,10 @@ const TopNavBar = () => {
             </li>
             {Cookies.get("user") ? (
               <React.Fragment>
-                <li className="nav-item fs-5 pt-2 px-3">
+                <li
+                  className="nav-item fs-5 pt-2 px-3 username"
+                  onClick={usernameHandler}
+                >
                   {Cookies.get("user")}
                 </li>
                 <li className="nav-item">
@@ -44,13 +54,6 @@ const TopNavBar = () => {
                     Signout
                   </a>
                 </li>
-                {/* <li
-                  className="nav-item nav-link fs-5 pt-2 px-3 pe-auto"
-                  onClick={signoutHandler}
-                >
-                  {" "}
-                  Signout
-                </li> */}
               </React.Fragment>
             ) : (
               <React.Fragment>

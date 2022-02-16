@@ -33,6 +33,7 @@ li .nav-link {
   border-radius: 5em;
 }
 
-.signout-btn {
+.signout-btn,
+.username {
   cursor: pointer;
 }
