@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import { HiBriefcase } from 'react-icons/hi';
+import { HiBriefcase } from "react-icons/hi";
 import { BsPlusLg } from "react-icons/bs";
 import "./JobDetail.css";
 
 const JobDetail = () => {
+  const [job, setJob] = useState([]);
 
-    const [job, setJob] = useState([]);
-  
-    const url_id = useParams();
-  
-    const jobDetails = (jobs, id) => {
-      const singleJob = jobs.filter((job) => job.id === id);
-      setJob(singleJob[0]);
-    };
+  const url_id = useParams();
 
-    useEffect(() => {
-      axios.get("/api/jobs_employers").then((response) => {
-        jobDetails(response.data, Number(url_id.id));
-      });
-    }, []);
+  const jobDetails = (jobs, id) => {
+    const singleJob = jobs.filter((job) => job.id === id);
+    setJob(singleJob[0]);
+  };
 
-  return ( 
+  useEffect(() => {
+    axios.get("/api/jobs_employers").then((response) => {
+      console.log(response.data);
+      jobDetails(response.data, Number(url_id.id));
+    });
+  }, []);
+
+  return (
     <div className="job-details-main">
       <span className="return-link">
         <Link to="/jobs">All Jobs</Link>
@@ -32,26 +32,24 @@ const JobDetail = () => {
         </Link>
       </span>
       <section className="job-details-block">
-      <div className="job-icon">
-        <HiBriefcase className="hi-icon" />
-      </div>
-      <div className="job-details-info">
-        <h2 className="job-page-title">{job.title}</h2>
-        <h5 className="Job-info">Employer: {job.first_name}</h5>
-        <h5 className="project-info">Tech Stack: {job.tech_stack}</h5>
-        <p className="project-info"></p>
-        <p className="project-description">{job.description}</p>
-      </div>
-      <span className="apply-link">
-        <a href={job.apply_link} target="_blank">
-          Apply Here
-        </a>
-      </span>
+        <div className="job-icon">
+          <HiBriefcase className="hi-icon" />
+        </div>
+        <div className="job-details-info">
+          <h2 className="job-page-title">{job.title}</h2>
+          <h5 className="Job-info">Employer: {job.first_name}</h5>
+          <h5 className="project-info">Tech Stack: {job.tech_stack}</h5>
+          <p className="project-info"></p>
+          <p className="project-description">{job.description}</p>
+        </div>
+        <span className="apply-link">
+          <a href={job.apply_link} target="_blank">
+            Apply Here
+          </a>
+        </span>
       </section>
     </div>
-
-
-  )
+  );
 };
- 
+
 export default JobDetail;
