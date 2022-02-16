@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
-import DatePicker from "react-datepicker";
 
 const CreateCertification = () => {
   const [title, setTitle] = useState("");
@@ -10,7 +9,7 @@ const CreateCertification = () => {
   const [institution, setInstitution] = useState("");
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
-  const [jobSeekerId, setJobSeekerId] = useState("");
+
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -21,7 +20,7 @@ const CreateCertification = () => {
     setInstitution("");
     setCity("");
     setProvince("");
-    setJobSeekerId("");
+
     setTimeout(() => setSubmitted(false), 5000);
   };
 
@@ -42,10 +41,7 @@ const CreateCertification = () => {
       setError("Please enter province");
       return;
     }
-    if (jobSeekerId === "") {
-      setError("Job seekerId cant be blank");
-      return;
-    }
+
     if (startDate === "") {
       setError("Start date cant be blank");
       return;
@@ -59,15 +55,16 @@ const CreateCertification = () => {
   };
   const onSubmitHandler = () => {
     const data = {
-      title: "",
-      institution: "",
-      city: "",
-      province: "",
-      start_date: "",
-      end_date: "",
+      title,
+      startDate,
+      endDate,
+      institution,
+      city,
+      province,
+      jobSeekerId: 1,
     };
-
-    Axios.post("http://localhost:8080/api/certifications")
+    console.log(data);
+    Axios.post("http://localhost:8080/api/certifications", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();
@@ -86,52 +83,43 @@ const CreateCertification = () => {
         <input
           type="text"
           placeholder="Enter title"
-          title="title"
+          name="title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
         <input
           type="text"
           placeholder="Enter institution"
-          institution="institution"
+          name="institution"
           value={institution}
           onChange={(event) => setInstitution(event.target.value)}
         />
         <input
           type="text"
           placeholder="Enter Province"
-          province="province"
+          name="province"
           value={province}
           onChange={(event) => setProvince(event.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Enter jobseekerId"
-          jobSeekerId="jobSeekerId"
-          value={city}
-          onChange={(event) => setCity(event.target.value)}
-        />
+
         <input
           type="text"
           placeholder="Enter city"
-          city="city"
+          name="city"
           value={city}
           onChange={(event) => setCity(event.target.value)}
         />
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          selectsStart
-          startDate={startDate}
-          endDate={endDate}
+        <input
+          type="date"
+          name="startDate"
+          value={startDate}
+          onChange={(event) => setStartDate(event.target.value)}
         />
-        <DatePicker
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
+        <input
+          type="date"
+          name="endDate"
+          value={endDate}
+          onChange={(event) => setEndDate(event.target.value)}
         />
         <button onClick={validate}>Save</button>
         <Link to={"/"}>
