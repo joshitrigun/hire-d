@@ -1,3 +1,4 @@
+const { response } = require("express");
 const pg = require("pg");
 const client = require("./connection");
 
@@ -119,6 +120,39 @@ const createUser = (request, response) => {
   );
 };
 
+
+
+const createCertification = (req, res) => {
+  const {
+    title,
+    startDate,
+    endDate,
+    institution,
+    city,
+    province,
+    jobSeekerId
+  } = req.body;
+  const queryString = "INSERT INTO certifications (title, start_date, end_date, institution, city, province, jobseeker_id) VALUES ($1, $2, $3, $4, $5, $6, $7);";
+  client.query(
+    queryString,
+    [
+      title,
+      startDate,
+      endDate,
+      institution,
+      city,
+      province,
+      jobSeekerId,
+    ], (error, results) => {
+      if (error) {
+        throw error;
+      }
+      res.status(201).send('Certifications added')
+    }
+  )
+}
+
+
 const getProjectsWithUsers = (request, response) => {
   const queryString = `SELECT projects.*, users.first_name as first_name, users.last_name as last_name FROM projects JOIN users ON users.id = projects.owner_id;`;
 
@@ -131,7 +165,7 @@ const getProjectsWithUsers = (request, response) => {
 };
 
 
-const getJobsWithUser = (request, response) => {
+const getHotJobsWithUser = (request, response) => {
 
   const queryString = "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs LEFT JOIN users ON users.id = jobs.employer_id WHERE jobs.featured = true ORDER BY jobs.salary DESC;"
 
@@ -155,6 +189,18 @@ const getUsersProjectsCertifications = (request, response) => {
   });
 };
 
+const getJobsWithEmployers = (request, response) => {
+
+  const queryString = "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs JOIN users ON users.id = jobs.employer_id;"
+
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+}
+
 module.exports = {
   getAllUsers,
   getAllJobs,
@@ -164,5 +210,7 @@ module.exports = {
   getUsersProjectsCertifications,
   createProject,
   createUser,
-  getJobsWithUser
+  getHotJobsWithUser,
+  getJobsWithEmployers,
+  createCertification,
 };

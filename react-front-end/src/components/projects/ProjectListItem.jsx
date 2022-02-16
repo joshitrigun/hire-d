@@ -4,9 +4,16 @@ import { NavLink } from "react-router-dom";
 import "./ProjectListItem.css";
 
 const ProjectListItem = (props) => {
+
   const { id, title, screenshot, likes } = props;
 
-  const countLikes = () => {};
+  // const [like, setLike] = useState();
+  // const data = like + 1;
+
+  const countLikes = (event) => {
+
+    console.log("Liked");
+  };
 
   return (
     <div className="project-block">

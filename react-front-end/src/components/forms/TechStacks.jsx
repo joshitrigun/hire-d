@@ -1,4 +1,4 @@
-export const tech_stack = [
+const tech_stack = [
   { name: "JavaScript" },
   { name: "HTML5" },
   { name: "Ajax" },
@@ -20,3 +20,5 @@ export const tech_stack = [
   { name: "Python" },
   { name: "Chai/Mocha" },
 ];
+
+export default tech_stack;
