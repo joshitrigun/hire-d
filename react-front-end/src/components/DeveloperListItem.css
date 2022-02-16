@@ -17,8 +17,6 @@
   height: 18em;
   background-color: rgb(187, 211, 231);
   border-radius: 1em;
-  position: relative;
-  z-index: -3;
 }
 .img-frame {
   margin-top: -5em;
@@ -26,6 +24,8 @@
   width: 10em !important;
   height: 10em !important;
   border-radius: 50%;
+  position: relative;
+  z-index: 1000;
 }
 
 .developer-thumbnail {

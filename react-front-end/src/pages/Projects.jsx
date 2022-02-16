@@ -4,6 +4,7 @@ import "../components/ProjectListItem.css";
 import { Routes, Route } from "react-router-dom";
 import ProjectDetails from "../components/ProjectDetails";
 import ProjectList from "../components/ProjectList";
+import CreateProject from "../components/CreateProject";
 
 const Projects = () => {
   return (
@@ -13,7 +14,7 @@ const Projects = () => {
       <Routes>
         <Route path="/" element={<ProjectList />} />
         <Route path=":id" element={<ProjectDetails />} />
-        {/* <Route path="new" element={<CreateProject />} /> */}
+        <Route path="new" element={<CreateProject />} />
       </Routes>
     </div>
   );

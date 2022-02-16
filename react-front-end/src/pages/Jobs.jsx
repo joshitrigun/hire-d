@@ -7,7 +7,6 @@ const Jobs = () => {
 
   useEffect(() => {
     axios.get("/api/jobs").then((response) => {
-      // console.log(response.data); // The entire response from the Rails API
       setJobs(response.data);
     });
   }, []);

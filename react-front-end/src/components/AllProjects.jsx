@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../components/ProjectListItem.css";
-import ProjectListItem from "./ProjectListItem";
+import ProjectListItem from "../components/ProjectListItem";
+import { Link } from "react-router-dom";
 
 const AllProjects = () => {
   const [state, setState] = useState([]);
@@ -21,16 +21,17 @@ const AllProjects = () => {
           title={project.title}
           screenshot={project.screenshot}
           likes={project.likes}
+          //modal={ProjectPopup}
         />
       </div>
     );
   });
-
   return (
-    <div className="main">
-        <div className="project-container">
-          {mappedProjects}
-        </div>
+    <div>
+      <Link to={"new"}>
+        <p>CREATE NEW PROJECT</p>
+      </Link>
+      <div className="project-container">{mappedProjects}</div>
     </div>
   );
 };

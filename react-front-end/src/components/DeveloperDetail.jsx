@@ -1,28 +1,100 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import Profile from "../components/Profile";
+import ProjectListItem from "../components/ProjectListItem";
+import Certification from "./Certification";
+import "./DeveloperDetail.css";
+const DeveloperDetail = () => {
+  const [state, setState] = useState({
+    user: {},
+    projects: [],
+    certifications: [],
+  });
 
-const DeveloperDetail = (props) => {
-  const {
-    id,
-    first_name,
-    last_name,
-    designation,
-    avatar,
-    city,
-    province,
-    email,
-    phone_number,
-  } = props;
+  let url_id = useParams();
+
+  const getUsers = axios.get("/api/users");
+  const getProjects = axios.get("/api/projects");
+  const getCertifications = axios.get("/api/certifications");
+
+  const userDetails = (users, id) => {
+    const singleUser = users.filter((user) => user.id === id);
+
+    return singleUser[0];
+  };
+
+  const getProjectsByUser = (projects, id) => {
+    const projectByUser = projects.filter((project) => project.owner_id === id);
+
+    return projectByUser;
+  };
+
+  const getCertificationsByUser = (certifications, id) => {
+    const temp = certifications.filter(
+      (certification) => certification.jobseeker_id === id
+    );
+    console.log("temp", temp);
+    return temp;
+  };
+
+  useEffect(() => {
+    Promise.all([getUsers, getProjects, getCertifications]).then((response) => {
+      console.log("response", response);
+      setState((prev) => ({
+        ...prev,
+        user: userDetails(response[0].data, Number(url_id.id)),
+        projects: getProjectsByUser(response[1].data, Number(url_id.id)),
+        certifications: getCertificationsByUser(
+          response[2].data,
+          Number(url_id.id)
+        ),
+      }));
+    });
+  }, []);
+
+  console.log("state.projects", state.projects);
+  const mappedProjects = state.projects.map((project) => {
+    return (
+      <div className="projects-block">
+        <ProjectListItem
+          key={project.id}
+          id={project.id}
+          title={project.title}
+          screenshot={project.screenshot}
+          likes={project.likes}
+        />
+      </div>
+    );
+  });
+
+  console.log("state.certifications", state.certifications);
+  const mappedCertification = state.certifications.map((certification) => {
+    return (
+      <div className="certification-block">
+        <Certification
+          key={certification.id}
+          title={certification.title}
+          institution={certification.institution}
+          city={certification.city}
+          province={certification.province}
+          startDate={certification.startDate}
+          endDate={certification.endDate}
+        />
+      </div>
+    );
+  });
+
   return (
-    <div>
-      <h1> I am here</h1>
-      <div>{first_name}</div>
-      <div>{last_name}</div>
-      <div>{designation}</div>
-      <div>{avatar}</div>
-      <div>{city}</div>
-      <div>{province}</div>
-      <div>{email}</div>
-      <div>{phone_number}</div>
+    <div className="developer-detail">
+      <div className="profile-section">
+        <Profile user={state.user} />
+      </div>
+      <div className="section-right">
+        <div className="project-section">{mappedProjects}</div>
+        <div className="certification-section">{mappedCertification}</div>
+      </div>
     </div>
   );
 };

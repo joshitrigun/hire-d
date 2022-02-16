@@ -7,7 +7,6 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 const Homepage = () => {
-
   return (
     <div className="main">
       <TopNavBar />
