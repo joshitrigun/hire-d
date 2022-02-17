@@ -25,6 +25,7 @@ const Developers = () => {
         email={developer.email}
         province={developer.province}
         phone_number={developer.phone_number}
+        resume={developer.resume}
       />
     );
   });

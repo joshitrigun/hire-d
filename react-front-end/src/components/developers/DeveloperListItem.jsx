@@ -2,6 +2,7 @@ import React from "react";
 import { BsCloudArrowDownFill, BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "./DeveloperListItem.css";
+import Button from '@mui/material/Button';
 
 const DeveloperListItem = (props) => {
   const {
@@ -14,6 +15,7 @@ const DeveloperListItem = (props) => {
     province,
     email,
     phone_number,
+    resume
   } = props;
 
   return (
@@ -35,7 +37,7 @@ const DeveloperListItem = (props) => {
         <BsTelephoneFill className="bs-icon" /> {phone_number}
       </p>
       <br/>
-      <h6>RESUME <BsCloudArrowDownFill className="bs-icon"/></h6>
+      <Button variant="outlined" href={resume} className="mui-button">Resume</Button>
     </div>
   );
 };
