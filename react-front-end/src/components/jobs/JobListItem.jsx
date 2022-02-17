@@ -17,11 +17,19 @@ const JobListItem = (props) => {
         <h6><BsGeoFill className="bs-icon"/> {city}, {province}</h6>
         <h5 className="text-highlight">${salary}</h5>
       </span><br />
-      <span className="apply-link">
-        <a href={apply_link} target="_blank">
-          Apply Here
-        </a>
-      </span>
+      <section className="job-block-footer">
+        <span className="apply-link">
+          <a href={`/jobs/${id}`} >
+            View Details
+          </a>
+        </span>
+        <br />
+        <span className="apply-link">
+          <a href={apply_link} target="_blank">
+            Apply Here
+          </a>
+        </span>
+      </section>
     </div>
   )
 };

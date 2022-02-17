@@ -14,7 +14,7 @@
   align-items: center;
   margin: 5em 2em;
   width: 24em;
-  height: 18em;
+  height: 21em;
   background-color: rgb(240,240,240);
   border-radius: 1em;
   box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
@@ -72,3 +72,9 @@
   border-radius: 1em;
 }
 
+.job-block-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
