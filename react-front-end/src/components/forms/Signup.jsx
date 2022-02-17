@@ -1,24 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Signup.module.css";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const Signup = () => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center pt-5">
       <h2 className="pb-5 fs-2">Are you:</h2>
-      <div>
-        <Link to={"seeker"}>
-          <button type="button" className="btn btn-primary fs-2 me-2">
+      <Stack spacing={2} direction="row">
+        <Button variant="outlined" href={"/signup/seeker"}>
             Job Seeker
-          </button>
-        </Link>
-        <span className="fs-2">OR</span>
-        <Link to={"employer"}>
-          <button type="button" className="btn btn-primary fs-2 ms-2">
+        </Button>
+        <h4>or</h4>
+        <Button variant="outlined" href={"/signup/employer"}>
             Employer
-          </button>
-        </Link>
-      </div>
+        </Button>
+      </Stack>
     </div>
   );
 };

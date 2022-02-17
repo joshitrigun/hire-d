@@ -61,7 +61,7 @@ body {
   align-items: flex-start;
   flex-wrap: wrap;
   width: 66em;
-  height: 75vh;
+  height: 70vh;
 }
 .home-left-side {
   display: flex;
@@ -72,7 +72,7 @@ body {
 }
 
 .hot-jobs-section {
-  height: 75vh;
+  height: 70vh;
 }
 
 h4 {

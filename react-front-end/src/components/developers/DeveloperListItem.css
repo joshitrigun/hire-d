@@ -14,7 +14,7 @@
   align-items: center;
   margin: 5em 2em;
   width: 24em;
-  height: 18em;
+  height: 20em;
   background-color: rgb(250,250,250);
   border-radius: 1em;
   transition: .5s;
@@ -72,4 +72,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.mui-button {
+  margin-bottom: 1em;
 }
