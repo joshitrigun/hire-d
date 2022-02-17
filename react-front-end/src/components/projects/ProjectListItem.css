@@ -9,7 +9,6 @@
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-top: 2em;
 }
 
 .project-block {
@@ -23,10 +22,13 @@
 }
 
 .project-img-frame {
-  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
   border-radius: 1em;
   width: 24vw !important;
   height: 18vw !important;
+  transition: .5s;
+}
+.project-img-frame:hover {
+box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
 }
 
 .project-thumbnail {

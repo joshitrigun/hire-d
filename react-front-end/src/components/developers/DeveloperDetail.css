@@ -1,8 +1,17 @@
 .developer-detail {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   width: 90%;
+  flex-direction: column;
+}
+
+.developer-detail-container {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .section-right {
@@ -10,6 +19,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-left: 4em;
+  height: 75vh;
 }
 
 .project-section {
@@ -29,3 +40,10 @@
   border: 1px;
   border-radius: 1rem;
 }
+.certification-block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  width: 30em;
+}
+  

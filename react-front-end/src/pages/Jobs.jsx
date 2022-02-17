@@ -9,12 +9,13 @@ const Jobs = () => {
   return (
     <div className="main">
       <TopNavBar />
-      <h2 className="page-title">Jobs</h2>
-      <Routes>
-        <Route path="/" element={<JobList />} />
-        <Route path=":id" element={<JobDetail />} />
-        <Route path="new" element={<CreateJob />} />
-      </Routes>
+      <div className="main-container">
+        <Routes>
+          <Route path="/" element={<JobList />} />
+          <Route path=":id" element={<JobDetail />} />
+          <Route path="new" element={<CreateJob />} />
+        </Routes>
+      </div>
     </div>
   );
 };

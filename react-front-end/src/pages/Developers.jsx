@@ -9,15 +9,13 @@ const Developers = () => {
   return (
     <div className="main">
       <TopNavBar />
-      <h2 className="page-title">Developers</h2>
-      <Routes>
-        <Route path="/" element={<DeveloperList />} />
-        <Route path=":id" element={<DeveloperDetail />} />
-        <Route
-          path=":id/certifications/new"
-          element={<CreateCertification />}
-        />
-      </Routes>
+      <div className="main-container">
+        <Routes>
+          <Route path="/" element={<DeveloperList />} />
+          <Route path=":id" element={<DeveloperDetail />} />
+          <Route path=":id/certifications/new" element={<CreateCertification />} />
+        </Routes>
+      </div>
     </div>
   );
 };

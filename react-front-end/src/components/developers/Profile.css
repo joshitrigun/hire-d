@@ -1,23 +1,47 @@
 body {
   font-family: "Roboto Slab", serif;
 }
+.profile-section {
+  width: 45em;
+}
 
 .profile-div {
-  margin-top: 100px;
-  margin-left: 50px;
-  width: 425px;
-  background-color: rgb(245, 245, 245);
+  margin-top: .5em;
+  padding: 0 2em;
+  width: 28em;
+  height: 40em;
+  background-color: rgb(250, 250, 250);
   border-radius: 2%;
-  padding: 2%;
-  /* //position:fixed; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  transition: .5s;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-div:hover {
+  box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
 }
 
 .profile-img {
-  margin-top: -120px;
-  width: 200px;
-  height: 200px;
+  margin-top: -5em;
+  margin-bottom: 1em;;
+  width: 10em;
+  height: 10em;
   border-radius: 50%;
   border: #3f51b5 solid 4px;
+  z-index: 999;
+  object-fit: cover;
 }
 
 .title {
