@@ -33,8 +33,7 @@ CREATE TABLE projects (
   likes INTEGER,
   created_at TIMESTAMP
 );
--- date_completed DATE,
--- featured BOOLEAN DEFAULT FALSE,
+
 
 CREATE TABLE jobs (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -49,12 +48,7 @@ CREATE TABLE jobs (
   employer_id INTEGER REFERENCES users(id) ON DELETE CASCADE NOT NULL,
   apply_link VARCHAR(1000) NOT NULL
 );
-  -- company VARCHAR(255) NOT NULL,
-  -- city VARCHAR(255),
-  -- province VARCHAR(255),
-  -- min_salary INTEGER,
-  -- max_salary INTEGER,
-  -- hourly_wage INTEGER,
+
 
 CREATE TABLE certifications (
   id SERIAL PRIMARY KEY NOT NULL,
