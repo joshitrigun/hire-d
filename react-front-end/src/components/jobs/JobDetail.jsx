@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { HiBriefcase } from 'react-icons/hi';
-import { BsGeoFill, BsPlusLg, BsSave } from "react-icons/bs";
+import { BsGeoFill, BsSave } from "react-icons/bs";
 import "./JobDetail.css";
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const JobDetail = () => {
+
   const [job, setJob] = useState([]);
 
   const url_id = useParams();
@@ -19,43 +21,41 @@ const JobDetail = () => {
 
   useEffect(() => {
     axios.get("/api/jobs_employers").then((response) => {
-      console.log(response.data);
       jobDetails(response.data, Number(url_id.id));
     });
   }, []);
 
+  const { title, first_name, job_type, city, province, tech_stack, description, end_date, apply_link } = job;
+
   return (
     <div className="job-details-main">
       <div className='job-detail-header'>
-        <span className="return-link">
-          <Link to="/jobs">All Jobs</Link>
-        </span>
-        <span className="return-link">
-          <Link to="/jobs/new">Post New Job <BsPlusLg className="bs-icon" /></Link>
-        </span>
+        <Stack spacing={2} direction="row">
+          <Button variant="outlined" href="/jobs">All Jobs</Button>
+          <Button variant="outlined" href="/jobs/new">Post New Job</Button>
+        </Stack>
       </div>
       <section className="job-details-block">
         <span className="job-icon">
           <HiBriefcase className="hi-icon" />
         </span>
         <span className="job-details-info">
-          <h2 className="job-page-title">{job.title}</h2>
-          <h4 className="Job-info">{job.first_name}</h4>
-          <h5 className="Job-info"><BsGeoFill className='bs-icon' /> {job.city}, {job.province}</h5>
+          <h2 className="job-page-title">{title}</h2>
+          <h4 className="Job-info">{first_name}</h4>
+          <h5>{job_type}</h5>
+          <h5 className="Job-info"><BsGeoFill className='bs-icon' /> {city}, {province}</h5>
           <br/>
-          <h4 className="project-info">Tech Stack: {job.tech_stack}</h4>
+          <h4 className="project-info">Tech Stack: {tech_stack}</h4>
           <p className="project-info"></p>
-          <p className="project-description">{job.description}</p>
+          <p className="project-description">{description}</p>
           <br/>
-          <h5 className="Job-info">Apply by: {dateFormat(job.end_date, "mediumDate")}</h5>
+          <h5 className="Job-info">Apply by: {dateFormat(end_date, "mediumDate")}</h5>
         </span>
         <section className='job-details-footer'>
-          <span className="apply-link">
-            <Link to="">Save <BsSave className='bs-icon' /></Link>
-          </span>
-          <span className="apply-link">
-            <a href={job.apply_link} target="_blank">Apply Here</a>
-          </span>
+          <Stack spacing={2} direction="row">
+            <Button variant="outlined" href="/jobs/save">Save&nbsp;&nbsp;<BsSave /></Button>
+            <Button variant="outlined" href={apply_link} target="_blank">Apply Here</Button>
+          </Stack>
         </section>
       </section>
     </div>

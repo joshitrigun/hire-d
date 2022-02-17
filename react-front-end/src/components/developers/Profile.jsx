@@ -15,13 +15,11 @@ export default function Profile(props) {
   return (
     <div className="profile-div">
       <img src={user.avatar} className="profile-img" alt={user.first_name} />
-      <h3 className="title">
-        {user.first_name} {user.last_name}
-      </h3>
-      <h4 className="sub-title">{user.designation}</h4>
-      <p className="body-text">
-        <BsGeoFill className="bs-icon" /> {user.city}, {user.province}
-      </p>
+      <span className="profile-header">
+        <h3 className="title">{user.first_name} {user.last_name}</h3>
+        <h5 className="sub-title">{user.designation}</h5>
+        <p className="body-text"><BsGeoFill className="bs-icon" /> {user.city}, {user.province}</p>
+      </span>
       <br />
       <p className="body-text">{user.about_me}</p>
       <h4 className="section-title">Skills</h4>

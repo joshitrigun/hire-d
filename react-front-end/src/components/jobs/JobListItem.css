@@ -1,6 +1,5 @@
 .job-container {
   width: 90%;
-  margin-top: 2em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -14,27 +13,30 @@
   align-items: center;
   margin: 5em 2em;
   width: 24em;
-  height: 21em;
-  background-color: rgb(240,240,240);
+  height: 22em;
+  background-color: rgb(250,250,250);
   border-radius: 1em;
-  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
+  transition: .5s;
+}
+.job-block:hover {
+  box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
 }
 
 .icon-frame {
-  width: 7em;
+  width: 10em;
+  height: 10em;
   display: flex;
-  height: 7em;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
+  border: #3F51B5 solid 1px;
   margin-right: 0.5em;
   margin-top: -3.5em;
-  background-color: #3F51B5;
+  background-color: rgb(250,250,250);
 }
 
 .hi-icon {
-  color: #fff;
+  color:#3F51B5;
   font-size: 3em;
 }
 
