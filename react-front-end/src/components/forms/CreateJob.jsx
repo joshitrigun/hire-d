@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import tech_stack from "../forms/TechStacks";
-
+import "../forms/CreateJob.css";
 const CreateJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -12,8 +12,8 @@ const CreateJob = () => {
   );
 
   const [salary, setSalary] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState("Pick Start Date");
+  const [endDate, setEndDate] = useState("Pick End Date");
   const [featured, setFeatured] = useState(false);
   const [employerId, setEmployerId] = useState("");
   const [applyLink, setApplyLink] = useState("");
@@ -112,100 +112,127 @@ const CreateJob = () => {
       });
   };
   return (
-    <div>
-      <h3 className="text-center">Post new Jobs</h3>
+    <div className="job_form">
       {submitted ? <p>{submitted}</p> : ""}
       {error ? <p>{error}</p> : ""}
-      <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="text"
-          placeholder="Enter job title"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Enter description"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Enter Job Type"
-          name="jobtype"
-          value={jobtype}
-          onChange={(e) => setJobType(e.target.value)}
-        />
+      <form className="row g-3" onSubmit={(e) => e.preventDefault()}>
+        <h3 className="text-center">Post new Job</h3>
+        <div className="form-container">
+          <div className="form-header">
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Enter job title"
+                name="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <textarea
+                type="text"
+                placeholder="Enter description"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
 
-        <input
-          type="text"
-          placeholder="Enter Salary range"
-          name="salary"
-          value={salary}
-          onChange={(e) => setSalary(e.target.value)}
-        />
-        <input
-          type="date"
-          name="startDate"
-          value={startDate}
-          onChange={(event) => setStartDate(event.target.value)}
-        />
-        <input
-          type="date"
-          name="endDate"
-          value={endDate}
-          onChange={(event) => setEndDate(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="EmployerId"
-          name="employerId"
-          value={employerId}
-          onChange={(e) => setEmployerId(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Post apply Link here"
-          name="ApplyLink"
-          value={applyLink}
-          onChange={(e) => setApplyLink(e.target.value)}
-        />
-        <div className="d-flex flex-column">
-          <h4>Tech Stack</h4>
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Enter Job Type"
+                name="jobtype"
+                value={jobtype}
+                onChange={(e) => setJobType(e.target.value)}
+              />
+            </div>
 
-          {tech_stack.map(({ name }, index) => {
-            return (
-              <div key={index}>
-                <input
-                  type="checkbox"
-                  name={name}
-                  value={name}
-                  id={name}
-                  checked={checkedState[index]}
-                  onChange={() => onChangeHandler(index)}
-                />
-                <label htmlFor={name}>{name}</label>
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Enter Salary range"
+                name="salary"
+                value={salary}
+                onChange={(e) => setSalary(e.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <input
+                placeholderText="Pick Start Date"
+                type="date"
+                name="startDate"
+                value={startDate}
+                onChange={(event) => setStartDate(event.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <input
+                type="date"
+                name="endDate"
+                value={endDate}
+                onChange={(event) => setEndDate(event.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="EmployerId"
+                name="employerId"
+                value={employerId}
+                onChange={(e) => setEmployerId(e.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Post apply Link here"
+                name="ApplyLink"
+                value={applyLink}
+                onChange={(e) => setApplyLink(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="footer">
+            <div className="d-flex flex-column">
+              <h4>Tech Stack</h4>
+              <div className="tech-stack">
+                {tech_stack.map(({ name }, index) => {
+                  return (
+                    <div className="tech-stack-names" key={index}>
+                      <input
+                        type="checkbox"
+                        name={name}
+                        value={name}
+                        id={name}
+                        checked={checkedState[index]}
+                        onChange={() => onChangeHandler(index)}
+                      />
+                      &nbsp;&nbsp;
+                      <label htmlFor={name}>{name}</label>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
+            </div>
 
-        <div>
-          <input
-            type="checkbox"
-            name="featured"
-            value={featured}
-            checked={featured}
-            onChange={onCheckHandler}
-          />
-          <label htmlFor="featured">Featured</label>
+            <div className="input-checkbox-feature">
+              <input
+                type="checkbox"
+                name="featured"
+                value={featured}
+                checked={featured}
+                onChange={onCheckHandler}
+              />
+              <label htmlFor="featured">Featured</label>
+            </div>
+
+            <button onClick={validate}>Save</button>
+            <Link to={"/"}>
+              <button>Cancel</button>
+            </Link>
+          </div>
         </div>
-        <button onClick={validate}>Save</button>
-        <Link to={"/"}>
-          <button>Cancel</button>
-        </Link>
       </form>
     </div>
   );

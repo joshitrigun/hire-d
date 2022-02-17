@@ -114,7 +114,6 @@ const createUser = (request, response) => {
       if (error) {
         throw error;
       }
-      console.log(results);
       response.status(201).send(`User Added`);
     }
   );
@@ -184,7 +183,7 @@ const createJobs = (request, response) => {
     if (error) {
       throw error;
     }
-    console.log(results);
+
     response.status(201).send(`Job added`);
   }
   )
