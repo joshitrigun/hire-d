@@ -1,8 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TopNavBar from "../components/layout/Top_nav_bar";
+import Cookies from "js-cookie";
 
 const Login = () => {
+  let navigate = useNavigate();
+
+  const onClickHandler = () => {
+    Cookies.set("user", "trigunjoshi@gmail.com");
+    Cookies.set("id", "1");
+    navigate("/");
+  };
+
   return (
     <div>
       <TopNavBar />
@@ -33,7 +42,11 @@ const Login = () => {
             <Link to={"/signup"}>Click here to register</Link>
           </span>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={onClickHandler}
+        >
           Submit
         </button>
       </form>

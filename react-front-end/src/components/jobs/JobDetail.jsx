@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { HiBriefcase } from 'react-icons/hi';
 import { BsGeoFill, BsPlusLg, BsSave } from "react-icons/bs";
@@ -8,23 +8,23 @@ import "./JobDetail.css";
 import dateFormat, { masks } from "dateformat";
 
 const JobDetail = () => {
+  const [job, setJob] = useState([]);
 
-    const [job, setJob] = useState([]);
-  
-    const url_id = useParams();
-  
-    const jobDetails = (jobs, id) => {
-      const singleJob = jobs.filter((job) => job.id === id);
-      setJob(singleJob[0]);
-    };
+  const url_id = useParams();
 
-    useEffect(() => {
-      axios.get("/api/jobs_employers").then((response) => {
-        jobDetails(response.data, Number(url_id.id));
-      });
-    }, []);
+  const jobDetails = (jobs, id) => {
+    const singleJob = jobs.filter((job) => job.id === id);
+    setJob(singleJob[0]);
+  };
 
-  return ( 
+  useEffect(() => {
+    axios.get("/api/jobs_employers").then((response) => {
+      console.log(response.data);
+      jobDetails(response.data, Number(url_id.id));
+    });
+  }, []);
+
+  return (
     <div className="job-details-main">
       <div className='job-detail-header'>
         <span className="return-link">
@@ -54,15 +54,12 @@ const JobDetail = () => {
             <Link to="">Save <BsSave className='bs-icon' /></Link>
           </span>
           <span className="apply-link">
-            <a href={job.apply_link} target="_blank">
-              Apply Here
-            </a>
+            <a href={job.apply_link} target="_blank">Apply Here</a>
           </span>
         </section>
       </section>
     </div>
-
   )
 };
- 
+
 export default JobDetail;
