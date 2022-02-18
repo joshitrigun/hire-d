@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import "./LoginForm.css";
 
 const LoginForm = () => {
   let navigate = useNavigate();
