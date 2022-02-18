@@ -58,7 +58,7 @@ const getProject = (request, response) => {
 };
 
 const getAllCertifications = (request, response) => {
-  const queryString = "SELECT * FROM certifications;";
+  const queryString = "SELECT * FROM certifications ORDER BY id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
