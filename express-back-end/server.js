@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const {
   getAllUsers,
+  getAllEmployers,
   getUser,
   getAllJobs,
   getAllProjects,
@@ -36,6 +37,7 @@ App.use(Express.static("public"));
 App.use(cors(corsOptions));
 
 App.get("/api/users", getAllUsers);
+App.get("/api/employers", getAllEmployers);
 App.get("/api/users/:id", getUser);
 App.get("/api/jobs", getAllJobs);
 App.get("/api/projects", getAllProjects);

@@ -3,7 +3,7 @@ const pg = require("pg");
 const client = require("./connection");
 
 const getAllUsers = (request, response) => {
-  const queryString = "SELECT * FROM users;";
+  const queryString = "SELECT * FROM users WHERE employer = false;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -16,6 +16,17 @@ const getAllUsers = (request, response) => {
 const getUser = (request, response) => {
   const id = request.params.id;
   const queryString = `SELECT * FROM users WHERE id = ${id};`;
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
+const getAllEmployers = (request, response) => {
+  const queryString = "SELECT * FROM users WHERE employer = true;";
+
   client.query(queryString, (error, results) => {
     if (error) {
       throw error;
@@ -337,6 +348,7 @@ const updateCertification = (reuqest, response) => {
 module.exports = {
   getAllUsers,
   getUser,
+  getAllEmployers,
   getAllJobs,
   getAllProjects,
   getAllCertifications,
