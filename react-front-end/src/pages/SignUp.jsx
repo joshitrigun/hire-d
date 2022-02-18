@@ -7,13 +7,15 @@ import CreateSeekerForm from "../components/forms/CreateSeekerForm";
 
 const SignUp = () => {
   return (
-    <div>
+    <div className="main">
       <TopNavBar />
-      <Routes>
-        <Route path="/" element={<Signup />} />
-        <Route path="employer" element={<CreateEmployerForm />} />
-        <Route path="seeker" element={<CreateSeekerForm />} />
-      </Routes>
+      <div className="signup-form-container">
+        <Routes>
+          <Route path="/" element={<Signup />} />
+          <Route path="employer" element={<CreateEmployerForm />} />
+          <Route path="seeker" element={<CreateSeekerForm />} />
+        </Routes>
+      </div>
     </div>
   );
 };

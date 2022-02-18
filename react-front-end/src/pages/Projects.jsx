@@ -10,12 +10,13 @@ const Projects = () => {
   return (
     <div className="main">
       <TopNavBar />
-      <h2 className="page-title">Projects</h2>
-      <Routes>
-        <Route path="/" element={<ProjectList />} />
-        <Route path=":id" element={<ProjectDetails />} />
-        <Route path="new" element={<CreateProject />} />
-      </Routes>
+      <div className="main-container">
+        <Routes>
+          <Route path="/" element={<ProjectList />} />
+          <Route path=":id" element={<ProjectDetails />} />
+          <Route path="new" element={<CreateProject />} />
+        </Routes>
+      </div>
     </div>
   );
 };

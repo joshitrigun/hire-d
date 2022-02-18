@@ -127,7 +127,6 @@ const createUser = (request, response) => {
       if (error) {
         throw error;
       }
-      console.log(results);
       response.status(201).send(`User Added`);
     }
   );
@@ -211,6 +210,46 @@ const createCertification = (req, res) => {
   );
 };
 
+const createJobs = (request, response) => {
+  const {
+    title,
+    description,
+    jobtype,
+    stack,
+    salary,
+    startDate,
+    endDate,
+    featured,
+    employerId,
+    applyLink,
+  } = request.body;
+
+  const queryString =
+    "INSERT INTO jobs (title, description, job_type, tech_stack, salary, start_date, end_date, featured, employer_id, apply_link) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10); ";
+  client.query(
+    queryString,
+    [
+      title,
+      description,
+      jobtype,
+      stack,
+      salary,
+      startDate,
+      endDate,
+      featured,
+      employerId,
+      applyLink,
+    ],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+
+      response.status(201).send(`Job added`);
+    }
+  );
+};
+
 const getProjectsWithUsers = (request, response) => {
   const queryString = `SELECT projects.*, users.first_name as first_name, users.last_name as last_name FROM projects JOIN users ON users.id = projects.owner_id;`;
 
@@ -272,4 +311,5 @@ module.exports = {
   getHotJobsWithUser,
   getJobsWithEmployers,
   createCertification,
+  createJobs,
 };

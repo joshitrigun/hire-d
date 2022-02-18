@@ -1,5 +1,4 @@
 .developer-container {
-  margin-top: 2em;
   padding: 4em;
   width: 90%;
   display: flex;
@@ -15,10 +14,14 @@
   align-items: center;
   margin: 5em 2em;
   width: 24em;
-  height: 18em;
-  background-color: rgb(240,240,240);
+  height: 20em;
+  background-color: rgb(250,250,250);
   border-radius: 1em;
-  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.25);
+  transition: .5s;
+}
+
+.developer-block:hover {
+  box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
 }
 
 .developer-block p {
@@ -52,4 +55,25 @@
   text-decoration: none;
   color: #212529;
   cursor: pointer;
+}
+
+.certification-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.certification-title {
+  margin-right: .5em;
+}
+
+.certification-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.mui-button {
+  margin-bottom: 1em;
 }

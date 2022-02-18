@@ -1,8 +1,11 @@
 .navbar {
+  position: fixed !important;
   width: 100%;
   padding: 0.5em 2em;
-  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
+  background-color: white !important;
+  z-index: 99;
 }
+
 
 .logo {
   height: 50px;
