@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./JobListItem.css";
 import JobListItem from "./JobListItem";
 
@@ -15,24 +15,20 @@ const JobList = () => {
   const mappedJobs = jobs.map((job) => {
     return (
       <JobListItem
-      key={job.id}
-      id={job.id}
-      title={job.title}
-      employer={job.first_name}
-      jobType={job.job_type}
-      city={job.city}
-      province={job.province}
-      salary={job.salary}
-      apply_link={job.apply_link}
+        key={job.id}
+        id={job.id}
+        title={job.title}
+        employer={job.first_name}
+        jobType={job.job_type}
+        city={job.city}
+        province={job.province}
+        salary={job.salary}
+        apply_link={job.apply_link}
       />
     );
   });
 
-  return (
-    <div className="job-container">
-      {mappedJobs}
-    </div>
-  );
+  return <div className="job-container">{mappedJobs}</div>;
 };
 
 export default JobList;

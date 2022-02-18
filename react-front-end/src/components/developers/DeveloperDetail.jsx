@@ -6,9 +6,9 @@ import Certification from "../certifications/Certification";
 import { useParams } from "react-router-dom";
 import { GoPlus } from "react-icons/go";
 import "./DeveloperDetail.css";
-import 'react-perfect-scrollbar/dist/css/styles.css';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import Button from '@mui/material/Button';
+import "react-perfect-scrollbar/dist/css/styles.css";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import Button from "@mui/material/Button";
 
 const DeveloperDetail = () => {
   const [state, setState] = useState({
@@ -90,23 +90,32 @@ const DeveloperDetail = () => {
   return (
     <div className="developer-detail">
       <Button variant="outlined" href="/projects/new">
-        Add New Project&nbsp;<GoPlus />
+        Add New Project&nbsp;
+        <GoPlus />
       </Button>
       <div className="developer-detail-container">
         <div className="profile-section">
           <Profile user={state.user} />
         </div>
-        <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
-        <div className="section-right">
-          <div className="project-section">{mappedProjects}</div>
-          <span className="certification-container">
-            <h4 className="certification-title">Certifications</h4>
-            <Button variant="outlined" href={`${url_id.id}/certifications/new`}>
-              Add New&nbsp;<GoPlus />
-            </Button>
-          </span>
-          <div className="certification-section">{mappedCertification}</div>
-        </div>
+        <PerfectScrollbar
+          onScrollY={(container) =>
+            console.log(`scrolled to: ${container.scrollTop}.`)
+          }
+        >
+          <div className="section-right">
+            <div className="project-section">{mappedProjects}</div>
+            <span className="certification-container">
+              <h4 className="certification-title">Certifications</h4>
+              <Button
+                variant="outlined"
+                href={`${url_id.id}/certifications/new`}
+              >
+                Add New&nbsp;
+                <GoPlus />
+              </Button>
+            </span>
+            <div className="certification-section">{mappedCertification}</div>
+          </div>
         </PerfectScrollbar>
       </div>
     </div>

@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import tech_stack from "./TechStacks";
+import Button from "@mui/material/Button";
+import "../forms/CreateProject.css";
+import Stack from "@mui/material/Stack";
+import { FaSave } from "react-icons/fa";
 
 const CreateProject = () => {
   const [title, setTitle] = useState("");
@@ -84,65 +88,84 @@ const CreateProject = () => {
 
   return (
     <div>
-      <h3 className="text-center">Create Project</h3>
       {submitted ? <p>{submitted}</p> : ""}
       {error ? <p>{error}</p> : ""}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <div className="d-flex flex-column">
-          <input
-            type="text"
-            placeholder="Project Title"
-            name="title"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
-          <textarea
-            name="description"
-            rows="5"
-            cols="33"
-            placeholder="Description"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Project Link"
-            name="project_link"
-            value={projectLink}
-            onChange={(event) => setProjectLink(event.target.value)}
-          />
-          {/* COME BACK TO THIS BELOW  */}
-          <input
-            type="text"
-            placeholder="Add Screenshot"
-            name="screenshot"
-            value={screenshot}
-            onChange={(event) => setScreenshot(event.target.value)}
-          />
-        </div>
-        <div className="d-flex flex-column">
-          <h4>Tech Stack</h4>
-
-          {tech_stack.map(({ name }, index) => {
-            return (
-              <div key={index}>
-                <input
-                  type="checkbox"
-                  name={name}
-                  value={name}
-                  id={name}
-                  checked={checkedState[index]}
-                  onChange={() => onChangeHandler(index)}
-                />
-                <label htmlFor={name}>{name}</label>
+        <h3 className="text-center">Create Project</h3>
+        <div className="form-container">
+          <div className="form-header">
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Project Title"
+                name="title"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <textarea
+                name="description"
+                rows="5"
+                cols="33"
+                placeholder="Description"
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Project Link"
+                name="project_link"
+                value={projectLink}
+                onChange={(event) => setProjectLink(event.target.value)}
+              />
+            </div>
+            {/* COME BACK TO THIS BELOW  */}
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Add Screenshot"
+                name="screenshot"
+                value={screenshot}
+                onChange={(event) => setScreenshot(event.target.value)}
+              />
+            </div>
+          </div>
+          <div className="form-footer">
+            <div className="d-flex flex-column">
+              <h4>Tech Stack</h4>
+              <div className="tech-stack">
+                {tech_stack.map(({ name }, index) => {
+                  return (
+                    <div className="tech-stack-names" key={index}>
+                      <input
+                        type="checkbox"
+                        name={name}
+                        value={name}
+                        id={name}
+                        checked={checkedState[index]}
+                        onChange={() => onChangeHandler(index)}
+                      />
+                      <label htmlFor={name}>{name}</label>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+            <Stack spacing={2} direction="row">
+              <Button variant="outlined" onClick={validate}>
+                Save&nbsp;
+                <FaSave />
+              </Button>
+
+              <Button variant="outlined" href="/">
+                Cancel&nbsp;
+              </Button>
+            </Stack>
+          </div>
         </div>
-        <button onClick={validate}>Save</button>
-        <Link to={"/"}>
-          <button>Cancel</button>
-        </Link>
       </form>
     </div>
   );

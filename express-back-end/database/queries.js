@@ -3,7 +3,7 @@ const pg = require("pg");
 const client = require("./connection");
 
 const getAllUsers = (request, response) => {
-  const queryString = "SELECT * FROM users WHERE employer='false';";
+  const queryString = "SELECT * FROM users;";
 
   client.query(queryString, (error, results) => {
     if (error) {
