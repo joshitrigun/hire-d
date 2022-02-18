@@ -228,13 +228,6 @@ const CreateProject = () => {
             </Stack>
           </div>
         </div>
-
-        {/* <button onClick={validate}>Save</button>
-        <Link
-          to={Cookies.get("user") ? `/developers/${Cookies.get("id")}` : "/"}
-        >
-          <button>Cancel</button>
-        </Link> */}
       </form>
     </div>
   );

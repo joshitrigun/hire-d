@@ -4,7 +4,6 @@ import LoginForm from "../components/forms/LoginForm";
 import { Routes, Route } from "react-router-dom";
 
 const Login = () => {
-
   return (
     <div className="main">
       <TopNavBar />

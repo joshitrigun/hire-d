@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { BsPlusLg } from "react-icons/bs";
 import "./ProjectDetails.css";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 const ProjectDetails = () => {
   const [singleProject, setSingleProject] = useState({});
@@ -24,11 +25,15 @@ const ProjectDetails = () => {
   console.log(url_id);
   return (
     <div className="project-details-main">
-      <span className="return-link">
-        <Link to="/projects">All Projects</Link>
-        <Link to="/projects/new">
-          Create New Project <BsPlusLg className="bs-icon" />
-        </Link>
+      <span className="project-details-header">
+      <Stack spacing={2} direction="row">
+          <Button variant="outlined" href="/projects">
+          All Projects
+          </Button>
+          <Button variant="outlined" href="/projects/new">
+          Create New Project &nbsp; <BsPlusLg className="bs-icon" />
+          </Button>
+        </Stack>
       </span>
       <section className="project-details-block">
         <div className="project-image-large">

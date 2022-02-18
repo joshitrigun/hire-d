@@ -1,6 +1,6 @@
 import React from "react";
 import { BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./DeveloperListItem.css";
 import Button from "@mui/material/Button";
 
@@ -18,8 +18,14 @@ const DeveloperListItem = (props) => {
     resume,
   } = props;
 
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/developers/${id}`; 
+    navigate(path);
+  }
+
   return (
-    <div className="developer-block">
+    <div className="developer-block" onClick={routeChange}>
       <div className="img-frame">
         <img className="developer-thumbnail" src={avatar} alt={first_name} />
       </div>

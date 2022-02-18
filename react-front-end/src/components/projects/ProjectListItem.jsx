@@ -3,8 +3,8 @@ import { BsHeart } from "react-icons/bs";
 import { NavLink, useParams, useLocation, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { FaEdit } from "react-icons/fa";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./ProjectListItem.css";
-// import axios from 'axios';
 
 const ProjectListItem = (props) => {
   const [isProfile, setIsProfile] = useState(false);
@@ -12,7 +12,7 @@ const ProjectListItem = (props) => {
   let { id } = useParams();
   const currentUser = Cookies.get("id");
 
-  const { project_id, owner, title, screenshot, likes } = props;
+  const { project_id, title, screenshot, likes } = props;
 
   useEffect(() => {
     if (currentUser === id && location.pathname === `/developers/${id}`) {
@@ -20,12 +20,17 @@ const ProjectListItem = (props) => {
     }
   }, []);
 
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/projects/${id}`;
+    navigate(path);
+  };
   const countLikes = (event) => {
     console.log("Liked");
   };
 
   return (
-    <div className="project-block">
+    <div className="project-block" onClick={routeChange}>
       <div className="project-img-frame">
         <img className="project-thumbnail" src={screenshot} alt={title} />
       </div>

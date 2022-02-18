@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Top_nav_bar.css";
-import { BsSearch } from "react-icons/bs";
+// import { BsSearch } from "react-icons/bs";
 import Cookies from "js-cookie";
 
 const TopNavBar = () => {
@@ -42,6 +42,11 @@ const TopNavBar = () => {
                 Developers
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to={"/employers"}>
+                Employers
+              </NavLink>
+            </li>
             {Cookies.get("user") ? (
               <React.Fragment>
                 <li className="nav-item">
@@ -75,7 +80,7 @@ const TopNavBar = () => {
                 </li>
               </React.Fragment>
             )}
-            <form className="d-flex">
+            {/* <form className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
@@ -85,7 +90,7 @@ const TopNavBar = () => {
               <button className="btn btn-outline-success" type="submit">
                 <BsSearch className="bs-icon" />
               </button>
-            </form>
+            </form> */}
           </ul>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import tech_stack from "../forms/TechStacks";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
@@ -227,7 +226,7 @@ const CreateJob = () => {
                 checked={featured}
                 onChange={onCheckHandler}
               />
-              <label htmlFor="featured">Featured</label>
+              <label htmlFor="featured">&nbsp;Featured</label>
             </div>
 
             <Stack spacing={2} direction="row">

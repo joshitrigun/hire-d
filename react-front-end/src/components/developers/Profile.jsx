@@ -10,8 +10,11 @@ import {
   BsLinkedin,
 } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+
+import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
+
+import Button from "@mui/material/Button";
 
 export default function Profile(props) {
   const { id } = useParams();
@@ -55,9 +58,9 @@ export default function Profile(props) {
         <BsTelephoneFill className="bs-icon" /> {user.phone_number}
       </p>
       {id === Cookies.get("id") ? (
-        <Link className="body-text btn btn-primary" to={"profile/edit"}>
+        <Button variant="outlined" href="profile/edit">
           <FaEdit /> EDIT
-        </Link>
+        </Button>
       ) : (
         ""
       )}
