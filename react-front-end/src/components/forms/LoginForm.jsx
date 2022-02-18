@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import "./LoginForm.css";
+import Button from "@mui/material/Button";
 
 const LoginForm = () => {
   let navigate = useNavigate();
@@ -35,13 +37,14 @@ const LoginForm = () => {
           <Link to={"/signup"}>Click here to register</Link>
         </span>
       </div>
-      <button
+      <Button
+        variant="outlined"
         type="submit"
         className="btn btn-primary"
         onClick={onClickHandler}
       >
         Submit
-      </button>
+      </Button>
     </form>
   );
 };
