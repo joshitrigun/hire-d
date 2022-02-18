@@ -4,6 +4,7 @@ import { NavLink, useParams, useLocation, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { FaEdit } from "react-icons/fa";
 import "./ProjectListItem.css";
+// import axios from 'axios';
 
 const ProjectListItem = (props) => {
   const [isProfile, setIsProfile] = useState(false);

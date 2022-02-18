@@ -1,8 +1,8 @@
 import React from "react";
-import { BsCloudArrowDownFill, BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
+import { BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "./DeveloperListItem.css";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 const DeveloperListItem = (props) => {
   const {
@@ -15,7 +15,7 @@ const DeveloperListItem = (props) => {
     province,
     email,
     phone_number,
-    resume
+    resume,
   } = props;
 
   return (
@@ -24,7 +24,9 @@ const DeveloperListItem = (props) => {
         <img className="developer-thumbnail" src={avatar} alt={first_name} />
       </div>
       <Link className="title-link" to={`${id}`}>
-        <h4>{first_name} {last_name}</h4>
+        <h4>
+          {first_name} {last_name}
+        </h4>
       </Link>
       <h5>{designation}</h5>
       <p>
@@ -36,8 +38,10 @@ const DeveloperListItem = (props) => {
       <p>
         <BsTelephoneFill className="bs-icon" /> {phone_number}
       </p>
-      <br/>
-      <Button variant="outlined" href={resume} className="mui-button">Resume</Button>
+      <br />
+      <Button variant="outlined" href={resume} className="mui-button">
+        Resume
+      </Button>
     </div>
   );
 };
