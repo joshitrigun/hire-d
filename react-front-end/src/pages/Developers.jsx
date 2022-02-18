@@ -13,7 +13,10 @@ const Developers = () => {
         <Routes>
           <Route path="/" element={<DeveloperList />} />
           <Route path=":id" element={<DeveloperDetail />} />
-          <Route path=":id/certifications/new" element={<CreateCertification />} />
+          <Route
+            path=":id/certifications/new"
+            element={<CreateCertification />}
+          />
         </Routes>
       </div>
     </div>

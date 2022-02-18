@@ -1,6 +1,5 @@
 .form-container {
   display: flex;
-
   justify-content: space-evenly;
   align-items: flex-start;
   width: 100vw;
@@ -15,17 +14,21 @@
   border-radius: 1em;
   width: 30vw;
   transition: 0.5s;
+  margin-left: 5vw;
 }
 .form-header:hover {
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.35);
 }
-.footer {
+.form-footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 50%;
+  width: 50vw;
+  transition: 0.5s;
 }
-
+.form-footer:hover {
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.35);
+}
 .tech-stack {
   display: flex;
   flex-wrap: wrap;

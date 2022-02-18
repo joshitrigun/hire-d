@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import tech_stack from "../forms/TechStacks";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import "../forms/CreateJob.css";
+import { FaSave } from "react-icons/fa";
 const CreateJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -193,7 +196,7 @@ const CreateJob = () => {
               />
             </div>
           </div>
-          <div className="footer">
+          <div className="form-footer">
             <div className="d-flex flex-column">
               <h4>Tech Stack</h4>
               <div className="tech-stack">
@@ -227,10 +230,16 @@ const CreateJob = () => {
               <label htmlFor="featured">Featured</label>
             </div>
 
-            <button onClick={validate}>Save</button>
-            <Link to={"/"}>
-              <button>Cancel</button>
-            </Link>
+            <Stack spacing={2} direction="row">
+              <Button variant="outlined" onClick={validate}>
+                Save&nbsp;
+                <FaSave />
+              </Button>
+
+              <Button variant="outlined" href="/">
+                Cancel&nbsp;
+              </Button>
+            </Stack>
           </div>
         </div>
       </form>
