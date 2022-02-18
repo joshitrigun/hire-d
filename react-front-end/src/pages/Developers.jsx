@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import DeveloperList from "../components/developers/DeveloperList";
 import DeveloperDetail from "../components/developers/DeveloperDetail";
 import CreateCertification from "../components/certifications/CreateCertification";
+import CreateSeekerForm from "../components/forms/CreateSeekerForm";
 
 const Developers = () => {
   return (
@@ -17,6 +18,10 @@ const Developers = () => {
             path=":id/certifications/new"
             element={<CreateCertification />}
           />
+<<<<<<< HEAD
+=======
+          <Route path=":id/profile/edit" element={<CreateSeekerForm />} />
+>>>>>>> c6b49e92bfcfe5a6118a46f69bff990f1a5a8f14
         </Routes>
       </div>
     </div>
