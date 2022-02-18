@@ -3,7 +3,7 @@ const pg = require("pg");
 const client = require("./connection");
 
 const getAllUsers = (request, response) => {
-  const queryString = "SELECT * FROM users WHERE employer='false';";
+  const queryString = "SELECT * FROM users  ORDER BY id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -25,7 +25,7 @@ const getUser = (request, response) => {
 };
 
 const getAllJobs = (request, response) => {
-  const queryString = "SELECT * FROM jobs;";
+  const queryString = "SELECT * FROM jobs  ORDER BY id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -36,8 +36,19 @@ const getAllJobs = (request, response) => {
 };
 
 const getAllProjects = (request, response) => {
-  const queryString = "SELECT * FROM projects;";
+  const queryString = "SELECT * FROM projects ORDER BY id;";
 
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
+const getProject = (request, response) => {
+  const id = request.params.id;
+  const queryString = `SELECT * FROM projects WHERE id = ${id};`;
   client.query(queryString, (error, results) => {
     if (error) {
       throw error;
@@ -186,6 +197,35 @@ const updateUser = (request, response) => {
   );
 };
 
+const updateProject = (request, response) => {
+  const {
+    id,
+    title,
+    description,
+    owner_id,
+    likes,
+    projectLink,
+    screenshot,
+    stack,
+  } = request.body;
+
+  console.log("request body data", request.body);
+
+  const queryString = `UPDATE projects SET title = $1, owner_id = $2, tech_stack = $3, screenshot = $4, description = $5, project_url = $6, likes = $7 WHERE id = $8;`;
+
+  client.query(
+    queryString,
+    [title, owner_id, stack, screenshot, description, projectLink, likes, id],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      }
+      console.log(results);
+      response.status(201).send(`Project Updated`);
+    }
+  );
+};
+
 const createCertification = (req, res) => {
   const {
     title,
@@ -302,10 +342,12 @@ module.exports = {
   getUser,
   getAllJobs,
   getAllProjects,
+  getProject,
   getAllCertifications,
   getProjectsWithUsers,
   getUsersProjectsCertifications,
   createProject,
+  updateProject,
   createUser,
   updateUser,
   getHotJobsWithUser,
