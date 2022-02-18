@@ -17,6 +17,7 @@ const TopNavBar = () => {
     const id = Cookies.get("id");
     console.log(id);
     navigate(`/developers/${id}`);
+    // window.location.reload(false);
   };
 
   return (
@@ -44,11 +45,8 @@ const TopNavBar = () => {
             </li>
             {Cookies.get("user") ? (
               <React.Fragment>
-                <li
-                  className="nav-item fs-5 pt-2 px-3 username"
-                  onClick={usernameHandler}
-                >
-                  {Cookies.get("user")}
+                <li className="nav-item fs-5 pt-2 px-3 username">
+                  <a onClick={usernameHandler}>{Cookies.get("user")}</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link signout-btn" onClick={signoutHandler}>
@@ -59,7 +57,7 @@ const TopNavBar = () => {
             ) : (
               <React.Fragment>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to={"/login"}>
+                  <NavLink className="nav-link" to={`/login`}>
                     Login
                   </NavLink>
                 </li>
