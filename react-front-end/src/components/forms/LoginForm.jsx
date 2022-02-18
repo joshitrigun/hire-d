@@ -2,9 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-
 const LoginForm = () => {
-
   let navigate = useNavigate();
 
   const onClickHandler = () => {
@@ -19,11 +17,7 @@ const LoginForm = () => {
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email address
         </label>
-        <input
-          type="email"
-          className="form-control"
-          id="exampleInputEmail1"
-        />
+        <input type="email" className="form-control" id="exampleInputEmail1" />
       </div>
       <div className="mb-3">
         <label htmlFor="exampleInputPassword1" className="form-label">
