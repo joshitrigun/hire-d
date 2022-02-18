@@ -1,6 +1,6 @@
 import React from "react";
 import { BsHeart } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./ProjectListItem.css";
 // import axios from 'axios';
 
@@ -8,16 +8,18 @@ const ProjectListItem = (props) => {
 
   const { id, title, screenshot, likes } = props;
 
-  // const [like, setLike] = useState();
-  // const data = like + 1;
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/projects/${id}`; 
+    navigate(path);
+  }
 
   const countLikes = (event) => {
-
     console.log("Liked");
   };
 
   return (
-    <div className="project-block">
+    <div className="project-block" onClick={routeChange}>
       <div className="project-img-frame">
         <img className="project-thumbnail" src={screenshot} alt={title} />
       </div>

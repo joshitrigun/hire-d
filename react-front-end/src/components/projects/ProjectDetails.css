@@ -7,6 +7,10 @@
   align-items: flex-start;
 }
 
+.project-details-header {
+  display: flex;
+}
+
 .return-link a {
   color: #3F51B5;
   padding: .1em .5em .3em 0.5em;
@@ -39,13 +43,11 @@
   width: 60em;
   height: 40em;
   border-radius: 1em;
-  box-shadow: inset 0 0 .75em 0.25em rgba(0, 0, 0, 0.25);
-  opacity: 1;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .project-image-large:hover {
-  opacity: .75;
+  box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
 }
 
 .project-image-large img {

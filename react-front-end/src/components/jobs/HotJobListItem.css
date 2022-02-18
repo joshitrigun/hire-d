@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 30em;
+  width: 28em;
   height: 10em;
   border: #3F51B5 solid 1px;
   border-radius: 5em;
@@ -40,6 +40,10 @@
 .hot-text-highlight {
   margin-top: 1em;
   color: #3F51B5;
+}
+
+.hot-job-info {
+  margin-left: 1em;
 }
 
 .hot-job-info a {

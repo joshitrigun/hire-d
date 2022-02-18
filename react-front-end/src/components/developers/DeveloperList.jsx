@@ -30,7 +30,7 @@ const Developers = () => {
   });
   return (
     <div className="main">
-      <div className="developer-container">{mappedDevelopers}</div>
+        <div className="developer-container">{mappedDevelopers}</div>
     </div>
   );
 };

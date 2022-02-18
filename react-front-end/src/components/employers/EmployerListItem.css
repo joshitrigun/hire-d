@@ -1,4 +1,4 @@
-.developer-container {
+.employer-container {
   padding: 4em;
   width: 90%;
   display: flex;
@@ -7,7 +7,7 @@
   flex-wrap: wrap;
 }
 
-.developer-block {
+.employer-block {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -21,11 +21,11 @@
   cursor: pointer;
 }
 
-.developer-block:hover {
+.employer-block:hover {
   box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
 }
 
-.developer-block p {
+.employer-block p {
   margin-bottom: 0;
 }
 
@@ -35,11 +35,12 @@
   width: 10em !important;
   height: 10em !important;
   border-radius: 50%;
+  background-color: #3f51b5;
   position: relative;
   z-index: 3;
 }
 
-.developer-thumbnail {
+.employer-thumbnail {
   width: 10em !important;
   height: 10em !important;
   border-radius: 50%;
@@ -56,25 +57,4 @@
   text-decoration: none;
   color: #212529;
   cursor: pointer;
-}
-
-.certification-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.certification-title {
-  margin-right: .5em;
-}
-
-.certification-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.mui-button {
-  margin-bottom: 1em;
 }
