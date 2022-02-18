@@ -13,8 +13,8 @@
 
 .job-details-main {
   width: 75%;
-  padding:4em;
-  margin-top: 10em;
+  padding: 2em 4em;
+  /* margin-top: 10em; */
   background-color: rgb(250,250,250);
   border-radius: 1em;
   display: flex;

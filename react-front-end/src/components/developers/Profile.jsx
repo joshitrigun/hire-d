@@ -10,7 +10,7 @@ import {
   BsLinkedin,
 } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function Profile(props) {
   const { user } = props;
@@ -50,10 +50,10 @@ export default function Profile(props) {
       </p>
       <p className="body-text">
         <BsTelephoneFill className="bs-icon" /> {user.phone_number}
-      </p>
-      <Link className="body-text btn btn-primary" to={"profile/edit"}>
+      </p><br/>
+      <Button variant="outlined" href="profile/edit">
         <FaEdit /> EDIT
-      </Link>
+      </Button>
     </div>
   );
 }

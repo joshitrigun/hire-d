@@ -11,6 +11,7 @@
   margin: 0.5em 2em;
   width: 24vw;
   height: 29em;
+  cursor: pointer;
 }
 
 .project-block button {
