@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import "./LoginForm.css";
+import "./LoginForm.module.css";
 import Button from "@mui/material/Button";
 
 const LoginForm = () => {
@@ -14,7 +14,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form className="job-container">
+    <form className="login-container">
       <div className="login-form">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email address
