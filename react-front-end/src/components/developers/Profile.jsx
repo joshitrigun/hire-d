@@ -10,10 +10,13 @@ import {
   BsLinkedin,
 } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function Profile(props) {
+  const { id } = useParams();
   const { user } = props;
+
   return (
     <div className="profile-div">
       <img src={user.avatar} className="profile-img" alt={user.first_name} />
@@ -51,9 +54,13 @@ export default function Profile(props) {
       <p className="body-text">
         <BsTelephoneFill className="bs-icon" /> {user.phone_number}
       </p>
-      <Link className="body-text btn btn-primary" to={"profile/edit"}>
-        <FaEdit /> EDIT
-      </Link>
+      {id === Cookies.get("id") ? (
+        <Link className="body-text btn btn-primary" to={"profile/edit"}>
+          <FaEdit /> EDIT
+        </Link>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
