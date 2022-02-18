@@ -6,9 +6,9 @@ import Certification from "../certifications/Certification";
 import { useParams } from "react-router-dom";
 import { GoPlus } from "react-icons/go";
 import "./DeveloperDetail.css";
-import 'react-perfect-scrollbar/dist/css/styles.css';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import Button from '@mui/material/Button';
+import "react-perfect-scrollbar/dist/css/styles.css";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import Button from "@mui/material/Button";
 
 const DeveloperDetail = () => {
   const [state, setState] = useState({

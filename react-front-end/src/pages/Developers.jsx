@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import DeveloperList from "../components/developers/DeveloperList";
 import DeveloperDetail from "../components/developers/DeveloperDetail";
 import CreateCertification from "../components/certifications/CreateCertification";
+import CreateSeekerForm from "../components/forms/CreateSeekerForm";
 
 const Developers = () => {
   return (
@@ -13,7 +14,11 @@ const Developers = () => {
         <Routes>
           <Route path="/" element={<DeveloperList />} />
           <Route path=":id" element={<DeveloperDetail />} />
-          <Route path=":id/certifications/new" element={<CreateCertification />} />
+          <Route
+            path=":id/certifications/new"
+            element={<CreateCertification />}
+          />
+          <Route path=":id/profile/edit" element={<CreateSeekerForm />} />
         </Routes>
       </div>
     </div>

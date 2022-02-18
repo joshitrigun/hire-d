@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const {
   getAllUsers,
+  getUser,
   getAllJobs,
   getAllProjects,
   getAllCertifications,
@@ -12,6 +13,7 @@ const {
   getUsersProjectsCertifications,
   createProject,
   createUser,
+  updateUser,
   getHotJobsWithUser,
   getJobsWithEmployers,
   createCertification,
@@ -34,6 +36,7 @@ App.use(Express.static("public"));
 App.use(cors(corsOptions));
 
 App.get("/api/users", getAllUsers);
+App.get("/api/users/:id", getUser);
 App.get("/api/jobs", getAllJobs);
 App.get("/api/projects", getAllProjects);
 App.get("/api/certifications", getAllCertifications);
@@ -45,11 +48,11 @@ App.get("/api/jobs_employers", getJobsWithEmployers);
 App.post("/api/projects", createProject);
 App.post("/api/users", createUser);
 App.post("/api/certifications", createCertification);
-
 App.post("/api/jobs", createJobs);
 App.get("/api/certifications/:id", getCertification);
 App.put("/api/certifications/:id", updateCertification);
 
+App.put("/api/users/:id", updateUser);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

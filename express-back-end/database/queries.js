@@ -3,8 +3,19 @@ const pg = require("pg");
 const client = require("./connection");
 
 const getAllUsers = (request, response) => {
-  const queryString = "SELECT * FROM users WHERE employer='false';";
+  const queryString = "SELECT * FROM users;";
 
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
+const getUser = (request, response) => {
+  const id = request.params.id;
+  const queryString = `SELECT * FROM users WHERE id = ${id};`;
   client.query(queryString, (error, results) => {
     if (error) {
       throw error;
@@ -89,6 +100,8 @@ const createUser = (request, response) => {
     employer,
   } = request.body;
 
+  console.log("create user func", request.body);
+
   const queryString =
     "INSERT INTO users (first_name, last_name, email, password, designation, about_me, phone_number, avatar, city, province, skills, github_url, linkedin_url ,employer, resume) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);";
   client.query(
@@ -119,7 +132,59 @@ const createUser = (request, response) => {
   );
 };
 
+const updateUser = (request, response) => {
+  const {
+    id,
+    first_name,
+    last_name,
+    email,
+    number,
+    password,
+    designation,
+    about,
+    city,
+    province,
+    github_url,
+    linkedin_url,
+    resume,
+    avatar,
+    skills,
+    employer,
+  } = request.body.data;
 
+  console.log("request body data", request.body.data);
+
+  const queryString = `UPDATE users SET first_name = $1, last_name = $2, email = $3, password = $4, designation = $5, about_me = $6, phone_number = $7, avatar = $8, city = $9, province = $10, skills = $11, github_url = $12, linkedin_url = $13, employer = $14, resume = $15 WHERE id = $16;`;
+
+  client.query(
+    queryString,
+    [
+      first_name,
+      last_name,
+      email,
+      password,
+      designation,
+      about,
+      number,
+      avatar,
+      city,
+      province,
+      skills,
+      github_url,
+      linkedin_url,
+      employer,
+      resume,
+      id,
+    ],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      }
+      console.log(results);
+      response.status(201).send(`User Updated`);
+    }
+  );
+};
 
 const createCertification = (req, res) => {
   const {
@@ -129,27 +194,21 @@ const createCertification = (req, res) => {
     institution,
     city,
     province,
-    jobSeekerId
+    jobSeekerId,
   } = req.body;
-  const queryString = "INSERT INTO certifications (title, start_date, end_date, institution, city, province, jobseeker_id) VALUES ($1, $2, $3, $4, $5, $6, $7);";
+  const queryString =
+    "INSERT INTO certifications (title, start_date, end_date, institution, city, province, jobseeker_id) VALUES ($1, $2, $3, $4, $5, $6, $7);";
   client.query(
     queryString,
-    [
-      title,
-      startDate,
-      endDate,
-      institution,
-      city,
-      province,
-      jobSeekerId,
-    ], (error, results) => {
+    [title, startDate, endDate, institution, city, province, jobSeekerId],
+    (error, results) => {
       if (error) {
         throw error;
       }
-      res.status(201).send('Certifications added')
+      res.status(201).send("Certifications added");
     }
-  )
-}
+  );
+};
 
 const createJobs = (request, response) => {
   const {
@@ -162,33 +221,34 @@ const createJobs = (request, response) => {
     endDate,
     featured,
     employerId,
-    applyLink
+    applyLink,
   } = request.body;
 
   const queryString =
     "INSERT INTO jobs (title, description, job_type, tech_stack, salary, start_date, end_date, featured, employer_id, apply_link) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10); ";
   client.query(
-    queryString, [
-    title,
-    description,
-    jobtype,
-    stack,
-    salary,
-    startDate,
-    endDate,
-    featured,
-    employerId,
-    applyLink
-  ], (error, results) => {
-    if (error) {
-      throw error;
+    queryString,
+    [
+      title,
+      description,
+      jobtype,
+      stack,
+      salary,
+      startDate,
+      endDate,
+      featured,
+      employerId,
+      applyLink,
+    ],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+
+      response.status(201).send(`Job added`);
     }
-
-    response.status(201).send(`Job added`);
-  }
-  )
-}
-
+  );
+};
 
 const getProjectsWithUsers = (request, response) => {
   const queryString = `SELECT projects.*, users.first_name as first_name, users.last_name as last_name FROM projects JOIN users ON users.id = projects.owner_id;`;
@@ -201,17 +261,16 @@ const getProjectsWithUsers = (request, response) => {
   });
 };
 
-
 const getHotJobsWithUser = (request, response) => {
-
-  const queryString = "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs LEFT JOIN users ON users.id = jobs.employer_id WHERE jobs.featured = true ORDER BY jobs.salary DESC;"
+  const queryString =
+    "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs LEFT JOIN users ON users.id = jobs.employer_id WHERE jobs.featured = true ORDER BY jobs.salary DESC;";
 
   client.query(queryString, (error, results) => {
     if (error) {
       throw error;
     }
     response.status(200).json(results.rows);
-  })
+  });
 };
 
 const getUsersProjectsCertifications = (request, response) => {
@@ -227,8 +286,8 @@ const getUsersProjectsCertifications = (request, response) => {
 };
 
 const getJobsWithEmployers = (request, response) => {
-
-  const queryString = "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs JOIN users ON users.id = jobs.employer_id;"
+  const queryString =
+    "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs JOIN users ON users.id = jobs.employer_id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -236,7 +295,7 @@ const getJobsWithEmployers = (request, response) => {
     }
     response.status(200).json(results.rows);
   });
-}
+};
 
 const getCertification = (reuqest, response) => {
 
@@ -277,6 +336,7 @@ const updateCertification = (reuqest, response) => {
 
 module.exports = {
   getAllUsers,
+  getUser,
   getAllJobs,
   getAllProjects,
   getAllCertifications,
@@ -284,6 +344,7 @@ module.exports = {
   getUsersProjectsCertifications,
   createProject,
   createUser,
+  updateUser,
   getHotJobsWithUser,
   getJobsWithEmployers,
   createCertification,

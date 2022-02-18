@@ -9,6 +9,8 @@ import {
   BsTelephoneFill,
   BsLinkedin,
 } from "react-icons/bs";
+import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Profile(props) {
   const { user } = props;
@@ -16,9 +18,13 @@ export default function Profile(props) {
     <div className="profile-div">
       <img src={user.avatar} className="profile-img" alt={user.first_name} />
       <span className="profile-header">
-        <h3 className="title">{user.first_name} {user.last_name}</h3>
+        <h3 className="title">
+          {user.first_name} {user.last_name}
+        </h3>
         <h5 className="sub-title">{user.designation}</h5>
-        <p className="body-text"><BsGeoFill className="bs-icon" /> {user.city}, {user.province}</p>
+        <p className="body-text">
+          <BsGeoFill className="bs-icon" /> {user.city}, {user.province}
+        </p>
       </span>
       <br />
       <p className="body-text">{user.about_me}</p>
@@ -45,6 +51,9 @@ export default function Profile(props) {
       <p className="body-text">
         <BsTelephoneFill className="bs-icon" /> {user.phone_number}
       </p>
+      <Link className="body-text btn btn-primary" to={"profile/edit"}>
+        <FaEdit /> EDIT
+      </Link>
     </div>
   );
 }
