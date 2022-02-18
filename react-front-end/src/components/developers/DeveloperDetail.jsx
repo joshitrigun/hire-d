@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 const DeveloperDetail = () => {
   const [state, setState] = useState({
     user: {},
+    users: [],
     projects: [],
     certifications: [],
   });
@@ -43,11 +44,20 @@ const DeveloperDetail = () => {
   };
 
   useEffect(() => {
+    if (state.users && state.users.length > 0) {
+      setState((prev) => ({
+        ...prev,
+        user: userDetails(state.users, Number(url_id.id)),
+      }));
+    }
+  }, [url_id]);
+
+  useEffect(() => {
     Promise.all([getUsers, getProjects, getCertifications]).then((response) => {
-      console.log("response", response);
       setState((prev) => ({
         ...prev,
         user: userDetails(response[0].data, Number(url_id.id)),
+        users: response[0].data,
         projects: getProjectsByUser(response[1].data, Number(url_id.id)),
         certifications: getCertificationsByUser(
           response[2].data,
