@@ -1,14 +1,6 @@
-# React + Express No-Fluff Boilerplate
+## Introduction
 
-A boilerplate project for anyone interested in making a project that uses React and Express.
-
-This repository is a bootleg of @NimaBoscarino's [React Rails Boilerplate](https://github.com/NimaBoscarino/react-rails-boilerplate). It uses the same React app, but replaces the Rails server with an Express server.
-
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff. On the Express end, there is no session storage or database connection.
-
-The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
-
-You can (and perhaps should) rename the directories `express-back-end` and `react-front-end` if you want-- The name doesn't matter.
+This web application is designed to help LHL graduates showcase their projects to potential LHL employers.
 
 ## Running the projects
 
@@ -36,8 +28,8 @@ And don't forget to update the README!
 
 You might want to look at examples of projects that have used this boilerplate for hints on how to extend it. Here are a few:
 
-* [Later Cart](https://github.com/bonitac/later-cart)
-* [Buddi.io](https://github.com/Danny-Tran/buddi.io)
+- [Later Cart](https://github.com/bonitac/later-cart)
+- [Buddi.io](https://github.com/Danny-Tran/buddi.io)
 
 If you'd like your project added to the list, please shoot me a message.
 
