@@ -18,10 +18,7 @@ const Developers = () => {
             path=":id/certifications/new"
             element={<CreateCertification />}
           />
-<<<<<<< HEAD
-=======
           <Route path=":id/profile/edit" element={<CreateSeekerForm />} />
->>>>>>> c6b49e92bfcfe5a6118a46f69bff990f1a5a8f14
         </Routes>
       </div>
     </div>
