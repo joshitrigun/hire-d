@@ -19,12 +19,12 @@ import SignUp from "./pages/SignUp";
 const App = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<Homepage />} />
-      <Route exact path="jobs/*" element={<Jobs />} />
+      <Route path="/" element={<Homepage />} />
+      <Route path="jobs/*" element={<Jobs />} />
       <Route path="projects/*" element={<Projects />} />
-      <Route exact path="developers/*" element={<Developers />} />
-      <Route exact path="/login" element={<Login />} />
-      <Route exact path="signup/*" element={<SignUp />} />
+      <Route path="developers/*" element={<Developers />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="signup/*" element={<SignUp />} />
     </Routes>
   );
 };
