@@ -17,8 +17,8 @@
 .section-right {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-left: 4em;
   height: 75vh;
 }
@@ -34,16 +34,10 @@
 }
 .certification-section {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: flex-end;
   flex-wrap: wrap;
   border: 1px;
   border-radius: 1rem;
-}
-.certification-block {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  width: 30em;
 }
   

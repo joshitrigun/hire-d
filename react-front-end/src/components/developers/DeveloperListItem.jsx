@@ -1,5 +1,5 @@
 import React from "react";
-import { BsCloudArrowDownFill, BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
+import { BsEnvelopeFill, BsGeoFill, BsTelephoneFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "./DeveloperListItem.css";
 import Button from '@mui/material/Button';

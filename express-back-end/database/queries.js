@@ -238,6 +238,43 @@ const getJobsWithEmployers = (request, response) => {
   });
 }
 
+const getCertification = (reuqest, response) => {
+
+  const queryString = `SELECT * From certifications WHERE id = $1;`
+  const value = [reuqest.params.id]
+
+  client.query(queryString, value, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+
+}
+
+const updateCertification = (reuqest, response) => {
+  const {
+    title,
+    startDate,
+    endDate,
+    institution,
+    city,
+    province,
+    jobSeekerId
+  } = reuqest.body;
+
+  const queryString = `UPDATE certification SET title = $1, start_date = $2, end_date = $3, institution = $4, city = $5, province = $6, jobseeker_id = $7 WHERE id = $8;`
+  const value = [ title, startDate, endDate, institution, city, province,     jobSeekerId, reuqest.params.id]
+
+  client.query(queryString, value, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+
+}
+
 module.exports = {
   getAllUsers,
   getAllJobs,
@@ -250,5 +287,7 @@ module.exports = {
   getHotJobsWithUser,
   getJobsWithEmployers,
   createCertification,
-  createJobs
+  createJobs,
+  getCertification,
+  updateCertification
 };

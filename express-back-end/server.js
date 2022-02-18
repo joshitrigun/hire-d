@@ -15,7 +15,9 @@ const {
   getHotJobsWithUser,
   getJobsWithEmployers,
   createCertification,
-  createJobs
+  createJobs,
+  getCertification,
+  updateCertification
 } = require("./database/queries");
 
 const PORT = 8080;
@@ -45,6 +47,8 @@ App.post("/api/users", createUser);
 App.post("/api/certifications", createCertification);
 
 App.post("/api/jobs", createJobs);
+App.get("/api/certifications/:id", getCertification);
+App.put("/api/certifications/:id", updateCertification);
 
 
 App.listen(PORT, () => {

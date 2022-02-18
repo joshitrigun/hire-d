@@ -2,6 +2,7 @@ import React from "react";
 import { BsHeart } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import "./ProjectListItem.css";
+// import axios from 'axios';
 
 const ProjectListItem = (props) => {
 
