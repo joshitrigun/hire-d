@@ -1,3 +1,37 @@
+.certification-main {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
 .certification-block {
-  
+  background-color: rgb(250,250,250);
+  border-radius: 1em;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  width: 30em;
+  transition: .5s;
+}
+.certification-block:hover {
+  box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
+}
+
+.certification-block p {
+  margin-bottom: 0;
+}
+
+.edit-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.job-icon {
+  margin: 0 2em 1em 2em;
 }
