@@ -1,9 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import tech_stack from "./TechStacks";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const CreateStudentForm = () => {
+  const navigate = useNavigate();
+  const techArray = tech_stack.map((skill) => {
+    return { ...skill, checked: false };
+  });
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,11 +24,43 @@ const CreateStudentForm = () => {
   const [linkedinUrl, setLinkedinUrl] = useState("");
   const [avatar, setAvatar] = useState("");
   const [resume, setResume] = useState("");
-  const [checkedState, setCheckedState] = useState(
-    new Array(tech_stack.length).fill(false)
-  );
+  const [checkedState, setCheckedState] = useState(techArray);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const id = Cookies.get("id");
+    axios.get("/api/users").then((response) => {
+      const data = response.data;
+      data.forEach((user) => {
+        if (id) {
+          if (user.id === Number(id)) {
+            setFirstName(user.first_name);
+            setLastName(user.last_name);
+            setEmail(user.email);
+            setNumber(user.phone_number);
+            setPassword(user.password);
+            setDesignation(user.designation);
+            setAbout(user.about_me);
+            setCity(user.city);
+            setProvince(user.province);
+            setGithubUrl(user.github_url);
+            setLinkedinUrl(user.linkedin_url);
+            setAvatar(user.avatar);
+            setResume(user.resume);
+            const skills = user.skills.split(",");
+            const newCheckedState = checkedState.map((skill) => {
+              if (skills.includes(skill.name)) {
+                skill.checked = true;
+              }
+              return skill;
+            });
+            setCheckedState(newCheckedState);
+          }
+        }
+      });
+    });
+  }, []);
 
   const reset = () => {
     setFirstName("");
@@ -39,7 +77,12 @@ const CreateStudentForm = () => {
     setLinkedinUrl("");
     setAvatar("");
     setResume("");
-    setCheckedState(new Array(tech_stack.length).fill(false));
+    setCheckedState(
+      tech_stack.map((skill) => {
+        return { ...skill, checked: false };
+      })
+    );
+    // console.log("checked state:", checkedState);
     setTimeout(() => setSubmitted(false), 5000);
   };
 
@@ -104,29 +147,32 @@ const CreateStudentForm = () => {
       setError("Resume cannot be blank");
       return;
     }
-    if (!checkedState.includes(true)) {
-      setError("Make sure you to fill in your skills!");
-      return;
-    }
+
     setError("");
     onSubmitHandler();
   };
 
   const onChangeHandler = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
+      // console.log(`item ${item}, index ${index}, position ${position}`)
+      index === position
+        ? { ...item, checked: !item.checked }
+        : { ...item, checked: item.checked }
     );
     setCheckedState(updatedCheckedState);
   };
 
   const onSubmitHandler = () => {
+    console.log(checkedState);
     const stack = [];
     checkedState.forEach((item, index) => {
-      if (item) {
-        stack.push(tech_stack[index].name);
+      if (item.checked) {
+        stack.push(item.name);
       }
     });
+    console.log(stack);
     const data = {
+      id: Cookies.get("id"),
       first_name: firstName,
       last_name: lastName,
       email,
@@ -144,20 +190,36 @@ const CreateStudentForm = () => {
       skills: stack.toString(),
     };
     console.log(data);
-    axios
-      .post("http://localhost:8080/api/users", data)
-      .then((response) => {
-        setSubmitted(response.data);
-        reset();
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    const id = Number(Cookies.get("id"));
+    if (Cookies.get("id")) {
+      axios
+        .put(`http://localhost:8080/api/users/${id}`, { data })
+        .then((response) => {
+          setSubmitted(response.data);
+          reset();
+          navigate(`/developers/${id}`);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } else {
+      axios
+        .post("http://localhost:8080/api/users", data)
+        .then((response) => {
+          setSubmitted(response.data);
+          reset();
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
   };
 
   return (
     <div>
-      <h3 className="text-center">Create Profile</h3>
+      <h3 className="text-center">
+        {Cookies.get("user") ? "Edit" : "Create"} Profile
+      </h3>
       {submitted ? <p className="text-center">{submitted}</p> : ""}
       {error ? <p className="text-center">{error}</p> : ""}
       <form className="w-50 mx-auto" onSubmit={(e) => e.preventDefault()}>
@@ -266,7 +328,7 @@ const CreateStudentForm = () => {
         <div className="d-flex flex-column">
           <h4>Add Skills</h4>
 
-          {tech_stack.map(({ name }, index) => {
+          {checkedState.map(({ name }, index) => {
             return (
               <div key={index}>
                 <input
@@ -274,7 +336,7 @@ const CreateStudentForm = () => {
                   name={name}
                   value={name}
                   id={name}
-                  checked={checkedState[index]}
+                  checked={checkedState[index].checked}
                   onChange={() => onChangeHandler(index)}
                 />
                 <label htmlFor={name}>{name}</label>
@@ -283,7 +345,9 @@ const CreateStudentForm = () => {
           })}
         </div>
         <button onClick={validate}>Save</button>
-        <Link to={"/"}>
+        <Link
+          to={Cookies.get("user") ? `/developers/${Cookies.get("id")}` : "/"}
+        >
           <button>Cancel</button>
         </Link>
       </form>
