@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Top_nav_bar.css";
 // import { BsSearch } from "react-icons/bs";
 import Cookies from "js-cookie";
 
 const TopNavBar = () => {
+  const [route, setRoute] = useState("");
   let navigate = useNavigate();
 
   const signoutHandler = () => {
@@ -12,6 +13,14 @@ const TopNavBar = () => {
     Cookies.remove("id");
     navigate("/");
   };
+
+  useEffect(() => {
+    if (Cookies.get("user") === "trigunjoshi@gmail.com") {
+      setRoute(`/developers/${Cookies.get("id")}`);
+    } else {
+      setRoute(`/employers/${Cookies.get("id")}`);
+    }
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -44,10 +53,7 @@ const TopNavBar = () => {
             {Cookies.get("user") ? (
               <React.Fragment>
                 <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    to={`/developers/${Cookies.get("id")}`}
-                  >
+                  <NavLink className="nav-link" to={route}>
                     {Cookies.get("user")}
                   </NavLink>
                 </li>
