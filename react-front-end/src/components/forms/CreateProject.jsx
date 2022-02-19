@@ -1,28 +1,71 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import tech_stack from "./TechStacks";
+import Cookies from "js-cookie";
+import axios from "axios";
 import Button from "@mui/material/Button";
 import "../forms/CreateProject.css";
 import Stack from "@mui/material/Stack";
 import { FaSave } from "react-icons/fa";
 
 const CreateProject = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const techArray = tech_stack.map((skill) => {
+    return { ...skill, checked: false };
+  });
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [projectLink, setProjectLink] = useState("");
   const [screenshot, setScreenshot] = useState("");
-  const [checkedState, setCheckedState] = useState(
-    new Array(tech_stack.length).fill(false)
-  );
+  const [likes, setLikes] = useState("");
+  const [checkedState, setCheckedState] = useState(techArray);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (location.pathname !== "/projects/new") {
+      axios.get(`/api/projects/${id}`).then((response) => {
+        const data = response.data[0];
+        console.log(id);
+        console.log(data);
+        if (Cookies.get("id")) {
+          if (Number(id) === data.id) {
+            setTitle(data.title);
+            setDescription(data.description);
+            setProjectLink(data.project_url);
+            setScreenshot(data.screenshot);
+            setLikes(data.likes);
+            const skills = data.tech_stack.split(",");
+            console.log(skills);
+            const newCheckedState = checkedState.map((skill) => {
+              if (skills.includes(skill.name)) {
+                skill.checked = true;
+              }
+              return skill;
+            });
+            console.log(newCheckedState);
+            setCheckedState(newCheckedState);
+          }
+        }
+      });
+    }
+  }, []);
 
   const reset = () => {
     setTitle("");
     setDescription("");
     setProjectLink("");
     setScreenshot("");
-    setCheckedState(new Array(tech_stack.length).fill(false));
+    setCheckedState(
+      tech_stack.map((skill) => {
+        return { ...skill, checked: false };
+      })
+    );
     setTimeout(() => setSubmitted(false), 5000);
   };
 
@@ -43,17 +86,16 @@ const CreateProject = () => {
       setError("screenshot cannot be blank");
       return;
     }
-    if (!checkedState.includes(true)) {
-      setError("Make sure you to fill in tech stack!");
-      return;
-    }
+
     setError("");
     onSubmitHandler();
   };
 
   const onChangeHandler = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
+      index === position
+        ? { ...item, checked: !item.checked }
+        : { ...item, checked: item.checked }
     );
     setCheckedState(updatedCheckedState);
   };
@@ -61,28 +103,42 @@ const CreateProject = () => {
   const onSubmitHandler = () => {
     const stack = [];
     checkedState.forEach((item, index) => {
-      if (item) {
-        stack.push(tech_stack[index].name);
+      if (item.checked) {
+        stack.push(item.name);
       }
     });
     const data = {
       title,
       description,
-      owner_id: 1,
-      likes: 0,
+      owner_id: Cookies.get("id"),
+      likes,
       projectLink,
       screenshot,
       stack: stack.toString(),
     };
-    axios
-      .post("http://localhost:8080/api/projects", data)
-      .then((response) => {
-        setSubmitted(response.data);
-        reset();
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    console.log(data);
+    if (Cookies.get("id") && location.pathname !== "/projects/new") {
+      axios
+        .put(`http://localhost:8080/api/projects/${id}`, { ...data, id })
+        .then((response) => {
+          setSubmitted(response.data);
+          reset();
+          setTimeout(() => navigate(`/projects/${id}`), 5000);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } else {
+      axios
+        .post("http://localhost:8080/api/projects", data)
+        .then((response) => {
+          setSubmitted(response.data);
+          reset();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -90,7 +146,9 @@ const CreateProject = () => {
       {submitted ? <p>{submitted}</p> : ""}
       {error ? <p>{error}</p> : ""}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <h3 className="text-center">Create Project</h3>
+        <h3 className="text-center">
+          {location.pathname === "/projects/new" ? "Create" : "Edit"} Project
+        </h3>
         <div className="form-container">
           <div className="form-header">
             <div className="form-input">
@@ -136,15 +194,15 @@ const CreateProject = () => {
             <div className="d-flex flex-column">
               <h4>Tech Stack</h4>
               <div className="tech-stack">
-                {tech_stack.map(({ name }, index) => {
+                {checkedState.map(({ name }, index) => {
                   return (
-                    <div className="tech-stack-names" key={index}>
+                    <div key={index}>
                       <input
                         type="checkbox"
                         name={name}
                         value={name}
                         id={name}
-                        checked={checkedState[index]}
+                        checked={checkedState[index].checked}
                         onChange={() => onChangeHandler(index)}
                       />
                       <label htmlFor={name}>{name}</label>
@@ -158,10 +216,15 @@ const CreateProject = () => {
                 Save&nbsp;
                 <FaSave />
               </Button>
-
-              <Button variant="outlined" href="/">
-                Cancel&nbsp;
-              </Button>
+              <Link
+                to={
+                  Cookies.get("user") ? `/developers/${Cookies.get("id")}` : "/"
+                }
+              >
+                <Button variant="outlined" href="/">
+                  Cancel&nbsp;
+                </Button>
+              </Link>
             </Stack>
           </div>
         </div>

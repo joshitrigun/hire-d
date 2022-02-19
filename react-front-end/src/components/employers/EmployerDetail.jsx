@@ -18,8 +18,6 @@ const EmployerDetail = () => {
 
   const {id} = useParams();
 
-  console.log(id);
-
   const getUsers = axios.get("/api/employers");
   const getJobs = axios.get("/api/jobs_employers");
 

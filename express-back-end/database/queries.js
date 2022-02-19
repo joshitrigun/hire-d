@@ -36,7 +36,7 @@ const getAllEmployers = (request, response) => {
 };
 
 const getAllJobs = (request, response) => {
-  const queryString = "SELECT * FROM jobs;";
+  const queryString = "SELECT * FROM jobs  ORDER BY id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -47,7 +47,7 @@ const getAllJobs = (request, response) => {
 };
 
 const getAllProjects = (request, response) => {
-  const queryString = "SELECT * FROM projects;";
+  const queryString = "SELECT * FROM projects ORDER BY id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -57,8 +57,19 @@ const getAllProjects = (request, response) => {
   });
 };
 
+const getProject = (request, response) => {
+  const id = request.params.id;
+  const queryString = `SELECT * FROM projects WHERE id = ${id};`;
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
 const getAllCertifications = (request, response) => {
-  const queryString = "SELECT * FROM certifications;";
+  const queryString = "SELECT * FROM certifications ORDER BY id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -197,6 +208,35 @@ const updateUser = (request, response) => {
   );
 };
 
+const updateProject = (request, response) => {
+  const {
+    id,
+    title,
+    description,
+    owner_id,
+    likes,
+    projectLink,
+    screenshot,
+    stack,
+  } = request.body;
+
+  console.log("request body data", request.body);
+
+  const queryString = `UPDATE projects SET title = $1, owner_id = $2, tech_stack = $3, screenshot = $4, description = $5, project_url = $6, likes = $7 WHERE id = $8;`;
+
+  client.query(
+    queryString,
+    [title, owner_id, stack, screenshot, description, projectLink, likes, id],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      }
+      console.log(results);
+      response.status(201).send(`Project Updated`);
+    }
+  );
+};
+
 const createCertification = (req, res) => {
   const {
     title,
@@ -309,9 +349,8 @@ const getJobsWithEmployers = (request, response) => {
 };
 
 const getCertification = (reuqest, response) => {
-
-  const queryString = `SELECT * From certifications WHERE id = $1;`
-  const value = [reuqest.params.id]
+  const queryString = `SELECT * From certifications WHERE id = $1;`;
+  const value = [reuqest.params.id];
 
   client.query(queryString, value, (error, results) => {
     if (error) {
@@ -319,8 +358,7 @@ const getCertification = (reuqest, response) => {
     }
     response.status(200).json(results.rows);
   });
-
-}
+};
 
 const updateCertification = (reuqest, response) => {
   const {
@@ -330,11 +368,20 @@ const updateCertification = (reuqest, response) => {
     institution,
     city,
     province,
-    jobSeekerId
+    jobSeekerId,
   } = reuqest.body;
 
-  const queryString = `UPDATE certification SET title = $1, start_date = $2, end_date = $3, institution = $4, city = $5, province = $6, jobseeker_id = $7 WHERE id = $8;`
-  const value = [ title, startDate, endDate, institution, city, province,     jobSeekerId, reuqest.params.id]
+  const queryString = `UPDATE certification SET title = $1, start_date = $2, end_date = $3, institution = $4, city = $5, province = $6, jobseeker_id = $7 WHERE id = $8;`;
+  const value = [
+    title,
+    startDate,
+    endDate,
+    institution,
+    city,
+    province,
+    jobSeekerId,
+    reuqest.params.id,
+  ];
 
   client.query(queryString, value, (error, results) => {
     if (error) {
@@ -342,8 +389,7 @@ const updateCertification = (reuqest, response) => {
     }
     response.status(200).json(results.rows);
   });
-
-}
+};
 
 module.exports = {
   getAllUsers,
@@ -351,10 +397,12 @@ module.exports = {
   getAllEmployers,
   getAllJobs,
   getAllProjects,
+  getProject,
   getAllCertifications,
   getProjectsWithUsers,
   getUsersProjectsCertifications,
   createProject,
+  updateProject,
   createUser,
   updateUser,
   getHotJobsWithUser,
@@ -362,5 +410,5 @@ module.exports = {
   createCertification,
   createJobs,
   getCertification,
-  updateCertification
+  updateCertification,
 };

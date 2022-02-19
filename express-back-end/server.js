@@ -13,6 +13,8 @@ const {
   getProjectsWithUsers,
   getUsersProjectsCertifications,
   createProject,
+  getProject,
+  updateProject,
   createUser,
   updateUser,
   getHotJobsWithUser,
@@ -41,6 +43,7 @@ App.get("/api/employers", getAllEmployers);
 App.get("/api/users/:id", getUser);
 App.get("/api/jobs", getAllJobs);
 App.get("/api/projects", getAllProjects);
+App.get("/api/projects/:id", getProject);
 App.get("/api/certifications", getAllCertifications);
 App.get("/api/user_projects", getProjectsWithUsers);
 App.get("/api/jobs_users", getHotJobsWithUser);
@@ -55,6 +58,7 @@ App.get("/api/certifications/:id", getCertification);
 App.put("/api/certifications/:id", updateCertification);
 
 App.put("/api/users/:id", updateUser);
+App.put("/api/projects/:id", updateProject);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

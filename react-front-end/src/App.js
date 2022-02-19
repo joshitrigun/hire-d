@@ -17,13 +17,13 @@ import "./App.css";
 const App = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<Homepage />} />
-      <Route exact path="jobs/*" element={<Jobs />} />
-      <Route exact path="projects/*" element={<Projects />} />
-      <Route exact path="developers/*" element={<Developers />} />
-      <Route exact path="employers/*" element={<Employers />} />
-      <Route exact path="/login" element={<Login />} />
-      <Route exact path="signup/*" element={<SignUp />} />
+      <Route path="/" element={<Homepage />} />
+      <Route path="jobs/*" element={<Jobs />} />
+      <Route path="projects/*" element={<Projects />} />
+      <Route path="developers/*" element={<Developers />} />
+      <Route path="employers/*" element={<Employers />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="signup/*" element={<SignUp />} />
     </Routes>
   );
 };

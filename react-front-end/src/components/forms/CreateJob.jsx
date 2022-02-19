@@ -226,7 +226,7 @@ const CreateJob = () => {
                 checked={featured}
                 onChange={onCheckHandler}
               />
-              <label htmlFor="featured">Featured</label>
+              <label htmlFor="featured">&nbsp;Featured</label>
             </div>
 
             <Stack spacing={2} direction="row">

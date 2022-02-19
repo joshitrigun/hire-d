@@ -11,8 +11,9 @@ const ProjectDetails = () => {
   let url_id = useParams();
 
   const projectsDetails = (state, id) => {
-    const singleProject = state.filter((project) => project.id === id);
-    setSingleProject(singleProject[0]);
+    const getProject = state.filter((project) => project.id === id);
+    console.log(getProject);
+    setSingleProject(getProject[0]);
   };
 
   useEffect(() => {
@@ -21,30 +22,38 @@ const ProjectDetails = () => {
     });
   }, []);
 
+  console.log(url_id);
   return (
     <div className="project-details-main">
       <span className="project-details-header">
-      <Stack spacing={2} direction="row">
+        <Stack spacing={2} direction="row">
           <Button variant="outlined" href="/projects">
-          All Projects
+            All Projects
           </Button>
           <Button variant="outlined" href="/projects/new">
-          Create New Project &nbsp; <BsPlusLg className="bs-icon" />
+            Create New Project &nbsp; <BsPlusLg className="bs-icon" />
           </Button>
         </Stack>
       </span>
       <section className="project-details-block">
-      <div className="project-image-large">
-        <img src={singleProject.screenshot} alt={singleProject.title} />
-      </div>
-      <div className="project-details-info">
-        <h2 className="project-page-title">{singleProject.title}</h2>
-        <h5 className="project-info">Project by: {singleProject.first_name} {singleProject.last_name}</h5>
-        <h5 className="project-info">Tech Stack: {singleProject.tech_stack}</h5>
-        <p>Project URL: <a href={singleProject.project_url}>{singleProject.project_url}</a></p>
-        <p className="project-info"></p>
-        <p className="project-description">{singleProject.description}</p>
-      </div>
+        <div className="project-image-large">
+          <img src={singleProject.screenshot} alt={singleProject.title} />
+        </div>
+        <div className="project-details-info">
+          <h2 className="project-page-title">{singleProject.title}</h2>
+          <h5 className="project-info">
+            Project by: {singleProject.first_name} {singleProject.last_name}
+          </h5>
+          <h5 className="project-info">
+            Tech Stack: {singleProject.tech_stack}
+          </h5>
+          <p>
+            Project URL:{" "}
+            <a href={singleProject.project_url}>{singleProject.project_url}</a>
+          </p>
+          <p className="project-info"></p>
+          <p className="project-description">{singleProject.description}</p>
+        </div>
       </section>
     </div>
   );
