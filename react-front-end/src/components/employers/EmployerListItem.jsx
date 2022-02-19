@@ -29,9 +29,9 @@ const EmployerListItem = (props) => {
       </p>
       <p>
         <BsEnvelopeFill className="bs-icon" /> {email}
-      </p>
+      </p><br/>
       <br/>
-      <Button variant="outlined" href={`/emoloyers/${id}`} className="mui-button">
+      <Button variant="outlined" href={`/employers/${id}`} className="mui-button">
         View Details
       </Button>
     </div>

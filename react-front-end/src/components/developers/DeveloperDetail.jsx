@@ -44,7 +44,6 @@ const DeveloperDetail = () => {
 
   useEffect(() => {
     Promise.all([getUsers, getProjects, getCertifications]).then((response) => {
-      console.log("response", response);
       setState((prev) => ({
         ...prev,
         user: userDetails(response[0].data, Number(url_id.id)),
@@ -55,7 +54,7 @@ const DeveloperDetail = () => {
         ),
       }));
     });
-  }, []);
+  }, [url_id.id]);
 
   const mappedProjects = state.projects.map((project) => {
     return (
@@ -93,11 +92,14 @@ const DeveloperDetail = () => {
           <Profile user={state.user} />
         </div>
         <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
-        <div className="section-right">
-      <Button variant="outlined" href="/projects/new">
-        Add New Project&nbsp;<GoPlus />
-      </Button>
-          <div className="project-section">{mappedProjects}</div>
+        <div className="dev-section-right">
+          <div className="dev-project-header">
+            <h4 className="certification-title">My Projects</h4>
+            <Button variant="outlined" href="/projects/new">
+              Add New Project&nbsp;<GoPlus />
+            </Button>
+          </div>        
+          <div className="dev-project-section">{mappedProjects}</div>
           <span className="certification-container">
             <h4 className="certification-title">Certifications</h4>
             <Button variant="outlined" href={`${url_id.id}/certifications/new`}>

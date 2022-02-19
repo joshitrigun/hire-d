@@ -6,7 +6,7 @@ import "./JobListItem.css";
 import Button from "@mui/material/Button";
 
 const JobListItem = (props) => {
-  const { id, title, employer, city, province, salary, apply_link } = props;
+  const { id, title, employer, city, province, salary, apply_link, jobType } = props;
 
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
@@ -24,6 +24,7 @@ const JobListItem = (props) => {
           <h4 className="job-title">{title}</h4>
         </NavLink>
         <h6>{employer}</h6>
+        <h6>{jobType}</h6>
         <h6>
           <BsGeoFill className="bs-icon" /> {city}, {province}
         </h6>
