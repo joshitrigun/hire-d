@@ -71,7 +71,15 @@ body {
   width: 60em;
 }
 
+.home-left-side .scrollbar-container {
+  width: 65em;
+}
+
 .home-right-side {
+  width: 30em;
+}
+
+.home-right-side .scrollbar-container {
   width: 30em;
 }
 
@@ -90,3 +98,4 @@ h4 {
 .page-title {
   margin-top: 0 0 1em 0;
 }
+
