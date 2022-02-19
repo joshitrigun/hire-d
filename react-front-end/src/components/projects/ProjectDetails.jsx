@@ -26,12 +26,12 @@ const ProjectDetails = () => {
   return (
     <div className="project-details-main">
       <span className="project-details-header">
-      <Stack spacing={2} direction="row">
+        <Stack spacing={2} direction="row">
           <Button variant="outlined" href="/projects">
-          All Projects
+            All Projects
           </Button>
           <Button variant="outlined" href="/projects/new">
-          Create New Project &nbsp; <BsPlusLg className="bs-icon" />
+            Create New Project &nbsp; <BsPlusLg className="bs-icon" />
           </Button>
         </Stack>
       </span>
