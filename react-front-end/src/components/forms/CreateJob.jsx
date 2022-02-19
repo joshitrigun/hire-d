@@ -1,41 +1,49 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import tech_stack from "../forms/TechStacks";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import "../forms/CreateJob.css";
 import { FaSave } from "react-icons/fa";
+import Cookies from "js-cookie";
+
 const CreateJob = () => {
+  const techArray = tech_stack.map((skill) => {
+    return { ...skill, checked: false };
+  });
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [jobtype, setJobType] = useState("");
-  const [checkedState, setCheckedState] = useState(
-    new Array(tech_stack.length).fill(false)
-  );
-
+  const [checkedState, setCheckedState] = useState(techArray);
   const [salary, setSalary] = useState("");
   const [startDate, setStartDate] = useState("Pick Start Date");
   const [endDate, setEndDate] = useState("Pick End Date");
   const [featured, setFeatured] = useState(false);
-  const [employerId, setEmployerId] = useState("");
   const [applyLink, setApplyLink] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const reset = () => {
     setTitle("");
     setDescription("");
     setJobType("");
-    setCheckedState(new Array(tech_stack.length).fill(false));
+    setCheckedState(
+      tech_stack.map((skill) => {
+        return { ...skill, checked: false };
+      })
+    );
     setSalary("");
     setStartDate("");
     setEndDate("");
     setFeatured(false);
-    setEmployerId("");
     setApplyLink("");
 
     setError();
-    setTimeout(() => setSubmitted(false), 5000);
+    setTimeout(() => setSubmitted(false), 3000);
   };
 
   const validate = () => {
@@ -51,16 +59,8 @@ const CreateJob = () => {
       setError("Job Type cannot be blank");
       return;
     }
-    if (!checkedState.includes(true)) {
-      setError("Make sure you to fill in tech stack!");
-      return;
-    }
     if (salary === "") {
       setError("Please enter Salary");
-      return;
-    }
-    if (employerId === "") {
-      setError("Please enter employerId");
       return;
     }
     if (applyLink === "") {
@@ -69,9 +69,12 @@ const CreateJob = () => {
     setError("");
     onSubmitHandler();
   };
+
   const onChangeHandler = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
+      index === position
+        ? { ...item, checked: !item.checked }
+        : { ...item, checked: item.checked }
     );
     setCheckedState(updatedCheckedState);
   };
@@ -87,8 +90,8 @@ const CreateJob = () => {
   const onSubmitHandler = () => {
     const stack = [];
     checkedState.forEach((item, index) => {
-      if (item) {
-        stack.push(tech_stack[index].name);
+      if (item.checked) {
+        stack.push(item.name);
       }
     });
     const data = {
@@ -100,7 +103,7 @@ const CreateJob = () => {
       startDate,
       endDate,
       featured,
-      employerId: 12,
+      employerId: Cookies.get("id"),
       applyLink,
     };
     axios
@@ -108,6 +111,7 @@ const CreateJob = () => {
       .then((response) => {
         setSubmitted(response.data);
         reset();
+        setTimeout(() => navigate("/jobs"), 3000);
       })
       .catch((error) => {
         console.log(error.message);
@@ -179,15 +183,6 @@ const CreateJob = () => {
             <div className="form-input">
               <input
                 type="text"
-                placeholder="EmployerId"
-                name="employerId"
-                value={employerId}
-                onChange={(e) => setEmployerId(e.target.value)}
-              />
-            </div>
-            <div className="form-input">
-              <input
-                type="text"
                 placeholder="Post apply Link here"
                 name="ApplyLink"
                 value={applyLink}
@@ -199,18 +194,17 @@ const CreateJob = () => {
             <div className="d-flex flex-column">
               <h4>Tech Stack</h4>
               <div className="tech-stack">
-                {tech_stack.map(({ name }, index) => {
+                {checkedState.map(({ name }, index) => {
                   return (
-                    <div className="tech-stack-names" key={index}>
+                    <div key={index}>
                       <input
                         type="checkbox"
                         name={name}
                         value={name}
                         id={name}
-                        checked={checkedState[index]}
+                        checked={checkedState[index].checked}
                         onChange={() => onChangeHandler(index)}
                       />
-                      &nbsp;&nbsp;
                       <label htmlFor={name}>{name}</label>
                     </div>
                   );
