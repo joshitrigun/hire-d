@@ -9,9 +9,14 @@
 .developer-detail-container {
   margin-top: 2em;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+}
+.scrollbar-container {
+  position: relative;
+  height: 100%;
+  width: 75em;
 }
 
 .dev-section-right {
@@ -19,8 +24,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  margin-left: 4em;
   height: 75vh;
+  width: 100%;
 }
 
 .dev-project-section {
