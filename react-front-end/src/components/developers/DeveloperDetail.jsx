@@ -111,18 +111,9 @@ const DeveloperDetail = () => {
             </Button>
           </div>        
           <div className="dev-project-section">{mappedProjects}</div>
-          <span className="certification-container">
-            <h4 className="certification-title">Certifications</h4>
-            <Button variant="outlined" href={`${url_id.id}/certifications/new`}>
-              Add New&nbsp;<GoPlus />
-            </Button>
-            <div className="project-section">{mappedProjects}</div>
             <span className="certification-container">
               <h4 className="certification-title">Certifications</h4>
-              <Button
-                variant="outlined"
-                href={`${url_id.id}/certifications/new`}
-              >
+              <Button variant="outlined" href={`${url_id.id}/certifications/new`}>
                 Add New&nbsp;
                 <GoPlus />
               </Button>
