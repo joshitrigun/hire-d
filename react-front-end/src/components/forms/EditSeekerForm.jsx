@@ -65,29 +65,6 @@ const CreateStudentForm = () => {
     });
   }, []);
 
-  const reset = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setNumber("");
-    setPassword("");
-    setConfirmPassword("");
-    setDesignation("");
-    setAbout("");
-    setCity("");
-    setProvince("");
-    setGithubUrl("");
-    setLinkedinUrl("");
-    setAvatar("");
-    setResume("");
-    setCheckedState(
-      tech_stack.map((skill) => {
-        return { ...skill, checked: false };
-      })
-    );
-    setTimeout(() => setSubmitted(false), 3000);
-  };
-
   const validate = () => {
     if (firstName === "") {
       setError("First name cannot be blank");
@@ -171,6 +148,7 @@ const CreateStudentForm = () => {
       }
     });
     const data = {
+      id: Cookies.get("id"),
       first_name: firstName,
       last_name: lastName,
       email,
@@ -191,11 +169,10 @@ const CreateStudentForm = () => {
     const id = Number(Cookies.get("id"));
 
     axios
-      .post("http://localhost:8080/api/users", data)
+      .put(`http://localhost:8080/api/users/${id}`, { data })
       .then((response) => {
         setSubmitted(response.data);
-        reset();
-        setTimeout(() => navigate(`/login`), 3000);
+        navigate(`/developers/${id}`);
       })
       .catch((err) => {
         console.log(err.message);
@@ -209,9 +186,7 @@ const CreateStudentForm = () => {
       <form className="w-100 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <div className="form-container">
           <div className="form-header">
-            <h3 className="text-center">
-              {Cookies.get("user") ? "Edit" : "Create"} Profile
-            </h3>
+            <h3 className="text-center">Edit Profile</h3>
             <div className="form-input">
               <input
                 type="text"

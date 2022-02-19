@@ -22,7 +22,11 @@ export default function Profile(props) {
 
   return (
     <div className="dev-profile-div">
-      <img src={user.avatar} className="developer-profile-thumbnail" alt={user.first_name} />
+      <img
+        src={user.avatar}
+        className="developer-profile-thumbnail"
+        alt={user.first_name}
+      />
       <span className="profile-header">
         <h3 className="title">
           {user.first_name} {user.last_name}
@@ -58,7 +62,7 @@ export default function Profile(props) {
         <BsTelephoneFill className="bs-icon" /> {user.phone_number}
       </p>
       {id === Cookies.get("id") ? (
-        <Button variant="outlined" href="profile/edit">
+        <Button variant="outlined" href={`/developers/${id}/profile/edit`}>
           <FaEdit /> EDIT
         </Button>
       ) : (

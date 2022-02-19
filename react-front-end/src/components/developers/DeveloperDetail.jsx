@@ -102,15 +102,20 @@ const DeveloperDetail = () => {
         <div className="profile-section">
           <Profile user={state.user} />
         </div>
-        <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
-        <div className="dev-section-right">
-          <div className="dev-project-header">
-            <h4 className="certification-title">My Projects</h4>
-            <Button variant="outlined" href="/projects/new">
-              Add New Project&nbsp;<GoPlus />
-            </Button>
-          </div>        
-          <div className="dev-project-section">{mappedProjects}</div>
+        <PerfectScrollbar
+          onScrollY={(container) =>
+            console.log(`scrolled to: ${container.scrollTop}.`)
+          }
+        >
+          <div className="dev-section-right">
+            <div className="dev-project-header">
+              <h4 className="certification-title">My Projects</h4>
+              <Button variant="outlined" href="/projects/new">
+                Add New Project&nbsp;
+                <GoPlus />
+              </Button>
+            </div>
+            <div className="dev-project-section">{mappedProjects}</div>
             <span className="certification-container">
               <h4 className="certification-title">Certifications</h4>
 

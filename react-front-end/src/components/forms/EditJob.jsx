@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import tech_stack from "../forms/TechStacks";
 import Button from "@mui/material/Button";
@@ -26,25 +26,38 @@ const CreateJob = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const { id } = useParams();
 
-  const reset = () => {
-    setTitle("");
-    setDescription("");
-    setJobType("");
-    setCheckedState(
-      tech_stack.map((skill) => {
-        return { ...skill, checked: false };
-      })
-    );
-    setSalary("");
-    setStartDate("");
-    setEndDate("");
-    setFeatured(false);
-    setApplyLink("");
-
-    setError();
-    setTimeout(() => setSubmitted(false), 3000);
-  };
+  useEffect(() => {
+    if (location.pathname !== "/jobs/new") {
+      axios.get(`/api/jobs/${id}`).then((response) => {
+        const data = response.data[0];
+        console.log(id);
+        console.log(data);
+        if (Cookies.get("employer")) {
+          if (Number(id) === data.id) {
+            setTitle(data.title);
+            setDescription(data.description);
+            setJobType(data.job_type);
+            setSalary(data.salary);
+            setStartDate(data.start_date.slice(0, 10));
+            setEndDate(data.end_date.slice(0, 10));
+            setFeatured(data.featured);
+            setApplyLink(data.apply_link);
+            const skills = data.tech_stack.split(",");
+            const newCheckedState = checkedState.map((skill) => {
+              if (skills.includes(skill.name)) {
+                skill.checked = true;
+              }
+              return skill;
+            });
+            setCheckedState(newCheckedState);
+          }
+        }
+      });
+    }
+  }, []);
 
   const validate = () => {
     if (title === "") {
@@ -95,6 +108,7 @@ const CreateJob = () => {
       }
     });
     const data = {
+      id,
       title,
       description,
       jobtype,
@@ -103,15 +117,15 @@ const CreateJob = () => {
       startDate,
       endDate,
       featured,
-      employerId: Cookies.get("id"),
       applyLink,
     };
+
+    console.log(id);
     axios
-      .post("http://localhost:8080/api/jobs", data)
+      .put(`http://localhost:8080/api/jobs/${id}`, data)
       .then((response) => {
         setSubmitted(response.data);
-        reset();
-        setTimeout(() => navigate("/jobs"), 3000);
+        setTimeout(() => navigate(`/employers/${Cookies.get("id")}`), 3000);
       })
       .catch((error) => {
         console.log(error.message);
@@ -122,7 +136,7 @@ const CreateJob = () => {
       {submitted ? <p>{submitted}</p> : ""}
       {error ? <p>{error}</p> : ""}
       <form className="row g-3" onSubmit={(e) => e.preventDefault()}>
-        <h3 className="text-center">Post new Job</h3>
+        <h3 className="text-center">Edit Job</h3>
         <div className="form-container">
           <div className="form-header">
             <div className="form-input">
