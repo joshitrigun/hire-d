@@ -32,12 +32,16 @@ const JobListItem = (props) => {
         <h5 className="text-highlight">${salary}</h5>
       </span>
       <br />
-      <Button variant="outlined" href={`/jobs/${id}/edit`}>
-        Edit
-      </Button>
-      <Button variant="outlined" href={apply_link} target="_blank">
-        Apply Here
-      </Button>
+      <div>
+        <Button variant="outlined" href={apply_link} target="_blank">
+          Apply Here
+        </Button>
+        <span className="ms-2">
+          <Button variant="outlined" href={`/jobs/${id}/edit`}>
+            Edit
+          </Button>
+        </span>
+      </div>
     </div>
   );
 };
