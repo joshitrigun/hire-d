@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+// import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "./CreateEmployerForm.module.css";
+import { useEffect } from "react";
 
-const CreateEmployerForm = () => {
+const EditEmployerForm = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -14,6 +17,7 @@ const CreateEmployerForm = () => {
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [LinkedinUrl, setLinkedinUrl] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -27,6 +31,7 @@ const CreateEmployerForm = () => {
     setCity("");
     setProvince("");
     setAvatar("");
+    setLinkedinUrl("");
     setTimeout(() => setSubmitted(false), 5000);
   };
 
@@ -87,15 +92,39 @@ const CreateEmployerForm = () => {
       city,
       province,
       github_url: "",
-      linkedin_url: "",
+      LinkedinUrl,
       resume: "",
       avatar,
       employer: true,
       skills: "",
     };
-    console.log(data);
+
+    useEffect(() => {
+      const id = Cookies.get("id");
+      axios.get(`/api/users/${id}`).then((response) => {
+        console.log(response.data);
+        const data = response.data;
+        data.forEach((user) => {
+          if (id) {
+            if (user.id === Number(id)) {
+              setFirstName(user.first_name);
+              setEmail(user.email);
+              setNumber(user.phone_number);
+              setPassword(user.password);
+              setAbout(user.about_me);
+              setCity(user.city);
+              setProvince(user.province);
+              setLinkedinUrl(user.linkedin_url);
+              setAvatar(user.avatar);
+            }
+          }
+        });
+      });
+    }, []);
+
+
     axios
-      .post("http://localhost:8080/api/users", data)
+      .put("http://localhost:8080/api/users/", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();
@@ -110,7 +139,7 @@ const CreateEmployerForm = () => {
       {submitted ? <p className="text-center">{submitted}</p> : ""}
       {error ? <p className="text-center">{error}</p> : ""}
       <form className="w-200 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <h3 className="text-center">Create Profile</h3>
+        <h3 className="text-center">Edit Profile</h3>
         <div className="form-container">
           <div className="form-header">
             <div className="form-input">
@@ -207,4 +236,4 @@ const CreateEmployerForm = () => {
   );
 };
 
-export default CreateEmployerForm;
+export default EditEmployerForm;

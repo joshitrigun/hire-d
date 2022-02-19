@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 const CreateCertification = () => {
   const [title, setTitle] = useState("");
@@ -112,19 +114,21 @@ const CreateCertification = () => {
         <input
           type="date"
           name="startDate"
+          placeholder="Start Date: "
           value={startDate}
           onChange={(event) => setStartDate(event.target.value)}
         />
         <input
           type="date"
           name="endDate"
+          placeholder="End Date: "
           value={endDate}
           onChange={(event) => setEndDate(event.target.value)}
         />
-        <button onClick={validate}>Save</button>
-        <Link to={"/"}>
-          <button>Cancel</button>
-        </Link>
+        <Stack spacing={2} direction="row">
+          <Button variant="outlined" onClick={validate}>Save</Button>
+          <Button variant="outlined" href="/">Cancel</Button>
+        </Stack>
       </form>
     </div>
   );

@@ -9,7 +9,6 @@ const EmployerList = () => {
   useEffect(() => {
     axios.get("/api/employers").then((response) => {
       setState(response.data);
-      console.log(response.data);
     }).catch(err => err)
   }, []);
 

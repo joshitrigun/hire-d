@@ -42,9 +42,6 @@ const EmployerDetail = () => {
       }).catch(err => err)
   }, []);
 
-  console.log(state.employer);
-  console.log(state.jobs);
-
   const mappedJobs = state.jobs.map(job => {
     return (
       <Fragment key={job.id}>
