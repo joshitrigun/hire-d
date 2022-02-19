@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import Cookies from "js-cookie";
 
 const CreateCertification = () => {
   const [title, setTitle] = useState("");
@@ -14,7 +13,27 @@ const CreateCertification = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const user_id = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { id, cert_id } = useParams();
+  console.log("useParams", useParams());
+  useEffect(() => {
+    if (location.pathname !== `/developers/${id}/certifications/new`) {
+      axios.get(`/api/certifications/${cert_id}`).then((response) => {
+        const data = response.data[0];
+        console.log(location.pathname);
+        console.log(data);
+        if (Cookies.get("id")) {
+          setTitle(data.title);
+          setStartDate(data.start_date.slice(0, 10));
+          setEndDate(data.end_date.slice(0, 10));
+          setInstitution(data.institution);
+          setCity(data.city);
+          setProvince(data.province);
+        }
+      });
+    }
+  }, []);
 
   const reset = () => {
     setTitle("");
@@ -64,23 +83,32 @@ const CreateCertification = () => {
       institution,
       city,
       province,
-      jobSeekerId: user_id.id,
+      jobSeekerId: 1,
     };
     console.log(data);
-    axios
-      .post("http://localhost:8080/api/certifications", data)
-      .then((response) => {
-        setSubmitted(response.data);
-        reset();
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    if (
+      Cookies.get("id") &&
+      location.pathname !== `/developers/${id}/certifications/new`
+    ) {
+      axios
+        .put(`http://localhost:8080/api/certifications/${cert_id}`, {
+          ...data,
+          cert_id,
+        })
+        .then((response) => {
+          setSubmitted(response.data);
+          reset();
+          setTimeout(() => navigate(`/developers/${id}`), 3000);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
   };
-  console.log("id", user_id);
+  console.log("id", id);
   return (
     <div>
-      <h3 className="text-center">Create certifications</h3>
+      <h3 className="text-center">Edit certifications</h3>
       {submitted ? <p className="text-center">{submitted}</p> : ""}
       {error ? <p className="text-center">{error}</p> : ""}
       <form className="w-50 mx-auto" onSubmit={(e) => e.preventDefault()}>
@@ -116,21 +144,19 @@ const CreateCertification = () => {
         <input
           type="date"
           name="startDate"
-          placeholder="Start Date: "
           value={startDate}
           onChange={(event) => setStartDate(event.target.value)}
         />
         <input
           type="date"
           name="endDate"
-          placeholder="End Date: "
           value={endDate}
           onChange={(event) => setEndDate(event.target.value)}
         />
-        <Stack spacing={2} direction="row">
-          <Button variant="outlined" onClick={validate}>Save</Button>
-          <Button variant="outlined" href="/">Cancel</Button>
-        </Stack>
+        <button onClick={validate}>Save</button>
+        <Link to={"/"}>
+          <button>Cancel</button>
+        </Link>
       </form>
     </div>
   );

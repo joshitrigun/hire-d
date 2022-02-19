@@ -348,9 +348,9 @@ const getJobsWithEmployers = (request, response) => {
   });
 };
 
-const getCertification = (reuqest, response) => {
+const getCertification = (request, response) => {
   const queryString = `SELECT * From certifications WHERE id = $1;`;
-  const value = [reuqest.params.id];
+  const value = [request.params.id];
 
   client.query(queryString, value, (error, results) => {
     if (error) {
@@ -360,7 +360,7 @@ const getCertification = (reuqest, response) => {
   });
 };
 
-const updateCertification = (reuqest, response) => {
+const updateCertification = (request, response) => {
   const {
     title,
     startDate,
@@ -369,9 +369,10 @@ const updateCertification = (reuqest, response) => {
     city,
     province,
     jobSeekerId,
-  } = reuqest.body;
+    cert_id
+  } = request.body;
 
-  const queryString = `UPDATE certification SET title = $1, start_date = $2, end_date = $3, institution = $4, city = $5, province = $6, jobseeker_id = $7 WHERE id = $8;`;
+  const queryString = `UPDATE certifications SET title = $1, start_date = $2, end_date = $3, institution = $4, city = $5, province = $6, jobseeker_id = $7 WHERE id = $8;`;
   const value = [
     title,
     startDate,
@@ -380,14 +381,14 @@ const updateCertification = (reuqest, response) => {
     city,
     province,
     jobSeekerId,
-    reuqest.params.id,
+    cert_id,
   ];
 
   client.query(queryString, value, (error, results) => {
     if (error) {
       throw error;
     }
-    response.status(200).json(results.rows);
+    response.status(200).send("Certfication updated");
   });
 };
 
