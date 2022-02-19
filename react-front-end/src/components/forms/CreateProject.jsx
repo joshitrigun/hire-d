@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import tech_stack from "./TechStacks";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -10,7 +10,6 @@ import { FaSave } from "react-icons/fa";
 
 const CreateProject = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const techArray = tech_stack.map((skill) => {
     return { ...skill, checked: false };
@@ -20,41 +19,9 @@ const CreateProject = () => {
   const [description, setDescription] = useState("");
   const [projectLink, setProjectLink] = useState("");
   const [screenshot, setScreenshot] = useState("");
-  const [likes, setLikes] = useState("");
   const [checkedState, setCheckedState] = useState(techArray);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    if (location.pathname !== "/projects/new") {
-      axios.get(`/api/projects/${id}`).then((response) => {
-        const data = response.data[0];
-        console.log(id);
-        console.log(data);
-        if (Cookies.get("id")) {
-          if (Number(id) === data.id) {
-            setTitle(data.title);
-            setDescription(data.description);
-            setProjectLink(data.project_url);
-            setScreenshot(data.screenshot);
-            setLikes(data.likes);
-            const skills = data.tech_stack.split(",");
-            console.log(skills);
-            const newCheckedState = checkedState.map((skill) => {
-              if (skills.includes(skill.name)) {
-                skill.checked = true;
-              }
-              return skill;
-            });
-            console.log(newCheckedState);
-            setCheckedState(newCheckedState);
-          }
-        }
-      });
-    }
-  }, []);
 
   const reset = () => {
     setTitle("");
@@ -111,34 +78,21 @@ const CreateProject = () => {
       title,
       description,
       owner_id: Cookies.get("id"),
-      likes,
       projectLink,
       screenshot,
       stack: stack.toString(),
     };
-    console.log(data);
-    if (Cookies.get("id") && location.pathname !== "/projects/new") {
-      axios
-        .put(`http://localhost:8080/api/projects/${id}`, { ...data, id })
-        .then((response) => {
-          setSubmitted(response.data);
-          reset();
-          setTimeout(() => navigate(`/projects/${id}`), 5000);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    } else {
-      axios
-        .post("http://localhost:8080/api/projects", data)
-        .then((response) => {
-          setSubmitted(response.data);
-          reset();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+
+    axios
+      .post("http://localhost:8080/api/projects", data)
+      .then((response) => {
+        setSubmitted(response.data);
+        reset();
+        navigate("/projects");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -146,9 +100,7 @@ const CreateProject = () => {
       {submitted ? <p>{submitted}</p> : ""}
       {error ? <p>{error}</p> : ""}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <h3 className="text-center">
-          {location.pathname === "/projects/new" ? "Create" : "Edit"} Project
-        </h3>
+        <h3 className="text-center">Create Project</h3>
         <div className="form-container">
           <div className="form-header">
             <div className="form-input">
