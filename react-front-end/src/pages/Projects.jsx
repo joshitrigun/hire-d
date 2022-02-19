@@ -15,6 +15,7 @@ const Projects = () => {
           <Route path="/" element={<ProjectList />} />
           <Route path=":id" element={<ProjectDetails />} />
           <Route path="new" element={<CreateProject />} />
+          <Route path=":id/edit" element={<CreateProject />} />
         </Routes>
       </div>
     </div>

@@ -17,7 +17,7 @@ const AllProjects = () => {
       <div className="projects-block">
         <ProjectListItem
           key={project.id.toString}
-          id={project.id}
+          project_id={project.id}
           title={project.title}
           screenshot={project.screenshot}
           likes={project.likes}
@@ -28,9 +28,7 @@ const AllProjects = () => {
 
   return (
     <div className="main">
-        <div className="project-container">
-          {mappedProjects}
-        </div>
+      <div className="project-container">{mappedProjects}</div>
     </div>
   );
 };

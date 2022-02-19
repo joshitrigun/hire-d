@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 const DeveloperDetail = () => {
   const [state, setState] = useState({
     user: {},
+    // users: [],
     projects: [],
     certifications: [],
   });
@@ -42,12 +43,21 @@ const DeveloperDetail = () => {
     return certificates;
   };
 
+  // useEffect(() => {
+  //   if (state.users && state.users.length > 0) {
+  //     setState((prev) => ({
+  //       ...prev,
+  //       user: userDetails(state.users, Number(url_id.id)),
+  //     }));
+  //   }
+  // }, [url_id]);
+
   useEffect(() => {
     Promise.all([getUsers, getProjects, getCertifications]).then((response) => {
-      console.log("response", response);
       setState((prev) => ({
         ...prev,
         user: userDetails(response[0].data, Number(url_id.id)),
+        // users: response[0].data,
         projects: getProjectsByUser(response[1].data, Number(url_id.id)),
         certifications: getCertificationsByUser(
           response[2].data,
@@ -55,14 +65,14 @@ const DeveloperDetail = () => {
         ),
       }));
     });
-  }, []);
+  }, [url_id]);
 
   const mappedProjects = state.projects.map((project) => {
     return (
       <div className="projects-block">
         <ProjectListItem
           key={project.id}
-          id={project.id}
+          project_id={project.id}
           title={project.title}
           screenshot={project.screenshot}
           likes={project.likes}
@@ -73,16 +83,16 @@ const DeveloperDetail = () => {
 
   const mappedCertification = state.certifications.map((certification) => {
     return (
-        <Certification
-          key={certification.id}
-          cert_id={certification.id}
-          title={certification.title}
-          institution={certification.institution}
-          city={certification.city}
-          province={certification.province}
-          startDate={certification.start_date}
-          endDate={certification.end_date}
-        />
+      <Certification
+        key={certification.id}
+        cert_id={certification.id}
+        title={certification.title}
+        institution={certification.institution}
+        city={certification.city}
+        province={certification.province}
+        startDate={certification.start_date}
+        endDate={certification.end_date}
+      />
     );
   });
 
@@ -92,20 +102,29 @@ const DeveloperDetail = () => {
         <div className="profile-section">
           <Profile user={state.user} />
         </div>
-        <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
-        <div className="section-right">
-      <Button variant="outlined" href="/projects/new">
-        Add New Project&nbsp;<GoPlus />
-      </Button>
-          <div className="project-section">{mappedProjects}</div>
-          <span className="certification-container">
-            <h4 className="certification-title">Certifications</h4>
-            <Button variant="outlined" href={`${url_id.id}/certifications/new`}>
-              Add New&nbsp;<GoPlus />
+        <PerfectScrollbar
+          onScrollY={(container) =>
+            console.log(`scrolled to: ${container.scrollTop}.`)
+          }
+        >
+          <div className="section-right">
+            <Button variant="outlined" href="/projects/new">
+              Add New Project&nbsp;
+              <GoPlus />
             </Button>
-          </span>
-          <div className="certification-section">{mappedCertification}</div>
-        </div>
+            <div className="project-section">{mappedProjects}</div>
+            <span className="certification-container">
+              <h4 className="certification-title">Certifications</h4>
+              <Button
+                variant="outlined"
+                href={`${url_id.id}/certifications/new`}
+              >
+                Add New&nbsp;
+                <GoPlus />
+              </Button>
+            </span>
+            <div className="certification-section">{mappedCertification}</div>
+          </div>
         </PerfectScrollbar>
       </div>
     </div>

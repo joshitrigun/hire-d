@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsHeart } from "react-icons/bs";
-import { NavLink, useNavigate } from "react-router-dom";
+import {
+  NavLink,
+  useParams,
+  useLocation,
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import Cookies from "js-cookie";
+import { FaEdit } from "react-icons/fa";
 import "./ProjectListItem.css";
-// import axios from 'axios';
 
 const ProjectListItem = (props) => {
+  const [isProfile, setIsProfile] = useState(false);
+  const location = useLocation();
+  let { id } = useParams();
+  const currentUser = Cookies.get("id");
 
-  const { id, title, screenshot, likes } = props;
+  const { project_id, title, screenshot, likes } = props;
 
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/projects/${id}`; 
+  useEffect(() => {
+    if (currentUser === id && location.pathname === `/developers/${id}`) {
+      setIsProfile(true);
+    }
+  }, []);
+
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/projects/${id}`;
     navigate(path);
-  }
-
+  };
   const countLikes = (event) => {
     console.log("Liked");
   };
@@ -24,9 +40,16 @@ const ProjectListItem = (props) => {
         <img className="project-thumbnail" src={screenshot} alt={title} />
       </div>
       <span className="project-block-footer">
-        <NavLink className="title-link" to={`/projects/${id}`}>
+        <NavLink className="title-link" to={`/projects/${project_id}`}>
           <h5 className="project-title">{title}</h5>
         </NavLink>
+        {isProfile ? (
+          <Link className="btn btn-primary" to={`/projects/${project_id}/edit`}>
+            <FaEdit /> EDIT
+          </Link>
+        ) : (
+          ""
+        )}
         <p>
           <BsHeart className="likes" onClick={countLikes} /> {likes}
         </p>
