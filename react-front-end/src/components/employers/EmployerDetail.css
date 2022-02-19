@@ -35,7 +35,7 @@
 .emp-job-section {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-start;
   flex-wrap: wrap;
   height: 75vh;
