@@ -65,7 +65,7 @@ const DeveloperDetail = () => {
         ),
       }));
     });
-  }, [url_id]);
+  }, [url_id.id]);
 
   const mappedProjects = state.projects.map((project) => {
     return (
@@ -102,19 +102,18 @@ const DeveloperDetail = () => {
         <div className="profile-section">
           <Profile user={state.user} />
         </div>
-        <PerfectScrollbar
-          onScrollY={(container) =>
-            console.log(`scrolled to: ${container.scrollTop}.`)
-          }
-        >
-          <div className="section-right">
+        <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+        <div className="dev-section-right">
+          <div className="dev-project-header">
+            <h4 className="certification-title">My Projects</h4>
             <Button variant="outlined" href="/projects/new">
-              Add New Project&nbsp;
-              <GoPlus />
+              Add New Project&nbsp;<GoPlus />
             </Button>
-            <div className="project-section">{mappedProjects}</div>
+          </div>        
+          <div className="dev-project-section">{mappedProjects}</div>
             <span className="certification-container">
               <h4 className="certification-title">Certifications</h4>
+
               <Button
                 variant="outlined"
                 href={`/developers/${url_id.id}/certifications/new`}
