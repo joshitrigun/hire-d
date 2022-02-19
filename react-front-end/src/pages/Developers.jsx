@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import DeveloperList from "../components/developers/DeveloperList";
 import DeveloperDetail from "../components/developers/DeveloperDetail";
 import CreateCertification from "../components/certifications/CreateCertification";
+import EditCertification from "../components/certifications/EditCertification";
 import CreateSeekerForm from "../components/forms/CreateSeekerForm";
 
 const Developers = () => {
@@ -17,6 +18,10 @@ const Developers = () => {
           <Route
             path=":id/certifications/new"
             element={<CreateCertification />}
+          />
+          <Route
+            path=":id/certifications/:cert_id/edit"
+            element={<EditCertification />}
           />
           <Route path=":id/profile/edit" element={<CreateSeekerForm />} />
         </Routes>
