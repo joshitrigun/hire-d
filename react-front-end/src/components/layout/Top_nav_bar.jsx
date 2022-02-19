@@ -13,12 +13,6 @@ const TopNavBar = () => {
     navigate("/");
   };
 
-  const usernameHandler = () => {
-    const id = Cookies.get("id");
-    console.log(id);
-    navigate(`/developers/${id}`);
-  };
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
@@ -57,13 +51,10 @@ const TopNavBar = () => {
                     {Cookies.get("user")}
                   </NavLink>
                 </li>
-                {/* <li className="nav-item fs-5 pt-2 px-3 username">
-                  <a onClick={usernameHandler}>{Cookies.get("user")}</a>
-                </li> */}
                 <li className="nav-item">
-                  <a className="nav-link signout-btn" onClick={signoutHandler}>
+                  <p className="nav-link signout-btn" onClick={signoutHandler}>
                     Signout
-                  </a>
+                  </p>
                 </li>
               </React.Fragment>
             ) : (
@@ -80,17 +71,6 @@ const TopNavBar = () => {
                 </li>
               </React.Fragment>
             )}
-            {/* <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                <BsSearch className="bs-icon" />
-              </button>
-            </form> */}
           </ul>
         </div>
       </div>
