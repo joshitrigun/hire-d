@@ -27,7 +27,7 @@ const ProjectListItem = (props) => {
 
   let navigate = useNavigate();
   const routeChange = () => {
-    let path = `/projects/${id}`;
+    let path = `/projects/${project_id}`;
     navigate(path);
   };
   const countLikes = (event) => {
@@ -35,8 +35,8 @@ const ProjectListItem = (props) => {
   };
 
   return (
-    <div className="project-block" onClick={routeChange}>
-      <div className="project-img-frame">
+    <div className="project-block">
+      <div className="project-img-frame" onClick={routeChange}>
         <img className="project-thumbnail" src={screenshot} alt={title} />
       </div>
       <span className="project-block-footer">

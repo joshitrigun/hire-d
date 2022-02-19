@@ -85,7 +85,6 @@ const CreateStudentForm = () => {
         return { ...skill, checked: false };
       })
     );
-    // console.log("checked state:", checkedState);
     setTimeout(() => setSubmitted(false), 5000);
   };
 
@@ -157,7 +156,6 @@ const CreateStudentForm = () => {
 
   const onChangeHandler = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
-      // console.log(`item ${item}, index ${index}, position ${position}`)
       index === position
         ? { ...item, checked: !item.checked }
         : { ...item, checked: item.checked }
@@ -166,14 +164,12 @@ const CreateStudentForm = () => {
   };
 
   const onSubmitHandler = () => {
-    console.log(checkedState);
     const stack = [];
     checkedState.forEach((item, index) => {
       if (item.checked) {
         stack.push(item.name);
       }
     });
-    console.log(stack);
     const data = {
       id: Cookies.get("id"),
       first_name: firstName,

@@ -16,7 +16,7 @@ const AllProjects = () => {
     return (
       <div className="projects-block">
         <ProjectListItem
-          key={project.id.toString}
+          key={project.id}
           project_id={project.id}
           title={project.title}
           screenshot={project.screenshot}
