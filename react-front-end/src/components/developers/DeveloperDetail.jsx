@@ -117,7 +117,7 @@ const DeveloperDetail = () => {
               <h4 className="certification-title">Certifications</h4>
               <Button
                 variant="outlined"
-                href={`${url_id.id}/certifications/new`}
+                href={`/developers/${url_id.id}/certifications/new`}
               >
                 Add New&nbsp;
                 <GoPlus />

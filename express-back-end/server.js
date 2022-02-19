@@ -55,8 +55,8 @@ App.post("/api/users", createUser);
 App.post("/api/certifications", createCertification);
 App.post("/api/jobs", createJobs);
 App.get("/api/certifications/:id", getCertification);
-App.put("/api/certifications/:id", updateCertification);
 
+App.put("/api/certifications/:id", updateCertification);
 App.put("/api/users/:id", updateUser);
 App.put("/api/projects/:id", updateProject);
 
