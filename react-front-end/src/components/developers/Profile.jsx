@@ -21,8 +21,8 @@ export default function Profile(props) {
   const { user } = props;
 
   return (
-    <div className="profile-div">
-      <img src={user.avatar} className="profile-img" alt={user.first_name} />
+    <div className="dev-profile-div">
+      <img src={user.avatar} className="developer-profile-thumbnail" alt={user.first_name} />
       <span className="profile-header">
         <h3 className="title">
           {user.first_name} {user.last_name}

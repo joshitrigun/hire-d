@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 90%;
+  width: 100%;
   flex-direction: column;
 }
 
@@ -14,7 +14,7 @@
   width: 100%;
 }
 
-.section-right {
+.dev-section-right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -23,8 +23,8 @@
   height: 75vh;
 }
 
-.project-section {
-  width: 95%;
+.dev-project-section {
+  width: 90%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -34,11 +34,18 @@
   margin-bottom: 1em;
 }
 .certification-section {
-  width: 95%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
   border: 1px;
   border-radius: 1rem;
+}
+
+.dev-project-header {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

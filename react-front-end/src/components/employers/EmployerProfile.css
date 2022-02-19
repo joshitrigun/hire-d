@@ -1,16 +1,13 @@
 body {
   font-family: "Roboto Slab", serif;
 }
-.profile-section {
-  width: 45em;
-  margin-top: 2em;
-}
 
-.dev-profile-div {
-  margin-top: .5em;
+.employer-profile-div {
+  margin-top: 5.5em;
+  left: 4em;
   padding: 0 2em;
-  width: 28em;
-  height: 42em;
+  width: 35em;
+  height: 25em;
   background-color: rgb(250, 250, 250);
   border-radius: 2%;
   display: flex;
@@ -34,15 +31,16 @@ body {
   box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
 }
 
-.developer-profile-thumbnail {
+.employer-profile-img {
   margin-top: -5em;
   margin-bottom: 1em;;
-  width: 10em;
-  height: 10em;
+  width: 12em;
+  height: 12em;
   border-radius: 50%;
   border: #3f51b5 solid 4px;
   z-index: 999;
   object-fit: cover;
+  background-color: white;
 }
 
 .title {

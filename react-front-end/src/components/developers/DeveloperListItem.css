@@ -7,6 +7,9 @@
   flex-wrap: wrap;
 }
 
+.developer-detail-container {
+  width: 100%;
+}
 .developer-block {
   display: flex;
   flex-direction: column;

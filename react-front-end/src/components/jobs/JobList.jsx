@@ -13,6 +13,7 @@ const JobList = () => {
   }, []);
 
   const mappedJobs = jobs.map((job) => {
+    console.log(job);
     return (
       <JobListItem
         key={job.id}
