@@ -27,7 +27,7 @@ const ProjectListItem = (props) => {
 
   let navigate = useNavigate();
   const routeChange = () => {
-    let path = `/projects/${id}`;
+    let path = `/projects/${project_id}`;
     navigate(path);
   };
   const countLikes = (event) => {
