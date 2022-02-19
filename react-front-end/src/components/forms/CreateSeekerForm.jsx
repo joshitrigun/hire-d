@@ -85,7 +85,7 @@ const CreateStudentForm = () => {
         return { ...skill, checked: false };
       })
     );
-    setTimeout(() => setSubmitted(false), 5000);
+    setTimeout(() => setSubmitted(false), 3000);
   };
 
   const validate = () => {
@@ -171,7 +171,6 @@ const CreateStudentForm = () => {
       }
     });
     const data = {
-      id: Cookies.get("id"),
       first_name: firstName,
       last_name: lastName,
       email,
@@ -190,28 +189,17 @@ const CreateStudentForm = () => {
     };
     console.log(data);
     const id = Number(Cookies.get("id"));
-    if (Cookies.get("id")) {
-      axios
-        .put(`http://localhost:8080/api/users/${id}`, { data })
-        .then((response) => {
-          setSubmitted(response.data);
-          reset();
-          navigate(`/developers/${id}`);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    } else {
-      axios
-        .post("http://localhost:8080/api/users", data)
-        .then((response) => {
-          setSubmitted(response.data);
-          reset();
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    }
+
+    axios
+      .post("http://localhost:8080/api/users", data)
+      .then((response) => {
+        setSubmitted(response.data);
+        reset();
+        setTimeout(() => navigate(`/login`), 3000);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   return (
