@@ -28,7 +28,11 @@ const LoginForm = () => {
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
           </label>
-          <input type="email" className="form-control" id="exampleInputEmail1" />
+          <input
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+          />
         </div>
         <div className="form-input">
           <label htmlFor="exampleInputPassword1" className="form-label">
@@ -46,23 +50,25 @@ const LoginForm = () => {
             <Link to={"/signup"}>Click here to register</Link>
           </span>
         </div>
-        
-        <Button
-          variant="outlined"
-          type="submit"
-          className="btn btn-primary"
-          onClick={onSeekerHandler}
-        >
-          Job Seeker
-        </Button>
-        <Button
-          variant="outlined"
-          type="submit"
-          className="btn btn-primary"
-          onClick={onEmployerHandler}
-        >
-          Employer
-        </Button>
+
+        <div className="pt-4">
+          <Button
+            variant="outlined"
+            type="submit"
+            className="btn btn-primary"
+            onClick={onSeekerHandler}
+          >
+            Job Seeker
+          </Button>
+          <Button
+            variant="outlined"
+            type="submit"
+            className="btn btn-primary ms-2"
+            onClick={onEmployerHandler}
+          >
+            Employer
+          </Button>
+        </div>
       </form>
     </div>
   );
