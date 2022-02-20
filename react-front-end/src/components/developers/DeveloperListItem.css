@@ -1,6 +1,6 @@
 .developer-container {
   padding: 4em;
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -18,14 +18,14 @@
   margin: 5em 2em;
   width: 24em;
   height: 20em;
-  background-color: rgb(250,250,250);
+  background-color: rgb(250, 250, 250);
   border-radius: 1em;
-  transition: .5s;
+  transition: 0.5s;
   cursor: pointer;
 }
 
 .developer-block:hover {
-  box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.35);
 }
 
 .developer-block p {
@@ -55,7 +55,7 @@
 }
 
 .title-link {
-  margin-top: .25em;
+  margin-top: 0.25em;
   text-decoration: none;
   color: #212529;
   cursor: pointer;
@@ -69,7 +69,7 @@
 }
 
 .certification-title {
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 .certification-section {
