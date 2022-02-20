@@ -78,6 +78,7 @@ const CreateProject = () => {
       title,
       description,
       owner_id: Cookies.get("id"),
+      likes: 0,
       projectLink,
       screenshot,
       stack: stack.join(", "),
