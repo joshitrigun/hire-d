@@ -4,7 +4,7 @@ import tech_stack from "./TechStacks";
 import Cookies from "js-cookie";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import "../forms/CreateProject.css";
+import "../forms/CreateProject.module.css";
 import Stack from "@mui/material/Stack";
 import { FaSave } from "react-icons/fa";
 
@@ -99,7 +99,7 @@ const CreateProject = () => {
       likes,
       projectLink,
       screenshot,
-      stack: stack.toString(),
+      stack: stack.join(", "),
     };
     console.log(data);
     axios
@@ -115,8 +115,20 @@ const CreateProject = () => {
 
   return (
     <div>
-      {submitted ? <p>{submitted}</p> : ""}
-      {error ? <p>{error}</p> : ""}
+      {submitted ? (
+        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+          {submitted}
+        </p>
+      ) : (
+        ""
+      )}
+      {error ? (
+        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+          {error}
+        </p>
+      ) : (
+        ""
+      )}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Edit Project</h3>
         <div className="form-container">
