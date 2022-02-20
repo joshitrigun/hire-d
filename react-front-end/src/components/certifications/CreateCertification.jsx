@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import Button from "@mui/material/Button";
+import "./EditCertification.css";
+import Stack from "@mui/material/Stack";
 const CreateCertification = () => {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -78,55 +80,72 @@ const CreateCertification = () => {
   console.log("id", user_id);
   return (
     <div>
-      <h3 className="text-center">Create certifications</h3>
       {submitted ? <p className="text-center">{submitted}</p> : ""}
       {error ? <p className="text-center">{error}</p> : ""}
-      <form className="w-50 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="text"
-          placeholder="Enter title"
-          name="title"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Enter institution"
-          name="institution"
-          value={institution}
-          onChange={(event) => setInstitution(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Enter Province"
-          name="province"
-          value={province}
-          onChange={(event) => setProvince(event.target.value)}
-        />
-
-        <input
-          type="text"
-          placeholder="Enter city"
-          name="city"
-          value={city}
-          onChange={(event) => setCity(event.target.value)}
-        />
-        <input
-          type="date"
-          name="startDate"
-          value={startDate}
-          onChange={(event) => setStartDate(event.target.value)}
-        />
-        <input
-          type="date"
-          name="endDate"
-          value={endDate}
-          onChange={(event) => setEndDate(event.target.value)}
-        />
-        <button onClick={validate}>Save</button>
-        <Link to={"/"}>
-          <button>Cancel</button>
-        </Link>
+      <form className="w-100 mx-auto" onSubmit={(e) => e.preventDefault()}>
+        <div className="certification-form-container">
+          <h3 className="text-center">Add certification</h3>
+          <div className="form-input">
+            <input
+              type="text"
+              placeholder="Enter title"
+              name="title"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+          </div>
+          <div className="form-input">
+            <input
+              type="text"
+              placeholder="Enter institution"
+              name="institution"
+              value={institution}
+              onChange={(event) => setInstitution(event.target.value)}
+            />
+          </div>
+          <div className="form-input">
+            <input
+              type="text"
+              placeholder="Enter Province"
+              name="province"
+              value={province}
+              onChange={(event) => setProvince(event.target.value)}
+            />
+          </div>
+          <div className="form-input">
+            <input
+              type="text"
+              placeholder="Enter city"
+              name="city"
+              value={city}
+              onChange={(event) => setCity(event.target.value)}
+            />
+          </div>
+          <div className="form-input">
+            <input
+              type="date"
+              placeholder="Start Date:"
+              name="startDate"
+              value={startDate}
+              onChange={(event) => setStartDate(event.target.value)}
+            />
+          </div>
+          <div className="form-input">
+            <input
+              type="date"
+              placeholder="End Date:"
+              name="endDate"
+              value={endDate}
+              onChange={(event) => setEndDate(event.target.value)}
+            />
+          </div>
+        </div>
+          <div className="certification-button">
+          <Stack spacing={2} direction="row">
+            <Button variant="outlined" onClick={validate}>Save</Button>
+            <Button variant="outlined" href="/">Cancel</Button>
+          </Stack>
+          </div>
       </form>
     </div>
   );

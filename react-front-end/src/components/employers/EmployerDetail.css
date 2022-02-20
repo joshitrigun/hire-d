@@ -32,10 +32,17 @@
   align-items: flex-start;
   flex-wrap: wrap;
 }
+
+.employer-job-section .scrollbar-container {
+  width: 65em;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .emp-job-section {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
   height: 75vh;
