@@ -9,14 +9,14 @@ const LoginForm = () => {
 
   const onSeekerHandler = () => {
     Cookies.set("user", "trigunjoshi@gmail.com");
-    Cookies.set("employer", false);
+    Cookies.set("employer", "false");
     Cookies.set("id", "1");
     navigate("/");
   };
 
   const onEmployerHandler = () => {
     Cookies.set("user", "amazon@gmail.com");
-    Cookies.set("employer", true);
+    Cookies.set("employer", "true");
     Cookies.set("id", "13");
     navigate("/");
   };
