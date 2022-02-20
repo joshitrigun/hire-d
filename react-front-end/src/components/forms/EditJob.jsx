@@ -47,8 +47,9 @@ const CreateJob = () => {
             setFeatured(data.featured);
             setApplyLink(data.apply_link);
             const skills = data.tech_stack.split(",");
+            const newSkills = skills.map((skill) => skill.trim());
             const newCheckedState = checkedState.map((skill) => {
-              if (skills.includes(skill.name)) {
+              if (newSkills.includes(skill.name)) {
                 skill.checked = true;
               }
               return skill;
