@@ -1,12 +1,11 @@
 .message {
   width: 100%;
 }
-.form-container .forms {
+.seeker-form-container .forms {
   display: flex;
   justify-content: center;
-  /* margin-left: 1em; */
 }
-.form-container {
+.seeker-form-container {
   margin-bottom: 1em;
   display: flex;
   flex-direction: column;
