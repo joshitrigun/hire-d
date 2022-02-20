@@ -9,6 +9,7 @@ import {
 } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
 import Button from "@mui/material/Button";
+import Cookies from "js-cookie";
 
 export default function EmployerProfile(props) {
   const {
@@ -49,10 +50,14 @@ export default function EmployerProfile(props) {
         &nbsp;<a href={linkedin_url}>{linkedin_url}</a>
       </p>
       <br />
-      <Button variant="outlined" href={`${id}/edit`}>
-        <FaEdit />
-        &nbsp; EDIT
-      </Button>
+      {id === Cookies.get("id") ? (
+        <Button variant="outlined" href={`${id}/edit`}>
+          <FaEdit />
+          &nbsp; EDIT
+        </Button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

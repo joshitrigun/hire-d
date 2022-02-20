@@ -9,6 +9,7 @@ import "./DeveloperDetail.css";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import Button from "@mui/material/Button";
+import Cookies from "js-cookie";
 
 const DeveloperDetail = () => {
   const [state, setState] = useState({
@@ -110,10 +111,16 @@ const DeveloperDetail = () => {
           <div className="dev-section-right">
             <div className="dev-project-header">
               <h4 className="certification-title">My Projects</h4>
-              <Button variant="outlined" href="/projects/new">
-                Add New Project&nbsp;
-                <GoPlus />
-              </Button>
+              {Cookies.get("id") === url_id.id ? (
+                <span className="ms-2">
+                  <Button variant="outlined" href="/projects/new">
+                    Add New Project&nbsp;
+                    <GoPlus />
+                  </Button>
+                </span>
+              ) : (
+                ""
+              )}
             </div>
             <div className="dev-project-section">{mappedProjects}</div>
             <span className="certification-container">
