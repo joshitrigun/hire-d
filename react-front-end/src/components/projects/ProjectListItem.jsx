@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BsHeart } from "react-icons/bs";
-import {
-  NavLink,
-  useParams,
-  useLocation,
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { FaEdit } from "react-icons/fa";
+import Button from "@mui/material/Button";
 import "./ProjectListItem.css";
 
 const ProjectListItem = (props) => {
@@ -44,9 +39,11 @@ const ProjectListItem = (props) => {
           <h5 className="project-title">{title}</h5>
         </NavLink>
         {isProfile ? (
-          <Link className="btn btn-primary" to={`/projects/${project_id}/edit`}>
-            <FaEdit /> EDIT
-          </Link>
+          <Button variant="outlined" href={`/projects/${project_id}/edit`}>
+            <span>
+              <FaEdit /> EDIT
+            </span>
+          </Button>
         ) : (
           ""
         )}

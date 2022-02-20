@@ -33,7 +33,7 @@ const CreateProject = () => {
         return { ...skill, checked: false };
       })
     );
-    setTimeout(() => setSubmitted(false), 5000);
+    setTimeout(() => setSubmitted(false), 3000);
   };
 
   const validate = () => {
@@ -80,7 +80,7 @@ const CreateProject = () => {
       owner_id: Cookies.get("id"),
       projectLink,
       screenshot,
-      stack: stack.toString(),
+      stack: stack.join(", "),
     };
 
     axios
@@ -88,7 +88,7 @@ const CreateProject = () => {
       .then((response) => {
         setSubmitted(response.data);
         reset();
-        navigate("/projects");
+        setTimeout(() => navigate("/projects"), 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -97,11 +97,23 @@ const CreateProject = () => {
 
   return (
     <div>
-      {submitted ? <p>{submitted}</p> : ""}
-      {error ? <p>{error}</p> : ""}
+      {submitted ? (
+        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+          {submitted}
+        </p>
+      ) : (
+        ""
+      )}
+      {error ? (
+        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+          {error}
+        </p>
+      ) : (
+        ""
+      )}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Create Project</h3>
-        <div className="form-container">
+        <div className="project-form-container">
           <div className="form-header">
             <div className="form-input">
               <input

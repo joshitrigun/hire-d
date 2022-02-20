@@ -112,7 +112,7 @@ const CreateJob = () => {
       title,
       description,
       jobtype,
-      stack: stack.toString(),
+      stack: stack.join(", "),
       salary,
       startDate,
       endDate,
@@ -133,8 +133,20 @@ const CreateJob = () => {
   };
   return (
     <div className="job_form">
-      {submitted ? <p>{submitted}</p> : ""}
-      {error ? <p>{error}</p> : ""}
+      {submitted ? (
+        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+          {submitted}
+        </p>
+      ) : (
+        ""
+      )}
+      {error ? (
+        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+          {error}
+        </p>
+      ) : (
+        ""
+      )}
       <form className="row g-3" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Edit Job</h3>
         <div className="form-container">
