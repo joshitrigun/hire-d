@@ -4,7 +4,7 @@ import tech_stack from "./TechStacks";
 import Cookies from "js-cookie";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import "../forms/CreateProject.module.css";
+import "../forms/CreateProject.css";
 import Stack from "@mui/material/Stack";
 import { FaSave } from "react-icons/fa";
 
@@ -113,7 +113,7 @@ const CreateProject = () => {
       )}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Create Project</h3>
-        <div className="form-container">
+        <div className="project-form-container">
           <div className="form-header">
             <div className="form-input">
               <input
