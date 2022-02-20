@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-// import { useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
