@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import "../forms/CreateProject.css";
 import Stack from "@mui/material/Stack";
 import { FaSave } from "react-icons/fa";
+import onChangeHandler from "../../helpers/onChangeHandler";
 
 const CreateProject = () => {
   const navigate = useNavigate();
@@ -41,8 +42,9 @@ const CreateProject = () => {
             setScreenshot(data.screenshot);
             setLikes(data.likes);
             const skills = data.tech_stack.split(",");
+            const newSkills = skills.map((skill) => skill.trim());
             const newCheckedState = checkedState.map((skill) => {
-              if (skills.includes(skill.name)) {
+              if (newSkills.includes(skill.name)) {
                 skill.checked = true;
               }
               return skill;
@@ -74,15 +76,6 @@ const CreateProject = () => {
 
     setError("");
     onSubmitHandler();
-  };
-
-  const onChangeHandler = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position
-        ? { ...item, checked: !item.checked }
-        : { ...item, checked: item.checked }
-    );
-    setCheckedState(updatedCheckedState);
   };
 
   const onSubmitHandler = () => {
@@ -185,7 +178,9 @@ const CreateProject = () => {
                         value={name}
                         id={name}
                         checked={checkedState[index].checked}
-                        onChange={() => onChangeHandler(index)}
+                        onChange={() =>
+                          onChangeHandler(index, checkedState, setCheckedState)
+                        }
                       />
                       <label htmlFor={name}>{name}</label>
                     </div>

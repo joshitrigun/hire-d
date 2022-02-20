@@ -6,6 +6,7 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { FaSave } from "react-icons/fa";
+import onChangeHandler from "../../helpers/onChangeHandler";
 import "../forms/CreateProject.css";
 
 const CreateProject = () => {
@@ -58,15 +59,6 @@ const CreateProject = () => {
     onSubmitHandler();
   };
 
-  const onChangeHandler = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position
-        ? { ...item, checked: !item.checked }
-        : { ...item, checked: item.checked }
-    );
-    setCheckedState(updatedCheckedState);
-  };
-
   const onSubmitHandler = () => {
     const stack = [];
     checkedState.forEach((item, index) => {
@@ -78,6 +70,7 @@ const CreateProject = () => {
       title,
       description,
       owner_id: Cookies.get("id"),
+      likes: 0,
       projectLink,
       screenshot,
       stack: stack.join(", "),
@@ -167,7 +160,9 @@ const CreateProject = () => {
                         value={name}
                         id={name}
                         checked={checkedState[index].checked}
-                        onChange={() => onChangeHandler(index)}
+                        onChange={() =>
+                          onChangeHandler(index, checkedState, setCheckedState)
+                        }
                       />
                       <label htmlFor={name}>{name}</label>
                     </div>

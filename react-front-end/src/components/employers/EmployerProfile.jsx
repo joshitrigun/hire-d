@@ -50,7 +50,7 @@ export default function EmployerProfile(props) {
         &nbsp;<a href={linkedin_url}>{linkedin_url}</a>
       </p>
       <br />
-      {id === Cookies.get("id") ? (
+      {id === Number(Cookies.get("id")) ? (
         <Button variant="outlined" href={`${id}/edit`}>
           <FaEdit />
           &nbsp; EDIT
