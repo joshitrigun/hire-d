@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUserGraduate, FaEdit } from "react-icons/fa";
 import dateFormat from "dateformat";
-import "./certification.css";
+import "./Certification.css";
 import Cookies from "js-cookie";
 import Button from "@mui/material/Button";
 
