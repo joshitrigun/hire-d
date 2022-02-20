@@ -6,6 +6,7 @@ import JobListItem from "../jobs/JobListItem";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import Button from "@mui/material/Button";
 import { GoPlus } from "react-icons/go";
+import Cookies from "js-cookie";
 import "./EmployerProfile.css";
 import "./EmployerDetail.css";
 
@@ -84,10 +85,16 @@ const EmployerDetail = () => {
       </div>
       <div className="employer-section-right">
         <div className="emp-job-section-header">
-          <Button variant="outlined" href="/jobs/new">
-            Post New Job&nbsp;
-            <GoPlus />
-          </Button>
+          {Cookies.get("employer") === "true" ? (
+            <span className="ms-2">
+              <Button variant="outlined" href="/jobs/new">
+                Post New Job&nbsp;
+                <GoPlus />
+              </Button>
+            </span>
+          ) : (
+            ""
+          )}
         </div>
         <div className="employer-job-section">
           <PerfectScrollbar>
