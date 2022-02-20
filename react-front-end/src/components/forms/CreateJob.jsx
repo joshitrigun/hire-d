@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import "../forms/CreateJob.css";
 import { FaSave } from "react-icons/fa";
 import Cookies from "js-cookie";
+import onChangeHandler from "../../helpers/onChangeHandler";
 
 const CreateJob = () => {
   const techArray = tech_stack.map((skill) => {
@@ -68,15 +69,6 @@ const CreateJob = () => {
     }
     setError("");
     onSubmitHandler();
-  };
-
-  const onChangeHandler = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position
-        ? { ...item, checked: !item.checked }
-        : { ...item, checked: item.checked }
-    );
-    setCheckedState(updatedCheckedState);
   };
 
   const onCheckHandler = () => {
@@ -215,7 +207,9 @@ const CreateJob = () => {
                         value={name}
                         id={name}
                         checked={checkedState[index].checked}
-                        onChange={() => onChangeHandler(index)}
+                        onChange={() =>
+                          onChangeHandler(index, checkedState, setCheckedState)
+                        }
                       />
                       <label htmlFor={name}>{name}</label>
                     </div>
