@@ -61,7 +61,7 @@ body {
   align-items: flex-start;
   flex-wrap: wrap;
   width: 66em;
-  height: 70vh;
+  height: 75vh;
 }
 .home-left-side {
   display: flex;
@@ -84,7 +84,7 @@ body {
 }
 
 .hot-jobs-section {
-  height: 68vh;
+  height: 72vh;
 }
 
 h4 {
@@ -97,4 +97,22 @@ h4 {
 
 .page-title {
   margin-top: 0 0 1em 0;
+}
+
+input[type="date"]::before{
+  color: rgb(0, 0, 0);
+  content: attr(placeholder);
+  margin-right: 3px;
+}
+
+.home-left-side .scrollbar-container {
+  position: relative;
+  height: 100%;
+  width: 68em;
+}
+
+.home-right-side .scrollbar-container {
+  position: relative;
+  height: 100%;
+  width: 30em;
 }

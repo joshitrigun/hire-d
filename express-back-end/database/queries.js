@@ -35,6 +35,17 @@ const getAllEmployers = (request, response) => {
   });
 };
 
+const getEmployerById = (request, response) => {
+  const id = request.params.id;
+  const queryString = `SELECT * FROM users WHERE employer = true AND users.id = ${id};`;
+
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
 const getAllJobs = (request, response) => {
   const queryString = "SELECT * FROM jobs  ORDER BY id;";
 
@@ -122,8 +133,6 @@ const createUser = (request, response) => {
     employer,
   } = request.body;
 
-  console.log("create user func", request.body);
-
   const queryString =
     "INSERT INTO users (first_name, last_name, email, password, designation, about_me, phone_number, avatar, city, province, skills, github_url, linkedin_url ,employer, resume) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);";
   client.query(
@@ -174,8 +183,6 @@ const updateUser = (request, response) => {
     employer,
   } = request.body.data;
 
-  console.log("request body data", request.body.data);
-
   const queryString = `UPDATE users SET first_name = $1, last_name = $2, email = $3, password = $4, designation = $5, about_me = $6, phone_number = $7, avatar = $8, city = $9, province = $10, skills = $11, github_url = $12, linkedin_url = $13, employer = $14, resume = $15 WHERE id = $16;`;
 
   client.query(
@@ -219,8 +226,6 @@ const updateProject = (request, response) => {
     screenshot,
     stack,
   } = request.body;
-
-  console.log("request body data", request.body);
 
   const queryString = `UPDATE projects SET title = $1, owner_id = $2, tech_stack = $3, screenshot = $4, description = $5, project_url = $6, likes = $7 WHERE id = $8;`;
 
@@ -443,10 +448,51 @@ const updateJob = (request, response) => {
   );
 };
 
+const updateEmployer = (request, response) => {
+
+  const id = request.params.id;
+
+  const {
+    first_name,
+    email,
+    number,
+    password,
+    designation,
+    about,
+    city,
+    province,
+    avatar,
+    linkedin
+  } = request.body;
+
+  const queryString = `UPDATE users SET first_name = $1, email = $2, phone_number = $3, password = $4, city = $5, province = $6, designation = $7, avatar = $8, about_me = $9, linkedin_url = $10 WHERE id = $11;`;
+  const value = [
+    first_name,
+    email,
+    number,
+    password,
+    city,
+    province,
+    designation,
+    avatar,
+    about,
+    linkedin,
+    id
+  ];
+
+  client.query(queryString, value, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send("Employer updated");
+  });
+};
+
 module.exports = {
   getAllUsers,
   getUser,
   getAllEmployers,
+  getEmployerById,
   getAllJobs,
   getAllProjects,
   getProject,
@@ -463,6 +509,7 @@ module.exports = {
   createJobs,
   getCertification,
   updateCertification,
+  updateEmployer,
   getJob,
   updateJob,
 };

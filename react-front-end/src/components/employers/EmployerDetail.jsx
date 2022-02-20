@@ -45,10 +45,7 @@ const EmployerDetail = () => {
       .catch((err) => err);
   }, [id]);
 
-  console.log(state.employer);
-  console.log(state.jobs);
-
-  const mappedJobs = state.jobs.map((job) => {
+  const mappedJobs = state.jobs.map(job => {
     return (
       <Fragment key={job.id}>
         <JobListItem
@@ -97,8 +94,10 @@ const EmployerDetail = () => {
           )}
         </div>
         <div className="employer-job-section">
-          <PerfectScrollbar>
-            <div className="emp-job-section">{mappedJobs}</div>
+          <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+            <div className="emp-joblist-container">
+              <div className="emp-job-section">{mappedJobs}</div>
+            </div>
           </PerfectScrollbar>
         </div>
       </div>

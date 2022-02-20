@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import "./EditCertification.css";
@@ -83,7 +83,7 @@ const CreateCertification = () => {
       {submitted ? <p className="text-center">{submitted}</p> : ""}
       {error ? <p className="text-center">{error}</p> : ""}
       <form className="w-100 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <div className="form-container">
+        <div className="certification-form-container">
           <h3 className="text-center">Add certification</h3>
           <div className="form-input">
             <input
@@ -124,6 +124,7 @@ const CreateCertification = () => {
           <div className="form-input">
             <input
               type="date"
+              placeholder="Start Date:"
               name="startDate"
               value={startDate}
               onChange={(event) => setStartDate(event.target.value)}
@@ -132,18 +133,19 @@ const CreateCertification = () => {
           <div className="form-input">
             <input
               type="date"
+              placeholder="End Date:"
               name="endDate"
               value={endDate}
               onChange={(event) => setEndDate(event.target.value)}
             />
           </div>
-          <Stack spacing={2} direction="row">
-            <Button onClick={validate}>Save</Button>
-            <Link to={"/"}>
-              <Button>Cancel</Button>
-            </Link>
-          </Stack>
         </div>
+          <div className="certification-button">
+          <Stack spacing={2} direction="row">
+            <Button variant="outlined" onClick={validate}>Save</Button>
+            <Button variant="outlined" href="/">Cancel</Button>
+          </Stack>
+          </div>
       </form>
     </div>
   );

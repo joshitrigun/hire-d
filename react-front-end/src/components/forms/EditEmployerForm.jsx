@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import Cookies from "js-cookie";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "./CreateEmployerForm.module.css";
+import { useNavigate, useParams } from "react-router-dom";
 
-const CreateEmployerForm = () => {
+const EditEmployerForm = () => {
+
+  const params = useParams();
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -16,25 +21,24 @@ const CreateEmployerForm = () => {
   const [province, setProvince] = useState("");
   const [avatar, setAvatar] = useState("");
   const [linkedin, setLinkedin] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState("");
   const [error, setError] = useState("");
 
-  const navigate = useNavigate(); 
-
-  const reset = () => {
-    setFirstName("");
-    setEmail("");
-    setNumber("");
-    setPassword("");
-    setConfirmPassword("");
-    setAbout("");
-    setCity("");
-    setProvince("");
-    setAvatar("");
-    setLinkedin("");
-    setTimeout(() => setSubmitted(false), 5000);
-  };
-
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/employers/${params.id}`)
+    .then((response) => {
+      const employer = response.data[0];
+      setFirstName(employer.first_name);
+      setEmail(employer.email);
+      setNumber(employer.phone_number);
+      setAbout(employer.about_me);
+      setCity(employer.city);
+      setProvince(employer.province);
+      setAvatar(employer.avatar);
+      setLinkedin(employer.linkedin_url);
+    });
+  }, []);
+  
   const validate = () => {
     if (firstName === "") {
       setError("First name cannot be blank");
@@ -83,6 +87,20 @@ const CreateEmployerForm = () => {
     setError("");
     onSubmitHandler();
   };
+  
+  const reset = () => {
+    setFirstName("");
+    setEmail("");
+    setNumber("");
+    setPassword("");
+    setConfirmPassword("");
+    setAbout("");
+    setCity("");
+    setProvince("");
+    setAvatar("");
+    setLinkedin("");
+    setTimeout(() => setSubmitted(false), 5000);
+  };  
 
   const onSubmitHandler = () => {
     const data = {
@@ -101,28 +119,40 @@ const CreateEmployerForm = () => {
       avatar,
       employer: true,
       skills: "",
-    };
-
+    }
+    
     axios
-      .post("http://localhost:8080/api/users", data)
+      .put(`http://localhost:8080/api/employers/${params.id}`, data)
       .then((response) => {
         setSubmitted(response.data);
         reset();
         setTimeout(() => {
-          navigate(`/login`);
+          navigate(`/employers/${params.id}`);
         }, 3000)
       })
       .catch((err) => {
         console.log(err.message);
       });
-  };
-
+    };
+    
   return (
     <>
-      {submitted ? <p className="text-center">{submitted}</p> : ""}
-      {error ? <p className="text-center">{error}</p> : ""}
+    {submitted ? (
+        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+          {submitted}
+        </p>
+      ) : (
+        ""
+      )}
+      {error ? (
+        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+          {error}
+        </p>
+      ) : (
+        ""
+      )}
       <form className="w-200 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <h3 className="text-center">Create Profile</h3>
+        <h3 className="text-center">Edit Profile</h3>
         <div className="form-container">
           <div className="form-header">
             <div className="form-input">
@@ -217,15 +247,17 @@ const CreateEmployerForm = () => {
                 onChange={(event) => setLinkedin(event.target.value)}
               />
             </div>
-              <Stack spacing={2} direction="row">
-                <Button variant="outlined" onClick={validate}>Save</Button>
-                <Button variant="outlined" href="/">Cancel</Button>
-              </Stack>
+              <div>
+                <Stack spacing={2} direction="row">
+                  <Button variant="outlined" onClick={validate}>Save</Button>
+                  <Button variant="outlined" href="/">Cancel</Button>
+                </Stack>
+              </div>
           </div>
         </div>
       </form>
     </>
-  );
+  )
 };
 
-export default CreateEmployerForm;
+export default EditEmployerForm;
