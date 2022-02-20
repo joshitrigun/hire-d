@@ -116,3 +116,10 @@ input[type="date"]::before{
   height: 100%;
   width: 30em;
 }
+
+.login-form-container {
+  margin-top: 10em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
