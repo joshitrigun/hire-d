@@ -42,8 +42,9 @@ const CreateProject = () => {
             setScreenshot(data.screenshot);
             setLikes(data.likes);
             const skills = data.tech_stack.split(",");
+            const newSkills = skills.map((skill) => skill.trim());
             const newCheckedState = checkedState.map((skill) => {
-              if (skills.includes(skill.name)) {
+              if (newSkills.includes(skill.name)) {
                 skill.checked = true;
               }
               return skill;
