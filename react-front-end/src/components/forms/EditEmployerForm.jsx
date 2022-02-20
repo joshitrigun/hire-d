@@ -1,13 +1,17 @@
-import React, { useState } from "react";
-import axios from "axios";
-// import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+// import { useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "./CreateEmployerForm.module.css";
-import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditEmployerForm = () => {
+
+  const params = useParams();
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -17,24 +21,25 @@ const EditEmployerForm = () => {
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
   const [avatar, setAvatar] = useState("");
-  const [LinkedinUrl, setLinkedinUrl] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [linkedin, setLinkedin] = useState("");
+  const [submitted, setSubmitted] = useState("");
   const [error, setError] = useState("");
 
-  const reset = () => {
-    setFirstName("");
-    setEmail("");
-    setNumber("");
-    setPassword("");
-    setConfirmPassword("");
-    setAbout("");
-    setCity("");
-    setProvince("");
-    setAvatar("");
-    setLinkedinUrl("");
-    setTimeout(() => setSubmitted(false), 5000);
-  };
-
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/employers/${params.id}`)
+    .then((response) => {
+      const employer = response.data[0];
+      setFirstName(employer.first_name);
+      setEmail(employer.email);
+      setNumber(employer.phone_number);
+      setAbout(employer.about_me);
+      setCity(employer.city);
+      setProvince(employer.province);
+      setAvatar(employer.avatar);
+      setLinkedin(employer.linkedin_url);
+    });
+  }, []);
+  
   const validate = () => {
     if (firstName === "") {
       setError("First name cannot be blank");
@@ -76,9 +81,27 @@ const EditEmployerForm = () => {
       setError("Avatar cannot be blank");
       return;
     }
+    if (linkedin === "") {
+      setError("Linkedin URL cannot be blank");
+      return;
+    }
     setError("");
     onSubmitHandler();
   };
+  
+  const reset = () => {
+    setFirstName("");
+    setEmail("");
+    setNumber("");
+    setPassword("");
+    setConfirmPassword("");
+    setAbout("");
+    setCity("");
+    setProvince("");
+    setAvatar("");
+    setLinkedin("");
+    setTimeout(() => setSubmitted(false), 5000);
+  };  
 
   const onSubmitHandler = () => {
     const data = {
@@ -92,52 +115,43 @@ const EditEmployerForm = () => {
       city,
       province,
       github_url: "",
-      LinkedinUrl,
+      linkedin,
       resume: "",
       avatar,
       employer: true,
       skills: "",
-    };
-
-    useEffect(() => {
-      const id = Cookies.get("id");
-      axios.get(`/api/users/${id}`).then((response) => {
-        console.log(response.data);
-        const data = response.data;
-        data.forEach((user) => {
-          if (id) {
-            if (user.id === Number(id)) {
-              setFirstName(user.first_name);
-              setEmail(user.email);
-              setNumber(user.phone_number);
-              setPassword(user.password);
-              setAbout(user.about_me);
-              setCity(user.city);
-              setProvince(user.province);
-              setLinkedinUrl(user.linkedin_url);
-              setAvatar(user.avatar);
-            }
-          }
-        });
-      });
-    }, []);
-
-
+    }
+    
     axios
-      .put("http://localhost:8080/api/users/", data)
+      .put(`http://localhost:8080/api/employers/${params.id}`, data)
       .then((response) => {
         setSubmitted(response.data);
         reset();
+        setTimeout(() => {
+          navigate(`/employers/${params.id}`);
+        }, 3000)
       })
       .catch((err) => {
         console.log(err.message);
       });
-  };
-
+    };
+    
   return (
     <>
-      {submitted ? <p className="text-center">{submitted}</p> : ""}
-      {error ? <p className="text-center">{error}</p> : ""}
+    {submitted ? (
+        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+          {submitted}
+        </p>
+      ) : (
+        ""
+      )}
+      {error ? (
+        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+          {error}
+        </p>
+      ) : (
+        ""
+      )}
       <form className="w-200 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Edit Profile</h3>
         <div className="form-container">
@@ -225,15 +239,26 @@ const EditEmployerForm = () => {
                 onChange={(event) => setAvatar(event.target.value)}
               />
             </div>
-              <Stack spacing={2} direction="row">
-                <Button variant="outlined" onClick={validate}>Save</Button>
-                <Button variant="outlined" href="/">Cancel</Button>
-              </Stack>
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Linkedin URL"
+                name="linkedin"
+                value={linkedin}
+                onChange={(event) => setLinkedin(event.target.value)}
+              />
+            </div>
+              <div>
+                <Stack spacing={2} direction="row">
+                  <Button variant="outlined" onClick={validate}>Save</Button>
+                  <Button variant="outlined" href="/">Cancel</Button>
+                </Stack>
+              </div>
           </div>
         </div>
       </form>
     </>
-  );
+  )
 };
 
 export default EditEmployerForm;

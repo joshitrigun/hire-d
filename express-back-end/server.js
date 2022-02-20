@@ -6,6 +6,7 @@ const cors = require("cors");
 const {
   getAllUsers,
   getAllEmployers,
+  getEmployerById,
   getUser,
   getAllJobs,
   getAllProjects,
@@ -22,7 +23,8 @@ const {
   createCertification,
   createJobs,
   getCertification,
-  updateCertification
+  updateCertification,
+  updateEmployer
 } = require("./database/queries");
 
 const PORT = 8080;
@@ -40,6 +42,7 @@ App.use(cors(corsOptions));
 
 App.get("/api/users", getAllUsers);
 App.get("/api/employers", getAllEmployers);
+App.get("/api/employers/:id", getEmployerById);
 App.get("/api/users/:id", getUser);
 App.get("/api/jobs", getAllJobs);
 App.get("/api/projects", getAllProjects);
@@ -49,16 +52,17 @@ App.get("/api/user_projects", getProjectsWithUsers);
 App.get("/api/jobs_users", getHotJobsWithUser);
 App.get("/api/users_projects_certifications", getUsersProjectsCertifications);
 App.get("/api/jobs_employers", getJobsWithEmployers);
+App.get("/api/certifications/:id", getCertification);
 
 App.post("/api/projects", createProject);
 App.post("/api/users", createUser);
 App.post("/api/certifications", createCertification);
 App.post("/api/jobs", createJobs);
-App.get("/api/certifications/:id", getCertification);
 
 App.put("/api/certifications/:id", updateCertification);
 App.put("/api/users/:id", updateUser);
 App.put("/api/projects/:id", updateProject);
+App.put("/api/employers/:id", updateEmployer);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

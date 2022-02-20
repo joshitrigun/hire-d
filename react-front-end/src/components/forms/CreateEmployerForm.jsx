@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -14,8 +15,11 @@ const CreateEmployerForm = () => {
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [linkedin, setLinkedin] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate(); 
 
   const reset = () => {
     setFirstName("");
@@ -27,6 +31,7 @@ const CreateEmployerForm = () => {
     setCity("");
     setProvince("");
     setAvatar("");
+    setLinkedin("");
     setTimeout(() => setSubmitted(false), 5000);
   };
 
@@ -71,6 +76,10 @@ const CreateEmployerForm = () => {
       setError("Avatar cannot be blank");
       return;
     }
+    if (linkedin === "") {
+      setError("Linkedin URL cannot be blank");
+      return;
+    }
     setError("");
     onSubmitHandler();
   };
@@ -87,18 +96,21 @@ const CreateEmployerForm = () => {
       city,
       province,
       github_url: "",
-      linkedin_url: "",
+      linkedin,
       resume: "",
       avatar,
       employer: true,
       skills: "",
     };
-    console.log(data);
+
     axios
       .post("http://localhost:8080/api/users", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();
+        setTimeout(() => {
+          navigate(`/login`);
+        }, 3000)
       })
       .catch((err) => {
         console.log(err.message);
@@ -194,6 +206,15 @@ const CreateEmployerForm = () => {
                 name="avatar"
                 value={avatar}
                 onChange={(event) => setAvatar(event.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <input
+                type="text"
+                placeholder="Linkedin URL"
+                name="linkedin"
+                value={linkedin}
+                onChange={(event) => setLinkedin(event.target.value)}
               />
             </div>
               <Stack spacing={2} direction="row">

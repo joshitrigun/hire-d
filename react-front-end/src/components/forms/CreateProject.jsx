@@ -114,7 +114,7 @@ const CreateProject = () => {
       likes,
       projectLink,
       screenshot,
-      stack: stack.toString(),
+      stack: stack.join(", "),
     };
     console.log(data);
     if (Cookies.get("id") && location.pathname !== "/projects/new") {

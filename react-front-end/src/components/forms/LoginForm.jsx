@@ -7,7 +7,8 @@ import Button from "@mui/material/Button";
 const LoginForm = () => {
   let navigate = useNavigate();
 
-  const onClickHandler = () => {
+  const onClickHandler = (event) => {
+    
     Cookies.set("user", "trigunjoshi@gmail.com");
     Cookies.set("id", "1");
     navigate("/");

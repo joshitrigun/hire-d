@@ -85,7 +85,9 @@ const EmployerDetail = () => {
         </div>
         <div className="employer-job-section">
           <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
-            <div className="emp-job-section">{mappedJobs}</div>
+            <div className="emp-joblist-container">
+              <div className="emp-job-section">{mappedJobs}</div>
+            </div>
           </PerfectScrollbar>
         </div>
       </div>
