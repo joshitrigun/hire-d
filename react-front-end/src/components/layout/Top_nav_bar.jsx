@@ -11,6 +11,7 @@ const TopNavBar = () => {
   const signoutHandler = () => {
     Cookies.remove("user");
     Cookies.remove("id");
+    Cookies.remove("employer");
     navigate("/");
   };
 
