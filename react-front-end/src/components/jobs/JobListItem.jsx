@@ -4,6 +4,7 @@ import { HiBriefcase } from "react-icons/hi";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./JobListItem.css";
 import Button from "@mui/material/Button";
+import Cookies from "js-cookie";
 
 const JobListItem = (props) => {
   const { id, title, employer, city, province, salary, apply_link, jobType } =
@@ -36,11 +37,15 @@ const JobListItem = (props) => {
         <Button variant="outlined" href={apply_link} target="_blank">
           Apply Here
         </Button>
-        <span className="ms-2">
-          <Button variant="outlined" href={`/jobs/${id}/edit`}>
-            Edit
-          </Button>
-        </span>
+        {Cookies.get("employer") === "true" ? (
+          <span className="ms-2">
+            <Button variant="outlined" href={`/jobs/${id}/edit`}>
+              Edit
+            </Button>
+          </span>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
