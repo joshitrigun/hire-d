@@ -24,7 +24,9 @@ const {
   createJobs,
   getCertification,
   updateCertification,
-  updateEmployer
+  updateEmployer,
+  getJob,
+  updateJob,
 } = require("./database/queries");
 
 const PORT = 8080;
@@ -53,6 +55,7 @@ App.get("/api/jobs_users", getHotJobsWithUser);
 App.get("/api/users_projects_certifications", getUsersProjectsCertifications);
 App.get("/api/jobs_employers", getJobsWithEmployers);
 App.get("/api/certifications/:id", getCertification);
+App.get("/api/jobs/:id", getJob);
 
 App.post("/api/projects", createProject);
 App.post("/api/users", createUser);
@@ -63,6 +66,7 @@ App.put("/api/certifications/:id", updateCertification);
 App.put("/api/users/:id", updateUser);
 App.put("/api/projects/:id", updateProject);
 App.put("/api/employers/:id", updateEmployer);
+App.put("/api/jobs/:id", updateJob);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

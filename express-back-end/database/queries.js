@@ -3,7 +3,7 @@ const pg = require("pg");
 const client = require("./connection");
 
 const getAllUsers = (request, response) => {
-  const queryString = "SELECT * FROM users WHERE employer = false;";
+  const queryString = "SELECT * FROM users WHERE employer = false ORDER BY id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -25,7 +25,7 @@ const getUser = (request, response) => {
 };
 
 const getAllEmployers = (request, response) => {
-  const queryString = "SELECT * FROM users WHERE employer = true;";
+  const queryString = "SELECT * FROM users WHERE employer = true ORDER BY id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -343,7 +343,7 @@ const getUsersProjectsCertifications = (request, response) => {
 
 const getJobsWithEmployers = (request, response) => {
   const queryString =
-    "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs JOIN users ON users.id = jobs.employer_id;";
+    "SELECT jobs.*, users.first_name as first_name, users.city as city, users.province as province FROM jobs JOIN users ON users.id = jobs.employer_id ORDER BY jobs.id;";
 
   client.query(queryString, (error, results) => {
     if (error) {
@@ -374,7 +374,7 @@ const updateCertification = (request, response) => {
     city,
     province,
     jobSeekerId,
-    cert_id
+    cert_id,
   } = request.body;
 
   const queryString = `UPDATE certifications SET title = $1, start_date = $2, end_date = $3, institution = $4, city = $5, province = $6, jobseeker_id = $7 WHERE id = $8;`;
@@ -395,6 +395,57 @@ const updateCertification = (request, response) => {
     }
     response.status(200).send("Certfication updated");
   });
+};
+const getJob = (request, response) => {
+  const id = request.params.id;
+  const queryString = `SELECT * FROM jobs WHERE id = ${id};`;
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+const updateJob = (request, response) => {
+  const {
+    id,
+    title,
+    description,
+    jobtype,
+    stack,
+    salary,
+    startDate,
+    endDate,
+    featured,
+    applyLink,
+  } = request.body;
+
+  console.log("request body data", request.body);
+
+  const queryString = `UPDATE jobs SET title = $1, description = $2, job_type = $3, tech_stack = $4, salary = $5, start_date = $6, end_date = $7, featured = $8, apply_link = $9 WHERE id = $10;`;
+
+  client.query(
+    queryString,
+    [
+      title,
+      description,
+      jobtype,
+      stack,
+      salary,
+      startDate,
+      endDate,
+      featured,
+      applyLink,
+      id,
+    ],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      }
+      console.log(results);
+      response.status(201).send(`Job Updated`);
+    }
+  );
 };
 
 const updateEmployer = (request, response) => {
@@ -458,5 +509,7 @@ module.exports = {
   createJobs,
   getCertification,
   updateCertification,
-  updateEmployer
+  updateEmployer,
+  getJob,
+  updateJob,
 };

@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import ProjectDetails from "../components/projects/ProjectDetails";
 import ProjectList from "../components/projects/ProjectList";
 import CreateProject from "../components/forms/CreateProject";
+import EditProject from "../components/forms/EditProject";
 
 const Projects = () => {
   return (
@@ -15,7 +16,7 @@ const Projects = () => {
           <Route path="/" element={<ProjectList />} />
           <Route path=":id" element={<ProjectDetails />} />
           <Route path="new" element={<CreateProject />} />
-          <Route path=":id/edit" element={<CreateProject />} />
+          <Route path=":id/edit" element={<EditProject />} />
         </Routes>
       </div>
     </div>

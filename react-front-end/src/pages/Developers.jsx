@@ -5,7 +5,7 @@ import DeveloperList from "../components/developers/DeveloperList";
 import DeveloperDetail from "../components/developers/DeveloperDetail";
 import CreateCertification from "../components/certifications/CreateCertification";
 import EditCertification from "../components/certifications/EditCertification";
-import CreateSeekerForm from "../components/forms/CreateSeekerForm";
+import EditSeekerForm from "../components/forms/EditSeekerForm";
 
 const Developers = () => {
   return (
@@ -23,7 +23,7 @@ const Developers = () => {
             path=":id/certifications/:cert_id/edit"
             element={<EditCertification />}
           />
-          <Route path=":id/profile/edit" element={<CreateSeekerForm />} />
+          <Route path=":id/profile/edit" element={<EditSeekerForm />} />
         </Routes>
       </div>
     </div>

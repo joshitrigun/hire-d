@@ -65,29 +65,6 @@ const CreateSeekerForm = () => {
     });
   }, []);
 
-  const reset = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setNumber("");
-    setPassword("");
-    setConfirmPassword("");
-    setDesignation("");
-    setAbout("");
-    setCity("");
-    setProvince("");
-    setGithubUrl("");
-    setLinkedinUrl("");
-    setAvatar("");
-    setResume("");
-    setCheckedState(
-      tech_stack.map((skill) => {
-        return { ...skill, checked: false };
-      })
-    );
-    setTimeout(() => setSubmitted(false), 3000);
-  };
-
   const validate = () => {
     if (firstName === "") {
       setError("First name cannot be blank");
@@ -171,6 +148,7 @@ const CreateSeekerForm = () => {
       }
     });
     const data = {
+      id: Cookies.get("id"),
       first_name: firstName,
       last_name: lastName,
       email,
@@ -191,11 +169,10 @@ const CreateSeekerForm = () => {
     const id = Number(Cookies.get("id"));
 
     axios
-      .post("http://localhost:8080/api/users", data)
+      .put(`http://localhost:8080/api/users/${id}`, { data })
       .then((response) => {
         setSubmitted(response.data);
-        reset();
-        setTimeout(() => navigate(`/login`), 3000);
+        setTimeout(() => navigate(`/developers/${id}`), 3000);
       })
       .catch((err) => {
         console.log(err.message);

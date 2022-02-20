@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import tech_stack from "./TechStacks";
 import Cookies from "js-cookie";
 import axios from "axios";
 import Button from "@mui/material/Button";
+import "../forms/CreateProject.css";
 import Stack from "@mui/material/Stack";
 import { FaSave } from "react-icons/fa";
-import "../forms/CreateProject.css";
 
 const CreateProject = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const techArray = tech_stack.map((skill) => {
     return { ...skill, checked: false };
@@ -19,22 +20,39 @@ const CreateProject = () => {
   const [description, setDescription] = useState("");
   const [projectLink, setProjectLink] = useState("");
   const [screenshot, setScreenshot] = useState("");
+  const [likes, setLikes] = useState("");
   const [checkedState, setCheckedState] = useState(techArray);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const reset = () => {
-    setTitle("");
-    setDescription("");
-    setProjectLink("");
-    setScreenshot("");
-    setCheckedState(
-      tech_stack.map((skill) => {
-        return { ...skill, checked: false };
-      })
-    );
-    setTimeout(() => setSubmitted(false), 3000);
-  };
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (location.pathname !== "/projects/new") {
+      axios.get(`/api/projects/${id}`).then((response) => {
+        const data = response.data[0];
+        console.log(id);
+        console.log(data);
+        if (Cookies.get("id")) {
+          if (Number(id) === data.id) {
+            setTitle(data.title);
+            setDescription(data.description);
+            setProjectLink(data.project_url);
+            setScreenshot(data.screenshot);
+            setLikes(data.likes);
+            const skills = data.tech_stack.split(",");
+            const newCheckedState = checkedState.map((skill) => {
+              if (skills.includes(skill.name)) {
+                skill.checked = true;
+              }
+              return skill;
+            });
+            setCheckedState(newCheckedState);
+          }
+        }
+      });
+    }
+  }, []);
 
   const validate = () => {
     if (title === "") {
@@ -78,20 +96,20 @@ const CreateProject = () => {
       title,
       description,
       owner_id: Cookies.get("id"),
+      likes,
       projectLink,
       screenshot,
       stack: stack.join(", "),
     };
-
+    console.log(data);
     axios
-      .post("http://localhost:8080/api/projects", data)
+      .put(`http://localhost:8080/api/projects/${id}`, { ...data, id })
       .then((response) => {
         setSubmitted(response.data);
-        reset();
-        setTimeout(() => navigate("/projects"), 3000);
+        setTimeout(() => navigate(`/projects/${id}`), 3000);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
 
@@ -112,7 +130,7 @@ const CreateProject = () => {
         ""
       )}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <h3 className="text-center">Create Project</h3>
+        <h3 className="text-center">Edit Project</h3>
         <div className="project-form-container">
           <div className="form-header">
             <div className="form-input">

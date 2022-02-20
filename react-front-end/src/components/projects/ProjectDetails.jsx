@@ -30,9 +30,6 @@ const ProjectDetails = () => {
           <Button variant="outlined" href="/projects">
             All Projects
           </Button>
-          <Button variant="outlined" href="/projects/new">
-            Create New Project &nbsp; <BsPlusLg className="bs-icon" />
-          </Button>
         </Stack>
       </span>
       <section className="project-details-block">

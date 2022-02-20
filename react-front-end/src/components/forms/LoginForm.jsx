@@ -7,10 +7,17 @@ import Button from "@mui/material/Button";
 const LoginForm = () => {
   let navigate = useNavigate();
 
-  const onClickHandler = (event) => {
-    
+  const onSeekerHandler = () => {
     Cookies.set("user", "trigunjoshi@gmail.com");
+    Cookies.set("employer", false);
     Cookies.set("id", "1");
+    navigate("/");
+  };
+
+  const onEmployerHandler = () => {
+    Cookies.set("user", "amazon@gmail.com");
+    Cookies.set("employer", true);
+    Cookies.set("id", "13");
     navigate("/");
   };
 
@@ -42,9 +49,17 @@ const LoginForm = () => {
         variant="outlined"
         type="submit"
         className="btn btn-primary"
-        onClick={onClickHandler}
+        onClick={onSeekerHandler}
       >
-        Submit
+        Job Seeker
+      </Button>
+      <Button
+        variant="outlined"
+        type="submit"
+        className="btn btn-primary"
+        onClick={onEmployerHandler}
+      >
+        Employer
       </Button>
     </form>
   );

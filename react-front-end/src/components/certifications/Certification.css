@@ -11,15 +11,15 @@
 }
 
 .certification-block {
-  background-color: rgb(250,250,250);
+  background-color: rgb(250, 250, 250);
   border-radius: 1em;
   margin-right: 2em;
   margin-bottom: 1em;
   width: 30em;
-  transition: .5s;
+  transition: 0.5s;
 }
 .certification-block:hover {
-  box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.35);
 }
 
 .certification-block p {
@@ -40,4 +40,12 @@
 
 .job-icon {
   margin: 0 2em 1em 2em;
+}
+
+.form-input input {
+  border-radius: 2em;
+  padding: 0.25em 1em;
+  margin-bottom: 1em;
+  border: #3f51b5 solid 1px;
+  width: 25em;
 }

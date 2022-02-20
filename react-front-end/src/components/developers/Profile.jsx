@@ -10,10 +10,8 @@ import {
   BsLinkedin,
 } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
-
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
-
 import Button from "@mui/material/Button";
 
 export default function Profile(props) {
@@ -22,7 +20,11 @@ export default function Profile(props) {
 
   return (
     <div className="dev-profile-div">
-      <img src={user.avatar} className="developer-profile-thumbnail" alt={user.first_name} />
+      <img
+        src={user.avatar}
+        className="developer-profile-thumbnail"
+        alt={user.first_name}
+      />
       <span className="profile-header">
         <h3 className="title">
           {user.first_name} {user.last_name}
@@ -57,9 +59,12 @@ export default function Profile(props) {
       <p className="body-text">
         <BsTelephoneFill className="bs-icon" /> {user.phone_number}
       </p>
+      <br />
       {id === Cookies.get("id") ? (
-        <Button variant="outlined" href="profile/edit">
-          <FaEdit /> EDIT
+        <Button variant="outlined" href={`/developers/${id}/profile/edit`}>
+          <span>
+            <FaEdit /> EDIT
+          </span>
         </Button>
       ) : (
         ""
