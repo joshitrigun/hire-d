@@ -182,7 +182,7 @@ const CreateSeekerForm = () => {
   return (
     <>
       <form className="w-100 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <div className="form-container">
+        <div className="seeker-form-container">
           <div className="message">
             {submitted ? (
               <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
@@ -199,7 +199,7 @@ const CreateSeekerForm = () => {
               ""
             )}
           </div>
-          <div className="forms ms-5 ps-5">
+          <div className="forms">
             <div className="form-header">
               <h3 className="text-center">Edit Profile</h3>
               <div className="form-input">
