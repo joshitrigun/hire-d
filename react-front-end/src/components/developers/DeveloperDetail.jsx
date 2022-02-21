@@ -103,11 +103,7 @@ const DeveloperDetail = () => {
         <div className="profile-section">
           <Profile user={state.user} />
         </div>
-        <PerfectScrollbar
-          onScrollY={(container) =>
-            console.log(`scrolled to: ${container.scrollTop}.`)
-          }
-        >
+        <PerfectScrollbar>
           <div className="dev-section-right">
             <div className="dev-project-header">
               <h4 className="certification-title">My Projects</h4>
