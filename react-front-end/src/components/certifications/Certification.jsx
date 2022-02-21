@@ -1,14 +1,27 @@
 import React from "react";
-import { FaUserGraduate, FaEdit } from "react-icons/fa";
+import { FaUserGraduate, FaEdit, FaTrash } from "react-icons/fa";
 import dateFormat from "dateformat";
 import "./Certification.css";
 import Cookies from "js-cookie";
 import Button from "@mui/material/Button";
-import { FaTrash } from "react-icons/fa";
+import axios from "axios";
 
 const Certification = (props) => {
   const { cert_id, title, institution, startDate, endDate, province, city } =
     props;
+
+  const onDeleteHandler = () => {
+    return axios
+      .delete(`/api/certifications/${cert_id}`)
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="certification-block">
       <div className="edit-button">
@@ -20,7 +33,7 @@ const Certification = (props) => {
         >
           <FaEdit />
         </Button>
-        <Button variant="outlined" color="error">
+        <Button variant="contained" color="error" onClick={onDeleteHandler}>
           <FaTrash />
         </Button>
       </div>
