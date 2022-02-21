@@ -9,8 +9,16 @@ import "./ProjectListItem.css";
 import Axios from "axios";
 
 const ProjectListItem = (props) => {
-
-  const { project_id, title, screenshot, likes, description, owner_id, projectLink, stack } = props;
+  const {
+    project_id,
+    title,
+    screenshot,
+    likes,
+    description,
+    owner_id,
+    projectLink,
+    stack,
+  } = props;
 
   const [isProfile, setIsProfile] = useState(false);
   const location = useLocation();
@@ -19,12 +27,11 @@ const ProjectListItem = (props) => {
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
 
-
   useEffect(() => {
     if (currentUser === id && location.pathname === `/developers/${id}`) {
       setIsProfile(true);
     }
-  }, []);
+  }, [id]);
 
   let navigate = useNavigate();
   const routeChange = () => {
@@ -33,7 +40,6 @@ const ProjectListItem = (props) => {
   };
   const countLikes = () => {
     if (currentUser !== owner_id && liked === false) {
-
       const data = {
         title,
         description,
@@ -43,41 +49,41 @@ const ProjectListItem = (props) => {
         screenshot,
         stack,
       };
-      
-      Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
-        .then(response => {
-          setLike(like => like += 1);
-          setLiked(true);
-        }).catch(err => err.message)
-      }
-    };
 
-    const unlikeProject = () => {
-      if (currentUser !== owner_id && liked === true) {
-  
-        const data = {
-          title,
-          description,
-          owner_id,
-          likes: like - 1,
-          projectLink,
-          screenshot,
-          stack,
-        };
-        
-        Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
-          .then(response => {
-            setLike(like => like -= 1);
-            setLiked(false);
-          }).catch(err => err.message)
-        }
+      Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+        .then((response) => {
+          setLike((like) => (like += 1));
+          setLiked(true);
+        })
+        .catch((err) => err.message);
+    }
+  };
+
+  const unlikeProject = () => {
+    if (currentUser !== owner_id && liked === true) {
+      const data = {
+        title,
+        description,
+        owner_id,
+        likes: like - 1,
+        projectLink,
+        screenshot,
+        stack,
       };
+
+      Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+        .then((response) => {
+          setLike((like) => (like -= 1));
+          setLiked(false);
+        })
+        .catch((err) => err.message);
+    }
+  };
 
   const onDeleteHandler = () => {
     return axios
       .delete(`/api/projects/${project_id}`)
       .then((response) => {
-        console.log(response);
         window.location.reload();
       })
       .catch((error) => {
@@ -107,8 +113,12 @@ const ProjectListItem = (props) => {
           ""
         )}
         <p>
-          {liked === false && <BsHeart className="likes" onClick={countLikes} />} 
-          {liked === true && <BsHeartFill className="likes" onClick={unlikeProject} />}
+          {liked === false && (
+            <BsHeart className="likes" onClick={countLikes} />
+          )}
+          {liked === true && (
+            <BsHeartFill className="likes" onClick={unlikeProject} />
+          )}
           &nbsp;{like}
         </p>
       </span>
