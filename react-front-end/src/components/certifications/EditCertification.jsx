@@ -22,6 +22,7 @@ const CreateCertification = () => {
 
   useEffect(() => {
     if (location.pathname !== `/developers/${id}/certifications/new`) {
+
       axios
         .get(
           `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`
@@ -39,6 +40,7 @@ const CreateCertification = () => {
             setProvince(data.province);
           }
         });
+
     }
   }, []);
 
@@ -92,7 +94,6 @@ const CreateCertification = () => {
       province,
       jobSeekerId: 1,
     };
-    console.log(data);
     if (
       Cookies.get("id") &&
       location.pathname !== `/developers/${id}/certifications/new`

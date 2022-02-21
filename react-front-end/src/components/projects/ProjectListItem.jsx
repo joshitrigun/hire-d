@@ -4,6 +4,7 @@ import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
+import axios from "axios";
 import "./ProjectListItem.css";
 import Axios from "axios";
 
@@ -30,7 +31,7 @@ const ProjectListItem = (props) => {
     if (currentUser === id && location.pathname === `/developers/${id}`) {
       setIsProfile(true);
     }
-  }, []);
+  }, [id]);
 
   let navigate = useNavigate();
   const routeChange = () => {
@@ -49,10 +50,12 @@ const ProjectListItem = (props) => {
         stack,
       };
 
+
       Axios.put(
         `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
         data
       )
+
         .then((response) => {
           setLike((like) => (like += 1));
           setLiked(true);
@@ -73,10 +76,12 @@ const ProjectListItem = (props) => {
         stack,
       };
 
+
       Axios.put(
         `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
         data
       )
+
         .then((response) => {
           setLike((like) => (like -= 1));
           setLiked(false);
@@ -84,6 +89,19 @@ const ProjectListItem = (props) => {
         .catch((err) => err.message);
     }
   };
+
+
+  const onDeleteHandler = () => {
+    return axios
+      .delete(`//express-server-hire.herokuapp.com/api/projects/${project_id}`)
+      .then((response) => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
 
   return (
     <div className="project-block">
@@ -97,14 +115,10 @@ const ProjectListItem = (props) => {
         {isProfile ? (
           <>
             <Button variant="outlined" href={`/projects/${project_id}/edit`}>
-              <span>
-                <FaEdit /> EDIT
-              </span>
+              <FaEdit />
             </Button>
-            <Button variant="outlined" color="error">
-              <span>
-                <FaTrash /> DELETE
-              </span>
+            <Button variant="contained" color="error" onClick={onDeleteHandler}>
+              <FaTrash />
             </Button>
           </>
         ) : (

@@ -209,14 +209,12 @@ const updateUser = (request, response) => {
       if (error) {
         console.log(error);
       }
-      console.log(results);
       response.status(201).send(`User Updated`);
     }
   );
 };
 
 const updateProject = (request, response) => {
-
   const id = request.params.id;
   const {
     title,
@@ -228,17 +226,23 @@ const updateProject = (request, response) => {
     stack,
   } = request.body;
 
-  // console.log(id, request.body);
   const queryString = `UPDATE projects SET title = $1, owner_id = $2, tech_stack = $3, screenshot = $4, description = $5, project_url = $6, likes = $7 WHERE id = $8;`;
-  const value = [title, owner_id, stack, screenshot, description, projectLink, likes, id];
+  const value = [
+    title,
+    owner_id,
+    stack,
+    screenshot,
+    description,
+    projectLink,
+    likes,
+    id,
+  ];
   client.query(queryString, value, (error, results) => {
-      if (error) {
-        console.log(error);
-      }
-      // console.log(results);
-      response.status(201).send(`Project Updated`);
+    if (error) {
+      console.log(error);
     }
-  );
+    response.status(201).send(`Project Updated`);
+  });
 };
 
 const createCertification = (req, res) => {
@@ -419,8 +423,6 @@ const updateJob = (request, response) => {
     applyLink,
   } = request.body;
 
-  console.log("request body data", request.body);
-
   const queryString = `UPDATE jobs SET title = $1, description = $2, job_type = $3, tech_stack = $4, salary = $5, start_date = $6, end_date = $7, featured = $8, apply_link = $9 WHERE id = $10;`;
 
   client.query(
@@ -441,7 +443,6 @@ const updateJob = (request, response) => {
       if (error) {
         console.log(error);
       }
-      console.log(results);
       response.status(201).send(`Job Updated`);
     }
   );
@@ -486,29 +487,41 @@ const updateEmployer = (request, response) => {
   });
 };
 
-// const updateLikes = (request, response) => {
+const deleteProject = (request, response) => {
+  const id = request.params.id;
 
-//   const id = request.params.id;
-//   console.log("id=>", id);
+  const queryString = `DELETE FROM projects WHERE id = $1;`;
+  client.query(queryString, [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send("Project Deleted");
+  });
+};
 
-//   const {
-//     likes
-//   } = request.body;
+const deleteCertification = (request, response) => {
+  const id = request.params.id;
 
-//   console.log(request);
-//   const queryString = `UPDATE projects SET likes = $1 WHERE id = $2;`;
-//   const value = [
-//     likes,
-//     id
-//   ];
+  const queryString = `DELETE FROM certifications WHERE id = $1;`;
+  client.query(queryString, [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send("Certification Deleted");
+  });
+};
 
-//   client.query(queryString, value, (error, results) => {
-//     if (error) {
-//       throw error;
-//     }
-//     response.status(200).send(`Project liked ${likes} times`);
-//   });
-// };
+const deleteJob = (request, response) => {
+  const id = request.params.id;
+
+  const queryString = `DELETE FROM jobs WHERE id = $1;`;
+  client.query(queryString, [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send("Job Deleted");
+  });
+};
 
 module.exports = {
   getAllUsers,
@@ -534,5 +547,7 @@ module.exports = {
   updateEmployer,
   getJob,
   updateJob,
-  // updateLikes
+  deleteProject,
+  deleteCertification,
+  deleteJob,
 };

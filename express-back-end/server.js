@@ -27,7 +27,9 @@ const {
   updateEmployer,
   getJob,
   updateJob,
-  // updateLikes
+  deleteProject,
+  deleteCertification,
+  deleteJob,
 } = require("./database/queries");
 
 const PORT = process.env.PORT || 8080;
@@ -66,12 +68,14 @@ App.post("/api/jobs", createJobs);
 App.put("/api/certifications/:id", updateCertification);
 App.put("/api/users/:id", updateUser);
 App.put("/api/projects/:id", updateProject);
-// App.put("/api/projects/:id", updateLikes);
 App.put("/api/employers/:id", updateEmployer);
 App.put("/api/jobs/:id", updateJob);
 
+App.delete("/api/projects/:id", deleteProject);
+App.delete("/api/certifications/:id", deleteCertification);
+App.delete("/api/jobs/:id", deleteJob);
+
 App.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(
     `Express seems to be listening on port ${PORT} so that's pretty good 👍`
   );

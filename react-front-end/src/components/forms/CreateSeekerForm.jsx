@@ -182,7 +182,10 @@ const CreateSeekerForm = () => {
       skills: stack.join(", "),
     };
 
+
     // const id = Number(Cookies.get("id"));
+
+
 
     axios
       .post("http://localhost:8080/api/users", data)
@@ -328,7 +331,6 @@ const CreateSeekerForm = () => {
                   onChange={(event) => setLinkedinUrl(event.target.value)}
                 />
               </div>
-              {/* COME BACK TO THIS BELOW  */}
               <div className="form-input">
                 <input
                   type="text"

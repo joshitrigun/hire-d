@@ -7,14 +7,6 @@ body {
   width: 100%;
 }
 
-/* .main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-} */
-
 #root {
   width: 100%;
 }
@@ -99,7 +91,7 @@ h4 {
   margin-top: 0 0 1em 0;
 }
 
-input[type="date"]::before{
+input[type="date"]::before {
   color: rgb(0, 0, 0);
   content: attr(placeholder);
   margin-right: 3px;

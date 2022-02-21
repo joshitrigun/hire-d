@@ -30,6 +30,7 @@ const CreateProject = () => {
 
   useEffect(() => {
     if (location.pathname !== "/projects/new") {
+
       axios
         .get(`//express-server-hire.herokuapp.com/api/projects/${id}`)
         .then((response) => {
@@ -53,6 +54,7 @@ const CreateProject = () => {
               });
               setCheckedState(newCheckedState);
             }
+
           }
         });
     }
@@ -96,7 +98,7 @@ const CreateProject = () => {
       screenshot,
       stack: stack.join(", "),
     };
-    console.log(data);
+
     axios
       .put(`http://localhost:8080/api/projects/${id}`, { ...data, id })
       .then((response) => {
@@ -156,7 +158,6 @@ const CreateProject = () => {
                 onChange={(event) => setProjectLink(event.target.value)}
               />
             </div>
-            {/* COME BACK TO THIS BELOW  */}
             <div className="form-input">
               <input
                 type="text"

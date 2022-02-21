@@ -19,7 +19,7 @@ const CreateEmployerForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const reset = () => {
     setFirstName("");
@@ -110,7 +110,7 @@ const CreateEmployerForm = () => {
         reset();
         setTimeout(() => {
           navigate(`/login`);
-        }, 3000)
+        }, 3000);
       })
       .catch((err) => {
         console.log(err.message);
@@ -198,7 +198,6 @@ const CreateEmployerForm = () => {
                 onChange={(event) => setProvince(event.target.value)}
               />
             </div>
-            {/* COME BACK TO THIS BELOW  */}
             <div className="form-input">
               <input
                 type="text"
@@ -217,10 +216,14 @@ const CreateEmployerForm = () => {
                 onChange={(event) => setLinkedin(event.target.value)}
               />
             </div>
-              <Stack spacing={2} direction="row">
-                <Button variant="outlined" onClick={validate}>Save</Button>
-                <Button variant="outlined" href="/">Cancel</Button>
-              </Stack>
+            <Stack spacing={2} direction="row">
+              <Button variant="outlined" onClick={validate}>
+                Save
+              </Button>
+              <Button variant="outlined" href="/">
+                Cancel
+              </Button>
+            </Stack>
           </div>
         </div>
       </form>
