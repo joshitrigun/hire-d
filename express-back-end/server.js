@@ -27,6 +27,7 @@ const {
   updateEmployer,
   getJob,
   updateJob,
+  deleteProject,
 } = require("./database/queries");
 
 const PORT = 8080;
@@ -67,6 +68,8 @@ App.put("/api/users/:id", updateUser);
 App.put("/api/projects/:id", updateProject);
 App.put("/api/employers/:id", updateEmployer);
 App.put("/api/jobs/:id", updateJob);
+
+App.delete("/api/projects/:id", deleteProject);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
