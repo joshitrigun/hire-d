@@ -24,7 +24,9 @@ const Certification = (props) => {
 
   const onDeleteHandler = () => {
     return axios
-      .delete(`/api/certifications/${cert_id}`)
+      .delete(
+        `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`
+      )
       .then((response) => {
         window.location.reload();
       })

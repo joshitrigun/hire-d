@@ -24,7 +24,7 @@ const EditEmployerForm = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/employers/${params.id}`)
+      .get(`//express-server-hire.herokuapp.com/api/employers/${params.id}`)
       .then((response) => {
         const employer = response.data[0];
         setFirstName(employer.first_name);
@@ -121,7 +121,10 @@ const EditEmployerForm = () => {
     };
 
     axios
-      .put(`http://localhost:8080/api/employers/${params.id}`, data)
+      .put(
+        `//express-server-hire.herokuapp.com/api/employers/${params.id}`,
+        data
+      )
       .then((response) => {
         setSubmitted(response.data);
         reset();

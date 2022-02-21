@@ -22,7 +22,6 @@ const CreateCertification = () => {
 
   useEffect(() => {
     if (location.pathname !== `/developers/${id}/certifications/new`) {
-
       axios
         .get(
           `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`
@@ -40,7 +39,6 @@ const CreateCertification = () => {
             setProvince(data.province);
           }
         });
-
     }
   }, []);
 
@@ -99,10 +97,13 @@ const CreateCertification = () => {
       location.pathname !== `/developers/${id}/certifications/new`
     ) {
       axios
-        .put(`http://localhost:8080/api/certifications/${cert_id}`, {
-          ...data,
-          cert_id,
-        })
+        .put(
+          `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`,
+          {
+            ...data,
+            cert_id,
+          }
+        )
         .then((response) => {
           setSubmitted(response.data);
           reset();

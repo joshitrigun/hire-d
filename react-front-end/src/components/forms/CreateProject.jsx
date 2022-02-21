@@ -77,7 +77,7 @@ const CreateProject = () => {
     };
 
     axios
-      .post("http://localhost:8080/api/projects", data)
+      .post("//express-server-hire.herokuapp.com/api/projects", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();

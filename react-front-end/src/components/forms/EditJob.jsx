@@ -32,7 +32,6 @@ const CreateJob = () => {
 
   useEffect(() => {
     if (location.pathname !== "/jobs/new") {
-
       axios
         .get(`//express-server-hire.herokuapp.com/api/jobs/${id}`)
         .then((response) => {
@@ -59,7 +58,6 @@ const CreateJob = () => {
               });
               setCheckedState(newCheckedState);
             }
-
           }
         });
     }
@@ -118,7 +116,7 @@ const CreateJob = () => {
     };
 
     axios
-      .put(`http://localhost:8080/api/jobs/${id}`, data)
+      .put(`//express-server-hire.herokuapp.com/api/jobs/${id}`, data)
       .then((response) => {
         setSubmitted(response.data);
         setTimeout(() => navigate(`/employers/${Cookies.get("id")}`), 3000);
