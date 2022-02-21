@@ -58,9 +58,6 @@ const JobListItem = (props) => {
       </span>
       <br />
       <div>
-        <Button variant="outlined" href={apply_link} target="_blank">
-          Apply Here
-        </Button>
         {location.pathname !== "/jobs" &&
         Number(Cookies.get("id")) === employerId ? (
           <span className="ms-2">
@@ -81,7 +78,9 @@ const JobListItem = (props) => {
             </Button>
           </span>
         ) : (
-          ""
+          <Button variant="outlined" href={apply_link} target="_blank">
+            Apply Here
+          </Button>
         )}
       </div>
     </div>
