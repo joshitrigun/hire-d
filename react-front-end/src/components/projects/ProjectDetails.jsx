@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
-import { BsPlusLg } from "react-icons/bs";
 import "./ProjectDetails.css";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import "./EditCertification.css";
 import Stack from "@mui/material/Stack";
+
 const CreateCertification = () => {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -15,6 +16,7 @@ const CreateCertification = () => {
   const [error, setError] = useState("");
 
   const user_id = useParams();
+  const navigate = useNavigate();
 
   const reset = () => {
     setTitle("");
@@ -24,7 +26,7 @@ const CreateCertification = () => {
     setCity("");
     setProvince("");
 
-    setTimeout(() => setSubmitted(false), 5000);
+    setTimeout(() => setSubmitted(false), 3000);
   };
 
   const validate = () => {
@@ -72,6 +74,7 @@ const CreateCertification = () => {
       .then((response) => {
         setSubmitted(response.data);
         reset();
+        setTimeout(() => navigate(`/developers/${user_id.id}`), 3000);
       })
       .catch((err) => {
         console.log(err.message);
@@ -80,8 +83,20 @@ const CreateCertification = () => {
   console.log("id", user_id);
   return (
     <div>
-      {submitted ? <p className="text-center">{submitted}</p> : ""}
-      {error ? <p className="text-center">{error}</p> : ""}
+      {submitted ? (
+        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+          {submitted}
+        </p>
+      ) : (
+        ""
+      )}
+      {error ? (
+        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+          {error}
+        </p>
+      ) : (
+        ""
+      )}
       <form className="w-100 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <div className="certification-form-container">
           <h3 className="text-center">Add certification</h3>
@@ -140,12 +155,16 @@ const CreateCertification = () => {
             />
           </div>
         </div>
-          <div className="certification-button">
+        <div className="certification-button">
           <Stack spacing={2} direction="row">
-            <Button variant="outlined" onClick={validate}>Save</Button>
-            <Button variant="outlined" href="/">Cancel</Button>
+            <Button variant="outlined" onClick={validate}>
+              Save
+            </Button>
+            <Button variant="outlined" href="/">
+              Cancel
+            </Button>
           </Stack>
-          </div>
+        </div>
       </form>
     </div>
   );

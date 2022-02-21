@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import { HiBriefcase } from "react-icons/hi";
-import { BsGeoFill, BsSave } from "react-icons/bs";
+import { BsGeoFill } from "react-icons/bs";
 import "./JobDetail.css";
 import dateFormat from "dateformat";
 import Stack from "@mui/material/Stack";
