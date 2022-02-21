@@ -21,10 +21,9 @@ const JobListItem = (props) => {
     employerId,
   } = props;
 
-  console.log("props", props);
   let navigate = useNavigate();
   let location = useLocation();
-  
+
   const routeChange = () => {
     let path = `/jobs/${id}`;
     navigate(path);
@@ -34,7 +33,6 @@ const JobListItem = (props) => {
     return axios
       .delete(`/api/jobs/${id}`)
       .then((response) => {
-        console.log(response);
         window.location.reload();
       })
       .catch((error) => {
