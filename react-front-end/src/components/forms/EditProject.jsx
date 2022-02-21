@@ -34,8 +34,6 @@ const CreateProject = () => {
         .get(`//express-server-hire.herokuapp.com/api/projects/${id}`)
         .then((response) => {
           const data = response.data[0];
-          console.log(id);
-          console.log(data);
           if (Cookies.get("id")) {
             if (Number(id) === data.id) {
               setTitle(data.title);

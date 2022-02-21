@@ -36,8 +36,6 @@ const CreateJob = () => {
         .get(`//express-server-hire.herokuapp.com/api/jobs/${id}`)
         .then((response) => {
           const data = response.data[0];
-          console.log(id);
-          console.log(data);
           if (Cookies.get("employer")) {
             if (Number(id) === data.id) {
               setTitle(data.title);
