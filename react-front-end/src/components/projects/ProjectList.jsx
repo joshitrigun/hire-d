@@ -14,13 +14,16 @@ const AllProjects = () => {
 
   const mappedProjects = state.map((project) => {
     return (
-      <div className="projects-block">
+      <div className="projects-block" key={project.id}>
         <ProjectListItem
-          key={project.id}
           project_id={project.id}
           title={project.title}
           screenshot={project.screenshot}
           likes={project.likes}
+          description={project.description}
+          projectLink={project.project_url}
+          owner_id={project.owner_id}
+          stack={project.tech_stack}
         />
       </div>
     );

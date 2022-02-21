@@ -179,6 +179,8 @@ const CreateSeekerForm = () => {
       employer: false,
       skills: stack.join(", "),
     };
+    
+    // const id = Number(Cookies.get("id"));
 
     axios
       .post("http://localhost:8080/api/users", data)

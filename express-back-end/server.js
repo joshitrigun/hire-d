@@ -27,6 +27,7 @@ const {
   updateEmployer,
   getJob,
   updateJob,
+  // updateLikes
 } = require("./database/queries");
 
 const PORT = 8080;
@@ -65,6 +66,7 @@ App.post("/api/jobs", createJobs);
 App.put("/api/certifications/:id", updateCertification);
 App.put("/api/users/:id", updateUser);
 App.put("/api/projects/:id", updateProject);
+// App.put("/api/projects/:id", updateLikes);
 App.put("/api/employers/:id", updateEmployer);
 App.put("/api/jobs/:id", updateJob);
 

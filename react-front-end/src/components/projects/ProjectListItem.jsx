@@ -5,14 +5,19 @@ import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
 import "./ProjectListItem.css";
+import Axios from "axios";
 
 const ProjectListItem = (props) => {
+
+  const { project_id, title, screenshot, likes, description, owner_id, projectLink, stack } = props;
+
   const [isProfile, setIsProfile] = useState(false);
   const location = useLocation();
   let { id } = useParams();
   const currentUser = Cookies.get("id");
+  const [like, setLike] = useState(likes);
+  // const [liked, updateLiked] = useState(false);
 
-  const { project_id, title, screenshot, likes } = props;
 
   useEffect(() => {
     if (currentUser === id && location.pathname === `/developers/${id}`) {
@@ -25,8 +30,22 @@ const ProjectListItem = (props) => {
     let path = `/projects/${project_id}`;
     navigate(path);
   };
-  const countLikes = (event) => {
-    console.log("Liked");
+  const countLikes = () => {
+
+    const data = {
+      title,
+      description,
+      owner_id,
+      likes: like + 1,
+      projectLink,
+      screenshot,
+      stack,
+    };
+
+    Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+    .then(response => {
+      setLike(like => like += 1);
+    }).catch(err => err.message)
   };
 
   return (
@@ -55,7 +74,7 @@ const ProjectListItem = (props) => {
           ""
         )}
         <p>
-          <BsHeart className="likes" onClick={countLikes} /> {likes}
+          <BsHeart className="likes" onClick={countLikes} /> {like}
         </p>
       </span>
     </div>

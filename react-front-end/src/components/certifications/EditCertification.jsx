@@ -5,7 +5,9 @@ import Cookies from "js-cookie";
 import "./EditCertification.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+
 const CreateCertification = () => {
+  
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
