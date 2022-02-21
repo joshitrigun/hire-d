@@ -3,25 +3,27 @@ import EmployerListItem from "./EmployerListItem";
 import axios from "axios";
 
 const EmployerList = () => {
-
   const [state, setState] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/employers").then((response) => {
-      setState(response.data);
-    }).catch(err => err)
+    axios
+      .get("//express-server-hire.herokuapp.com/api/employers")
+      .then((response) => {
+        setState(response.data);
+      })
+      .catch((err) => err);
   }, []);
 
   const mappedEmployers = state.map((employer) => {
     return (
       <EmployerListItem
-      key={employer.id}
-      id={employer.id}
-      company={employer.first_name}
-      avatar={employer.avatar}
-      email={employer.email}
-      city={employer.city}
-      province={employer.province}
+        key={employer.id}
+        id={employer.id}
+        company={employer.first_name}
+        avatar={employer.avatar}
+        email={employer.email}
+        city={employer.city}
+        province={employer.province}
       />
     );
   });

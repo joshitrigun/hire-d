@@ -22,17 +22,25 @@ const CreateCertification = () => {
 
   useEffect(() => {
     if (location.pathname !== `/developers/${id}/certifications/new`) {
-      axios.get(`/api/certifications/${cert_id}`).then((response) => {
-        const data = response.data[0];
-        if (Cookies.get("id")) {
-          setTitle(data.title);
-          setStartDate(data.start_date.slice(0, 10));
-          setEndDate(data.end_date.slice(0, 10));
-          setInstitution(data.institution);
-          setCity(data.city);
-          setProvince(data.province);
-        }
-      });
+
+      axios
+        .get(
+          `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`
+        )
+        .then((response) => {
+          const data = response.data[0];
+          console.log(location.pathname);
+          console.log(data);
+          if (Cookies.get("id")) {
+            setTitle(data.title);
+            setStartDate(data.start_date.slice(0, 10));
+            setEndDate(data.end_date.slice(0, 10));
+            setInstitution(data.institution);
+            setCity(data.city);
+            setProvince(data.province);
+          }
+        });
+
     }
   }, []);
 
