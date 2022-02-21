@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
 import "./ProjectListItem.css";
 import Axios from "axios";
@@ -82,11 +82,18 @@ const ProjectListItem = (props) => {
           <h5 className="project-title">{title}</h5>
         </NavLink>
         {isProfile ? (
-          <Button variant="outlined" href={`/projects/${project_id}/edit`}>
-            <span>
-              <FaEdit /> EDIT
-            </span>
-          </Button>
+          <>
+            <Button variant="outlined" href={`/projects/${project_id}/edit`}>
+              <span>
+                <FaEdit /> EDIT
+              </span>
+            </Button>
+            <Button variant="outlined" color="error">
+              <span>
+                <FaTrash /> DELETE
+              </span>
+            </Button>
+          </>
         ) : (
           ""
         )}

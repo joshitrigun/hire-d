@@ -260,7 +260,7 @@ const createCertification = (req, res) => {
       if (error) {
         throw error;
       }
-      res.status(201).send("Certifications added");
+      res.status(201).send("Certification Added");
     }
   );
 };
@@ -392,7 +392,7 @@ const updateCertification = (request, response) => {
     if (error) {
       throw error;
     }
-    response.status(200).send("Certfication updated");
+    response.status(200).send("Certfication Updated");
   });
 };
 const getJob = (request, response) => {
@@ -448,7 +448,6 @@ const updateJob = (request, response) => {
 };
 
 const updateEmployer = (request, response) => {
-
   const id = request.params.id;
 
   const {
@@ -461,7 +460,7 @@ const updateEmployer = (request, response) => {
     city,
     province,
     avatar,
-    linkedin
+    linkedin,
   } = request.body;
 
   const queryString = `UPDATE users SET first_name = $1, email = $2, phone_number = $3, password = $4, city = $5, province = $6, designation = $7, avatar = $8, about_me = $9, linkedin_url = $10 WHERE id = $11;`;
@@ -476,7 +475,7 @@ const updateEmployer = (request, response) => {
     avatar,
     about,
     linkedin,
-    id
+    id,
   ];
 
   client.query(queryString, value, (error, results) => {

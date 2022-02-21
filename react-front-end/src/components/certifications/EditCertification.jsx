@@ -112,8 +112,20 @@ const CreateCertification = () => {
 
   return (
     <div>
-      {submitted ? <p className="text-center">{submitted}</p> : ""}
-      {error ? <p className="text-center">{error}</p> : ""}
+      {submitted ? (
+        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+          {submitted}
+        </p>
+      ) : (
+        ""
+      )}
+      {error ? (
+        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+          {error}
+        </p>
+      ) : (
+        ""
+      )}
       <form className="w-100 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <div className="certification-form-container">
           <h3 className="text-center">Edit certification</h3>
@@ -172,12 +184,16 @@ const CreateCertification = () => {
             />
           </div>
         </div>
-          <div className="certification-button">
-            <Stack spacing={2} direction="row">
-              <Button variant="outlined" onClick={validate}>Save</Button>
-              <Button variant="outlined" href="/">Cancel</Button>
-            </Stack>
-          </div>
+        <div className="certification-button">
+          <Stack spacing={2} direction="row">
+            <Button variant="outlined" onClick={validate}>
+              Save
+            </Button>
+            <Button variant="outlined" href="/">
+              Cancel
+            </Button>
+          </Stack>
+        </div>
       </form>
     </div>
   );
