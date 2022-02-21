@@ -41,9 +41,9 @@ const JobListItem = (props) => {
   };
 
   return (
-    <div className="job-block" onClick={routeChange}>
+    <div className="job-block">
       <span className="icon-frame">
-        <HiBriefcase className="hi-icon" />
+        <HiBriefcase className="hi-icon" onClick={routeChange} />
       </span>
       <span className="job-info">
         <NavLink className="title-link" to={`/jobs/${id}`}>
