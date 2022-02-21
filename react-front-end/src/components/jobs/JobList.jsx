@@ -17,7 +17,15 @@ const JobList = () => {
     return (
       <JobListItem
         key={job.id}
-        job={job}
+        id={job.id}
+        title={job.title}
+        employer={job.first_name}
+        city={job.city}
+        province={job.province}
+        salary={job.salary}
+        apply_link={job.apply_link}
+        jobType={job.job_type}
+        employerId={job.employer_id}
       />
     );
   });
