@@ -13,8 +13,6 @@ const Jobs = () => {
       });
   }, []);
 
-  console.log("Jobs", jobs);
-
   const mappedJobs = jobs.map((job) => {
     return (
       <HotJobListItem
