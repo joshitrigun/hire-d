@@ -209,7 +209,6 @@ const updateUser = (request, response) => {
       if (error) {
         console.log(error);
       }
-      console.log(results);
       response.status(201).send(`User Updated`);
     }
   );
@@ -227,7 +226,6 @@ const updateProject = (request, response) => {
     stack,
   } = request.body;
 
-  // console.log(id, request.body);
   const queryString = `UPDATE projects SET title = $1, owner_id = $2, tech_stack = $3, screenshot = $4, description = $5, project_url = $6, likes = $7 WHERE id = $8;`;
   const value = [
     title,
@@ -243,7 +241,6 @@ const updateProject = (request, response) => {
     if (error) {
       console.log(error);
     }
-    // console.log(results);
     response.status(201).send(`Project Updated`);
   });
 };
@@ -426,8 +423,6 @@ const updateJob = (request, response) => {
     applyLink,
   } = request.body;
 
-  console.log("request body data", request.body);
-
   const queryString = `UPDATE jobs SET title = $1, description = $2, job_type = $3, tech_stack = $4, salary = $5, start_date = $6, end_date = $7, featured = $8, apply_link = $9 WHERE id = $10;`;
 
   client.query(
@@ -448,7 +443,6 @@ const updateJob = (request, response) => {
       if (error) {
         console.log(error);
       }
-      console.log(results);
       response.status(201).send(`Job Updated`);
     }
   );

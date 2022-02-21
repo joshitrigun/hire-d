@@ -26,7 +26,6 @@ const Certification = (props) => {
     return axios
       .delete(`/api/certifications/${cert_id}`)
       .then((response) => {
-        console.log(response);
         window.location.reload();
       })
       .catch((error) => {
