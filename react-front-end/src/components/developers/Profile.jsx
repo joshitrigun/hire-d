@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Profile.css";
 import {
   BsEnvelopeFill,
-  BsFullscreen,
   BsGeoFill,
   BsGithub,
   BsTelephoneFill,
