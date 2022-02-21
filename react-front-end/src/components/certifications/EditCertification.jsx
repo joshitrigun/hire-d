@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import "./EditCertification.css";
@@ -170,12 +170,16 @@ const CreateCertification = () => {
             />
           </div>
         </div>
-          <div className="certification-button">
-            <Stack spacing={2} direction="row">
-              <Button variant="outlined" onClick={validate}>Save</Button>
-              <Button variant="outlined" href="/">Cancel</Button>
-            </Stack>
-          </div>
+        <div className="certification-button">
+          <Stack spacing={2} direction="row">
+            <Button variant="outlined" onClick={validate}>
+              Save
+            </Button>
+            <Button variant="outlined" href="/">
+              Cancel
+            </Button>
+          </Stack>
+        </div>
       </form>
     </div>
   );

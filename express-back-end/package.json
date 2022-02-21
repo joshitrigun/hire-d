@@ -1,7 +1,7 @@
 {
   "name": "express-back-end",
   "version": "1.0.0",
-  "description": "Boilerplate for the Express backend in an Express-React project",
+  "description": " Express backend in an Express-React project",
   "main": "server.js",
   "author": "garrettgsb",
   "license": "MIT",
@@ -9,6 +9,7 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
+    "@heroku/buildpack-registry": "^1.0.1",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
