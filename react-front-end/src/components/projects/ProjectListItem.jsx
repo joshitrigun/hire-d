@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";
@@ -16,7 +16,7 @@ const ProjectListItem = (props) => {
   let { id } = useParams();
   const currentUser = Cookies.get("id");
   const [like, setLike] = useState(likes);
-  // const [liked, updateLiked] = useState(false);
+  const [liked, setLiked] = useState(false);
 
 
   useEffect(() => {
@@ -31,22 +31,46 @@ const ProjectListItem = (props) => {
     navigate(path);
   };
   const countLikes = () => {
+    if (currentUser !== owner_id && liked === false) {
 
-    const data = {
-      title,
-      description,
-      owner_id,
-      likes: like + 1,
-      projectLink,
-      screenshot,
-      stack,
+      const data = {
+        title,
+        description,
+        owner_id,
+        likes: like + 1,
+        projectLink,
+        screenshot,
+        stack,
+      };
+      
+      Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+        .then(response => {
+          setLike(like => like += 1);
+          setLiked(true);
+        }).catch(err => err.message)
+      }
     };
 
-    Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
-    .then(response => {
-      setLike(like => like += 1);
-    }).catch(err => err.message)
-  };
+    const unlikeProject = () => {
+      if (currentUser !== owner_id && liked === true) {
+  
+        const data = {
+          title,
+          description,
+          owner_id,
+          likes: like - 1,
+          projectLink,
+          screenshot,
+          stack,
+        };
+        
+        Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+          .then(response => {
+            setLike(like => like -= 1);
+            setLiked(false);
+          }).catch(err => err.message)
+        }
+      };
 
   return (
     <div className="project-block">
@@ -74,7 +98,9 @@ const ProjectListItem = (props) => {
           ""
         )}
         <p>
-          <BsHeart className="likes" onClick={countLikes} /> {like}
+          {liked === false && <BsHeart className="likes" onClick={countLikes} />} 
+          {liked === true && <BsHeartFill className="likes" onClick={unlikeProject} />}
+          &nbsp;{like}
         </p>
       </span>
     </div>
