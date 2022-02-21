@@ -48,7 +48,6 @@ const DeveloperDetail = () => {
       setState((prev) => ({
         ...prev,
         user: userDetails(response[0].data, Number(url_id.id)),
-        // users: response[0].data,
         projects: getProjectsByUser(response[1].data, Number(url_id.id)),
         certifications: getCertificationsByUser(
           response[2].data,
