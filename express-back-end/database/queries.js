@@ -499,6 +499,30 @@ const deleteProject = (request, response) => {
   });
 };
 
+const deleteCertification = (request, response) => {
+  const id = request.params.id;
+
+  const queryString = `DELETE FROM certifications WHERE id = $1;`;
+  client.query(queryString, [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send("Certification Deleted");
+  });
+};
+
+const deleteJob = (request, response) => {
+  const id = request.params.id;
+
+  const queryString = `DELETE FROM jobs WHERE id = $1;`;
+  client.query(queryString, [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send("Job Deleted");
+  });
+};
+
 module.exports = {
   getAllUsers,
   getUser,
@@ -524,4 +548,6 @@ module.exports = {
   getJob,
   updateJob,
   deleteProject,
+  deleteCertification,
+  deleteJob,
 };
