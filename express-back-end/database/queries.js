@@ -216,8 +216,9 @@ const updateUser = (request, response) => {
 };
 
 const updateProject = (request, response) => {
+
+  const id = request.params.id;
   const {
-    id,
     title,
     description,
     owner_id,
@@ -227,16 +228,14 @@ const updateProject = (request, response) => {
     stack,
   } = request.body;
 
+  // console.log(id, request.body);
   const queryString = `UPDATE projects SET title = $1, owner_id = $2, tech_stack = $3, screenshot = $4, description = $5, project_url = $6, likes = $7 WHERE id = $8;`;
-
-  client.query(
-    queryString,
-    [title, owner_id, stack, screenshot, description, projectLink, likes, id],
-    (error, results) => {
+  const value = [title, owner_id, stack, screenshot, description, projectLink, likes, id];
+  client.query(queryString, value, (error, results) => {
       if (error) {
         console.log(error);
       }
-      console.log(results);
+      // console.log(results);
       response.status(201).send(`Project Updated`);
     }
   );
@@ -488,6 +487,30 @@ const updateEmployer = (request, response) => {
   });
 };
 
+// const updateLikes = (request, response) => {
+
+//   const id = request.params.id;
+//   console.log("id=>", id);
+
+//   const {
+//     likes
+//   } = request.body;
+
+//   console.log(request);
+//   const queryString = `UPDATE projects SET likes = $1 WHERE id = $2;`;
+//   const value = [
+//     likes,
+//     id
+//   ];
+
+//   client.query(queryString, value, (error, results) => {
+//     if (error) {
+//       throw error;
+//     }
+//     response.status(200).send(`Project liked ${likes} times`);
+//   });
+// };
+
 module.exports = {
   getAllUsers,
   getUser,
@@ -512,4 +535,5 @@ module.exports = {
   updateEmployer,
   getJob,
   updateJob,
+  // updateLikes
 };

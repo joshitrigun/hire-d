@@ -1,17 +1,18 @@
 import React from "react";
 import { BsGeoFill } from "react-icons/bs";
 import { HiBriefcase } from "react-icons/hi";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./JobListItem.css";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 
 const JobListItem = (props) => {
-  const { id, title, employer, city, province, salary, apply_link, jobType } =
-    props;
 
+    const { id, title, employer, city, province, salary, apply_link, jobType, empolyer_id } = props;
+
+    console.log("props", props);
   let navigate = useNavigate();
-  let location = useLocation();
+  // let location = useLocation();
   const routeChange = () => {
     let path = `/jobs/${id}`;
     navigate(path);
@@ -38,7 +39,7 @@ const JobListItem = (props) => {
         <Button variant="outlined" href={apply_link} target="_blank">
           Apply Here
         </Button>
-        {Cookies.get("employer") === "true" && location.pathname !== "/jobs" ? (
+        {Number(Cookies.get("id")) === empolyer_id ? (
           <span className="ms-2">
             <Button variant="outlined" href={`/jobs/${id}/edit`}>
               Edit
