@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import Cookies from "js-cookie";
+import axios from "axios";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "./CreateEmployerForm.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditEmployerForm = () => {
-
   const params = useParams();
   const navigate = useNavigate();
 
@@ -25,20 +23,21 @@ const EditEmployerForm = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/employers/${params.id}`)
-    .then((response) => {
-      const employer = response.data[0];
-      setFirstName(employer.first_name);
-      setEmail(employer.email);
-      setNumber(employer.phone_number);
-      setAbout(employer.about_me);
-      setCity(employer.city);
-      setProvince(employer.province);
-      setAvatar(employer.avatar);
-      setLinkedin(employer.linkedin_url);
-    });
+    axios
+      .get(`http://localhost:8080/api/employers/${params.id}`)
+      .then((response) => {
+        const employer = response.data[0];
+        setFirstName(employer.first_name);
+        setEmail(employer.email);
+        setNumber(employer.phone_number);
+        setAbout(employer.about_me);
+        setCity(employer.city);
+        setProvince(employer.province);
+        setAvatar(employer.avatar);
+        setLinkedin(employer.linkedin_url);
+      });
   }, []);
-  
+
   const validate = () => {
     if (firstName === "") {
       setError("First name cannot be blank");
@@ -87,7 +86,7 @@ const EditEmployerForm = () => {
     setError("");
     onSubmitHandler();
   };
-  
+
   const reset = () => {
     setFirstName("");
     setEmail("");
@@ -100,7 +99,7 @@ const EditEmployerForm = () => {
     setAvatar("");
     setLinkedin("");
     setTimeout(() => setSubmitted(false), 5000);
-  };  
+  };
 
   const onSubmitHandler = () => {
     const data = {
@@ -119,8 +118,8 @@ const EditEmployerForm = () => {
       avatar,
       employer: true,
       skills: "",
-    }
-    
+    };
+
     axios
       .put(`http://localhost:8080/api/employers/${params.id}`, data)
       .then((response) => {
@@ -128,16 +127,16 @@ const EditEmployerForm = () => {
         reset();
         setTimeout(() => {
           navigate(`/employers/${params.id}`);
-        }, 3000)
+        }, 3000);
       })
       .catch((err) => {
         console.log(err.message);
       });
-    };
-    
+  };
+
   return (
     <>
-    {submitted ? (
+      {submitted ? (
         <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
           {submitted}
         </p>
@@ -247,17 +246,21 @@ const EditEmployerForm = () => {
                 onChange={(event) => setLinkedin(event.target.value)}
               />
             </div>
-              <div>
-                <Stack spacing={2} direction="row">
-                  <Button variant="outlined" onClick={validate}>Save</Button>
-                  <Button variant="outlined" href="/">Cancel</Button>
-                </Stack>
-              </div>
+            <div>
+              <Stack spacing={2} direction="row">
+                <Button variant="outlined" onClick={validate}>
+                  Save
+                </Button>
+                <Button variant="outlined" href="/">
+                  Cancel
+                </Button>
+              </Stack>
+            </div>
           </div>
         </div>
       </form>
     </>
-  )
+  );
 };
 
 export default EditEmployerForm;
