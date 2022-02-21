@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Boilerplate for the Express backend in an Express-React project",
   "main": "server.js",
-  "author": "garrettgsb",
+  "author": "Team Hired",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -14,7 +14,9 @@
     "dotenv": "^16.0.0",
     "express": "^4.16.4",
     "morgan": "^1.10.0",
-    "nodemon": "^1.18.7",
     "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
