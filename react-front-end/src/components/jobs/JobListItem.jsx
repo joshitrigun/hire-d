@@ -12,7 +12,6 @@ const JobListItem = (props) => {
 
     console.log("props", props);
   let navigate = useNavigate();
-  // let location = useLocation();
   const routeChange = () => {
     let path = `/jobs/${id}`;
     navigate(path);
