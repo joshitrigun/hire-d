@@ -9,7 +9,6 @@ const JobList = () => {
   useEffect(() => {
     axios.get("/api/jobs_employers").then((response) => {
       setJobs(response.data);
-      console.log(response.data);
     });
   }, []);
 

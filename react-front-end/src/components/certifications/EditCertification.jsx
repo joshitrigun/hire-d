@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 const CreateCertification = () => {
-  
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -25,8 +24,6 @@ const CreateCertification = () => {
     if (location.pathname !== `/developers/${id}/certifications/new`) {
       axios.get(`/api/certifications/${cert_id}`).then((response) => {
         const data = response.data[0];
-        console.log(location.pathname);
-        console.log(data);
         if (Cookies.get("id")) {
           setTitle(data.title);
           setStartDate(data.start_date.slice(0, 10));
@@ -89,7 +86,6 @@ const CreateCertification = () => {
       province,
       jobSeekerId: 1,
     };
-    console.log(data);
     if (
       Cookies.get("id") &&
       location.pathname !== `/developers/${id}/certifications/new`

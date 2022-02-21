@@ -34,8 +34,7 @@ const CreateJob = () => {
     if (location.pathname !== "/jobs/new") {
       axios.get(`/api/jobs/${id}`).then((response) => {
         const data = response.data[0];
-        console.log(id);
-        console.log(data);
+
         if (Cookies.get("employer")) {
           if (Number(id) === data.id) {
             setTitle(data.title);
@@ -113,7 +112,6 @@ const CreateJob = () => {
       applyLink,
     };
 
-    console.log(id);
     axios
       .put(`http://localhost:8080/api/jobs/${id}`, data)
       .then((response) => {

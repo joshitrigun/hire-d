@@ -81,3 +81,6 @@
   justify-content: flex-start;
   align-items: center;
 }
+.job-block .padding {
+  padding: 10px;
+}

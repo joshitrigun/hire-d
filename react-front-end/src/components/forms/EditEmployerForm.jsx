@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-// import Cookies from "js-cookie";
+import axios from "axios";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "./CreateEmployerForm.module.css";
@@ -228,7 +227,6 @@ const EditEmployerForm = () => {
                 onChange={(event) => setProvince(event.target.value)}
               />
             </div>
-            {/* COME BACK TO THIS BELOW  */}
             <div className="form-input">
               <input
                 type="text"

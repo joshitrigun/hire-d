@@ -48,7 +48,6 @@ const DeveloperDetail = () => {
       setState((prev) => ({
         ...prev,
         user: userDetails(response[0].data, Number(url_id.id)),
-        // users: response[0].data,
         projects: getProjectsByUser(response[1].data, Number(url_id.id)),
         certifications: getCertificationsByUser(
           response[2].data,
@@ -96,11 +95,7 @@ const DeveloperDetail = () => {
         <div className="profile-section">
           <Profile user={state.user} />
         </div>
-        <PerfectScrollbar
-          onScrollY={(container) =>
-            console.log(`scrolled to: ${container.scrollTop}.`)
-          }
-        >
+        <PerfectScrollbar>
           <div className="dev-section-right">
             <div className="dev-project-header">
               <h4 className="certification-title">My Projects</h4>

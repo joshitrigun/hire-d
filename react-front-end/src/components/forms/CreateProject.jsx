@@ -136,7 +136,6 @@ const CreateProject = () => {
                 onChange={(event) => setProjectLink(event.target.value)}
               />
             </div>
-            {/* COME BACK TO THIS BELOW  */}
             <div className="form-input">
               <input
                 type="text"
