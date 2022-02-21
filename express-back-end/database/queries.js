@@ -487,6 +487,18 @@ const updateEmployer = (request, response) => {
   });
 };
 
+const deleteProject = (request, response) => {
+  const id = request.params.id;
+
+  const queryString = `DELETE FROM projects WHERE id = $1;`;
+  client.query(queryString, [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send("Project Deleted");
+  });
+};
+
 module.exports = {
   getAllUsers,
   getUser,
@@ -511,4 +523,5 @@ module.exports = {
   updateEmployer,
   getJob,
   updateJob,
+  deleteProject,
 };
