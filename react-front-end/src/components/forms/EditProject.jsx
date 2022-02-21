@@ -175,7 +175,7 @@ const CreateProject = () => {
               <div className="tech-stack">
                 {checkedState.map(({ name }, index) => {
                   return (
-                    <div key={index}>
+                    <div className="tech-stack-names" key={index}>
                       <input
                         type="checkbox"
                         name={name}
