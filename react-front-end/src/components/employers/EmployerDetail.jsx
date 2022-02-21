@@ -18,8 +18,12 @@ const EmployerDetail = () => {
 
   const { id } = useParams();
 
-  const getUsers = axios.get("/api/employers");
-  const getJobs = axios.get("/api/jobs_employers");
+  const getUsers = axios.get(
+    "//express-server-hire.herokuapp.com/api/employers"
+  );
+  const getJobs = axios.get(
+    "//express-server-hire.herokuapp.com/api/jobs_employers"
+  );
 
   const getJobsByEmployers = (jobs, id) => {
     const jobsByEmployer = jobs.filter((job) => job.employer_id === id);
