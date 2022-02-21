@@ -7,6 +7,18 @@ import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 
 const JobListItem = (props) => {
+  const {
+    id,
+    title,
+    employer,
+    city,
+    province,
+    salary,
+    apply_link,
+    jobType,
+    employerId,
+  } = props;
+
 
     const { id, title, employer, city, province, salary, apply_link, jobType, empolyer_id } = props;
 
@@ -19,9 +31,9 @@ const JobListItem = (props) => {
   };
 
   return (
-    <div className="job-block" onClick={routeChange}>
+    <div className="job-block">
       <span className="icon-frame">
-        <HiBriefcase className="hi-icon" />
+        <HiBriefcase className="hi-icon" onClick={routeChange} />
       </span>
       <span className="job-info">
         <NavLink className="title-link" to={`/jobs/${id}`}>
@@ -39,7 +51,8 @@ const JobListItem = (props) => {
         <Button variant="outlined" href={apply_link} target="_blank">
           Apply Here
         </Button>
-        {Number(Cookies.get("id")) === empolyer_id ? (
+        {location.pathname !== "/jobs" &&
+        Number(Cookies.get("id")) === employerId ? (
           <span className="ms-2">
             <Button variant="outlined" href={`/jobs/${id}/edit`}>
               Edit
