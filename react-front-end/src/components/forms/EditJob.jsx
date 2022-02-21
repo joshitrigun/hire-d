@@ -127,22 +127,22 @@ const CreateJob = () => {
   };
   return (
     <div className="job_form">
-      {submitted ? (
-        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
-          {submitted}
-        </p>
-      ) : (
-        ""
-      )}
-      {error ? (
-        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
-          {error}
-        </p>
-      ) : (
-        ""
-      )}
       <form className="row g-3" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Edit Job</h3>
+        {submitted ? (
+          <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+            {submitted}
+          </p>
+        ) : (
+          ""
+        )}
+        {error ? (
+          <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+            {error}
+          </p>
+        ) : (
+          ""
+        )}
         <div className="form-container">
           <div className="form-header">
             <div className="form-input">
