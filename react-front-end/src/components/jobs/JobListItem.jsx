@@ -5,6 +5,8 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./JobListItem.css";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import axios from "axios";
 
 const JobListItem = (props) => {
   const {
@@ -24,6 +26,18 @@ const JobListItem = (props) => {
   const routeChange = () => {
     let path = `/jobs/${id}`;
     navigate(path);
+  };
+
+  const onDeleteHandler = () => {
+    return axios
+      .delete(`/api/jobs/${id}`)
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -50,8 +64,20 @@ const JobListItem = (props) => {
         {location.pathname !== "/jobs" &&
         Number(Cookies.get("id")) === employerId ? (
           <span className="ms-2">
-            <Button variant="outlined" href={`/jobs/${id}/edit`}>
-              Edit
+            <Button
+              className="padding"
+              variant="outlined"
+              href={`/jobs/${id}/edit`}
+            >
+              <FaEdit />
+            </Button>
+            <Button
+              className="ms-2 padding"
+              variant="contained"
+              color="error"
+              onClick={onDeleteHandler}
+            >
+              <FaTrash />
             </Button>
           </span>
         ) : (
