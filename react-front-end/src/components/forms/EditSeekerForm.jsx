@@ -158,7 +158,7 @@ const CreateSeekerForm = () => {
       employer: false,
       skills: stack.join(", "),
     };
-    console.log(data);
+
     const id = Number(Cookies.get("id"));
 
     axios
@@ -304,7 +304,6 @@ const CreateSeekerForm = () => {
                   onChange={(event) => setLinkedinUrl(event.target.value)}
                 />
               </div>
-              {/* COME BACK TO THIS BELOW  */}
               <div className="form-input">
                 <input
                   type="text"
