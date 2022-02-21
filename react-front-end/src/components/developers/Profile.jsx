@@ -38,7 +38,7 @@ export default function Profile(props) {
       <h4 className="section-title">Skills</h4>
       <p className="body-text">{user.skills}</p>
       <p className="body-text ">
-        <a href={user.resume}>
+        <a href={user.resume} target="_blank">
           <h4 className="section-title text-primary">Resume</h4>
         </a>
       </p>
