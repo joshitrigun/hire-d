@@ -9,26 +9,26 @@ const JobList = () => {
   useEffect(() => {
     axios.get("/api/jobs_employers").then((response) => {
       setJobs(response.data);
+      console.log(response.data);
     });
   }, []);
 
   const mappedJobs = jobs.map((job) => {
-    console.log(job);
     return (
       <JobListItem
         key={job.id}
         id={job.id}
         title={job.title}
         employer={job.first_name}
-        jobType={job.job_type}
         city={job.city}
         province={job.province}
         salary={job.salary}
         apply_link={job.apply_link}
+        jobType={job.job_type}
+        employerId={job.employer_id}
       />
     );
   });
-
   return <div className="job-container">{mappedJobs}</div>;
 };
 

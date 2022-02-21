@@ -14,7 +14,6 @@ import Cookies from "js-cookie";
 const DeveloperDetail = () => {
   const [state, setState] = useState({
     user: {},
-    // users: [],
     projects: [],
     certifications: [],
   });
@@ -44,15 +43,6 @@ const DeveloperDetail = () => {
     return certificates;
   };
 
-  // useEffect(() => {
-  //   if (state.users && state.users.length > 0) {
-  //     setState((prev) => ({
-  //       ...prev,
-  //       user: userDetails(state.users, Number(url_id.id)),
-  //     }));
-  //   }
-  // }, [url_id]);
-
   useEffect(() => {
     Promise.all([getUsers, getProjects, getCertifications]).then((response) => {
       setState((prev) => ({
@@ -72,11 +62,14 @@ const DeveloperDetail = () => {
     return (
       <div className="projects-block">
         <ProjectListItem
-          key={project.id}
           project_id={project.id}
           title={project.title}
           screenshot={project.screenshot}
           likes={project.likes}
+          description={project.description}
+          projectLink={project.project_url}
+          owner_id={project.owner_id}
+          stack={project.tech_stack}
         />
       </div>
     );

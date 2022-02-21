@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "./ProjectListItem.css";
+import Axios from "axios";
 
 const ProjectListItem = (props) => {
+
+  const { project_id, title, screenshot, likes, description, owner_id, projectLink, stack } = props;
+
   const [isProfile, setIsProfile] = useState(false);
   const location = useLocation();
   let { id } = useParams();
   const currentUser = Cookies.get("id");
+  const [like, setLike] = useState(likes);
+  const [liked, setLiked] = useState(false);
 
-  const { project_id, title, screenshot, likes } = props;
 
   useEffect(() => {
     if (currentUser === id && location.pathname === `/developers/${id}`) {
@@ -26,9 +31,47 @@ const ProjectListItem = (props) => {
     let path = `/projects/${project_id}`;
     navigate(path);
   };
-  const countLikes = (event) => {
-    console.log("Liked");
-  };
+  const countLikes = () => {
+    if (currentUser !== owner_id && liked === false) {
+
+      const data = {
+        title,
+        description,
+        owner_id,
+        likes: like + 1,
+        projectLink,
+        screenshot,
+        stack,
+      };
+      
+      Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+        .then(response => {
+          setLike(like => like += 1);
+          setLiked(true);
+        }).catch(err => err.message)
+      }
+    };
+
+    const unlikeProject = () => {
+      if (currentUser !== owner_id && liked === true) {
+  
+        const data = {
+          title,
+          description,
+          owner_id,
+          likes: like - 1,
+          projectLink,
+          screenshot,
+          stack,
+        };
+        
+        Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+          .then(response => {
+            setLike(like => like -= 1);
+            setLiked(false);
+          }).catch(err => err.message)
+        }
+      };
 
   const onDeleteHandler = () => {
     return axios
@@ -64,7 +107,9 @@ const ProjectListItem = (props) => {
           ""
         )}
         <p>
-          <BsHeart className="likes" onClick={countLikes} /> {likes}
+          {liked === false && <BsHeart className="likes" onClick={countLikes} />} 
+          {liked === true && <BsHeartFill className="likes" onClick={unlikeProject} />}
+          &nbsp;{like}
         </p>
       </span>
     </div>
