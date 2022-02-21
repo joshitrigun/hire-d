@@ -32,8 +32,7 @@ const CreateProject = () => {
     if (location.pathname !== "/projects/new") {
       axios.get(`/api/projects/${id}`).then((response) => {
         const data = response.data[0];
-        console.log(id);
-        console.log(data);
+
         if (Cookies.get("id")) {
           if (Number(id) === data.id) {
             setTitle(data.title);
@@ -94,7 +93,7 @@ const CreateProject = () => {
       screenshot,
       stack: stack.join(", "),
     };
-    console.log(data);
+
     axios
       .put(`http://localhost:8080/api/projects/${id}`, { ...data, id })
       .then((response) => {
@@ -154,7 +153,6 @@ const CreateProject = () => {
                 onChange={(event) => setProjectLink(event.target.value)}
               />
             </div>
-            {/* COME BACK TO THIS BELOW  */}
             <div className="form-input">
               <input
                 type="text"
