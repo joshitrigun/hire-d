@@ -4,6 +4,7 @@ import dateFormat from "dateformat";
 import "./Certification.css";
 import Cookies from "js-cookie";
 import Button from "@mui/material/Button";
+import { FaTrash } from "react-icons/fa";
 
 const Certification = (props) => {
   const { cert_id, title, institution, startDate, endDate, province, city } =
@@ -18,6 +19,9 @@ const Certification = (props) => {
           )}/certifications/${cert_id}/edit`}
         >
           <FaEdit />
+        </Button>
+        <Button variant="outlined" color="error">
+          <FaTrash />
         </Button>
       </div>
       <div className="certification-main">
