@@ -14,17 +14,16 @@
 .job-details-main {
   width: 75%;
   padding: 2em 4em;
-  /* margin-top: 10em; */
-  background-color: rgb(250,250,250);
+  background-color: rgb(250, 250, 250);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  transition: .5s;
+  transition: 0.5s;
 }
 .job-details-main:hover {
-  box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.35);
 }
 
 .job-details-block {
@@ -52,9 +51,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: #3F51B5 solid 1px;
+  border: #3f51b5 solid 1px;
   margin: 2em;
-  color: #3F51B5;
+  color: #3f51b5;
 }
-
-
