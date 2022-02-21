@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Top_nav_bar.css";
-// import { BsSearch } from "react-icons/bs";
 import Cookies from "js-cookie";
 
 const TopNavBar = () => {

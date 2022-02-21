@@ -2,9 +2,9 @@ import React from "react";
 import TopNavBar from "../components/layout/Top_nav_bar";
 import ProjectList from "../components/projects/ProjectList";
 import HotJobList from "../components/jobs/HotJobsList";
-import '../App.css';
-import 'react-perfect-scrollbar/dist/css/styles.css';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import "../App.css";
+import "react-perfect-scrollbar/dist/css/styles.css";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 const Homepage = () => {
   return (
@@ -13,7 +13,7 @@ const Homepage = () => {
       <div className="main-container">
         <section className="home-left-side">
           <h2 className="page-title">Projects to explore...</h2>
-          <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+          <PerfectScrollbar>
             <span className="home-projects">
               <ProjectList />
             </span>
@@ -21,7 +21,7 @@ const Homepage = () => {
         </section>
         <section className="home-right-side">
           <h2 className="page-title">Hottest jobs...</h2>
-          <PerfectScrollbar onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
+          <PerfectScrollbar>
             <div className="hot-jobs-section">
               <HotJobList />
             </div>

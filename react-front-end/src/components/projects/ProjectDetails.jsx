@@ -11,7 +11,6 @@ const ProjectDetails = () => {
 
   const projectsDetails = (state, id) => {
     const getProject = state.filter((project) => project.id === id);
-    console.log(getProject);
     setSingleProject(getProject[0]);
   };
 
@@ -21,7 +20,6 @@ const ProjectDetails = () => {
     });
   }, []);
 
-  console.log(url_id);
   return (
     <div className="project-details-main">
       <span className="project-details-header">

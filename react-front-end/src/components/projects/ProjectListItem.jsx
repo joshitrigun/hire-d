@@ -4,12 +4,21 @@ import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
+import axios from "axios";
 import "./ProjectListItem.css";
 import Axios from "axios";
 
 const ProjectListItem = (props) => {
-
-  const { project_id, title, screenshot, likes, description, owner_id, projectLink, stack } = props;
+  const {
+    project_id,
+    title,
+    screenshot,
+    likes,
+    description,
+    owner_id,
+    projectLink,
+    stack,
+  } = props;
 
   const [isProfile, setIsProfile] = useState(false);
   const location = useLocation();
@@ -18,12 +27,11 @@ const ProjectListItem = (props) => {
   const [like, setLike] = useState(likes);
   const [liked, setLiked] = useState(false);
 
-
   useEffect(() => {
     if (currentUser === id && location.pathname === `/developers/${id}`) {
       setIsProfile(true);
     }
-  }, []);
+  }, [id]);
 
   let navigate = useNavigate();
   const routeChange = () => {
@@ -32,7 +40,6 @@ const ProjectListItem = (props) => {
   };
   const countLikes = () => {
     if (currentUser !== owner_id && liked === false) {
-
       const data = {
         title,
         description,
@@ -42,35 +49,47 @@ const ProjectListItem = (props) => {
         screenshot,
         stack,
       };
-      
-      Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
-        .then(response => {
-          setLike(like => like += 1);
-          setLiked(true);
-        }).catch(err => err.message)
-      }
-    };
 
-    const unlikeProject = () => {
-      if (currentUser !== owner_id && liked === true) {
-  
-        const data = {
-          title,
-          description,
-          owner_id,
-          likes: like - 1,
-          projectLink,
-          screenshot,
-          stack,
-        };
-        
-        Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
-          .then(response => {
-            setLike(like => like -= 1);
-            setLiked(false);
-          }).catch(err => err.message)
-        }
+      Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+        .then((response) => {
+          setLike((like) => (like += 1));
+          setLiked(true);
+        })
+        .catch((err) => err.message);
+    }
+  };
+
+  const unlikeProject = () => {
+    if (currentUser !== owner_id && liked === true) {
+      const data = {
+        title,
+        description,
+        owner_id,
+        likes: like - 1,
+        projectLink,
+        screenshot,
+        stack,
       };
+
+      Axios.put(`http://localhost:8080/api/projects/${project_id}`, data)
+        .then((response) => {
+          setLike((like) => (like -= 1));
+          setLiked(false);
+        })
+        .catch((err) => err.message);
+    }
+  };
+
+  const onDeleteHandler = () => {
+    return axios
+      .delete(`/api/projects/${project_id}`)
+      .then((response) => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <div className="project-block">
@@ -84,22 +103,22 @@ const ProjectListItem = (props) => {
         {isProfile ? (
           <>
             <Button variant="outlined" href={`/projects/${project_id}/edit`}>
-              <span>
-                <FaEdit /> EDIT
-              </span>
+              <FaEdit />
             </Button>
-            <Button variant="outlined" color="error">
-              <span>
-                <FaTrash /> DELETE
-              </span>
+            <Button variant="contained" color="error" onClick={onDeleteHandler}>
+              <FaTrash />
             </Button>
           </>
         ) : (
           ""
         )}
         <p>
-          {liked === false && <BsHeart className="likes" onClick={countLikes} />} 
-          {liked === true && <BsHeartFill className="likes" onClick={unlikeProject} />}
+          {liked === false && (
+            <BsHeart className="likes" onClick={countLikes} />
+          )}
+          {liked === true && (
+            <BsHeartFill className="likes" onClick={unlikeProject} />
+          )}
           &nbsp;{like}
         </p>
       </span>

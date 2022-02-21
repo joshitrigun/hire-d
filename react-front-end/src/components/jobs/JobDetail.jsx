@@ -43,9 +43,6 @@ const JobDetail = () => {
           <Button variant="outlined" href="/jobs">
             All Jobs
           </Button>
-          {/* <Button variant="outlined" href="/jobs/new">
-            Post New Job
-          </Button> */}
         </Stack>
       </div>
       <section className="job-details-block">
@@ -70,10 +67,6 @@ const JobDetail = () => {
         </span>
         <section className="job-details-footer">
           <Stack spacing={2} direction="row">
-            {/* <Button variant="outlined" href="/jobs/save">
-              Save&nbsp;&nbsp;
-              <BsSave />
-            </Button> */}
             <Button variant="outlined" href={apply_link} target="_blank">
               Apply Here
             </Button>

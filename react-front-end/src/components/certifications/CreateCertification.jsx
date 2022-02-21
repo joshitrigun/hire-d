@@ -68,7 +68,6 @@ const CreateCertification = () => {
       province,
       jobSeekerId: user_id.id,
     };
-    console.log(data);
     axios
       .post("http://localhost:8080/api/certifications", data)
       .then((response) => {
@@ -80,7 +79,6 @@ const CreateCertification = () => {
         console.log(err.message);
       });
   };
-  console.log("id", user_id);
   return (
     <div>
       {submitted ? (

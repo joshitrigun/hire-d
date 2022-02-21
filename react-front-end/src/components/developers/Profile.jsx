@@ -38,11 +38,10 @@ export default function Profile(props) {
       <p className="body-text">{user.about_me}</p>
       <h4 className="section-title">Skills</h4>
       <p className="body-text">{user.skills}</p>
-      <h4 className="section-title">
-        Resume <BsFullscreen className="bs-icon" />
-      </h4>
-      <p className="body-text">
-        <a href={user.linkedin_url}>{user.linkedin_url}</a>
+      <p className="body-text ">
+        <a href={user.resume}>
+          <h4 className="section-title text-primary">Resume</h4>
+        </a>
       </p>
       <h4 className="section-title">Contact</h4>
       <p className="body-text">
