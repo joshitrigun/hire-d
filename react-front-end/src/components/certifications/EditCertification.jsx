@@ -28,8 +28,7 @@ const CreateCertification = () => {
         )
         .then((response) => {
           const data = response.data[0];
-          console.log(location.pathname);
-          console.log(data);
+
           if (Cookies.get("id")) {
             setTitle(data.title);
             setStartDate(data.start_date.slice(0, 10));
