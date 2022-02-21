@@ -4,6 +4,7 @@ import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
+import axios from "axios";
 import "./ProjectListItem.css";
 
 const ProjectListItem = (props) => {
@@ -29,6 +30,18 @@ const ProjectListItem = (props) => {
     console.log("Liked");
   };
 
+  const onDeleteHandler = () => {
+    return axios
+      .delete(`/api/projects/${project_id}`)
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="project-block">
       <div className="project-img-frame" onClick={routeChange}>
@@ -41,14 +54,10 @@ const ProjectListItem = (props) => {
         {isProfile ? (
           <>
             <Button variant="outlined" href={`/projects/${project_id}/edit`}>
-              <span>
-                <FaEdit /> EDIT
-              </span>
+              <FaEdit />
             </Button>
-            <Button variant="outlined" color="error">
-              <span>
-                <FaTrash /> DELETE
-              </span>
+            <Button variant="contained" color="error" onClick={onDeleteHandler}>
+              <FaTrash />
             </Button>
           </>
         ) : (
