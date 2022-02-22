@@ -34,7 +34,6 @@ const EmployerDetail = () => {
     const employer = employers.filter(
       (singleEmployer) => singleEmployer.id === id
     );
-    console.log(state);
     return employer[0];
   };
 
