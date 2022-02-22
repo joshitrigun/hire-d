@@ -119,22 +119,22 @@ const CreateEmployerForm = () => {
 
   return (
     <>
-      {submitted ? (
-        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
-          {submitted}
-        </p>
-      ) : (
-        ""
-      )}
-      {error ? (
-        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
-          {error}
-        </p>
-      ) : (
-        ""
-      )}
+      <h3 className="text-center">Create Profile</h3>
       <form className="w-200 mx-auto" onSubmit={(e) => e.preventDefault()}>
-        <h3 className="text-center">Create Profile</h3>
+        {submitted ? (
+          <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+            {submitted}
+          </p>
+        ) : (
+          ""
+        )}
+        {error ? (
+          <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+            {error}
+          </p>
+        ) : (
+          ""
+        )}
         <div className="form-container">
           <div className="form-header">
             <div className="form-input">
