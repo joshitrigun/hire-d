@@ -22,15 +22,13 @@ const CreateCertification = () => {
 
   useEffect(() => {
     if (location.pathname !== `/developers/${id}/certifications/new`) {
-
       axios
         .get(
           `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`
         )
         .then((response) => {
           const data = response.data[0];
-          console.log(location.pathname);
-          console.log(data);
+
           if (Cookies.get("id")) {
             setTitle(data.title);
             setStartDate(data.start_date.slice(0, 10));
@@ -40,7 +38,6 @@ const CreateCertification = () => {
             setProvince(data.province);
           }
         });
-
     }
   }, []);
 
@@ -99,10 +96,13 @@ const CreateCertification = () => {
       location.pathname !== `/developers/${id}/certifications/new`
     ) {
       axios
-        .put(`http://localhost:8080/api/certifications/${cert_id}`, {
-          ...data,
-          cert_id,
-        })
+        .put(
+          `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`,
+          {
+            ...data,
+            cert_id,
+          }
+        )
         .then((response) => {
           setSubmitted(response.data);
           reset();
@@ -116,23 +116,23 @@ const CreateCertification = () => {
 
   return (
     <div>
-      {submitted ? (
-        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
-          {submitted}
-        </p>
-      ) : (
-        ""
-      )}
-      {error ? (
-        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
-          {error}
-        </p>
-      ) : (
-        ""
-      )}
+      <h3 className="text-center">Edit certification</h3>
       <form className="w-100 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <div className="certification-form-container">
-          <h3 className="text-center">Edit certification</h3>
+          {submitted ? (
+            <p className="bg-success text-center text-white w-100 mx-auto fw-bold">
+              {submitted}
+            </p>
+          ) : (
+            ""
+          )}
+          {error ? (
+            <p className="bg-danger text-center text-white w-75 mx-auto fw-bold">
+              {error}
+            </p>
+          ) : (
+            ""
+          )}
           <div className="form-input">
             <input
               type="text"

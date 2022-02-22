@@ -31,7 +31,7 @@ const JobListItem = (props) => {
 
   const onDeleteHandler = () => {
     return axios
-      .delete(`/api/jobs/${id}`)
+      .delete(`//express-server-hire.herokuapp.com/api/jobs/${id}`)
       .then((response) => {
         window.location.reload();
       })
@@ -41,9 +41,9 @@ const JobListItem = (props) => {
   };
 
   return (
-    <div className="job-block" onClick={routeChange}>
+    <div className="job-block">
       <span className="icon-frame">
-        <HiBriefcase className="hi-icon" />
+        <HiBriefcase className="hi-icon" onClick={routeChange} />
       </span>
       <span className="job-info">
         <NavLink className="title-link" to={`/jobs/${id}`}>
@@ -58,9 +58,6 @@ const JobListItem = (props) => {
       </span>
       <br />
       <div>
-        <Button variant="outlined" href={apply_link} target="_blank">
-          Apply Here
-        </Button>
         {location.pathname !== "/jobs" &&
         Number(Cookies.get("id")) === employerId ? (
           <span className="ms-2">
@@ -81,7 +78,9 @@ const JobListItem = (props) => {
             </Button>
           </span>
         ) : (
-          ""
+          <Button variant="outlined" href={apply_link} target="_blank">
+            Apply Here
+          </Button>
         )}
       </div>
     </div>

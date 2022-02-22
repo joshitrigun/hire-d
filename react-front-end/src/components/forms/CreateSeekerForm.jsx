@@ -182,13 +182,8 @@ const CreateSeekerForm = () => {
       skills: stack.join(", "),
     };
 
-
-    // const id = Number(Cookies.get("id"));
-
-
-
     axios
-      .post("http://localhost:8080/api/users", data)
+      .post("//express-server-hire.herokuapp.com/api/users", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();

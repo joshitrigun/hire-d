@@ -77,7 +77,7 @@ const CreateProject = () => {
     };
 
     axios
-      .post("http://localhost:8080/api/projects", data)
+      .post("//express-server-hire.herokuapp.com/api/projects", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();
@@ -90,22 +90,22 @@ const CreateProject = () => {
 
   return (
     <div>
-      {submitted ? (
-        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
-          {submitted}
-        </p>
-      ) : (
-        ""
-      )}
-      {error ? (
-        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
-          {error}
-        </p>
-      ) : (
-        ""
-      )}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Create Project</h3>
+        {submitted ? (
+          <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+            {submitted}
+          </p>
+        ) : (
+          ""
+        )}
+        {error ? (
+          <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+            {error}
+          </p>
+        ) : (
+          ""
+        )}
         <div className="project-form-container">
           <div className="form-header">
             <div className="form-input">
@@ -152,7 +152,7 @@ const CreateProject = () => {
               <div className="tech-stack">
                 {checkedState.map(({ name }, index) => {
                   return (
-                    <div key={index}>
+                    <div className="tech-stack-names" key={index}>
                       <input
                         type="checkbox"
                         name={name}

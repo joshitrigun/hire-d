@@ -30,13 +30,10 @@ const CreateProject = () => {
 
   useEffect(() => {
     if (location.pathname !== "/projects/new") {
-
       axios
         .get(`//express-server-hire.herokuapp.com/api/projects/${id}`)
         .then((response) => {
           const data = response.data[0];
-          console.log(id);
-          console.log(data);
           if (Cookies.get("id")) {
             if (Number(id) === data.id) {
               setTitle(data.title);
@@ -54,7 +51,6 @@ const CreateProject = () => {
               });
               setCheckedState(newCheckedState);
             }
-
           }
         });
     }
@@ -100,7 +96,10 @@ const CreateProject = () => {
     };
 
     axios
-      .put(`http://localhost:8080/api/projects/${id}`, { ...data, id })
+      .put(`//express-server-hire.herokuapp.com/api/projects/${id}`, {
+        ...data,
+        id,
+      })
       .then((response) => {
         setSubmitted(response.data);
         setTimeout(() => navigate(`/projects/${id}`), 3000);
@@ -112,22 +111,22 @@ const CreateProject = () => {
 
   return (
     <div>
-      {submitted ? (
-        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
-          {submitted}
-        </p>
-      ) : (
-        ""
-      )}
-      {error ? (
-        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
-          {error}
-        </p>
-      ) : (
-        ""
-      )}
       <form className="w-90 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Edit Project</h3>
+        {submitted ? (
+          <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+            {submitted}
+          </p>
+        ) : (
+          ""
+        )}
+        {error ? (
+          <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+            {error}
+          </p>
+        ) : (
+          ""
+        )}
         <div className="project-form-container">
           <div className="form-header">
             <div className="form-input">
@@ -174,7 +173,7 @@ const CreateProject = () => {
               <div className="tech-stack">
                 {checkedState.map(({ name }, index) => {
                   return (
-                    <div key={index}>
+                    <div className="tech-stack-names" key={index}>
                       <input
                         type="checkbox"
                         name={name}

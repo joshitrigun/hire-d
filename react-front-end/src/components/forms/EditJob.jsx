@@ -32,13 +32,10 @@ const CreateJob = () => {
 
   useEffect(() => {
     if (location.pathname !== "/jobs/new") {
-
       axios
         .get(`//express-server-hire.herokuapp.com/api/jobs/${id}`)
         .then((response) => {
           const data = response.data[0];
-          console.log(id);
-          console.log(data);
           if (Cookies.get("employer")) {
             if (Number(id) === data.id) {
               setTitle(data.title);
@@ -59,7 +56,6 @@ const CreateJob = () => {
               });
               setCheckedState(newCheckedState);
             }
-
           }
         });
     }
@@ -118,7 +114,7 @@ const CreateJob = () => {
     };
 
     axios
-      .put(`http://localhost:8080/api/jobs/${id}`, data)
+      .put(`//express-server-hire.herokuapp.com/api/jobs/${id}`, data)
       .then((response) => {
         setSubmitted(response.data);
         setTimeout(() => navigate(`/employers/${Cookies.get("id")}`), 3000);
@@ -129,22 +125,22 @@ const CreateJob = () => {
   };
   return (
     <div className="job_form">
-      {submitted ? (
-        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
-          {submitted}
-        </p>
-      ) : (
-        ""
-      )}
-      {error ? (
-        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
-          {error}
-        </p>
-      ) : (
-        ""
-      )}
       <form className="row g-3" onSubmit={(e) => e.preventDefault()}>
         <h3 className="text-center">Edit Job</h3>
+        {submitted ? (
+          <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+            {submitted}
+          </p>
+        ) : (
+          ""
+        )}
+        {error ? (
+          <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+            {error}
+          </p>
+        ) : (
+          ""
+        )}
         <div className="form-container">
           <div className="form-header">
             <div className="form-input">
@@ -218,7 +214,7 @@ const CreateJob = () => {
               <div className="tech-stack">
                 {checkedState.map(({ name }, index) => {
                   return (
-                    <div key={index}>
+                    <div className="tech-stack-names" key={index}>
                       <input
                         type="checkbox"
                         name={name}
