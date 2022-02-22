@@ -216,7 +216,7 @@ const CreateSeekerForm = () => {
           </div>
           <div className="forms">
             <div className="form-header">
-              <h3 className="text-center">Edit Profile</h3>
+              <h3 className="text-center">Create Profile</h3>
               <div className="form-input">
                 <input
                   type="text"

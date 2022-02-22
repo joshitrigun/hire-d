@@ -2,6 +2,17 @@ const { response } = require("express");
 const pg = require("pg");
 const client = require("./connection");
 
+const getAll = (request, response) => {
+  const queryString = "SELECT * FROM users;";
+
+  client.query(queryString, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
 const getAllUsers = (request, response) => {
   const queryString = "SELECT * FROM users WHERE employer = false ORDER BY id;";
 
@@ -524,6 +535,7 @@ const deleteJob = (request, response) => {
 };
 
 module.exports = {
+  getAll,
   getAllUsers,
   getUser,
   getAllEmployers,

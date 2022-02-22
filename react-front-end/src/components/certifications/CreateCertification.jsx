@@ -82,14 +82,14 @@ const CreateCertification = () => {
   return (
     <div>
       {submitted ? (
-        <p className="bg-success text-center text-white w-25 mx-auto fw-bold">
+        <p className="bg-success text-center text-white w-75 mx-auto fw-bold">
           {submitted}
         </p>
       ) : (
         ""
       )}
       {error ? (
-        <p className="bg-danger text-center text-white w-25 mx-auto fw-bold">
+        <p className="bg-danger text-center text-white w-75 mx-auto fw-bold">
           {error}
         </p>
       ) : (
