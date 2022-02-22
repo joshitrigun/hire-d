@@ -37,11 +37,11 @@ export default function Profile(props) {
       <p className="body-text">{user.about_me}</p>
       <h4 className="section-title">Skills</h4>
       <p className="body-text">{user.skills}</p>
-      <p className="body-text ">
-        <a href={user.resume} target="_blank" rel="noopener noreferrer">
-          <h4 className="section-title text-primary">Resume</h4>
-        </a>
-      </p>
+
+      <a href={user.resume} target="_blank" rel="noopener noreferrer">
+        <h4 className="section-title text-primary">Resume</h4>
+      </a>
+
       <h4 className="section-title">Contact</h4>
       <p className="body-text">
         <BsGithub className="bs-icon" />
