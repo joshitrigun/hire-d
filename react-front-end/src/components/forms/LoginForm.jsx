@@ -13,33 +13,38 @@ const LoginForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios.get("//express-server-hire.herokuapp.com/api/all").then((response) => {
-      const data = response.data;
+    axios
+      .get("//express-server-hire.herokuapp.com/api/all")
+      .then((response) => {
+        const data = response.data;
 
-      const user = data.filter((user) => {
-        if (user.email === userName) {
-          return user;
-        } else {
-          setError(true);
-          setTimeout(() => setError(false), 4000);
+        const user = data.filter((user) => {
+          if (user.email === userName) {
+            return user;
+          } else {
+            setError(true);
+            setTimeout(() => setError(false), 4000);
+          }
+          return null;
+        });
+
+        if (user.length > 0) {
+          if (user[0].employer === false && user[0].password === password) {
+            Cookies.set("user", userName);
+            Cookies.set("employer", "false");
+            Cookies.set("id", user[0].id);
+            navigate(`/developers/${user[0].id}`);
+          } else if (
+            user[0].employer === true &&
+            user[0].password === password
+          ) {
+            Cookies.set("user", userName);
+            Cookies.set("employer", "true");
+            Cookies.set("id", user[0].id);
+            navigate(`/employers/${user[0].id}`);
+          }
         }
-        return null;
       });
-
-      if (user.length > 0) {
-        if (user[0].employer === false && user[0].password === password) {
-          Cookies.set("user", userName);
-          Cookies.set("employer", "false");
-          Cookies.set("id", user[0].id);
-          navigate(`/developers/${user[0].id}`);
-        } else if (user[0].employer === true && user[0].password === password) {
-          Cookies.set("user", userName);
-          Cookies.set("employer", "true");
-          Cookies.set("id", user[0].id);
-          navigate(`/employers/${user[0].id}`);
-        }
-      }
-    });
   };
 
   return (

@@ -10,6 +10,7 @@ import axios from "axios";
 const Certification = (props) => {
   const [isProfile, setIsProfile] = useState(false);
   const location = useLocation();
+
   let { id } = useParams();
   const currentUser = Cookies.get("id");
 

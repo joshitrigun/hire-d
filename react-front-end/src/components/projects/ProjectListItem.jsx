@@ -8,6 +8,7 @@ import axios from "axios";
 import "../../scss/ProjectListItem.scss";
 import Axios from "axios";
 
+
 const ProjectListItem = (props) => {
   const {
     project_id,
@@ -50,11 +51,11 @@ const ProjectListItem = (props) => {
         stack,
       };
 
-
-      Axios.put(
-        `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
-        data
-      )
+      axios
+        .put(
+          `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
+          data
+        )
 
         .then((response) => {
           setLike((like) => (like += 1));
@@ -76,11 +77,11 @@ const ProjectListItem = (props) => {
         stack,
       };
 
-
-      Axios.put(
-        `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
-        data
-      )
+      axios
+        .put(
+          `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
+          data
+        )
 
         .then((response) => {
           setLike((like) => (like -= 1));
@@ -89,7 +90,6 @@ const ProjectListItem = (props) => {
         .catch((err) => err.message);
     }
   };
-
 
   const onDeleteHandler = () => {
     return axios
@@ -101,7 +101,6 @@ const ProjectListItem = (props) => {
         console.log(error.message);
       });
   };
-
 
   return (
     <div className="project-block">
