@@ -69,7 +69,7 @@ const CreateCertification = () => {
       jobSeekerId: user_id.id,
     };
     axios
-      .post("/api/certifications", data)
+      .post("//express-server-hire.herokuapp.com/api/certifications", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();

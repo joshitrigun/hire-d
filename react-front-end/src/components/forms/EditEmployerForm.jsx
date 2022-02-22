@@ -23,18 +23,20 @@ const EditEmployerForm = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.get(`/api/employers/${params.id}`).then((response) => {
-      const employer = response.data[0];
-      setFirstName(employer.first_name);
-      setEmail(employer.email);
-      setNumber(employer.phone_number);
-      setPassword(employer.password);
-      setAbout(employer.about_me);
-      setCity(employer.city);
-      setProvince(employer.province);
-      setAvatar(employer.avatar);
-      setLinkedin(employer.linkedin_url);
-    });
+    axios
+      .get(`//express-server-hire.herokuapp.com/api/employers/${params.id}`)
+      .then((response) => {
+        const employer = response.data[0];
+        setFirstName(employer.first_name);
+        setEmail(employer.email);
+        setNumber(employer.phone_number);
+        setPassword(employer.password);
+        setAbout(employer.about_me);
+        setCity(employer.city);
+        setProvince(employer.province);
+        setAvatar(employer.avatar);
+        setLinkedin(employer.linkedin_url);
+      });
   }, []);
 
   const validate = () => {
@@ -120,7 +122,10 @@ const EditEmployerForm = () => {
     };
 
     axios
-      .put(`/api/employers/${params.id}`, data)
+      .put(
+        `//express-server-hire.herokuapp.com/api/employers/${params.id}`,
+        data
+      )
       .then((response) => {
         setSubmitted(response.data);
         reset();

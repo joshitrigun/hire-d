@@ -7,7 +7,7 @@ const EmployerList = () => {
 
   useEffect(() => {
     axios
-      .get("/api/employers")
+      .get("//express-server-hire.herokuapp.com/api/employers")
       .then((response) => {
         setState(response.data);
       })

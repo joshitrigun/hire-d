@@ -30,27 +30,29 @@ const CreateProject = () => {
 
   useEffect(() => {
     if (location.pathname !== "/projects/new") {
-      axios.get(`/api/projects/${id}`).then((response) => {
-        const data = response.data[0];
-        if (Cookies.get("id")) {
-          if (Number(id) === data.id) {
-            setTitle(data.title);
-            setDescription(data.description);
-            setProjectLink(data.project_url);
-            setScreenshot(data.screenshot);
-            setLikes(data.likes);
-            const skills = data.tech_stack.split(",");
-            const newSkills = skills.map((skill) => skill.trim());
-            const newCheckedState = checkedState.map((skill) => {
-              if (newSkills.includes(skill.name)) {
-                skill.checked = true;
-              }
-              return skill;
-            });
-            setCheckedState(newCheckedState);
+      axios
+        .get(`//express-server-hire.herokuapp.com/api/projects/${id}`)
+        .then((response) => {
+          const data = response.data[0];
+          if (Cookies.get("id")) {
+            if (Number(id) === data.id) {
+              setTitle(data.title);
+              setDescription(data.description);
+              setProjectLink(data.project_url);
+              setScreenshot(data.screenshot);
+              setLikes(data.likes);
+              const skills = data.tech_stack.split(",");
+              const newSkills = skills.map((skill) => skill.trim());
+              const newCheckedState = checkedState.map((skill) => {
+                if (newSkills.includes(skill.name)) {
+                  skill.checked = true;
+                }
+                return skill;
+              });
+              setCheckedState(newCheckedState);
+            }
           }
-        }
-      });
+        });
     }
   }, []);
 
@@ -94,7 +96,7 @@ const CreateProject = () => {
     };
 
     axios
-      .put(`/api/projects/${id}`, {
+      .put(`//express-server-hire.herokuapp.com/api/projects/${id}`, {
         ...data,
         id,
       })

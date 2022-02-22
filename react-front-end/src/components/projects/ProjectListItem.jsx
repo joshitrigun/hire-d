@@ -6,7 +6,6 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "./ProjectListItem.css";
-import Axios from "axios";
 
 const ProjectListItem = (props) => {
   const {
@@ -50,7 +49,11 @@ const ProjectListItem = (props) => {
         stack,
       };
 
-      Axios.put(`/api/projects/${project_id}`, data)
+      axios
+        .put(
+          `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
+          data
+        )
 
         .then((response) => {
           setLike((like) => (like += 1));
@@ -72,7 +75,11 @@ const ProjectListItem = (props) => {
         stack,
       };
 
-      Axios.put(`/api/projects/${project_id}`, data)
+      axios
+        .put(
+          `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
+          data
+        )
 
         .then((response) => {
           setLike((like) => (like -= 1));
@@ -84,7 +91,7 @@ const ProjectListItem = (props) => {
 
   const onDeleteHandler = () => {
     return axios
-      .delete(`/api/projects/${project_id}`)
+      .delete(`//express-server-hire.herokuapp.com/api/projects/${project_id}`)
       .then((response) => {
         window.location.reload();
       })

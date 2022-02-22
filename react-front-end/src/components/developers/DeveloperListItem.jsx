@@ -18,11 +18,11 @@ const DeveloperListItem = (props) => {
     resume,
   } = props;
 
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/developers/${id}`; 
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/developers/${id}`;
     navigate(path);
-  }
+  };
 
   return (
     <div className="developer-block" onClick={routeChange}>
