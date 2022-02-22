@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import "../../scss/ProjectListItem.scss";
 
-
 const ProjectListItem = (props) => {
   const {
     project_id,

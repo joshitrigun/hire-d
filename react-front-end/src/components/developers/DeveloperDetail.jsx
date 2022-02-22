@@ -63,7 +63,7 @@ const DeveloperDetail = () => {
 
   const mappedProjects = state.projects.map((project) => {
     return (
-      <div className="projects-block">
+      <div className="projects-block" key={project.id}>
         <ProjectListItem
           project_id={project.id}
           title={project.title}
