@@ -6,8 +6,6 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "../../scss/ProjectListItem.scss";
-import Axios from "axios";
-
 
 const ProjectListItem = (props) => {
   const {
