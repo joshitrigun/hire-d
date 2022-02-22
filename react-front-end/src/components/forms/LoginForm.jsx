@@ -11,21 +11,6 @@ const LoginForm = () => {
   const [error, setError] = useState(false);
   let navigate = useNavigate();
 
-  // const onSeekerHandler = () => {
-  //   console.log();
-  //   Cookies.set("user", "trigunjoshi@gmail.com");
-  //   Cookies.set("employer", "false");
-  //   Cookies.set("id", "1");
-  //   navigate("/");
-  // };
-
-  // const onEmployerHandler = () => {
-  //   Cookies.set("user", "amazon@gmail.com");
-  //   Cookies.set("employer", "true");
-  //   Cookies.set("id", "13");
-  //   navigate("/");
-  // };
-
   const onSubmit = (e) => {
     e.preventDefault();
     axios.get("/api/all").then((response) => {
@@ -39,7 +24,7 @@ const LoginForm = () => {
           setTimeout(() => setError(false), 4000);
         }
       });
-      console.log(user);
+
       if (user.length > 0) {
         if (user[0].employer === false && user[0].password === password) {
           Cookies.set("user", userName);
@@ -106,22 +91,6 @@ const LoginForm = () => {
           >
             Submit
           </Button>
-          {/* <Button
-            variant="outlined"
-            type="submit"
-            className="btn btn-primary"
-            onClick={onSeekerHandler}
-          >
-            Job Seeker
-          </Button>
-          <Button
-            variant="outlined"
-            type="submit"
-            className="btn btn-primary ms-2"
-            onClick={onEmployerHandler}
-          >
-            Employer
-          </Button> */}
         </div>
       </form>
     </div>
