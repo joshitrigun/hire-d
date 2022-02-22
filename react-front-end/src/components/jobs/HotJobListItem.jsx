@@ -2,7 +2,7 @@ import React from "react";
 import { BsGeoFill } from "react-icons/bs";
 import { HiBriefcase } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
-import "./HotJobListItem.css";
+import "../../scss/HotJobListItem.scss";
 
 const HotJobListItem = (props) => {
 

@@ -1,0 +1,43 @@
+.employer-detail {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: 90%;
+}
+.employer-detail-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: 100%;
+}
+.employer-profile-section {
+	width: 35em;
+}
+.employer-section-right {
+	width: 65%;
+	height: 70vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+.employer-job-section {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	.scrollbar-container {
+		width: 65em;
+		display: flex;
+		justify-content: flex-start;
+	}
+}
+.emp-job-section {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	height: 75vh;
+}

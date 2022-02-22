@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import "./EditCertification.css";
+import "../../scss/EditCertification.scss";
 import Stack from "@mui/material/Stack";
 
 const CreateCertification = () => {

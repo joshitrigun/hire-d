@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { FaSave } from "react-icons/fa";
 import onChangeHandler from "../../helpers/onChangeHandler";
-import "../forms/CreateProject.css";
+import "../../scss/CreateProject.scss";
 
 const CreateProject = () => {
   const navigate = useNavigate();

@@ -1,0 +1,17 @@
+.footer-bar {
+  background-color: #3f51b5;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  padding: .5em;
+  position: fixed; }
+  .footer-bar p {
+    margin-bottom: 0;
+    color: white; }
+  .footer-bar a {
+    color: white;
+    text-decoration: none; }
+    .footer-bar a:hover {
+      color: #60d6f3; }
+
+/*# sourceMappingURL=Footer.css.map */

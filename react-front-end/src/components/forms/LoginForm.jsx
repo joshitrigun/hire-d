@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import "./LoginForm.module.css";
+import "../../scss/LoginForm.module.scss";
 import Button from "@mui/material/Button";
 
 const LoginForm = () => {
@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios.get("/api/all").then((response) => {
+    axios.get("//express-server-hire.herokuapp.com/api/all").then((response) => {
       const data = response.data;
 
       const user = data.filter((user) => {
@@ -23,6 +23,7 @@ const LoginForm = () => {
           setError(true);
           setTimeout(() => setError(false), 4000);
         }
+        return null;
       });
 
       if (user.length > 0) {

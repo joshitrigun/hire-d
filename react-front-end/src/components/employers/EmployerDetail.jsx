@@ -7,8 +7,8 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import Button from "@mui/material/Button";
 import { GoPlus } from "react-icons/go";
 import Cookies from "js-cookie";
-import "./EmployerProfile.css";
-import "./EmployerDetail.css";
+import "../../scss/EmployerProfile.scss";
+import "../../scss/EmployerDetail.scss";
 
 const EmployerDetail = () => {
   const [state, setState] = useState({

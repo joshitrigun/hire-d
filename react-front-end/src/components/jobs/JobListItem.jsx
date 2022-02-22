@@ -2,7 +2,7 @@ import React from "react";
 import { BsGeoFill } from "react-icons/bs";
 import { HiBriefcase } from "react-icons/hi";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
-import "./JobListItem.css";
+import "../../scss/JobListItem.scss";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";

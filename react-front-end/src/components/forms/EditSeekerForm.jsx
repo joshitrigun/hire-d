@@ -5,7 +5,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import "./CreateSeekerForm.css";
+import "../../scss/CreateSeekerForm.scss";
 import onChangeHandler from "../../helpers/onChangeHandler";
 
 const CreateSeekerForm = () => {

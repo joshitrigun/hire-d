@@ -11,6 +11,7 @@
     "bootstrap": "^5.1.3",
     "dateformat": "^5.0.2",
     "js-cookie": "^3.0.1",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-bootstrap": "^2.1.2",
     "react-datepicker": "^4.6.0",
@@ -36,5 +37,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:8080"
+  "proxy": "http://express-server-hire.herokuapp.com"
 }

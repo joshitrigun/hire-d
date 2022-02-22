@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Button from "@mui/material/Button";
 import axios from "axios";
-import "./ProjectListItem.css";
+import "../../scss/ProjectListItem.scss";
 import Axios from "axios";
 
 const ProjectListItem = (props) => {

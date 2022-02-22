@@ -1,7 +1,7 @@
 import React from "react";
 import { BsEnvelopeFill, BsGeoFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
-import "./EmployerListItem.css";
+import "../../scss/EmployerListItem.scss";
 import Button from "@mui/material/Button";
 
 const EmployerListItem = (props) => {

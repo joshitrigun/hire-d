@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./EmployerProfile.css";
+import "../../scss/EmployerProfile.scss";
 import {
   BsEnvelopeFill,
   BsGeoFill,

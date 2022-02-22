@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Signup from "../components/forms/Signup";
 import CreateEmployerForm from "../components/forms/CreateEmployerForm";
 import CreateSeekerForm from "../components/forms/CreateSeekerForm";
+import Footer from "../components/layout/Footer";
 
 const SignUp = () => {
   return (
@@ -16,6 +17,7 @@ const SignUp = () => {
           <Route path="seeker" element={<CreateSeekerForm />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

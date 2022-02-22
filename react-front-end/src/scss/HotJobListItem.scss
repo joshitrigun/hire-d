@@ -1,0 +1,77 @@
+$primary-color: #3F51B5;
+
+@media (min-width: 1280px) {
+	.hot-job-block {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		width: 28vw;
+		height: 10%;
+		border: $primary-color solid 1px;
+		border-radius: .25em;
+		margin: 2em 2em .5em 0;
+		padding: 1em 2em;
+		transition: .5s;
+		z-index: 2;
+		&:hover {
+			box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
+		}
+	}
+	.hot-icon-frame {
+		width: 6vw;
+		display: flex;
+		height: 6vw;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		border: $primary-color solid 1px;
+		margin-right: 0.5em;
+		color: $primary-color;
+	}
+	.hot-hi-icon {
+		color: $primary-color;
+		font-size: 3vw;
+	}
+	.hot-job-title {
+		color: $primary-color;
+		font-size: 70%;
+		font-weight: 700;
+	}
+	.hot-text-highlight {
+		margin-top: 1em;
+		color: $primary-color;
+		font-size: 100%;
+		font-weight: 700;
+
+	}
+	.hot-job-info {
+		margin-left: 1em;
+		a {
+			font-size: 1.5em;
+			text-decoration: none;
+		}
+	}
+}
+
+@media (min-width: 960px) and (max-width: 1279px) {
+	.hot-job-block {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		width: 50vw;
+		height: 10%;
+		border: $primary-color solid 1px;
+		border-radius: .25em;
+		margin: 2em 2em .5em 0;
+		padding: 1em 2em;
+		transition: .5s;
+		z-index: 2;
+		&:hover {
+			box-shadow: 0 0 .75em rgba(0, 0, 0, 0.35);
+		}
+	}
+
+
+
+
+}

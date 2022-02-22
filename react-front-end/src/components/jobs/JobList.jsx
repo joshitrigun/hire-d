@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./JobListItem.css";
+import "../../scss/JobListItem.scss";
 import JobListItem from "./JobListItem";
 
 const JobList = () => {

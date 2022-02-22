@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { HiBriefcase } from "react-icons/hi";
 import { BsGeoFill } from "react-icons/bs";
-import "./JobDetail.css";
+import "../../scss/JobDetail.scss";
 import dateFormat from "dateformat";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";

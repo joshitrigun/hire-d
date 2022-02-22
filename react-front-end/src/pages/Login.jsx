@@ -2,7 +2,8 @@ import React from "react";
 import TopNavBar from "../components/layout/Top_nav_bar";
 import LoginForm from "../components/forms/LoginForm";
 import { Routes, Route } from "react-router-dom";
-import '../components/forms/LoginForm.module.css';
+import '../scss/LoginForm.module.scss';
+import Footer from "../components/layout/Footer";
 
 const Login = () => {
   return (
@@ -13,6 +14,7 @@ const Login = () => {
           <Route path="/" element={<LoginForm />} />
         </Routes>
       </div>
+        <Footer />
     </div>
   );
 };
