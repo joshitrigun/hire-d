@@ -31,7 +31,7 @@ const JobListItem = (props) => {
 
   const onDeleteHandler = () => {
     return axios
-      .delete(`//express-server-hire.herokuapp.com/api/jobs/${id}`)
+      .delete(`/api/jobs/${id}`)
       .then((response) => {
         window.location.reload();
       })

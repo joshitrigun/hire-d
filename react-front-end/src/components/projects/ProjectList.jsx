@@ -7,11 +7,9 @@ const AllProjects = () => {
   const [state, setState] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("//express-server-hire.herokuapp.com/api/projects")
-      .then((response) => {
-        setState(response.data);
-      });
+    axios.get("/api/projects").then((response) => {
+      setState(response.data);
+    });
   }, []);
 
   const mappedProjects = state.map((project) => {

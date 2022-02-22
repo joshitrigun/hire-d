@@ -32,32 +32,30 @@ const CreateJob = () => {
 
   useEffect(() => {
     if (location.pathname !== "/jobs/new") {
-      axios
-        .get(`//express-server-hire.herokuapp.com/api/jobs/${id}`)
-        .then((response) => {
-          const data = response.data[0];
-          if (Cookies.get("employer")) {
-            if (Number(id) === data.id) {
-              setTitle(data.title);
-              setDescription(data.description);
-              setJobType(data.job_type);
-              setSalary(data.salary);
-              setStartDate(data.start_date.slice(0, 10));
-              setEndDate(data.end_date.slice(0, 10));
-              setFeatured(data.featured);
-              setApplyLink(data.apply_link);
-              const skills = data.tech_stack.split(",");
-              const newSkills = skills.map((skill) => skill.trim());
-              const newCheckedState = checkedState.map((skill) => {
-                if (newSkills.includes(skill.name)) {
-                  skill.checked = true;
-                }
-                return skill;
-              });
-              setCheckedState(newCheckedState);
-            }
+      axios.get(`/api/jobs/${id}`).then((response) => {
+        const data = response.data[0];
+        if (Cookies.get("employer")) {
+          if (Number(id) === data.id) {
+            setTitle(data.title);
+            setDescription(data.description);
+            setJobType(data.job_type);
+            setSalary(data.salary);
+            setStartDate(data.start_date.slice(0, 10));
+            setEndDate(data.end_date.slice(0, 10));
+            setFeatured(data.featured);
+            setApplyLink(data.apply_link);
+            const skills = data.tech_stack.split(",");
+            const newSkills = skills.map((skill) => skill.trim());
+            const newCheckedState = checkedState.map((skill) => {
+              if (newSkills.includes(skill.name)) {
+                skill.checked = true;
+              }
+              return skill;
+            });
+            setCheckedState(newCheckedState);
           }
-        });
+        }
+      });
     }
   }, []);
 
@@ -114,7 +112,7 @@ const CreateJob = () => {
     };
 
     axios
-      .put(`//express-server-hire.herokuapp.com/api/jobs/${id}`, data)
+      .put(`/api/jobs/${id}`, data)
       .then((response) => {
         setSubmitted(response.data);
         setTimeout(() => navigate(`/employers/${Cookies.get("id")}`), 3000);

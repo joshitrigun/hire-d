@@ -99,7 +99,7 @@ const CreateJob = () => {
       applyLink,
     };
     axios
-      .post("//express-server-hire.herokuapp.com/api/jobs", data)
+      .post("/api/jobs", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();

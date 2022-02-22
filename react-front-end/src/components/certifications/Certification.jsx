@@ -10,6 +10,7 @@ import axios from "axios";
 const Certification = (props) => {
   const [isProfile, setIsProfile] = useState(false);
   const location = useLocation();
+
   let { id } = useParams();
   const currentUser = Cookies.get("id");
 
@@ -24,9 +25,7 @@ const Certification = (props) => {
 
   const onDeleteHandler = () => {
     return axios
-      .delete(
-        `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`
-      )
+      .delete(`/api/certifications/${cert_id}`)
       .then((response) => {
         window.location.reload();
       })
