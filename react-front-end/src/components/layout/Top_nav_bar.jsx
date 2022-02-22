@@ -15,7 +15,7 @@ const TopNavBar = () => {
   };
 
   useEffect(() => {
-    if (Cookies.get("user") === "trigunjoshi@gmail.com") {
+    if (Cookies.get("user") && Cookies.get("employer") === "false") {
       setRoute(`/developers/${Cookies.get("id")}`);
     } else {
       setRoute(`/employers/${Cookies.get("id")}`);

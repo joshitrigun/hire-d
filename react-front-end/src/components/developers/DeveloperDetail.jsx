@@ -117,14 +117,18 @@ const DeveloperDetail = () => {
             <div className="dev-project-section">{mappedProjects}</div>
             <span className="certification-container">
               <h4 className="certification-title">Certifications</h4>
-
-              <Button
-                variant="outlined"
-                href={`/developers/${url_id.id}/certifications/new`}
-              >
-                Add New&nbsp;
-                <GoPlus />
-              </Button>
+              {Cookies.get("employer") === "false" &&
+              Number(Cookies.get("id")) === state.user.id ? (
+                <Button
+                  variant="outlined"
+                  href={`/developers/${url_id.id}/certifications/new`}
+                >
+                  Add New&nbsp;
+                  <GoPlus />
+                </Button>
+              ) : (
+                ""
+              )}
             </span>
             <div className="certification-section">{mappedCertification}</div>
           </div>

@@ -4,6 +4,7 @@ const BodyParser = require("body-parser");
 const cors = require("cors");
 
 const {
+  getAll,
   getAllUsers,
   getAllEmployers,
   getEmployerById,
@@ -45,6 +46,7 @@ App.use(BodyParser.json());
 App.use(Express.static("public"));
 App.use(cors(corsOptions));
 
+App.get("/api/all", getAll);
 App.get("/api/users", getAllUsers);
 App.get("/api/employers", getAllEmployers);
 App.get("/api/employers/:id", getEmployerById);
