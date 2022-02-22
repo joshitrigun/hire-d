@@ -5,11 +5,9 @@ import axios from "axios";
 const Developers = () => {
   const [state, setState] = useState([]);
   useEffect(() => {
-    axios
-      .get("//express-server-hire.herokuapp.com/api/users")
-      .then((response) => {
-        setState(response.data);
-      });
+    axios.get("/api/users").then((response) => {
+      setState(response.data);
+    });
   }, []);
 
   const mappedDevelopers = state.map((developer) => {

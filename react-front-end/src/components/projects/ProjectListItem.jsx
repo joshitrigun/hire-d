@@ -50,11 +50,7 @@ const ProjectListItem = (props) => {
         stack,
       };
 
-
-      Axios.put(
-        `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
-        data
-      )
+      Axios.put(`/api/projects/${project_id}`, data)
 
         .then((response) => {
           setLike((like) => (like += 1));
@@ -76,11 +72,7 @@ const ProjectListItem = (props) => {
         stack,
       };
 
-
-      Axios.put(
-        `//express-server-hire.herokuapp.com/api/projects/${project_id}`,
-        data
-      )
+      Axios.put(`/api/projects/${project_id}`, data)
 
         .then((response) => {
           setLike((like) => (like -= 1));
@@ -90,10 +82,9 @@ const ProjectListItem = (props) => {
     }
   };
 
-
   const onDeleteHandler = () => {
     return axios
-      .delete(`//express-server-hire.herokuapp.com/api/projects/${project_id}`)
+      .delete(`/api/projects/${project_id}`)
       .then((response) => {
         window.location.reload();
       })
@@ -101,7 +92,6 @@ const ProjectListItem = (props) => {
         console.log(error.message);
       });
   };
-
 
   return (
     <div className="project-block">

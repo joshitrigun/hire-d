@@ -23,6 +23,7 @@ const LoginForm = () => {
           setError(true);
           setTimeout(() => setError(false), 4000);
         }
+        return null;
       });
 
       if (user.length > 0) {

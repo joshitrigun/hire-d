@@ -22,22 +22,18 @@ const CreateCertification = () => {
 
   useEffect(() => {
     if (location.pathname !== `/developers/${id}/certifications/new`) {
-      axios
-        .get(
-          `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`
-        )
-        .then((response) => {
-          const data = response.data[0];
+      axios.get(`/api/certifications/${cert_id}`).then((response) => {
+        const data = response.data[0];
 
-          if (Cookies.get("id")) {
-            setTitle(data.title);
-            setStartDate(data.start_date.slice(0, 10));
-            setEndDate(data.end_date.slice(0, 10));
-            setInstitution(data.institution);
-            setCity(data.city);
-            setProvince(data.province);
-          }
-        });
+        if (Cookies.get("id")) {
+          setTitle(data.title);
+          setStartDate(data.start_date.slice(0, 10));
+          setEndDate(data.end_date.slice(0, 10));
+          setInstitution(data.institution);
+          setCity(data.city);
+          setProvince(data.province);
+        }
+      });
     }
   }, []);
 
@@ -96,13 +92,10 @@ const CreateCertification = () => {
       location.pathname !== `/developers/${id}/certifications/new`
     ) {
       axios
-        .put(
-          `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`,
-          {
-            ...data,
-            cert_id,
-          }
-        )
+        .put(`/api/certifications/${cert_id}`, {
+          ...data,
+          cert_id,
+        })
         .then((response) => {
           setSubmitted(response.data);
           reset();

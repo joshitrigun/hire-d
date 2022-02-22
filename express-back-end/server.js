@@ -36,7 +36,7 @@ const {
 const PORT = process.env.PORT || 8080;
 
 const corsOptions = {
-  origin: "*",
+  origin: true,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };

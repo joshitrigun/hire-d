@@ -104,7 +104,7 @@ const CreateEmployerForm = () => {
     };
 
     axios
-      .post("//express-server-hire.herokuapp.com/api/users", data)
+      .post("/api/users", data)
       .then((response) => {
         setSubmitted(response.data);
         reset();
