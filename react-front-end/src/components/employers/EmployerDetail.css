@@ -36,7 +36,7 @@
 .employer-job-section .scrollbar-container {
   width: 65em;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .emp-job-section {
