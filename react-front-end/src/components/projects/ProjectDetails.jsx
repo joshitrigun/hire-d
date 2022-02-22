@@ -15,9 +15,11 @@ const ProjectDetails = () => {
   };
 
   useEffect(() => {
-    axios.get("/api/user_projects").then((response) => {
-      projectsDetails(response.data, Number(url_id.id));
-    });
+    axios
+      .get("//express-server-hire.herokuapp.com/api/user_projects")
+      .then((response) => {
+        projectsDetails(response.data, Number(url_id.id));
+      });
   }, []);
 
   return (

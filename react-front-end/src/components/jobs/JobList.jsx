@@ -7,9 +7,11 @@ const JobList = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/jobs_employers").then((response) => {
-      setJobs(response.data);
-    });
+    axios
+      .get("//express-server-hire.herokuapp.com/api/jobs_employers")
+      .then((response) => {
+        setJobs(response.data);
+      });
   }, []);
 
   const mappedJobs = jobs.map((job) => {

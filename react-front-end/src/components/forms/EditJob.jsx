@@ -112,7 +112,7 @@ const CreateJob = () => {
     };
 
     axios
-      .put(`/api/jobs/${id}`, data)
+      .put(`//express-server-hire.herokuapp.com/api/jobs/${id}`, data)
       .then((response) => {
         setSubmitted(response.data);
         setTimeout(() => navigate(`/employers/${Cookies.get("id")}`), 3000);

@@ -120,7 +120,10 @@ const EditEmployerForm = () => {
     };
 
     axios
-      .put(`/api/employers/${params.id}`, data)
+      .put(
+        `//express-server-hire.herokuapp.com/api/employers/${params.id}`,
+        data
+      )
       .then((response) => {
         setSubmitted(response.data);
         reset();

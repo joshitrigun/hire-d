@@ -162,7 +162,7 @@ const CreateSeekerForm = () => {
     const id = Number(Cookies.get("id"));
 
     axios
-      .put(`/api/users/${id}`, { data })
+      .put(`//express-server-hire.herokuapp.com/api/users/${id}`, { data })
       .then((response) => {
         setSubmitted(response.data);
         setTimeout(() => navigate(`/developers/${id}`), 3000);

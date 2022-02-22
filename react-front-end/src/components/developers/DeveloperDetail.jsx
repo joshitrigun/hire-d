@@ -20,9 +20,13 @@ const DeveloperDetail = () => {
 
   let url_id = useParams();
 
-  const getUsers = axios.get("/api/users");
-  const getProjects = axios.get("/api/projects");
-  const getCertifications = axios.get("/api/certifications");
+  const getUsers = axios.get("//express-server-hire.herokuapp.com/api/users");
+  const getProjects = axios.get(
+    "//express-server-hire.herokuapp.com/api/projects"
+  );
+  const getCertifications = axios.get(
+    "//express-server-hire.herokuapp.com/api/certifications"
+  );
 
   const userDetails = (users, id) => {
     const singleUser = users.filter((user) => user.id === id);

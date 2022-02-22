@@ -84,7 +84,7 @@ const ProjectListItem = (props) => {
 
   const onDeleteHandler = () => {
     return axios
-      .delete(`/api/projects/${project_id}`)
+      .delete(`//express-server-hire.herokuapp.com/api/projects/${project_id}`)
       .then((response) => {
         window.location.reload();
       })

@@ -94,7 +94,7 @@ const CreateProject = () => {
     };
 
     axios
-      .put(`/api/projects/${id}`, {
+      .put(`//express-server-hire.herokuapp.com/api/projects/${id}`, {
         ...data,
         id,
       })

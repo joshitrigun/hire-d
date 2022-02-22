@@ -92,10 +92,13 @@ const CreateCertification = () => {
       location.pathname !== `/developers/${id}/certifications/new`
     ) {
       axios
-        .put(`/api/certifications/${cert_id}`, {
-          ...data,
-          cert_id,
-        })
+        .put(
+          `//express-server-hire.herokuapp.com/api/certifications/${cert_id}`,
+          {
+            ...data,
+            cert_id,
+          }
+        )
         .then((response) => {
           setSubmitted(response.data);
           reset();
