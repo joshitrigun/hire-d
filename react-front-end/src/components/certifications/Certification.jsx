@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaUserGraduate, FaEdit, FaTrash } from "react-icons/fa";
 import { useParams, useLocation } from "react-router-dom";
 import dateFormat from "dateformat";
-import "./Certification.css";
+import "../../scss/Certification.scss";
 import Cookies from "js-cookie";
 import Button from "@mui/material/Button";
 import axios from "axios";

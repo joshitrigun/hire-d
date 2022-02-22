@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import "./CreateEmployerForm.css";
+import "../../scss/CreateEmployerForm.scss";
 
 const CreateEmployerForm = () => {
   const [firstName, setFirstName] = useState("");

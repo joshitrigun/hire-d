@@ -1,0 +1,73 @@
+.job-container {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; }
+
+.job-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5em 2em;
+  width: 24em;
+  height: 22em;
+  background-color: #fafafa;
+  border-radius: 1em;
+  transition: 0.5s;
+  cursor: pointer; }
+  .job-block:hover {
+    box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.35); }
+  .job-block .padding {
+    padding: 10px; }
+
+.icon-frame {
+  width: 10em;
+  height: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: #3f51b5 solid 1px;
+  margin-right: 0.5em;
+  margin-top: -3.5em;
+  background-color: #fafafa; }
+
+.hi-icon {
+  color: #3f51b5;
+  font-size: 3em; }
+
+.title-link a:hover {
+  color: rgba(0, 0, 0, 0.25); }
+
+.job-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+.apply-link {
+  border: #3f51b5 solid 1px;
+  padding: 0.1em 0.5em 0.3em 0.5em;
+  border-radius: 1em;
+  margin: 0 1em;
+  font-size: 1.25em;
+  transition: 0.3s; }
+  .apply-link a {
+    text-decoration: none; }
+    .apply-link a:hover {
+      color: white; }
+  .apply-link:hover {
+    background-color: #3f51b5;
+    color: white;
+    padding: 0.1em 0.5em 0.3em 0.5em;
+    border-radius: 1em; }
+
+.job-block-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+/*# sourceMappingURL=JobListItem.css.map */

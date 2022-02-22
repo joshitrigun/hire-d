@@ -1,11 +1,12 @@
 import React from "react";
 import TopNavBar from "../components/layout/Top_nav_bar";
-import "../components/projects/ProjectListItem.css";
+import "../scss/ProjectListItem.scss";
 import { Routes, Route } from "react-router-dom";
 import ProjectDetails from "../components/projects/ProjectDetails";
 import ProjectList from "../components/projects/ProjectList";
 import CreateProject from "../components/forms/CreateProject";
 import EditProject from "../components/forms/EditProject";
+import Footer from "../components/layout/Footer";
 
 const Projects = () => {
   return (
@@ -19,6 +20,7 @@ const Projects = () => {
           <Route path=":id/edit" element={<EditProject />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import EmployerList from "../components/employers/EmployerList";
 import EmployerDetail from "../components/employers/EmployerDetail";
 import CreateEmployerForm from '../components/forms/CreateEmployerForm';
 import EditEmployerForm from '../components/forms/EditEmployerForm';
+import Footer from "../components/layout/Footer";
 
 const Employers = () => {
   return (
@@ -18,6 +19,7 @@ const Employers = () => {
           <Route path=":id/edit" element={<EditEmployerForm />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -2,9 +2,10 @@ import React from "react";
 import TopNavBar from "../components/layout/Top_nav_bar";
 import ProjectList from "../components/projects/ProjectList";
 import HotJobList from "../components/jobs/HotJobsList";
-import "../App.css";
+import "../scss/App.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
+import Footer from "../components/layout/Footer";
 
 const Homepage = () => {
   return (
@@ -28,6 +29,7 @@ const Homepage = () => {
           </PerfectScrollbar>
         </section>
       </div>
+      <Footer />
     </div>
   );
 };

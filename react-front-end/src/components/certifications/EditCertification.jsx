@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-import "./EditCertification.css";
+import "../../scss/EditCertification.scss";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 

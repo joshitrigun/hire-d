@@ -1,0 +1,140 @@
+body {
+	font-family: "Roboto Slab", serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+}
+.main {
+	width: 100vw;
+	height: 100vh;
+}
+#root {
+	width: 100%;
+}
+.App {
+	text-align: center;
+}
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+.App-link {
+	color: #61dafb;
+}
+@media (min-width: 1280px) {
+	
+	.main-container {
+		margin-top: 8em;
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: flex-start;
+		padding: 0 4em;
+	}
+	.home-projects {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		width: 65vw;
+		height: 70vh;
+	}
+	.home-left-side {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		width: 60vw;
+		.scrollbar-container {
+			width: 58vw;
+			position: relative;
+			height: 100%;
+		}
+	}
+	.home-right-side {
+		width: 30vw;
+		.scrollbar-container {
+			width: 30vw;
+			position: relative;
+			height: 100%;
+		}
+	}
+	.hot-jobs-section {
+		height: 65vh;
+	}
+	h4 {
+		font-size: 2em;
+	}
+	.signup-form-container {
+		margin: 8em 0;
+	}
+	.page-title {
+		margin-top: 0 0 1em 0;
+		font-size: 1.25em;
+	}
+	input[type="date"] {
+		&::before {
+			color: rgb(0, 0, 0);
+			content: attr(placeholder);
+			margin-right: 3px;
+		}
+	}
+	.login-form-container {
+		margin-top: 10em;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+@media (min-width: 960px) and (max-width: 1279px) {
+	.main-container {
+		margin-top: 5em;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.home-projects {
+		height: 50vh;
+		.main {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+		}
+	}
+	.home-left-side {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		width: 90vw;
+		.scrollbar-container {
+			width: 100vw;
+			position: relative;
+			height: 100%;
+		}
+	}
+	.home-right-side {
+		width: 50vw;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		.scrollbar-container {
+			width: 50vw;
+			position: relative;
+			height: 100%;
+		}
+	}
+}

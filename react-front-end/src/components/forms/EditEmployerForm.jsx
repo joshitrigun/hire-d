@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import "./CreateEmployerForm.css";
+import "../../scss/CreateEmployerForm.scss";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditEmployerForm = () => {

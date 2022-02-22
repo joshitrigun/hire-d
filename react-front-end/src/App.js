@@ -12,7 +12,7 @@ import SignUp from "./pages/SignUp";
 
 // css
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "../src/scss/App.scss";
 
 const App = () => {
   return (

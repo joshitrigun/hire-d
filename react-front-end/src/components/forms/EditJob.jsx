@@ -4,7 +4,7 @@ import axios from "axios";
 import tech_stack from "../forms/TechStacks";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import "../forms/CreateJob.css";
+import "../../scss/CreateJob.scss";
 import { FaSave } from "react-icons/fa";
 import Cookies from "js-cookie";
 import onChangeHandler from "../../helpers/onChangeHandler";

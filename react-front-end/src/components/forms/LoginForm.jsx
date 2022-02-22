@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import "./LoginForm.module.css";
+import "../../scss/LoginForm.module.scss";
 import Button from "@mui/material/Button";
 
 const LoginForm = () => {

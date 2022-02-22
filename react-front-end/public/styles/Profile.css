@@ -1,0 +1,61 @@
+body {
+  font-family: "Roboto Slab", serif; }
+
+.profile-section {
+  width: 45em;
+  margin-top: 2em; }
+
+.dev-profile-div {
+  margin-top: .5em;
+  padding: 0 2em;
+  width: 28em;
+  height: 42em;
+  background-color: #fafafa;
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  transition: .5s;
+  word-break: break-word;
+  hyphens: auto; }
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+.profile-div:hover {
+  box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.35); }
+
+.developer-profile-thumbnail {
+  margin-top: -5em;
+  margin-bottom: 1em;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  border: #3f51b5 solid 4px;
+  z-index: 999;
+  object-fit: cover; }
+
+.title {
+  margin-bottom: 0; }
+
+.sub-title {
+  margin-bottom: 0; }
+
+.bs-icon {
+  color: #3f51b5; }
+
+.section-title {
+  margin: 1em 0 0 0; }
+
+.body-text {
+  margin-bottom: 0; }
+  .body-text a {
+    text-decoration: none;
+    color: black; }
+
+/*# sourceMappingURL=Profile.css.map */

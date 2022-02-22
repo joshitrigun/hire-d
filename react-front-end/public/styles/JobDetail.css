@@ -1,0 +1,51 @@
+.job-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.job-detail-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.job-details-main {
+  width: 75%;
+  padding: 2em 4em;
+  background-color: #fafafa;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: 0.5s; }
+  .job-details-main:hover {
+    box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.35); }
+
+.job-details-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.job-details-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+.job-details-footer {
+  margin-top: 2em; }
+
+.job-icon {
+  width: 7em;
+  display: flex;
+  height: 7em;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: #3f51b5 solid 1px;
+  margin: 2em;
+  color: #3f51b5; }
+
+/*# sourceMappingURL=JobDetail.css.map */

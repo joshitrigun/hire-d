@@ -5,6 +5,7 @@ import JobDetail from "../components/jobs/JobDetail";
 import { Routes, Route } from "react-router-dom";
 import CreateJob from "../components/forms/CreateJob";
 import EditJob from "../components/forms/EditJob";
+import Footer from "../components/layout/Footer";
 
 const Jobs = () => {
   return (
@@ -18,6 +19,7 @@ const Jobs = () => {
           <Route path=":id/edit" element={<EditJob />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

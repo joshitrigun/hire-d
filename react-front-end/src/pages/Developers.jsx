@@ -6,6 +6,7 @@ import DeveloperDetail from "../components/developers/DeveloperDetail";
 import CreateCertification from "../components/certifications/CreateCertification";
 import EditCertification from "../components/certifications/EditCertification";
 import EditSeekerForm from "../components/forms/EditSeekerForm";
+import Footer from "../components/layout/Footer";
 
 const Developers = () => {
   return (
@@ -26,6 +27,7 @@ const Developers = () => {
           <Route path=":id/profile/edit" element={<EditSeekerForm />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

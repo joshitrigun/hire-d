@@ -1,5 +1,5 @@
 import React from "react";
-import "./Signup.module.css";
+import "../../scss/Signup.module.scss";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 

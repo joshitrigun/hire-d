@@ -1,0 +1,58 @@
+.employer-container {
+  padding: 4em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap; }
+
+.employer-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5em 2em;
+  width: 24em;
+  height: 20em;
+  background-color: #fafafa;
+  border-radius: 1em;
+  transition: 0.5s;
+  cursor: pointer;
+  padding: 0 4em;
+  word-break: break-word;
+  hyphens: auto; }
+  .employer-block:hover {
+    box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.35); }
+  .employer-block p {
+    margin-bottom: 0; }
+
+.img-frame {
+  margin-top: -5em;
+  box-shadow: inset 0 0 0.5em 0.125em rgba(0, 0, 0, 0.5);
+  width: 10em !important;
+  height: 10em !important;
+  border-radius: 50%;
+  background-color: #3f51b5;
+  position: relative;
+  z-index: 3; }
+
+.employer-thumbnail {
+  width: 10em !important;
+  height: 10em !important;
+  border-radius: 50%;
+  border: #3f51b5 solid 2px;
+  object-fit: cover; }
+
+.linkedin-icon {
+  color: #3f51b5;
+  font-size: 1.5em; }
+  .linkedin-icon:hover {
+    color: #5369eb; }
+
+.title-link {
+  margin-top: 0.25em;
+  text-decoration: none;
+  color: #212529;
+  cursor: pointer; }
+
+/*# sourceMappingURL=EmployerListItem.css.map */
