@@ -34,37 +34,39 @@ const CreateSeekerForm = () => {
 
   useEffect(() => {
     const id = Cookies.get("id");
-    axios.get("/api/users").then((response) => {
-      const data = response.data;
-      data.forEach((user) => {
-        if (id) {
-          if (user.id === Number(id)) {
-            setFirstName(user.first_name);
-            setLastName(user.last_name);
-            setEmail(user.email);
-            setNumber(user.phone_number);
-            setPassword(user.password);
-            setDesignation(user.designation);
-            setAbout(user.about_me);
-            setCity(user.city);
-            setProvince(user.province);
-            setGithubUrl(user.github_url);
-            setLinkedinUrl(user.linkedin_url);
-            setAvatar(user.avatar);
-            setResume(user.resume);
-            const skills = user.skills.split(",");
-            const newSkills = skills.map((skill) => skill.trim());
-            const newCheckedState = checkedState.map((skill) => {
-              if (newSkills.includes(skill.name)) {
-                skill.checked = true;
-              }
-              return skill;
-            });
-            setCheckedState(newCheckedState);
+    axios
+      .get("//express-server-hire.herokuapp.com/api/users")
+      .then((response) => {
+        const data = response.data;
+        data.forEach((user) => {
+          if (id) {
+            if (user.id === Number(id)) {
+              setFirstName(user.first_name);
+              setLastName(user.last_name);
+              setEmail(user.email);
+              setNumber(user.phone_number);
+              setPassword(user.password);
+              setDesignation(user.designation);
+              setAbout(user.about_me);
+              setCity(user.city);
+              setProvince(user.province);
+              setGithubUrl(user.github_url);
+              setLinkedinUrl(user.linkedin_url);
+              setAvatar(user.avatar);
+              setResume(user.resume);
+              const skills = user.skills.split(",");
+              const newSkills = skills.map((skill) => skill.trim());
+              const newCheckedState = checkedState.map((skill) => {
+                if (newSkills.includes(skill.name)) {
+                  skill.checked = true;
+                }
+                return skill;
+              });
+              setCheckedState(newCheckedState);
+            }
           }
-        }
+        });
       });
-    });
   }, []);
 
   const validate = () => {
