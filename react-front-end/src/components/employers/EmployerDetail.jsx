@@ -34,6 +34,7 @@ const EmployerDetail = () => {
     const employer = employers.filter(
       (singleEmployer) => singleEmployer.id === id
     );
+    console.log(state);
     return employer[0];
   };
 
@@ -87,7 +88,8 @@ const EmployerDetail = () => {
       </div>
       <div className="employer-section-right">
         <div className="emp-job-section-header">
-          {Cookies.get("employer") === "true" ? (
+          {Cookies.get("employer") === "true" &&
+          Number(Cookies.get("id")) === state.employer.id ? (
             <span className="ms-2">
               <Button variant="outlined" href="/jobs/new">
                 Post New Job&nbsp;
