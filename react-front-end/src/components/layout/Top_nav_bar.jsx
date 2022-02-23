@@ -15,20 +15,24 @@ const TopNavBar = () => {
     Cookies.remove("employer");
     navigate("/");
   };
-  
-  axios.get("//express-server-hire.herokuapp.com/api/all")
-  .then((response) => {
-    const users = response.data;
-    const userArr = users.filter((user) => user.email === Cookies.get('user'))
-    setUser(userArr[0]);
-  }).catch(err => err.message)
 
   useEffect(() => {
-      if (Cookies.get("user") && Cookies.get("employer") === "false") {
-        setRoute(`/developers/${Cookies.get("id")}`);
-      } else {
+    axios
+      .get("/api/all")
+      .then((response) => {
+        const users = response.data;
+        const userArr = users.filter(
+          (user) => user.email === Cookies.get("user")
+        );
+        console.log(user);
+        setUser(userArr[0]);
+      })
+      .catch((err) => err.message);
+    if (Cookies.get("user") && Cookies.get("employer") === "false") {
+      setRoute(`/developers/${Cookies.get("id")}`);
+    } else {
       setRoute(`/employers/${Cookies.get("id")}`);
-      }
+    }
   }, []);
 
   return (

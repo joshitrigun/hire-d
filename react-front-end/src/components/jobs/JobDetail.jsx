@@ -19,11 +19,9 @@ const JobDetail = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("//express-server-hire.herokuapp.com/api/jobs_employers")
-      .then((response) => {
-        jobDetails(response.data, Number(url_id.id));
-      });
+    axios.get("/api/jobs_employers").then((response) => {
+      jobDetails(response.data, Number(url_id.id));
+    });
   }, []);
 
   const {
