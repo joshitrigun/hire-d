@@ -4,6 +4,7 @@ import { HiBriefcase } from "react-icons/hi";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "../../scss/JobListItem.scss";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import Cookies from "js-cookie";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import axios from "axios";
@@ -78,9 +79,14 @@ const JobListItem = (props) => {
             </Button>
           </span>
         ) : (
-          <Button variant="outlined" href={apply_link} target="_blank">
-            Apply Here
-          </Button>
+          <Stack spacing={2} direction='row'> 
+            <Button variant="outlined" href={`/jobs/${id}`} target="_blank">
+              View Details
+            </Button>
+            <Button variant="outlined" href={apply_link} target="_blank">
+              Apply Here
+            </Button>
+          </Stack>
         )}
       </div>
     </div>

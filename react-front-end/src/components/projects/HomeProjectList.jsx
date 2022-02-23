@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../../scss/ProjectListItem.scss";
-import ProjectListItem from "./ProjectListItem";
+import "../../scss/HomeProjectListItem.scss";
+import HomeProjectListItem from "./HomeProjectListItem";
 
-const AllProjects = () => {
+const HomeProjectList = () => {
   const [state, setState] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const AllProjects = () => {
 
   const mappedProjects = state.map((project) => {
     return (
-      <ProjectListItem
+      <HomeProjectListItem
         key={project.id}
         project_id={project.id}
         title={project.title}
@@ -32,9 +32,9 @@ const AllProjects = () => {
 
   return (
     <div className="main">
-      <div className="project-container">{mappedProjects}</div>
+      <div className="home-project-container">{mappedProjects}</div>
     </div>
   );
 };
 
-export default AllProjects;
+export default HomeProjectList;

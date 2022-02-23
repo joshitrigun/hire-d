@@ -59,7 +59,8 @@
   width: 5em;
   height: 5em;
   border-radius: 50%;
-  border: #3f51b5 solid .25px; }
+  border: #3f51b5 solid .25px;
+  object-fit: cover; }
 
 @media (min-width: 960px) and (max-width: 1279px) {
   .navbar-nav .nav-link {
