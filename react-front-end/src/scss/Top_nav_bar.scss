@@ -1,88 +1,89 @@
 .container-fluid {
-	width: 100vw;
+  width: 100vw;
 }
 .navbar {
-	position: fixed !important;
-	top: 0;
-	width: 100%;
-	padding: 0.5em 2em;
-	background-color: rgba(255, 255, 255, 0.8) !important;
-	z-index: 99;
+  position: fixed !important;
+  top: 0;
+  width: 100%;
+  padding: 0.5em 2em;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  z-index: 99;
 }
 .logo {
-	height: 3em;
+  height: 3em;
 }
 .nav-link {
-	.signout-btn {
-		justify-content: flex-end;
-	}
+  .signout-btn {
+    justify-content: flex-end;
+  }
 }
 .navbar-nav {
-	.nav-link {
-		font-size: 1.25em;
-		font-weight: 500;
-		margin: 0 1vw;
-		font-family: "Roboto Slab", serif;
-		&:active {
-			color:#3f51b5;
-		}
-	}
-	.left-side {
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-	}
-	.right-side {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-	}
+  .nav-link {
+    font-size: 1.25em;
+    font-weight: 500;
+    margin: 0 1vw;
+    font-family: "Roboto Slab", serif;
+    &:active {
+      color: #3f51b5;
+    }
+  }
+  .left-side {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .right-side {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
 .d-flex {
-	.btn-outline-success {
-		border-radius: 50%;
-		color: #3f51b5;
-		border-color: #3f51b5;
-		&:hover {
-			border-radius: 50%;
-			color: #ffffff;
-			border-color: #3f51b5;
-			background-color: #3f51b5;
-		}
-	}
-	input {
-		border-color: #3f51b5;
-		border-radius: 5em;
-	}
+  .btn-outline-success {
+    border-radius: 50%;
+    color: #3f51b5;
+    border-color: #3f51b5;
+    &:hover {
+      border-radius: 50%;
+      color: #ffffff;
+      border-color: #3f51b5;
+      background-color: #3f51b5;
+    }
+  }
+  input {
+    border-color: #3f51b5;
+    border-radius: 5em;
+  }
 }
 .signout-btn {
-	cursor: pointer;
+  cursor: pointer;
 }
 .username {
-	cursor: pointer;
+  cursor: pointer;
 }
 .navbar-expand-lg {
-	.navbar-nav {
-		flex-direction: row;
-		justify-content: space-around;
-		width: 100%;
-	}
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
 }
 
 .top-nav-avatar {
-	width: 5em;
-	height: 5em;
-	border-radius: 50%;
-	border:#3f51b5 solid .25px;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: #3f51b5 solid 0.25px;
+  object-fit: cover;
 }
 
 @media (min-width: 960px) and (max-width: 1279px) {
-	.navbar-nav {
-		.nav-link {
-			font-size: 1em;
-		}
-	}
-	.logo {
-		height: 2.5em;
-	}
+  .navbar-nav {
+    .nav-link {
+      font-size: 1em;
+    }
+  }
+  .logo {
+    height: 2.5em;
+  }
 }
