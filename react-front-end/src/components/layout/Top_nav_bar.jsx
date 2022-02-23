@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../scss/Top_nav_bar.scss";
 import Cookies from "js-cookie";
-import axios from "axios";
+import getUserData from "../../helpers/userData";
 
 const TopNavBar = () => {
   const [route, setRoute] = useState("");
-  const [user, setUser] = useState({});
   let navigate = useNavigate();
 
   const signoutHandler = () => {
@@ -15,13 +14,7 @@ const TopNavBar = () => {
     Cookies.remove("employer");
     navigate("/");
   };
-  
-  axios.get("//express-server-hire.herokuapp.com/api/all")
-  .then((response) => {
-    const users = response.data;
-    const userArr = users.filter((user) => user.email === Cookies.get('user'))
-    setUser(userArr[0]);
-  }).catch(err => err.message)
+  const user = getUserData();
 
   useEffect(() => {
       if (Cookies.get("user") && Cookies.get("employer") === "false") {
