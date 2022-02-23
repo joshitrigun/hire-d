@@ -51,7 +51,7 @@ export default function EmployerProfile(props) {
       </p>
       <br />
       {id === Number(Cookies.get("id")) ? (
-        <Button variant="outlined" href={`${id}/edit`}>
+        <Button className="mt-2" variant="outlined" href={`${id}/edit`}>
           <FaEdit />
           &nbsp; EDIT
         </Button>
