@@ -3,8 +3,9 @@
   width: 100%;
   bottom: 0;
   text-align: center;
-  padding: .5em;
-  position:fixed;
+  padding: 0.5em;
+  position: fixed;
+  z-index: 10;
   p {
     margin-bottom: 0;
     color: white;
@@ -13,7 +14,7 @@
     color: white;
     text-decoration: none;
     &:hover {
-      color:rgb(96, 214, 243);
-    } 
+      color: rgb(96, 214, 243);
+    }
   }
 }
