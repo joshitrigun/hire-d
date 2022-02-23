@@ -15,7 +15,7 @@ const Jobs = () => {
         <Routes>
           <Route path="/" element={<JobList />} />
           <Route path=":id" element={<JobDetail />} />
-          <Route path="new" element={<CreateJob />} />
+          <Route path="/new" element={<CreateJob />} />
           <Route path=":id/edit" element={<EditJob />} />
         </Routes>
       </div>

@@ -13,8 +13,8 @@ const SignUp = () => {
       <div className="signup-form-container">
         <Routes>
           <Route path="/" element={<Signup />} />
-          <Route path="employer" element={<CreateEmployerForm />} />
-          <Route path="seeker" element={<CreateSeekerForm />} />
+          <Route path="/employer" element={<CreateEmployerForm />} />
+          <Route path="/seeker" element={<CreateSeekerForm />} />
         </Routes>
       </div>
       <Footer />
