@@ -17,4 +17,4 @@ Live preview: https://hirefromlhl.netlify.app/projects
 
 ## Setup
 
-Install dependencies by going into each folder, react-front-end and express-back-end, and in each file running `npm install`. Once dependencies are installed open 2 terminals and run `npm start`.
+Install dependencies by going into each folder, react-front-end and express-back-end, and in each folder running `npm install`. Once dependencies are installed open 2 terminals and run `npm start`.
