@@ -8,7 +8,6 @@ const JobList = () => {
 
   useEffect(() => {
     axios.get("/api/jobs_employers").then((response) => {
-      console.log(response.data);
       setJobs(response.data);
     });
   }, []);
