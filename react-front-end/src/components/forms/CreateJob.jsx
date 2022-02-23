@@ -178,6 +178,7 @@ const CreateJob = () => {
             </div>
             <div className="form-input">
               <input
+                placeholder="End Date"
                 type="date"
                 placeholder="End Date"
                 name="endDate"
