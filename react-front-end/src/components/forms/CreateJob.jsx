@@ -180,7 +180,6 @@ const CreateJob = () => {
               <input
                 placeholder="End Date"
                 type="date"
-                placeholder="End Date"
                 name="endDate"
                 value={endDate}
                 onChange={(event) => setEndDate(event.target.value)}
