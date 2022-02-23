@@ -24,7 +24,6 @@ const TopNavBar = () => {
         const userArr = users.filter(
           (user) => user.email === Cookies.get("user")
         );
-        console.log(user);
         setUser(userArr[0]);
       })
       .catch((err) => err.message);

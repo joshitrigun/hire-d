@@ -36,6 +36,8 @@ const JobDetail = () => {
     apply_link,
   } = job;
 
+  console.log(apply_link);
+
   return (
     <div className="job-details-main">
       <div className="job-detail-header">

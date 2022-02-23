@@ -81,23 +81,23 @@ const CreateCertification = () => {
   };
   return (
     <div>
-      {submitted ? (
-        <p className="bg-success text-center text-white w-75 mx-auto fw-bold">
-          {submitted}
-        </p>
-      ) : (
-        ""
-      )}
-      {error ? (
-        <p className="bg-danger text-center text-white w-75 mx-auto fw-bold">
-          {error}
-        </p>
-      ) : (
-        ""
-      )}
+      <h3 className="text-center">Add certification</h3>
       <form className="w-100 mx-auto" onSubmit={(e) => e.preventDefault()}>
         <div className="certification-form-container">
-          <h3 className="text-center">Add certification</h3>
+          {submitted ? (
+            <p className="bg-success text-center text-white w-75 mx-auto fw-bold">
+              {submitted}
+            </p>
+          ) : (
+            ""
+          )}
+          {error ? (
+            <p className="bg-danger text-center text-white w-75 mx-auto fw-bold">
+              {error}
+            </p>
+          ) : (
+            ""
+          )}
           <div className="form-input">
             <input
               type="text"

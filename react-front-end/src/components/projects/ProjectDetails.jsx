@@ -45,7 +45,13 @@ const ProjectDetails = () => {
           </h5>
           <p>
             Project URL:{" "}
-            <a href={singleProject.project_url}>{singleProject.project_url}</a>
+            <a
+              href={singleProject.project_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {singleProject.project_url}
+            </a>
           </p>
           <p className="project-info"></p>
           <p className="project-description">{singleProject.description}</p>

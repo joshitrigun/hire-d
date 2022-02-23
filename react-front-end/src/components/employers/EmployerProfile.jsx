@@ -47,7 +47,10 @@ export default function EmployerProfile(props) {
       </p>
       <p className="body-text">
         <BsLinkedin className="bs-icon" />
-        &nbsp;<a href={linkedin_url}>{linkedin_url}</a>
+        &nbsp;
+        <a href={linkedin_url} target="_blank" rel="noopener noreferrer">
+          {linkedin_url}
+        </a>
       </p>
       <br />
       {id === Number(Cookies.get("id")) ? (

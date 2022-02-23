@@ -30,8 +30,6 @@ const EmployerDetail = () => {
     const employer = employers.filter(
       (singleEmployer) => singleEmployer.id === id
     );
-    console.log(employer);
-    console.log(state.employer.avatar);
     return employer[0];
   };
 
