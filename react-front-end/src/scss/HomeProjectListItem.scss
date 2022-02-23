@@ -1,8 +1,8 @@
 @media (min-width: 1280px) {
-  .project-container {
+  .home-project-container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin: auto;
     flex-wrap: wrap;
@@ -56,7 +56,7 @@
   .project-container {
     width: 80%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
   }

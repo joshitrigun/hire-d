@@ -1,6 +1,6 @@
 import React from "react";
 import TopNavBar from "../components/layout/Top_nav_bar";
-import ProjectList from "../components/projects/ProjectList";
+import HomeProjectList from "../components/projects/HomeProjectList";
 import HotJobList from "../components/jobs/HotJobsList";
 import "../scss/App.scss";
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -16,7 +16,7 @@ const Homepage = () => {
           <h2 className="page-title">Projects to explore...</h2>
           <PerfectScrollbar>
             <span className="home-projects">
-              <ProjectList />
+              <HomeProjectList />
             </span>
           </PerfectScrollbar>
         </section>

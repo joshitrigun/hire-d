@@ -1,9 +1,11 @@
 .login-main-container {
-  width: 40em;
-  padding: 2em;
+  width: 30%;
   display: flex;
   justify-content: center;
+  margin: auto;
+  margin-top: 10em;
   background-color: #fafafa;
+  padding: 4em;
   border-radius: 1em; }
 
 .login-container {

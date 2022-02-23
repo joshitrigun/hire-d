@@ -48,7 +48,6 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login-main-container">
       <form className="login-container">
         {error ? (
           <p className="bg-danger text-white text-center">
@@ -97,9 +96,8 @@ const LoginForm = () => {
           >
             Submit
           </Button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

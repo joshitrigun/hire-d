@@ -338,7 +338,7 @@ const CreateSeekerForm = () => {
               <div className="form-input">
                 <input
                   type="text"
-                  placeholder="Upload Resume"
+                  placeholder="Post Resume Link"
                   name="resume"
                   value={resume}
                   onChange={(event) => setResume(event.target.value)}
@@ -366,7 +366,7 @@ const CreateSeekerForm = () => {
                             )
                           }
                         />
-                        <label htmlFor={name}>{name}</label>
+                        <label htmlFor={name}>&nbsp;{name}</label>
                       </div>
                     );
                   })}
