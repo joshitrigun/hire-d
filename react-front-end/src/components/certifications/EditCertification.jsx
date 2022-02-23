@@ -89,7 +89,7 @@ const CreateCertification = () => {
       institution,
       city,
       province,
-      jobSeekerId: 1,
+      jobSeekerId: id,
     };
     if (
       Cookies.get("id") &&
