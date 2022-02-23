@@ -6,7 +6,7 @@ Live preview: https://hirefromlhl.netlify.app/projects
 
 ## Final Product
 
-!["Screenshot of final project pages"](https://github.com/joshitrigun/hire-d/blob/master/react-front-end/screenshots/ezgif.com-gif-maker.gif?raw=true)
+!["Screenshot of final project pages"](https://github.com/joshitrigun/hire-d/blob/master/react-front-end/pics/ezgif.com-gif-maker.gif?raw=true)
 
 ## Tech Stack
 
