@@ -169,7 +169,7 @@ const CreateJob = () => {
             </div>
             <div className="form-input">
               <input
-                placeholderText="Pick Start Date"
+                placeholder="Start Date"
                 type="date"
                 name="startDate"
                 value={startDate}
@@ -178,6 +178,7 @@ const CreateJob = () => {
             </div>
             <div className="form-input">
               <input
+                placeholder="End Date"
                 type="date"
                 name="endDate"
                 value={endDate}
