@@ -346,7 +346,7 @@ const CreateSeekerForm = () => {
                             )
                           }
                         />
-                        <label htmlFor={name}>{name}</label>
+                        <label htmlFor={name}>&nbsp;{name}</label>
                       </div>
                     );
                   })}

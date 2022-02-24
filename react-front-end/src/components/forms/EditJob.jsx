@@ -225,7 +225,7 @@ const CreateJob = () => {
                           onChangeHandler(index, checkedState, setCheckedState)
                         }
                       />
-                      <label htmlFor={name}>{name}</label>
+                      <label htmlFor={name}>&nbsp;{name}</label>
                     </div>
                   );
                 })}
