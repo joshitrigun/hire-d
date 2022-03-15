@@ -10,7 +10,7 @@ Live preview: https://hirefromlhl.netlify.app/projects
 
 ## Tech Stack
 
-- PostgresSQL(ElephantSQL)
+- PostgreSQL(ElephantSQL)
 - Express
 - React
 - Node
