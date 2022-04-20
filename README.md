@@ -18,3 +18,5 @@ Live preview: https://hirefromlhl.netlify.app/projects
 ## Setup
 
 Install dependencies by going into each folder, react-front-end and express-back-end, and in each folder running `npm install`. Once dependencies are installed open 2 terminals and run `npm start` in each folder. These steps are only necessary if you want to download the repo locally in which case you need to select the local-version branch before download/cloning.
+
+![image](https://user-images.githubusercontent.com/15637663/164289200-0565f3fc-d0d1-41ff-a39f-741a4a234dfc.png)
